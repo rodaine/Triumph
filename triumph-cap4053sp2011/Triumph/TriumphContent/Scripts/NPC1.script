@@ -1,0 +1,31 @@
+﻿<Conversations>
+  <Conversation Name="Greetings">
+    <Text>Help, friend!</Text>
+    <Handlers>
+      <Handler Caption="Continue" Action="StartConversation:Quest1" />
+    </Handlers>
+  </Conversation>
+
+  <Conversation Name="Quest1">
+    <Text>Hide your kids! Hide your wife! They're rapin' errbody out here ... Can you please show them who's boss?</Text>
+    <Handlers>
+      <Handler Caption="Sure" Action="StartConversation:ThankYou" />
+      <Handler Caption="What?" Action="StartConversation:OhWell" />
+    </Handlers>
+  </Conversation>
+
+  <Conversation Name="ThankYou">
+    <Text>You gon find them! I'll run and tell that, homeboy!</Text>
+    <Handlers>
+      <Handler Caption="Continue" Action="EndConversation" />
+    </Handlers>
+  </Conversation>
+
+  <Conversation Name="OhWell">
+    <Text>You are so dumb - for real!</Text>
+    <Handlers>
+      <Handler Caption="Continue" Action="EndConversation" />
+    </Handlers>
+  </Conversation>
+  
+</Conversations>
