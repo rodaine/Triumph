@@ -7,13 +7,3 @@ C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\bin\De
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\bin\Debug\SpriteTool.pdb
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\obj\x86\Debug\SpriteTool.exe
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\obj\x86\Debug\SpriteTool.pdb
-C:\Users\TJ\Triumph\SpriteTool\bin\Debug\SpriteTool.XML
-C:\Users\TJ\Triumph\SpriteTool\bin\Debug\SpriteTool.exe
-C:\Users\TJ\Triumph\SpriteTool\bin\Debug\SpriteTool.pdb
-C:\Users\TJ\Triumph\SpriteTool\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\TJ\Triumph\SpriteTool\obj\x86\Debug\SpriteTool.Form1.resources
-C:\Users\TJ\Triumph\SpriteTool\obj\x86\Debug\SpriteTool.Properties.Resources.resources
-C:\Users\TJ\Triumph\SpriteTool\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Users\TJ\Triumph\SpriteTool\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Users\TJ\Triumph\SpriteTool\obj\x86\Debug\SpriteTool.exe
-C:\Users\TJ\Triumph\SpriteTool\obj\x86\Debug\SpriteTool.pdb

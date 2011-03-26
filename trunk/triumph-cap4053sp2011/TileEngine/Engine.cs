@@ -26,6 +26,15 @@ namespace TileEngine
 				);
 		}
 
+		public static Vector2 convertTileToPosition(Point tile)
+		{
+			return new Vector2(
+				(float)(tile.X * TILE_WIDTH),
+				(float)(tile.Y * TILE_HEIGHT)
+				);
+
+		}
+
 		public static Rectangle createRectForTile(Point tile)
 		{
 			return new Rectangle(

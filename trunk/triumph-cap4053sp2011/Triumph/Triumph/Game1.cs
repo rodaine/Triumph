@@ -19,11 +19,15 @@ namespace Triumph
 		Camera camera = new Camera();
 		TileMap map = new TileMap();
 		TileLayer fog;
-		AnimatedSprite sprite;
+		AnimatedSprite sprite, patrol;
 		List<AnimatedSprite> NPCs = new List<AnimatedSprite>();
 		List<AnimatedSprite> renderList = new List<AnimatedSprite>();
+		List<Point> npcLocations = new List<Point>();
 		Comparison<AnimatedSprite> renderSort =
 			new Comparison<AnimatedSprite>(renderSpriteCompare);
+		SoundEffect soundMusic;
+		SoundEffectInstance soundMusicInstance;
+		Cursor cursor;
 
 		static int renderSpriteCompare(AnimatedSprite a, AnimatedSprite b)
 		{
@@ -43,18 +47,22 @@ namespace Triumph
 			FrameAnimation up = new FrameAnimation(2, 32, 32, 0, 0);
 			up.framesPerSecond = 5;
 			sprite.animations.Add("Up", up);
+			patrol.animations.Add("Up", up);
 
 			FrameAnimation down = new FrameAnimation(2, 32, 32, 64, 0);
 			down.framesPerSecond = 5;
 			sprite.animations.Add("Down", down);
+			patrol.animations.Add("Down", down);
 
 			FrameAnimation left = new FrameAnimation(2, 32, 32, 128, 0);
 			left.framesPerSecond = 5;
 			sprite.animations.Add("Left", left);
+			patrol.animations.Add("Left", left);
 
 			FrameAnimation right = new FrameAnimation(2, 32, 32, 192, 0);
 			right.framesPerSecond = 5;
 			sprite.animations.Add("Right", right);
+			patrol.animations.Add("Right", right);
 
 			Random rand = new Random();
 			foreach (AnimatedSprite s in NPCs)
@@ -81,21 +89,42 @@ namespace Triumph
 						break;
 				}
 
-				s.position.X = rand.Next(map.getWidthInTiles() - 1) * Engine.TILE_WIDTH;
-				s.position.Y = rand.Next(map.getHeightInTiles() - 1) * Engine.TILE_HEIGHT;
+				s.position.X = rand.Next(10) * Engine.TILE_WIDTH;
+				s.position.Y = rand.Next(3) * Engine.TILE_HEIGHT;
+				npcLocations.Add(Engine.convertPositionToTile(s.position));
 				s.isAnimating = true;
 				s.originOffset = new Vector2(16f, 32f);
 			}
 			
 			sprite.currentAnimationName = "Down";
-			sprite.capturingKeyboard = true;
+			//sprite.capturingKeyboard = true;
 			sprite.speed = 5;
 			sprite.originOffset = new Vector2(16, 32);
-			camera.setFocus(sprite);
+			//camera.setFocus(sprite);
+
+			patrol.currentAnimationName = "Down";
+			patrol.speed = 3;
+			patrol.originOffset = new Vector2(16, 32);
+			patrol.position.X = 320;
+			patrol.position.Y = 0;
 
 			renderList.Add(sprite);
+			renderList.Add(patrol);
 			renderList.AddRange(NPCs);
-			 
+
+			soundMusicInstance.Volume = 0.75f;
+			soundMusicInstance.IsLooped = true;
+			soundMusicInstance.Play();
+
+			cursor.animations.Add("Normal", new FrameAnimation(1, 32, 32, 0, 0));
+			cursor.animations.Add("Collision", new FrameAnimation(1, 32, 32, 32, 0));
+			cursor.animations.Add("SubSelect", new FrameAnimation(1, 32, 32, 64, 0));
+			cursor.animations.Add("Hidden", new FrameAnimation(1, 32, 32, 96, 0));
+			cursor.currentAnimationName = "Normal";
+			cursor.position = new Vector2(32f, 32f);
+			cursor.capturingKeyboard = true;
+			camera.setFocus(cursor);
+
         }
 
         protected override void LoadContent()
@@ -110,11 +139,15 @@ namespace Triumph
 			map.collisionLayer = CollisionLayer.fromFile("Content/Layers/Collision.layer");
 			fog = TileLayer.fromFile(Content, "Content/Layers/fog.layer");
 			sprite = new AnimatedSprite(Content.Load<Texture2D>("Sprites/mnt1"));
+			patrol = new AnimatedSprite(Content.Load<Texture2D>("Sprites/mnt1"));
 			NPCs.Add(new AnimatedSprite(Content.Load<Texture2D>("Sprites/mst1")));
 			NPCs.Add(new AnimatedSprite(Content.Load<Texture2D>("Sprites/wmn1")));
 			NPCs.Add(new AnimatedSprite(Content.Load<Texture2D>("Sprites/wmn2")));
 			NPCs.Add(new AnimatedSprite(Content.Load<Texture2D>("Sprites/wmn3")));
 			NPCs.Add(new AnimatedSprite(Content.Load<Texture2D>("Sprites/mnv1")));
+			soundMusic = Content.Load<SoundEffect>("Music/POL-battle-march-long");
+			soundMusicInstance = soundMusic.CreateInstance();
+			cursor = new Cursor(Content.Load<Texture2D>("UI/cursor"));
         }
 
         protected override void UnloadContent()
@@ -122,24 +155,17 @@ namespace Triumph
             // TODO: Unload any non ContentManager content here
         }
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-			if (Mouse.GetState().LeftButton == ButtonState.Pressed)
+			if (soundMusicInstance.State == SoundState.Paused || soundMusicInstance.State == SoundState.Paused)
 			{
-				camera.unsetFocus();
-			}
-			if (Mouse.GetState().RightButton == ButtonState.Pressed)
-			{
-				camera.setFocus(sprite);
+				soundMusicInstance.Volume = 0.75f;
+				soundMusicInstance.IsLooped = true;
+				soundMusicInstance.Play();
 			}
 
             // TODO: Add your update logic here 
@@ -147,6 +173,9 @@ namespace Triumph
 			int screenHeight = GraphicsDevice.Viewport.Height;
 
 			sprite.update(gameTime, screenWidth, screenHeight, map);
+			patrol.update(gameTime, screenWidth, screenHeight, map);
+			cursor.update(gameTime, screenWidth, screenHeight, map);
+
 			foreach (AnimatedSprite s in NPCs)
 			{
 				s.update(gameTime, screenWidth, screenHeight, map);
@@ -157,21 +186,19 @@ namespace Triumph
 					sprite.position = s.position - d * (sprite.collisionRadius + s.collisionRadius);
 				}
 			}
+
 			camera.update(screenWidth, screenHeight, map);
 
             base.Update(gameTime);
         }
 
-        /// <summary>
-        /// This is called when the game should draw itself.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
 
-            // TODO: Add your drawing code here
 			map.draw(spriteBatch, camera);
+
+			cursor.Draw(spriteBatch, camera);
 
 			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, camera.transformationMatrix);
 			renderList.Sort(renderSort);
