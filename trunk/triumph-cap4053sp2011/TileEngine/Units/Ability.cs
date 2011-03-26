@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TileEngine
 {
-    class Ability
+    public class Ability
     {
         #region ability fields
 

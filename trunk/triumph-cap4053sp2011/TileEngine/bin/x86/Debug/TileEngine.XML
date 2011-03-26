@@ -156,6 +156,12 @@
             Describes a collision map layer
             </summary>
         </member>
+        <member name="F:TileEngine.CollisionLayer.layout">
+            <summary>
+            Layout of collisions on Tile Map
+            </summary>
+            <remarks></remarks>
+        </member>
         <member name="M:TileEngine.CollisionLayer.#ctor(System.Int32,System.Int32)">
             <summary>
             Creates an empty Tile Layer with specified dimensions
@@ -444,6 +450,56 @@
             </summary>
             <remarks>The name refers to the FrameAnimation's key in the animations Dictionary</remarks>
         </member>
+        <member name="T:TileEngine.UnitLayer">
+            <summary>
+            Describes a collision map layer
+            </summary>
+        </member>
+        <member name="F:TileEngine.UnitLayer.layout">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TileEngine.UnitLayer.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Creates an empty Tile Layer with specified dimensions
+            </summary>
+            <param name="width">Integer width (x-direction) of layer</param>
+            <param name="height">Integer height (y-direction) of layer</param>
+        </member>
+        <member name="M:TileEngine.UnitLayer.fromFile(System.String)">
+            <summary>
+            Performs the IO on a .layer file to obtain a saved Tile Layer used by both fromFile() methods
+            </summary>
+            <param name="filename">Path (relative or absolute) to the .layer file</param>
+            <param name="textureNames">List of string texture names referenced by the layer</param>
+            <returns>New Tile Layer</returns>
+        </member>
+        <member name="M:TileEngine.UnitLayer.save(System.String,System.String[])">
+            <summary>
+            Saves a Tile Layer to file [used by Tile Editor]
+            </summary>
+            <param name="filename">Path (relative or absolute) where the .layer file should be saved</param>
+            <param name="textureNames">String array of texture names (relative to a content root) used by the layer</param>
+        </member>
+        <member name="M:TileEngine.UnitLayer.getTileUnitIndex(System.Int32,System.Int32)">
+            <summary>
+            Get the index of a texture at a particular tile
+            </summary>
+            <param name="x">0-Based x-direction tile location</param>
+            <param name="y">0-Based y-direction tile location</param>
+            <returns>0-Based texture index; else, -1 for an empty tile or -2 if x/y out of range</returns>
+        </member>
+        <member name="P:TileEngine.UnitLayer.widthInTiles">
+            <summary>
+            Returns the width in tiles of the Tile Layer
+            </summary>
+        </member>
+        <member name="P:TileEngine.UnitLayer.heightInTiles">
+            <summary>
+            Returns the height in tiles of the Tile Layer
+            </summary>
+        </member>
         <member name="T:TileEngine.TileMap">
             <summary>
             Describes a collection of Tile Layers to be drawn together
@@ -583,51 +639,6 @@
         <member name="P:TileEngine.Camera.isFocused">
             <summary>
             Returns whether or not the camera is focused on a particular Animated Sprite
-            </summary>
-        </member>
-        <member name="T:TileEngine.UnitLayer">
-            <summary>
-            Describes a collision map layer
-            </summary>
-        </member>
-        <member name="M:TileEngine.UnitLayer.#ctor(System.Int32,System.Int32)">
-            <summary>
-            Creates an empty Tile Layer with specified dimensions
-            </summary>
-            <param name="width">Integer width (x-direction) of layer</param>
-            <param name="height">Integer height (y-direction) of layer</param>
-        </member>
-        <member name="M:TileEngine.UnitLayer.fromFile(System.String)">
-            <summary>
-            Performs the IO on a .layer file to obtain a saved Tile Layer used by both fromFile() methods
-            </summary>
-            <param name="filename">Path (relative or absolute) to the .layer file</param>
-            <param name="textureNames">List of string texture names referenced by the layer</param>
-            <returns>New Tile Layer</returns>
-        </member>
-        <member name="M:TileEngine.UnitLayer.save(System.String,System.String[])">
-            <summary>
-            Saves a Tile Layer to file [used by Tile Editor]
-            </summary>
-            <param name="filename">Path (relative or absolute) where the .layer file should be saved</param>
-            <param name="textureNames">String array of texture names (relative to a content root) used by the layer</param>
-        </member>
-        <member name="M:TileEngine.UnitLayer.getTileUnitIndex(System.Int32,System.Int32)">
-            <summary>
-            Get the index of a texture at a particular tile
-            </summary>
-            <param name="x">0-Based x-direction tile location</param>
-            <param name="y">0-Based y-direction tile location</param>
-            <returns>0-Based texture index; else, -1 for an empty tile or -2 if x/y out of range</returns>
-        </member>
-        <member name="P:TileEngine.UnitLayer.widthInTiles">
-            <summary>
-            Returns the width in tiles of the Tile Layer
-            </summary>
-        </member>
-        <member name="P:TileEngine.UnitLayer.heightInTiles">
-            <summary>
-            Returns the height in tiles of the Tile Layer
             </summary>
         </member>
     </members>

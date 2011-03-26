@@ -11,6 +11,9 @@ namespace TileEngine
 	/// </summary>
 	public class UnitLayer
 	{
+		/// <summary>
+		/// 
+		/// </summary>
 		private int[,] layout;
 
 		#region Initializers & IO

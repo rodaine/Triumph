@@ -97,10 +97,10 @@
     <Compile Include="Units\Ability.cs" />
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Camera.cs" />
-    <Compile Include="Units\Buffs.cs" />
+    <Compile Include="Units\Buff.cs" />
     <Compile Include="Units\Faction.cs" />
     <Compile Include="Units\Player.cs" />
-    <Compile Include="Units\Units.cs" />
+    <Compile Include="Units\Unit.cs" />
     <Compile Include="Tiles\CollisionLayer.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Sprites\FrameAnimation.cs" />
