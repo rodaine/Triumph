@@ -303,12 +303,12 @@ namespace TileEditor
 			
 			private void tileDisplayPane1_MouseEnter(object sender, EventArgs e)
 			{
-				Cursor.Hide();
+				System.Windows.Forms.Cursor.Hide();
 			}
 
 			private void tileDisplayPane1_MouseLeave(object sender, EventArgs e)
 			{
-				Cursor.Show();
+				System.Windows.Forms.Cursor.Show();
 			}
 
 			private void tileDisplayPane1_Resize(object sender, EventArgs e)

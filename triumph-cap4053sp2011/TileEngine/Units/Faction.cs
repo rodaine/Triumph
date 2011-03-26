@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TileEngine
 {
-    class Faction
+    public class Faction
     {
         #region Faction fields
         String name;

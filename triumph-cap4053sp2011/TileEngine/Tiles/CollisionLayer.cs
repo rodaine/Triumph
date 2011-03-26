@@ -11,6 +11,10 @@ namespace TileEngine
 	/// </summary>
 	public class CollisionLayer
     {
+		/// <summary>
+		/// Layout of collisions on Tile Map
+		/// </summary>
+		/// <remarks></remarks>
         private int[,] layout;
 
 		#region Initializers & IO
