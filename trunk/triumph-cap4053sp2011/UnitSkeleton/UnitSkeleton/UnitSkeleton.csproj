@@ -107,7 +107,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasePlayer.cs" />
+    <Compile Include="Ability.cs" />
+    <Compile Include="Units.cs" />
+    <Compile Include="Faction.cs" />
+    <Compile Include="Buffs.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />

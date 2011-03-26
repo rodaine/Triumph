@@ -40,6 +40,7 @@ namespace Triumph
             Content.RootDirectory = "Content";
         }
 
+        //Set initial values for everything
         protected override void Initialize()
         {
             base.Initialize();
@@ -127,6 +128,7 @@ namespace Triumph
 
         }
 
+        //load all images and outside files
         protected override void LoadContent()
         {
 
@@ -149,12 +151,14 @@ namespace Triumph
 			soundMusicInstance = soundMusic.CreateInstance();
 			cursor = new Cursor(Content.Load<Texture2D>("UI/cursor"));
         }
-
+        
+        //we do not currently use this!!
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
         }
 
+        //every game tick prompts the following actions
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
@@ -192,6 +196,7 @@ namespace Triumph
             base.Update(gameTime);
         }
 
+        //called from update, draws screen
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
