@@ -140,7 +140,7 @@ namespace TileEngine
 			if (motion != Vector2.Zero)
 			{
 				motion.Normalize();
-				position += motion * 32;
+				position += motion * Engine.TILE_WIDTH;
 				clampToArea(map.getWidthInPixels(), map.getHeightInPixels());
 			}
 
