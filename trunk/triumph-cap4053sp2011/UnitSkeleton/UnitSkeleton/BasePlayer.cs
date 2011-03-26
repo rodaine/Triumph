@@ -23,6 +23,10 @@ namespace UnitSkeleton
         #region baseplayer fields
 
         String name;
+        //String faction;
+
+        //Need location information
+
         int maxHP;
         int maxAP;
         int maxMP;
@@ -122,6 +126,11 @@ namespace UnitSkeleton
         private void stun(Boolean input)
         {
             isStunned = input;
+        }
+
+        private void toggleStun()
+        {
+            isStunned = !isStunned;
         }
 
         private void incMP(int amount)
