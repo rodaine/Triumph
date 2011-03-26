@@ -20,6 +20,7 @@ namespace Triumph
 		Camera camera = new Camera();
 		TileMap map = new TileMap();
 		AnimatedSprite sprite;
+		BaseUnit testUnit;
 		SoundEffect soundMusic;
 		SoundEffectInstance soundMusicInstance;
 		Cursor cursor;
@@ -56,6 +57,9 @@ namespace Triumph
 			sprite.speed = 5;
 			sprite.originOffset = new Vector2(16, 32);
 
+			testUnit = new BaseUnit("Test Unit", 999, 999, 999, 999, -1);
+			testUnit.unitSprite = sprite;
+
 			soundMusicInstance.Volume = 0.75f;
 			soundMusicInstance.IsLooped = true;
 			soundMusicInstance.Play();
@@ -83,10 +87,14 @@ namespace Triumph
 			map.layers.Add(TileLayer.fromFile(Content, "Content/Layers/g2m3.layer"));
 			map.layers.Add(TileLayer.fromFile(Content, "Content/Layers/fieldObjects.layer"));
 			map.collisionLayer = CollisionLayer.fromFile("Content/Layers/Collision.layer");
+			map.unitLayer = new UnitLayer(map.getWidthInTiles(), map.getHeightInTiles());
 			sprite = new AnimatedSprite(Content.Load<Texture2D>("Sprites/mnt1"));
+
 			soundMusic = Content.Load<SoundEffect>("Music/POL-battle-march-long");
 			soundMusicInstance = soundMusic.CreateInstance();
+
 			cursor = new Cursor(Content.Load<Texture2D>("UI/cursor"));
+
         }
         
         //we do not currently use this!!
@@ -109,11 +117,16 @@ namespace Triumph
 				soundMusicInstance.Play();
 			}
 
+			if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+			{
+				testUnit.goToTile(Engine.convertPositionToTile(cursor.position), map);
+			}
+
             // TODO: Add your update logic here 
 			int screenWidth = GraphicsDevice.Viewport.Width;
 			int screenHeight = GraphicsDevice.Viewport.Height;
 
-			sprite.update(gameTime, screenWidth, screenHeight, map);
+			testUnit.update(gameTime, screenWidth, screenHeight, map);
 			cursor.update(gameTime, screenWidth, screenHeight, map);
 
 			camera.update(screenWidth, screenHeight, map);
@@ -130,9 +143,7 @@ namespace Triumph
 
 			cursor.Draw(spriteBatch, camera);
 
-			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, camera.transformationMatrix);
-			sprite.Draw(spriteBatch);
-			spriteBatch.End();
+			testUnit.draw(spriteBatch, camera);
 
             base.Draw(gameTime);
         }

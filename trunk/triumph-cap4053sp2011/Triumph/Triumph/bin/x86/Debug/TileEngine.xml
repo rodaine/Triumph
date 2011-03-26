@@ -156,6 +156,12 @@
             Describes a collision map layer
             </summary>
         </member>
+        <member name="F:TileEngine.CollisionLayer.layout">
+            <summary>
+            Layout of collisions on Tile Map
+            </summary>
+            <remarks></remarks>
+        </member>
         <member name="M:TileEngine.CollisionLayer.#ctor(System.Int32,System.Int32)">
             <summary>
             Creates an empty Tile Layer with specified dimensions
@@ -444,6 +450,56 @@
             </summary>
             <remarks>The name refers to the FrameAnimation's key in the animations Dictionary</remarks>
         </member>
+        <member name="T:TileEngine.UnitLayer">
+            <summary>
+            Describes a collision map layer
+            </summary>
+        </member>
+        <member name="F:TileEngine.UnitLayer.layout">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TileEngine.UnitLayer.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Creates an empty Tile Layer with specified dimensions
+            </summary>
+            <param name="width">Integer width (x-direction) of layer</param>
+            <param name="height">Integer height (y-direction) of layer</param>
+        </member>
+        <member name="M:TileEngine.UnitLayer.fromFile(System.String)">
+            <summary>
+            Performs the IO on a .layer file to obtain a saved Tile Layer used by both fromFile() methods
+            </summary>
+            <param name="filename">Path (relative or absolute) to the .layer file</param>
+            <param name="textureNames">List of string texture names referenced by the layer</param>
+            <returns>New Tile Layer</returns>
+        </member>
+        <member name="M:TileEngine.UnitLayer.save(System.String,System.String[])">
+            <summary>
+            Saves a Tile Layer to file [used by Tile Editor]
+            </summary>
+            <param name="filename">Path (relative or absolute) where the .layer file should be saved</param>
+            <param name="textureNames">String array of texture names (relative to a content root) used by the layer</param>
+        </member>
+        <member name="M:TileEngine.UnitLayer.getTileUnitIndex(System.Int32,System.Int32)">
+            <summary>
+            Get the index of a texture at a particular tile
+            </summary>
+            <param name="x">0-Based x-direction tile location</param>
+            <param name="y">0-Based y-direction tile location</param>
+            <returns>0-Based texture index; else, -1 for an empty tile or -2 if x/y out of range</returns>
+        </member>
+        <member name="P:TileEngine.UnitLayer.widthInTiles">
+            <summary>
+            Returns the width in tiles of the Tile Layer
+            </summary>
+        </member>
+        <member name="P:TileEngine.UnitLayer.heightInTiles">
+            <summary>
+            Returns the height in tiles of the Tile Layer
+            </summary>
+        </member>
         <member name="T:TileEngine.TileMap">
             <summary>
             Describes a collection of Tile Layers to be drawn together
@@ -531,6 +587,111 @@
             <param name="b">Second Point</param>
             <returns>Tile distance between points</returns>
         </member>
+        <member name="M:TileEngine.BaseUnit.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,TileEngine.Ability[])">
+            <summary>
+            Create baseUnit object with abilities
+            </summary>
+            <param name="name">Name of unit</param>
+            <param name="maxHP">Maximum Hit Points of unit</param>
+            <param name="maxAP">Maximum Action Points of unit</param>
+            <param name="maxMP">Maximum Movement Points of unit</param>
+            <param name="SPD">Speed of unit</param>
+            <param name="unitAffinity">Index of elemental affinity of unit</param>
+            <param name="abilities">Abilities of unit</param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Create baseUnit object without abilities
+            </summary>
+            <param name="name">Name of unit</param>
+            <param name="maxHP">Maximum Hit Points of unit</param>
+            <param name="maxAP">Maximum Action Points of unit</param>
+            <param name="maxMP">Maximum Movement Points of unit</param>
+            <param name="SPD">Speed of unit</param>
+            <param name="unitAffinity">Index of elemental affinity of unit</param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.#ctor">
+            <summary>
+            Create an empty baseUnit
+            </summary>
+        </member>
+        <member name="M:TileEngine.BaseUnit.addAbility(TileEngine.Ability[])">
+            <summary>
+            Add one or more abilities to the unit
+            </summary>
+            <param name="abilities"></param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.Clone">
+            <summary>
+            Clone the current unit object excluding buffs and items
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:TileEngine.BaseUnit.maxHP">
+            <summary>
+            Gets the maxHP of the unit.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.maxAP">
+            <summary>
+            Gets the maxAP of the unit.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.maxMP">
+            <summary>
+            Gets the maxMP of the unit.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.HP">
+            <summary>
+            Get or set the HP of the unit inclusively between 0 and maxHP. If HP reaches zero, unit isDead = true; otherwise, unit isDead = false.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.AP">
+            <summary>
+            Get or set the AP of the unit inclusively between 0 and maxAP.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.MP">
+            <summary>
+            Get or set the MP of the unit inclusively between 0 and maxMP.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.SPD">
+            <summary>
+            Get the base speed of the unit.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.isDead">
+            <summary>
+            Get whether or not the unit isDead
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.isStunned">
+            <summary>
+            Get or set whether or not the unit isStunned
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.affinityIndex">
+            <summary>
+            Get the index of the unit's elemental affinity
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.affinityName">
+            <summary>
+            Get the name of the unit's elemental affinity
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.location">
+            <summary>
+            Get the position (by tiles) of the unit
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.spritePosition">
+            <summary>
+            Get the position (by pixels) of the unit
+            </summary>
+        </member>
         <member name="T:TileEngine.Camera">
             <summary>
             Describes the view of the map visible through the game's viewport
@@ -583,51 +744,6 @@
         <member name="P:TileEngine.Camera.isFocused">
             <summary>
             Returns whether or not the camera is focused on a particular Animated Sprite
-            </summary>
-        </member>
-        <member name="T:TileEngine.UnitLayer">
-            <summary>
-            Describes a collision map layer
-            </summary>
-        </member>
-        <member name="M:TileEngine.UnitLayer.#ctor(System.Int32,System.Int32)">
-            <summary>
-            Creates an empty Tile Layer with specified dimensions
-            </summary>
-            <param name="width">Integer width (x-direction) of layer</param>
-            <param name="height">Integer height (y-direction) of layer</param>
-        </member>
-        <member name="M:TileEngine.UnitLayer.fromFile(System.String)">
-            <summary>
-            Performs the IO on a .layer file to obtain a saved Tile Layer used by both fromFile() methods
-            </summary>
-            <param name="filename">Path (relative or absolute) to the .layer file</param>
-            <param name="textureNames">List of string texture names referenced by the layer</param>
-            <returns>New Tile Layer</returns>
-        </member>
-        <member name="M:TileEngine.UnitLayer.save(System.String,System.String[])">
-            <summary>
-            Saves a Tile Layer to file [used by Tile Editor]
-            </summary>
-            <param name="filename">Path (relative or absolute) where the .layer file should be saved</param>
-            <param name="textureNames">String array of texture names (relative to a content root) used by the layer</param>
-        </member>
-        <member name="M:TileEngine.UnitLayer.getTileUnitIndex(System.Int32,System.Int32)">
-            <summary>
-            Get the index of a texture at a particular tile
-            </summary>
-            <param name="x">0-Based x-direction tile location</param>
-            <param name="y">0-Based y-direction tile location</param>
-            <returns>0-Based texture index; else, -1 for an empty tile or -2 if x/y out of range</returns>
-        </member>
-        <member name="P:TileEngine.UnitLayer.widthInTiles">
-            <summary>
-            Returns the width in tiles of the Tile Layer
-            </summary>
-        </member>
-        <member name="P:TileEngine.UnitLayer.heightInTiles">
-            <summary>
-            Returns the height in tiles of the Tile Layer
             </summary>
         </member>
     </members>

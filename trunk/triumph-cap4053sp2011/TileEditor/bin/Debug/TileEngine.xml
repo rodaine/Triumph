@@ -587,6 +587,111 @@
             <param name="b">Second Point</param>
             <returns>Tile distance between points</returns>
         </member>
+        <member name="M:TileEngine.BaseUnit.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,TileEngine.Ability[])">
+            <summary>
+            Create baseUnit object with abilities
+            </summary>
+            <param name="name">Name of unit</param>
+            <param name="maxHP">Maximum Hit Points of unit</param>
+            <param name="maxAP">Maximum Action Points of unit</param>
+            <param name="maxMP">Maximum Movement Points of unit</param>
+            <param name="SPD">Speed of unit</param>
+            <param name="unitAffinity">Index of elemental affinity of unit</param>
+            <param name="abilities">Abilities of unit</param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Create baseUnit object without abilities
+            </summary>
+            <param name="name">Name of unit</param>
+            <param name="maxHP">Maximum Hit Points of unit</param>
+            <param name="maxAP">Maximum Action Points of unit</param>
+            <param name="maxMP">Maximum Movement Points of unit</param>
+            <param name="SPD">Speed of unit</param>
+            <param name="unitAffinity">Index of elemental affinity of unit</param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.#ctor">
+            <summary>
+            Create an empty baseUnit
+            </summary>
+        </member>
+        <member name="M:TileEngine.BaseUnit.addAbility(TileEngine.Ability[])">
+            <summary>
+            Add one or more abilities to the unit
+            </summary>
+            <param name="abilities"></param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.Clone">
+            <summary>
+            Clone the current unit object excluding buffs and items
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:TileEngine.BaseUnit.maxHP">
+            <summary>
+            Gets the maxHP of the unit.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.maxAP">
+            <summary>
+            Gets the maxAP of the unit.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.maxMP">
+            <summary>
+            Gets the maxMP of the unit.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.HP">
+            <summary>
+            Get or set the HP of the unit inclusively between 0 and maxHP. If HP reaches zero, unit isDead = true; otherwise, unit isDead = false.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.AP">
+            <summary>
+            Get or set the AP of the unit inclusively between 0 and maxAP.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.MP">
+            <summary>
+            Get or set the MP of the unit inclusively between 0 and maxMP.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.SPD">
+            <summary>
+            Get the base speed of the unit.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.isDead">
+            <summary>
+            Get whether or not the unit isDead
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.isStunned">
+            <summary>
+            Get or set whether or not the unit isStunned
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.affinityIndex">
+            <summary>
+            Get the index of the unit's elemental affinity
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.affinityName">
+            <summary>
+            Get the name of the unit's elemental affinity
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.location">
+            <summary>
+            Get the position (by tiles) of the unit
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.spritePosition">
+            <summary>
+            Get the position (by pixels) of the unit
+            </summary>
+        </member>
         <member name="T:TileEngine.Camera">
             <summary>
             Describes the view of the map visible through the game's viewport

@@ -35,12 +35,12 @@ namespace TileEngine
         private static string[] affinities = { "Water", "Fire", "Earth", "Stone", "Wind", "Ice" };
 
 		//Sprite and Movement
-		private AnimatedSprite unitSprite;
-		private Point spritePosition;
-
-
-
-
+		private AnimatedSprite _unitSprite;
+		private Point _location;
+		private Vector2 _spritePosition, destination;
+		private bool isWalking = false;
+		private Stack<Point> path;
+		
         #endregion
 
         #region attribute properties
@@ -48,7 +48,7 @@ namespace TileEngine
 		/// <summary>
 		/// Gets the maxHP of the unit.
 		/// </summary>
-		int maxHP
+		public int maxHP
 		{
 			get { return _maxHP; }
 		}
@@ -56,7 +56,7 @@ namespace TileEngine
 		/// <summary>
 		/// Gets the maxAP of the unit.
 		/// </summary>
-		int maxAP
+		public int maxAP
 		{
 			get { return _maxAP; }
 		}
@@ -64,7 +64,7 @@ namespace TileEngine
 		/// <summary>
 		/// Gets the maxMP of the unit.
 		/// </summary>
-		int maxMP
+		public int maxMP
 		{
 			get { return _maxMP; }
 		}
@@ -72,7 +72,7 @@ namespace TileEngine
 		/// <summary>
 		/// Get or set the HP of the unit inclusively between 0 and maxHP. If HP reaches zero, unit isDead = true; otherwise, unit isDead = false.
 		/// </summary>
-		int HP
+		public int HP
 		{
 			get { return _HP; }
 			set
@@ -85,7 +85,7 @@ namespace TileEngine
 		/// <summary>
 		/// Get or set the AP of the unit inclusively between 0 and maxAP.
 		/// </summary>
-		int AP
+		public int AP
 		{
 			get { return _AP; }
 			set { _AP = (int)MathHelper.Clamp(value, 0, _maxAP); }
@@ -94,7 +94,7 @@ namespace TileEngine
 		/// <summary>
 		/// Get or set the MP of the unit inclusively between 0 and maxMP.
 		/// </summary>
-		int MP
+		public int MP
 		{
 			get { return _MP; }
 			set { _MP = (int)MathHelper.Clamp(value, 0, _maxMP); }
@@ -103,7 +103,7 @@ namespace TileEngine
 		/// <summary>
 		/// Get the base speed of the unit.
 		/// </summary>
-		int SPD
+		public int SPD
 		{
 			get { return _SPD; }
 		}
@@ -111,7 +111,7 @@ namespace TileEngine
 		/// <summary>
 		/// Get whether or not the unit isDead
 		/// </summary>
-		bool isDead
+		public bool isDead
 		{
 			get { return _isDead; }
 		}
@@ -119,7 +119,7 @@ namespace TileEngine
 		/// <summary>
 		/// Get or set whether or not the unit isStunned
 		/// </summary>
-		bool isStunned
+		public bool isStunned
 		{
 			get { return _isStunned; }
 			set { _isStunned = value; }
@@ -128,7 +128,7 @@ namespace TileEngine
 		/// <summary>
 		/// Get the index of the unit's elemental affinity
 		/// </summary>
-		int affinityIndex
+		public int affinityIndex
 		{
 			get { return unitAffinity; }
 			set
@@ -140,15 +140,34 @@ namespace TileEngine
 		/// <summary>
 		/// Get the name of the unit's elemental affinity
 		/// </summary>
-		string affinityName
+		public string affinityName
 		{
 			get { return affinities[unitAffinity]; }
 		}
 
+		/// <summary>
+		/// Get the position (by tiles) of the unit
+		/// </summary>
+		public Point location
+		{
+			get { return _location; }
+		}
 
+		/// <summary>
+		/// Get the position (by pixels) of the unit
+		/// </summary>
+		public Vector2 spritePosition
+		{
+			get { return _spritePosition; }
+		}
 
+		public AnimatedSprite unitSprite
+		{
+			get { return _unitSprite; }
+			set { _unitSprite = value; }
+		}
 
-        #endregion
+		#endregion
 
         #region constructors
 
@@ -271,7 +290,7 @@ namespace TileEngine
 
 		#endregion
 
-		#region run_checks
+		#region Turn Checks
 
 		public void run()
         {
@@ -322,9 +341,72 @@ namespace TileEngine
 
         #endregion
 
-        #region drawing player
+		#region Sprite Updates
 
-        //enter sprite code here
+		public void update(GameTime gameTime, int screenWidth, int screenHeight, TileMap map)
+		{
+
+			//check if at destination and update as neccessary
+			if (isWalking && _spritePosition.X == destination.X && _spritePosition.Y == destination.Y)
+			{
+				//if at final destination, stop walking!
+				// get next destination
+				if (path.Count == 0)
+				{
+					isWalking = false;
+				}
+				else 
+				{
+					Point tileDest = path.Pop();
+					destination = new Vector2((float)tileDest.X * Engine.TILE_WIDTH, (float)tileDest.Y * Engine.TILE_HEIGHT);
+				}
+			}
+
+			//update sprite location
+			if (isWalking)
+			{
+				Vector2 motion = Vector2.Zero;
+				motion = destination - _spritePosition;
+				motion.Normalize();
+				motion *= _unitSprite.speed;
+				if (motion.Length() > (destination - _spritePosition).Length())
+					motion = destination - _spritePosition;
+
+				_spritePosition += motion;
+				_unitSprite.position = _spritePosition;
+			}
+
+			//update sprite
+			_unitSprite.update(gameTime, screenWidth, screenHeight, map);
+		}
+
+		public void goToTile(Point goal, TileMap map)
+		{
+			if (isWalking) return;
+
+			path = map.getPath(_location, goal, new List<Point>());
+			if (path.Count == 0)
+				return;
+
+			Point tileDest = path.Pop();
+			
+			destination = new Vector2((float)tileDest.X * Engine.TILE_WIDTH, (float)tileDest.Y * Engine.TILE_HEIGHT);
+			_location = goal;
+			isWalking = true;
+			map.unitLayer.moveUnit(index, goal);
+		}
+
+
+		#endregion
+
+		#region drawing player
+
+		public void draw(SpriteBatch spriteBatch, Camera camera)
+		{
+			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, camera.transformationMatrix);
+			unitSprite.Draw(spriteBatch);
+			spriteBatch.End();
+		}
 
         #endregion
 
@@ -345,6 +427,8 @@ namespace TileEngine
 
 			return unit;
 		}
+
+
 	}
 
 }
