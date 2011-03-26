@@ -17,75 +17,6 @@ using Microsoft.Xna.Framework.Media;
 
 namespace UnitSkeleton
 {
-    class Player
-    {
-        #region Player fields
-        Faction faction;
-        String name;
-        #endregion
-
-        #region constructors
-        public Player(String name, Faction faction)
-        {
-            this.name = name;
-            this.faction = faction;
-        }
-
-        public Player(String name)
-        {
-            this.name = name;
-            this.faction = null;
-        }
-
-        public Player()
-        {
-            this.name = "";
-            this.faction = null;
-        }
-        #endregion
-
-        #region accessors
-        public String getName() { return this.name; }
-        public Faction getFaction() { return this.faction; }
-        #endregion
-    }
-
-    class Faction
-    {
-        #region Faction fields
-        String name;
-        Player owner;
-        BaseUnit[] units;
-        #endregion
-
-        #region constructors
-        public Faction(String name, Player owner, params BaseUnit[] units)
-        {
-            this.name = name;
-            this.owner = owner;
-            this.units = units;
-        }
-
-        public Faction(String name, Player owner)
-        {
-            this.name = name;
-            this.owner = owner;
-        }
-
-        public Faction()
-        {
-            this.name = "";
-            this.owner = null;
-        }
-        #endregion
-
-        #region accessor
-        public string getName() { return name; }
-        public Player getOwner() { return owner; }
-        public BaseUnit getUnit(int index) { return units[index]; }
-        #endregion
-    }
-
     class BaseUnit
     {
         #region baseUnit fields
@@ -108,7 +39,7 @@ namespace UnitSkeleton
         List<TriggerObject> itemsAndBuffs;
 
         int unitAffinity;
-        static String[] affinities = {"Water","Fire","Earth","Stone","Wind","Ice"};
+        static String[] affinities = { "Water", "Fire", "Earth", "Stone", "Wind", "Ice" };
 
         #endregion
 
@@ -290,8 +221,10 @@ namespace UnitSkeleton
         public void run()
         {
             //adjust unit stats
-            for(int i = 0; i < itemsAndBuffs.Count; i++){
-                switch(itemsAndBuffs[i].getObjectType()){
+            for (int i = 0; i < itemsAndBuffs.Count; i++)
+            {
+                switch (itemsAndBuffs[i].getObjectType())
+                {
                     case 1:
                         //heal
                         heal(itemsAndBuffs[i].getObjectAmount());
@@ -353,147 +286,4 @@ namespace UnitSkeleton
         #endregion
     }
 
-
-    class Ability
-    {
-        #region ability fields
-
-        int apCost;
-        int attackRange;
-        int abilityType;
-        int abilityAmount;
-        String name;
-        String description;
-
-        #endregion
-
-        #region constructors
-
-        public Ability(String name, int abilityType, int abilityAmount, int apCost, int attackRange, String description)
-        {
-            this.name = name;
-            this.apCost = apCost;
-            this.attackRange = attackRange;
-            this.description = description;
-
-            this.abilityType = abilityType;
-            this.abilityAmount = abilityAmount;
-
-        }
-
-        public Ability(String name, int abilityType, int abilityAmount, int apCost, int attackRange)
-        {
-            this.name = name;
-            this.apCost = apCost;
-            this.attackRange = attackRange;
-            this.description = "No description provided.";
-
-            this.abilityType = abilityType;
-            this.abilityAmount = abilityAmount;
-        }
-
-        public Ability()
-        {
-            name = "";
-            apCost = 0;
-            attackRange = 0;
-            description = "";
-
-            abilityType = -1;
-            abilityAmount = 0;
-        }
-
-        #endregion
-
-        #region get methods
-
-        public String getName() { return name; }
-        public String getDescription() { return description; }
-
-        public int getAPCost() { return apCost; }
-        public int getAttackRange() { return attackRange; }
-        public int getAbilityType() { return abilityType; }
-        public int getAbilityAmount() { return abilityAmount; }
-
-        #endregion
-    }
-
-    class TriggerObject
-    {
-        #region triggerobject fields
-
-        String name;
-        String description;
-        int turnDuration;
-        int objectAmount;
-        int objectType;         
-        /*
-         * heal = 1
-         * damage = 2
-         * stun = 3
-         * incMP = 4
-         * decMP = 5
-         * incAP = 6
-         * decAP = 7
-         * 
-         * */
-        Boolean objectFlip;
-
-        #endregion
-
-        #region constructors
-
-        public TriggerObject(String name, int objectType, int objectAmount, int turnDuration, Boolean objectFlip, String description)
-        {
-            this.name = name;
-            this.objectType = objectType;
-            this.objectAmount = objectAmount;
-            this.turnDuration = turnDuration;
-            this.objectFlip = objectFlip;
-            this.description = description;
-        }
-
-        public TriggerObject(String name, int objectType, int objectAmount, int turnDuration, Boolean objectFlip)
-        {
-            this.name = name;
-            this.objectType = objectType;
-            this.objectAmount = objectAmount;
-            this.turnDuration = turnDuration;
-            this.objectFlip = objectFlip;
-            description = "No description provided.";
-        }
-
-        public TriggerObject()
-        {
-            name = "";
-            objectType = -1;
-            objectAmount = 0;
-            turnDuration = 0;
-            objectFlip = false;
-            description = "";
-        }
-
-        #endregion
-
-        #region get methods
-        
-        public int getObjectType() { return objectType; }
-        public int getObjectAmount() { return objectAmount; }
-        public int getTurnDuration() { return turnDuration; }
-        public String getName() { return name; }
-        public String getDescription() { return description; }
-        public Boolean getObjectFlip() { return objectFlip; }
-
-        #endregion
-
-        #region methods
-
-        public void decTurn()
-        {
-            turnDuration--;
-        }
-
-        #endregion
-
-    }
 }
