@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TileEditor", "TileEditor\Ti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpriteTool", "SpriteTool\SpriteTool.csproj", "{33ED3861-131C-4B53-874E-D1AF36883ED8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitSkeleton", "UnitSkeleton\UnitSkeleton\UnitSkeleton.csproj", "{695FC218-F19B-4744-9346-E7E50FE40E2A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -83,18 +81,6 @@ Global
 		{33ED3861-131C-4B53-874E-D1AF36883ED8}.Release|Windows Phone.ActiveCfg = Release|x86
 		{33ED3861-131C-4B53-874E-D1AF36883ED8}.Release|x86.ActiveCfg = Release|x86
 		{33ED3861-131C-4B53-874E-D1AF36883ED8}.Release|x86.Build.0 = Release|x86
-		{695FC218-F19B-4744-9346-E7E50FE40E2A}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{695FC218-F19B-4744-9346-E7E50FE40E2A}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{695FC218-F19B-4744-9346-E7E50FE40E2A}.Debug|Win32.ActiveCfg = Debug|x86
-		{695FC218-F19B-4744-9346-E7E50FE40E2A}.Debug|Windows Phone.ActiveCfg = Debug|x86
-		{695FC218-F19B-4744-9346-E7E50FE40E2A}.Debug|x86.ActiveCfg = Debug|x86
-		{695FC218-F19B-4744-9346-E7E50FE40E2A}.Debug|x86.Build.0 = Debug|x86
-		{695FC218-F19B-4744-9346-E7E50FE40E2A}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{695FC218-F19B-4744-9346-E7E50FE40E2A}.Release|Mixed Platforms.Build.0 = Release|x86
-		{695FC218-F19B-4744-9346-E7E50FE40E2A}.Release|Win32.ActiveCfg = Release|x86
-		{695FC218-F19B-4744-9346-E7E50FE40E2A}.Release|Windows Phone.ActiveCfg = Release|x86
-		{695FC218-F19B-4744-9346-E7E50FE40E2A}.Release|x86.ActiveCfg = Release|x86
-		{695FC218-F19B-4744-9346-E7E50FE40E2A}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
