@@ -13,7 +13,7 @@ namespace TileEngine
 
 		private float _speed = 5f;   
   		private bool _isFocused = false;
-		private AnimatedSprite focus;      
+		private Cursor focus;      
 		
 		/// <summary>
 		/// The position (in pixels) of the camera
@@ -48,11 +48,11 @@ namespace TileEngine
 		/// <summary>
 		/// Sets the camera to follow around a particular AnimatedSprite
 		/// </summary>
-		/// <param name="focusSprite">The AnimatedSprite the camera should follow</param>
+		/// <param name="focusCursor">The AnimatedSprite the camera should follow</param>
 		/// <remarks>When focused, the Camera cannot be controlled by the keyboard.</remarks>
-		public void setFocus(AnimatedSprite focusSprite)
+		public void setFocus(Cursor focusCursor)
 		{
-			focus = focusSprite;
+			focus = focusCursor;
 			_isFocused = true;
 		}
 

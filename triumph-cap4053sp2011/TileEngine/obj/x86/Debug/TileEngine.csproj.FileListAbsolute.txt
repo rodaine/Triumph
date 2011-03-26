@@ -4,15 +4,3 @@ C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEngine\bin\x8
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEngine\bin\x86\Debug\TileEngine.pdb
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEngine\obj\x86\Debug\TileEngine.dll
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEngine\obj\x86\Debug\TileEngine.pdb
-C:\Users\TJ\Triumph\TileEngine\bin\x86\Debug\TileEngine.dll
-C:\Users\TJ\Triumph\TileEngine\bin\x86\Debug\TileEngine.pdb
-C:\Users\TJ\Triumph\TileEngine\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\TJ\Triumph\TileEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\TJ\Triumph\TileEngine\obj\x86\Debug\TileEngine.dll
-C:\Users\TJ\Triumph\TileEngine\obj\x86\Debug\TileEngine.pdb
-C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEngine\bin\x86\Debug\TileEngine.dll
-C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEngine\bin\x86\Debug\TileEngine.pdb
-C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEngine\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
-C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEngine\obj\x86\Debug\TileEngine.dll
-C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEngine\obj\x86\Debug\TileEngine.pdb
