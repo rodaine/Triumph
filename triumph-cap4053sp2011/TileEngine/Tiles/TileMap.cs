@@ -17,7 +17,15 @@ namespace TileEngine
 		/// </summary>
 		public List<TileLayer> layers = new List<TileLayer>();
 
+		/// <summary>
+		/// Specifies locations on map that are collisions
+		/// </summary>
 		public CollisionLayer collisionLayer;
+
+		/// <summary>
+		/// Specifies locations and unit indeces of all player units
+		/// </summary>
+		public UnitLayer unitLayer;
 
 		/// <summary>
 		/// Get the width (x-direction) in tiles of all Tile Layers in map
@@ -140,6 +148,10 @@ namespace TileEngine
 
 					//check collision map
 					if (collisionLayer.getTileCollisionIndex(neighbor.Key) == 1)
+						continue;
+
+					//check unit map
+					if (unitLayer.getTileUnitIndex(neighbor.Key) > 0 && unitLayer.getTileUnitIndex(start) != unitLayer.getTileUnitIndex(neighbor.Key))
 						continue;
 
 					//check other collisions
