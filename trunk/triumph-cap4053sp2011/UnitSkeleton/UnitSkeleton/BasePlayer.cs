@@ -17,13 +17,82 @@ using Microsoft.Xna.Framework.Media;
 
 namespace UnitSkeleton
 {
-
-    class BasePlayer
+    class Player
     {
-        #region baseplayer fields
-
+        #region Player fields
+        Faction faction;
         String name;
-        //String faction;
+        #endregion
+
+        #region constructors
+        public Player(String name, Faction faction)
+        {
+            this.name = name;
+            this.faction = faction;
+        }
+
+        public Player(String name)
+        {
+            this.name = name;
+            this.faction = null;
+        }
+
+        public Player()
+        {
+            this.name = "";
+            this.faction = null;
+        }
+        #endregion
+
+        #region accessors
+        public String getName() { return this.name; }
+        public Faction getFaction() { return this.faction; }
+        #endregion
+    }
+
+    class Faction
+    {
+        #region Faction fields
+        String name;
+        Player owner;
+        BaseUnit[] units;
+        #endregion
+
+        #region constructors
+        public Faction(String name, Player owner, params BaseUnit[] units)
+        {
+            this.name = name;
+            this.owner = owner;
+            this.units = units;
+        }
+
+        public Faction(String name, Player owner)
+        {
+            this.name = name;
+            this.owner = owner;
+        }
+
+        public Faction()
+        {
+            this.name = "";
+            this.owner = null;
+        }
+        #endregion
+
+        #region accessor
+        public string getName() { return name; }
+        public Player getOwner() { return owner; }
+        public BaseUnit getUnit(int index) { return units[index]; }
+        #endregion
+    }
+
+    class BaseUnit
+    {
+        #region baseUnit fields
+
+        int index;
+        String name;
+        Faction faction;
 
         //Need location information
 
@@ -45,7 +114,7 @@ namespace UnitSkeleton
 
         #region constructors
 
-        public BasePlayer(String name, int maxHP, int maxAP, int maxMP, int unitAffinity, params Ability[] abilities)
+        public BaseUnit(String name, int maxHP, int maxAP, int maxMP, int unitAffinity, params Ability[] abilities)
         {
             this.name = name;
             this.maxHP = maxHP;
@@ -65,7 +134,7 @@ namespace UnitSkeleton
             }
         }
 
-        public BasePlayer(String name, int maxHP, int maxAP, int maxMP, int unitAffinity)
+        public BaseUnit(String name, int maxHP, int maxAP, int maxMP, int unitAffinity)
         {
             this.name = name;
             this.maxHP = maxHP;
@@ -81,7 +150,7 @@ namespace UnitSkeleton
             moves = null;
         }
 
-        public BasePlayer()
+        public BaseUnit()
         {
             name = "";
             maxHP = 0;
@@ -185,7 +254,7 @@ namespace UnitSkeleton
 
         #region use_ability
 
-        public abstract Boolean use_ability(Ability action, BasePlayer target);
+        public abstract Boolean use_ability(Ability action, BaseUnit target);
 
         /*public Boolean use_ability(Ability action, BasePlayer target)
         {
