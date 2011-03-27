@@ -17,6 +17,9 @@ namespace TileEngine
 					  _collisionRadius = 10f;
 		private Texture2D spriteTexture;
 		private Vector2 _originOffset = Vector2.Zero;
+		private bool _isMoving = false;
+		private Vector2 destination;
+		private Stack<Point> path;
 
 		/// <summary>
 		/// Collection of FrameAnimations with assigned (arbitrary) names
@@ -27,11 +30,6 @@ namespace TileEngine
 		/// Position (in pixels) of the animated sprite on the map
 		/// </summary>
 		public Vector2 position = Vector2.Zero;
-
-		/// <summary>
-		/// Whether or not the sprite is currently controlled by the keyboard
-		/// </summary>
-		public bool capturingKeyboard = false;
 
 		/// <summary>
 		/// Gets or sets the offset of the sprite's origin (e.g., feet) from the sprite's position
@@ -80,6 +78,11 @@ namespace TileEngine
 		{
 			get { return _isAnimating; }
 			set { _isAnimating = value; }
+		}
+
+		public bool isMoving
+		{
+			get { return _isMoving; }
 		}
 
 		/// <summary>
@@ -158,52 +161,57 @@ namespace TileEngine
 		/// <param name="map">TileMap currently being drawn in the viewport</param>
 		public void update(GameTime gameTime, int screenWidth, int screenHeight, TileMap map)
 		{
-			if (!capturingKeyboard)
+
+			Vector2 motion = Vector2.Zero;
+			if (_isMoving && position.X == destination.X && position.Y == destination.Y)
 			{
-				updateAnimation(gameTime);
-				return;
+				//if at final destination, stop walking!
+				// get next destination
+				if (path.Count == 0)
+				{
+					_isMoving = false;
+				}
+				else
+				{
+					Point tileDest = path.Pop();
+					destination = new Vector2((float)tileDest.X * Engine.TILE_WIDTH, (float)tileDest.Y * Engine.TILE_HEIGHT);
+				}
 			}
 
-			KeyboardState keyState = Keyboard.GetState();
-			Vector2 motion = Vector2.Zero;
-			if (keyState.IsKeyDown(Keys.W))
-				--motion.Y;
-			if (keyState.IsKeyDown(Keys.S))
-				++motion.Y;
-			if (keyState.IsKeyDown(Keys.A))
-				--motion.X;
-			if (keyState.IsKeyDown(Keys.D))
-				++motion.X;
+			//update motion vector
+			if (_isMoving)
+			{
+				motion = destination - position;
+				motion.Normalize();
+				motion *= speed;
+				if (motion.Length() > (destination - position).Length())
+					motion = destination - position;
+			}
 
+			//change to appropriate current animation
 			if (motion != Vector2.Zero)
 			{
 				isAnimating = true;
-				motion.Normalize();
 
-				float motionAngle = (float)Math.Atan2(motion.Y, motion.X);
-				if (motionAngle >= -MathHelper.PiOver4 && motionAngle <= MathHelper.PiOver4)
+				if (motion.X > 0)
 				{
 					currentAnimationName = "Right";
-					motion = new Vector2(1f, 0f);
 				}
-				else if (motionAngle >= MathHelper.PiOver4 && motionAngle <= 3f * MathHelper.PiOver4)
+				else if (motion.Y > 0)
 				{
 					currentAnimationName = "Down";
-					motion = new Vector2(0f, 1f);
 				}
-				else if (motionAngle <= -MathHelper.PiOver4 && motionAngle >= -3f * MathHelper.PiOver4)
+				else if (motion.Y < 0)
 				{
 					currentAnimationName = "Up";
-					motion = new Vector2(0f, -1f);
 				}
 				else
 				{
 					currentAnimationName = "Left";
-					motion = new Vector2(-1f, 0f);
 				}
 
-				motion = adjustMotionForCollision(motion, map.collisionLayer);
-				position += motion * speed;
+				//motion = adjustMotionForCollision(motion, map.collisionLayer);
+				position += motion;
 
 				clampToArea(map.getWidthInPixels(), map.getHeightInPixels());
 				
@@ -214,53 +222,67 @@ namespace TileEngine
 			updateAnimation(gameTime);
 		}
 
-		private Vector2 adjustMotionForCollision(Vector2 motion,CollisionLayer collisionLayer)
+		public void goToTile(Point goal, TileMap map)
 		{
-			Point originTile = Engine.convertPositionToTile(origin);
-			Point centerTile = Engine.convertPositionToTile(center);
-			Point? up, down, left, right;
-			Rectangle tileRect;
-			int collIndex = collisionLayer.getTileCollisionIndex(originTile);
-			
-			//HANDLE NON-UNWALKABLE COLLISIONS HERE
-			if (collIndex == 2)
-				motion /= 2;
+			if (_isMoving) return;
 
-			//HANDLE UNWALKABLE COLLISIONS HERE
-			if (centerTile.X != 0)
-			{
-				left = new Point(centerTile.X - 1, centerTile.Y);
-				tileRect = Engine.createRectForTile(left.Value);
-				if (collisionLayer.getTileCollisionIndex(left.Value) == 1 && tileRect.Intersects(bounds))
-					motion.X = Math.Max(0, motion.X);
+			path = map.getPath(Engine.convertPositionToTile(position), goal, new List<Point>());
+			if (path.Count == 0)
+				return;
 
-			}
-			if (centerTile.X != collisionLayer.widthInTiles - 1)
-			{
-				right = new Point(centerTile.X + 1, centerTile.Y);
-				tileRect = Engine.createRectForTile(right.Value);
-				if (collisionLayer.getTileCollisionIndex(right.Value) == 1 && tileRect.Intersects(bounds))
-					motion.X = Math.Min(0,motion.X);
-			}
+			Point tileDest = path.Pop();
 
-			if (centerTile.Y != 0)
-			{
-				up = new Point(centerTile.X, centerTile.Y - 1);
-				tileRect = Engine.createRectForTile(up.Value);
-				if (collisionLayer.getTileCollisionIndex(up.Value) == 1 && tileRect.Intersects(bounds))
-					motion.Y = Math.Max(0, motion.Y);
-			}
-
-			if (centerTile.Y != collisionLayer.heightInTiles - 1)
-			{
-				down = new Point(centerTile.X, centerTile.Y + 1);
-				tileRect = Engine.createRectForTile(down.Value);
-				if (collisionLayer.getTileCollisionIndex(down.Value) == 1 && tileRect.Intersects(bounds))
-					motion.Y = Math.Min(0, motion.Y);
-			}
-
-			return motion;
+			destination = new Vector2((float)tileDest.X * Engine.TILE_WIDTH, (float)tileDest.Y * Engine.TILE_HEIGHT);
+			_isMoving = true;
 		}
+
+		//private Vector2 adjustMotionForCollision(Vector2 motion,CollisionLayer collisionLayer)
+		//{
+		//    Point originTile = Engine.convertPositionToTile(origin);
+		//    Point centerTile = Engine.convertPositionToTile(center);
+		//    Point? up, down, left, right;
+		//    Rectangle tileRect;
+		//    int collIndex = collisionLayer.getTileCollisionIndex(originTile);
+
+		//    //HANDLE NON-UNWALKABLE COLLISIONS HERE
+		//    if (collIndex == 2)
+		//        motion /= 2;
+
+		//    //HANDLE UNWALKABLE COLLISIONS HERE
+		//    if (centerTile.X != 0)
+		//    {
+		//        left = new Point(centerTile.X - 1, centerTile.Y);
+		//        tileRect = Engine.createRectForTile(left.Value);
+		//        if (collisionLayer.getTileCollisionIndex(left.Value) == 1 && tileRect.Intersects(bounds))
+		//            motion.X = Math.Max(0, motion.X);
+
+		//    }
+		//    if (centerTile.X != collisionLayer.widthInTiles - 1)
+		//    {
+		//        right = new Point(centerTile.X + 1, centerTile.Y);
+		//        tileRect = Engine.createRectForTile(right.Value);
+		//        if (collisionLayer.getTileCollisionIndex(right.Value) == 1 && tileRect.Intersects(bounds))
+		//            motion.X = Math.Min(0,motion.X);
+		//    }
+
+		//    if (centerTile.Y != 0)
+		//    {
+		//        up = new Point(centerTile.X, centerTile.Y - 1);
+		//        tileRect = Engine.createRectForTile(up.Value);
+		//        if (collisionLayer.getTileCollisionIndex(up.Value) == 1 && tileRect.Intersects(bounds))
+		//            motion.Y = Math.Max(0, motion.Y);
+		//    }
+
+		//    if (centerTile.Y != collisionLayer.heightInTiles - 1)
+		//    {
+		//        down = new Point(centerTile.X, centerTile.Y + 1);
+		//        tileRect = Engine.createRectForTile(down.Value);
+		//        if (collisionLayer.getTileCollisionIndex(down.Value) == 1 && tileRect.Intersects(bounds))
+		//            motion.Y = Math.Min(0, motion.Y);
+		//    }
+
+		//    return motion;
+		//}
 
 		/// <summary>
 		/// If the sprite is currently animating, the FrameAnimation is updated

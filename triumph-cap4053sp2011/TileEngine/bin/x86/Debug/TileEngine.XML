@@ -367,11 +367,6 @@
             Position (in pixels) of the animated sprite on the map
             </summary>
         </member>
-        <member name="F:TileEngine.AnimatedSprite.capturingKeyboard">
-            <summary>
-            Whether or not the sprite is currently controlled by the keyboard
-            </summary>
-        </member>
         <member name="M:TileEngine.AnimatedSprite.areColliding(TileEngine.AnimatedSprite,TileEngine.AnimatedSprite)">
             <summary>
             Determines whether or not two sprites are within each other's collision radius
@@ -621,11 +616,28 @@
             </summary>
             <param name="abilities"></param>
         </member>
-        <member name="M:TileEngine.BaseUnit.Clone">
+        <member name="M:TileEngine.BaseUnit.update(Microsoft.Xna.Framework.GameTime,System.Int32,System.Int32,TileEngine.TileMap)">
             <summary>
-            Clone the current unit object excluding buffs and items
+            Updates the units sprite representation based on flags.
             </summary>
-            <returns></returns>
+            <param name="gameTime">GameTime object passed from Game class</param>
+            <param name="screenWidth">Viewport screen width in pixels</param>
+            <param name="screenHeight">Viewport screen height in pixels</param>
+            <param name="map">Tile Map of play area</param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.goToTile(Microsoft.Xna.Framework.Point,TileEngine.TileMap)">
+            <summary>
+            Move the unit to a specified tile. This function does not check for the MP cost of the move!
+            </summary>
+            <param name="goal">Goal location of the </param>
+            <param name="map">Tile Map of play area</param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
+            <summary>
+            Draws the unit on the map
+            </summary>
+            <param name="spriteBatch">SpriteBatch passed from Game class</param>
+            <param name="camera">Camera object passed from Game class</param>
         </member>
         <member name="P:TileEngine.BaseUnit.maxHP">
             <summary>
@@ -682,14 +694,9 @@
             Get the name of the unit's elemental affinity
             </summary>
         </member>
-        <member name="P:TileEngine.BaseUnit.location">
+        <member name="P:TileEngine.BaseUnit.position">
             <summary>
             Get the position (by tiles) of the unit
-            </summary>
-        </member>
-        <member name="P:TileEngine.BaseUnit.spritePosition">
-            <summary>
-            Get the position (by pixels) of the unit
             </summary>
         </member>
         <member name="T:TileEngine.Camera">

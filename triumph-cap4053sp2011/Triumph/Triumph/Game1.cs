@@ -54,7 +54,7 @@ namespace Triumph
 			sprite.animations.Add("Right", right);
 
 			sprite.currentAnimationName = "Down";
-			sprite.speed = 5;
+			sprite.speed = 2.5f;
 			sprite.originOffset = new Vector2(16, 32);
 
 			testUnit = new BaseUnit("Test Unit", 999, 999, 999, 999, -1);
