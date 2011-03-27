@@ -17,7 +17,7 @@ using Microsoft.Xna.Framework.Media;
 
 namespace TileEngine
 {
-	public class BaseUnit : ICloneable
+	public class BaseUnit
     {
         #region baseUnit fields
 
@@ -36,8 +36,7 @@ namespace TileEngine
 
 		//Sprite and Movement
 		private AnimatedSprite _unitSprite;
-		private Point _location;
-		private Vector2 _spritePosition, destination;
+		private Point _position;
 		private bool isWalking = false;
 		private Stack<Point> path;
 		
@@ -148,17 +147,9 @@ namespace TileEngine
 		/// <summary>
 		/// Get the position (by tiles) of the unit
 		/// </summary>
-		public Point location
+		public Point position
 		{
-			get { return _location; }
-		}
-
-		/// <summary>
-		/// Get the position (by pixels) of the unit
-		/// </summary>
-		public Vector2 spritePosition
-		{
-			get { return _spritePosition; }
+			get { return _position; }
 		}
 
 		public AnimatedSprite unitSprite
@@ -343,64 +334,51 @@ namespace TileEngine
 
 		#region Sprite Updates
 
+		/// <summary>
+		/// Updates the units sprite representation based on flags.
+		/// </summary>
+		/// <param name="gameTime">GameTime object passed from Game class</param>
+		/// <param name="screenWidth">Viewport screen width in pixels</param>
+		/// <param name="screenHeight">Viewport screen height in pixels</param>
+		/// <param name="map">Tile Map of play area</param>
 		public void update(GameTime gameTime, int screenWidth, int screenHeight, TileMap map)
 		{
+			//check flags
+			if (_unitSprite.isMoving)
+				isWalking = true;
+			else
+				isWalking = false;
+			
+			//check if dead...check if stunned...etc.
+			//update sprite 
 
-			//check if at destination and update as neccessary
-			if (isWalking && _spritePosition.X == destination.X && _spritePosition.Y == destination.Y)
-			{
-				//if at final destination, stop walking!
-				// get next destination
-				if (path.Count == 0)
-				{
-					isWalking = false;
-				}
-				else 
-				{
-					Point tileDest = path.Pop();
-					destination = new Vector2((float)tileDest.X * Engine.TILE_WIDTH, (float)tileDest.Y * Engine.TILE_HEIGHT);
-				}
-			}
-
-			//update sprite location
-			if (isWalking)
-			{
-				Vector2 motion = Vector2.Zero;
-				motion = destination - _spritePosition;
-				motion.Normalize();
-				motion *= _unitSprite.speed;
-				if (motion.Length() > (destination - _spritePosition).Length())
-					motion = destination - _spritePosition;
-
-				_spritePosition += motion;
-				_unitSprite.position = _spritePosition;
-			}
-
-			//update sprite
 			_unitSprite.update(gameTime, screenWidth, screenHeight, map);
 		}
 
+		/// <summary>
+		/// Move the unit to a specified tile. This function does not check for the MP cost of the move!
+		/// </summary>
+		/// <param name="goal">Goal location of the </param>
+		/// <param name="map">Tile Map of play area</param>
 		public void goToTile(Point goal, TileMap map)
 		{
 			if (isWalking) return;
-
-			path = map.getPath(_location, goal, new List<Point>());
-			if (path.Count == 0)
-				return;
-
-			Point tileDest = path.Pop();
 			
-			destination = new Vector2((float)tileDest.X * Engine.TILE_WIDTH, (float)tileDest.Y * Engine.TILE_HEIGHT);
-			_location = goal;
+			unitSprite.goToTile(goal, map);
+			_position = goal;
 			isWalking = true;
 			map.unitLayer.moveUnit(index, goal);
 		}
-
 
 		#endregion
 
 		#region drawing player
 
+		/// <summary>
+		/// Draws the unit on the map
+		/// </summary>
+		/// <param name="spriteBatch">SpriteBatch passed from Game class</param>
+		/// <param name="camera">Camera object passed from Game class</param>
 		public void draw(SpriteBatch spriteBatch, Camera camera)
 		{
 			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, camera.transformationMatrix);
@@ -409,25 +387,6 @@ namespace TileEngine
 		}
 
         #endregion
-
-		/// <summary>
-		/// Clone the current unit object excluding buffs and items
-		/// </summary>
-		/// <returns></returns>
-		public object Clone()
-		{
-			BaseUnit unit = new BaseUnit(name, _maxHP, _maxAP, _maxMP, _SPD, unitAffinity);
-
-			List<Ability> abilities = new List<Ability>();
-			foreach (Ability move in moves)
-				abilities.Add(move);
-
-			unit.moves = abilities;
-
-
-			return unit;
-		}
-
 
 	}
 
