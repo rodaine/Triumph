@@ -24,7 +24,32 @@ namespace Triumph
 		SoundEffect soundMusic;
 		SoundEffectInstance soundMusicInstance;
 		Cursor cursor;
-		#endregion
+        SpriteFont font, font2;
+		
+
+        private enum Screen
+        {
+            Title,
+            Main,
+            Menu
+        }
+        Screen mCurrentScreen = Screen.Title;
+
+        private enum MenuOptions
+        {
+            Resume,
+            ExitGame
+        }
+        MenuOptions mCurrentMenuOption = MenuOptions.Resume;
+
+        Texture2D mTitleScreen;
+        Texture2D mMainScreen;
+        Texture2D mInventoryScreen;
+        Texture2D mMenu;
+        Texture2D mMenuOptions;
+
+        KeyboardState mPreviousKeyboardState;
+        #endregion
 
         public Game1()
         {
@@ -95,6 +120,14 @@ namespace Triumph
 
 			cursor = new Cursor(Content.Load<Texture2D>("UI/cursor"));
 
+            font = Content.Load<SpriteFont>("UI/SpriteFont1");
+            font2 = Content.Load<SpriteFont>("UI/SpriteFont2");
+
+            mTitleScreen = Content.Load<Texture2D>("UI/Title");
+            mMainScreen = Content.Load<Texture2D>("UI/MainScreen");
+            mMenu = Content.Load<Texture2D>("UI/Menu");
+            mMenuOptions = Content.Load<Texture2D>("UI/MenuOptions");
+
         }
         
         //we do not currently use this!!
@@ -106,44 +139,168 @@ namespace Triumph
         //every game tick prompts the following actions
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            KeyboardState aKeyboardState = Keyboard.GetState();
+
+            //If user hits the Escape key exit the game
+            if (aKeyboardState.IsKeyDown(Keys.Escape) == true)
+            {
                 this.Exit();
+            }
 
-			if (soundMusicInstance.State == SoundState.Paused || soundMusicInstance.State == SoundState.Paused)
-			{
-				soundMusicInstance.Volume = 0.75f;
-				soundMusicInstance.IsLooped = true;
-				soundMusicInstance.Play();
-			}
+            switch (mCurrentScreen)
+            {
+                case Screen.Title:
+                    {
+                        //If the user presses the "X" key while on the Title screen, start the game
+                        //by switching the current state to the Main Screen
+                        if (aKeyboardState.IsKeyDown(Keys.X) == true)
+                        {
+                            mCurrentScreen = Screen.Main;
+                        }
+                        break;
+                    }
+                case Screen.Main:
+                    {
+                        //If the user presses the "Q" key while in the main game screen, bring
+                        //up the Menu options by switching the current state to Menu
+                        if (aKeyboardState.IsKeyDown(Keys.Q) == true)
+                        {
+                            mCurrentScreen = Screen.Menu;
+                        }
 
-			if (Keyboard.GetState().IsKeyDown(Keys.Enter))
-			{
-				testUnit.goToTile(Engine.convertPositionToTile(cursor.position), map);
-			}
+                        if (soundMusicInstance.State == SoundState.Paused || soundMusicInstance.State == SoundState.Paused)
+                        {
+                            soundMusicInstance.Volume = 0.75f;
+                            soundMusicInstance.IsLooped = true;
+                            soundMusicInstance.Play();
+                        }
 
-            // TODO: Add your update logic here 
-			int screenWidth = GraphicsDevice.Viewport.Width;
-			int screenHeight = GraphicsDevice.Viewport.Height;
+                        if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                        {
+                            testUnit.goToTile(Engine.convertPositionToTile(cursor.position), map);
+                        }
 
-			testUnit.update(gameTime, screenWidth, screenHeight, map);
-			cursor.update(gameTime, screenWidth, screenHeight, map);
+                        // TODO: Add your update logic here 
+                        int screenWidth = GraphicsDevice.Viewport.Width;
+                        int screenHeight = GraphicsDevice.Viewport.Height;
 
-			camera.update(screenWidth, screenHeight, map);
+                        testUnit.update(gameTime, screenWidth, screenHeight, map);
+                        cursor.update(gameTime, screenWidth, screenHeight, map);
 
+                        camera.update(screenWidth, screenHeight, map);
+                        break;
+                    }
+                case Screen.Menu:
+                    {
+                        //Move the currently highlighted menu option 
+                        //up and down depending on what key the user has pressed
+                        if (aKeyboardState.IsKeyDown(Keys.Down) == true && mPreviousKeyboardState.IsKeyDown(Keys.Down) == false)
+                        {
+                            //Move selection down
+                            if (mCurrentMenuOption == MenuOptions.Resume)
+                            {
+                                mCurrentMenuOption = MenuOptions.ExitGame;
+
+                            }     
+                        }
+
+                        if (aKeyboardState.IsKeyDown(Keys.Up) == true && mPreviousKeyboardState.IsKeyDown(Keys.Up) == false)
+                        {
+                            if (mCurrentMenuOption == MenuOptions.ExitGame)
+                            {
+                                mCurrentMenuOption = MenuOptions.Resume;
+                            }
+                        }
+
+                        //If the user presses the "X" key, move the state to the 
+                        //appropriate game state based on the current selection
+                        if (aKeyboardState.IsKeyDown(Keys.X) == true)
+                        {
+                            switch (mCurrentMenuOption)
+                            {
+                                //Return to the Main game screen and close the menu
+                                case MenuOptions.Resume:
+                                    {
+                                        mCurrentScreen = Screen.Main;
+                                        break;
+                                    }
+                                //Exit the game
+                                case MenuOptions.ExitGame:
+                                    {
+                                        this.Exit();
+                                        break;
+                                    }
+                            }
+
+                            //Reset the selected menu option to Resume
+                            mCurrentMenuOption = MenuOptions.Resume;
+                        }
+                        break;
+                    }
+           }
+
+            //Store the Keyboard state
+            mPreviousKeyboardState = aKeyboardState;
+           
             base.Update(gameTime);
         }
+            
 
         //called from update, draws screen
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
 
-			map.draw(spriteBatch, camera);
+            //spriteBatch.Begin();
 
-			cursor.Draw(spriteBatch, camera);
+            switch (mCurrentScreen)
+            {
+                case Screen.Title:
+                    {
+                        spriteBatch.Begin();
+                        spriteBatch.Draw(mTitleScreen, new Rectangle(0, 0, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height), Color.White);
+                        spriteBatch.End();
+                        break;
+                    }
 
-			testUnit.draw(spriteBatch, camera);
+                case Screen.Main:
+                    {
+                        map.draw(spriteBatch, camera);
+                        cursor.Draw(spriteBatch, camera);
+                        testUnit.draw(spriteBatch, camera);
+                        break;
+                    }
+
+                case Screen.Menu:
+                    {
+                        spriteBatch.Begin();
+                        //spriteBatch.Draw(mMainScreen, new Rectangle(0, 0, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height), Color.Gray);
+                        spriteBatch.Draw(mMenu, new Rectangle(this.Window.ClientBounds.Width / 2 - mMenu.Width / 2, this.Window.ClientBounds.Height / 2 - mMenu.Height / 2, mMenu.Width, mMenu.Height), Color.White);
+
+                        switch (mCurrentMenuOption)
+                        {
+                            case MenuOptions.Resume:
+                                {
+                                    spriteBatch.DrawString(font2, "Main Menu", new Vector2(this.Window.ClientBounds.Width / 2 - 50, this.Window.ClientBounds.Height / 2 - mMenu.Height / 2 + 75), Color.Red);
+                                    spriteBatch.DrawString(font, "Resume", new Vector2(this.Window.ClientBounds.Width / 2 - 50, this.Window.ClientBounds.Height / 2 - mMenu.Height / 2 + 150), Color.Gold);
+                                    spriteBatch.DrawString(font, "Exit", new Vector2(this.Window.ClientBounds.Width / 2 - 50, this.Window.ClientBounds.Height / 2 - mMenu.Height / 2 + 250), Color.White);
+                                    break;
+                                }
+
+                            case MenuOptions.ExitGame:
+                                {
+                                    spriteBatch.DrawString(font2, "Main Menu", new Vector2(this.Window.ClientBounds.Width / 2 - 50, this.Window.ClientBounds.Height / 2 - mMenu.Height / 2 + 75), Color.Red);
+                                    spriteBatch.DrawString(font, "Resume", new Vector2(this.Window.ClientBounds.Width / 2 - 50, this.Window.ClientBounds.Height / 2 - mMenu.Height / 2 + 150), Color.White);
+                                    spriteBatch.DrawString(font, "Exit", new Vector2(this.Window.ClientBounds.Width / 2 - 50, this.Window.ClientBounds.Height / 2 - mMenu.Height / 2 + 250), Color.Gold);
+                                    break;
+                                }
+                        }
+                        spriteBatch.End();
+                        break;
+                    }
+            }
+
+           // spriteBatch.End();
 
             base.Draw(gameTime);
         }
