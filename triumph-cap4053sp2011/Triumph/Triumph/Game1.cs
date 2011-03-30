@@ -21,7 +21,9 @@ namespace Triumph
 		Camera camera = new Camera();
 		TileMap map = new TileMap();
 		AnimatedSprite sprite;
+        AnimatedSprite sprite2;
 		BaseUnit testUnit;
+        BaseUnit testUnit2;
         BaseUnit currentUnit;
 		SoundEffect soundMusic;
 		SoundEffectInstance soundMusicInstance;
@@ -68,27 +70,39 @@ namespace Triumph
 			FrameAnimation up = new FrameAnimation(2, 32, 32, 0, 0);
 			up.framesPerSecond = 5;
 			sprite.animations.Add("Up", up);
+            sprite2.animations.Add("Up", up);
 
 			FrameAnimation down = new FrameAnimation(2, 32, 32, 64, 0);
 			down.framesPerSecond = 5;
 			sprite.animations.Add("Down", down);
+            sprite2.animations.Add("Down", down);
 		
 			FrameAnimation left = new FrameAnimation(2, 32, 32, 128, 0);
 			left.framesPerSecond = 5;
 			sprite.animations.Add("Left", left);
+            sprite2.animations.Add("Left", left);
 
 			FrameAnimation right = new FrameAnimation(2, 32, 32, 192, 0);
 			right.framesPerSecond = 5;
 			sprite.animations.Add("Right", right);
+            sprite2.animations.Add("Right", right);
 
 			sprite.currentAnimationName = "Down";
 			sprite.speed = 2.5f;
 			sprite.originOffset = new Vector2(16, 32);
 
+            sprite2.currentAnimationName = "Left";
+            sprite2.speed = 2.5f;
+            sprite2.originOffset = new Vector2(16, 32);
+
 			testUnit = new BaseUnit("Test Unit", 999, 999, 999, 990, -1);
 			testUnit.unitSprite = sprite;
             turnManager.add(testUnit);
 
+
+            testUnit2 = new BaseUnit("Test Unit", 999, 999, 999, 998, -1);
+            testUnit.unitSprite = sprite2;
+            //turnManager.add(testUnit2);
 
             currentUnit = turnManager.getNext();
 
@@ -121,6 +135,7 @@ namespace Triumph
 			map.collisionLayer = CollisionLayer.fromFile("Content/Layers/Collision.layer");
 			map.unitLayer = new UnitLayer(map.getWidthInTiles(), map.getHeightInTiles());
 			sprite = new AnimatedSprite(Content.Load<Texture2D>("Sprites/mnt1"));
+            sprite2 = new AnimatedSprite(Content.Load<Texture2D>("Sprites/mnv1"));
             
 
 			soundMusic = Content.Load<SoundEffect>("Music/POL-battle-march-long");
@@ -206,6 +221,7 @@ namespace Triumph
                         int screenHeight = GraphicsDevice.Viewport.Height;
 
                         testUnit.update(gameTime, screenWidth, screenHeight, map);
+                        testUnit2.update(gameTime, screenWidth, screenHeight, map);
                         cursor.update(gameTime, screenWidth, screenHeight, map);
 
                         camera.update(screenWidth, screenHeight, map);
@@ -289,6 +305,7 @@ namespace Triumph
                         map.draw(spriteBatch, camera);
                         cursor.Draw(spriteBatch, camera);
                         testUnit.draw(spriteBatch, camera);
+                        testUnit2.draw(spriteBatch, camera);
                         break;
                     }
 
