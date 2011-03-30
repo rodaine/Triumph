@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System.Collections;
 
 /*  Need to determine how we will handle objects blocking target    *
  *  and how we would like to determine distances                    *
@@ -27,8 +28,8 @@ namespace TileEngine
         Faction faction;
 
 		//Attributes
-		private int _maxHP, _maxAP, _maxMP, _HP, _AP, _MP, _SPD;
-        private bool _isDead, _isStunned;
+		private int _maxHP, _maxAP, _maxMP, _HP, _AP, _MP, _SPD, _delay;
+        private bool _isDead, _isStunned, _isDone;
         private List<Ability> moves;
         private List<Buff> itemsAndBuffs;
         private int unitAffinity;
@@ -107,6 +108,15 @@ namespace TileEngine
 			get { return _SPD; }
 		}
 		
+        /// <summary>
+        /// Get the current delay of the unit
+        /// </summary>
+        public int delay
+        {
+            get { return _delay; }
+            set { _delay = value; }
+        }
+
 		/// <summary>
 		/// Get whether or not the unit isDead
 		/// </summary>
@@ -123,6 +133,15 @@ namespace TileEngine
 			get { return _isStunned; }
 			set { _isStunned = value; }
 		}
+
+        ///<summary>
+        /// Get or set whether a unit is done with its turn
+        /// </summary>
+        public bool isDone
+        {
+            get { return _isDone; }
+            set { _isDone = value; }
+        }
 
 		/// <summary>
 		/// Get the index of the unit's elemental affinity
@@ -178,7 +197,7 @@ namespace TileEngine
 			_HP = _maxHP = maxHP;
 			_AP = _maxAP = maxAP;
 			_MP = _maxMP = maxMP;
-			_SPD = SPD;
+			_SPD = _delay = SPD;
 
 			if (_HP > 0)
 				_isDead = false;
@@ -208,6 +227,7 @@ namespace TileEngine
 			_HP = _maxHP = maxHP;
 			_AP = _maxAP = maxAP;
 			_MP = _maxMP = maxMP;
+            _SPD = _delay = SPD;
 
 			if (_HP > 0)
 				_isDead = false;
@@ -228,7 +248,7 @@ namespace TileEngine
 			_HP = _maxHP = 1;
 			_AP = _maxAP = 1;
 			_MP = _maxMP = 1;
-			_SPD = 1;
+			_SPD = _delay = 1;
 			_isDead = false;
 
 			this.unitAffinity = -1;
@@ -248,9 +268,48 @@ namespace TileEngine
 
 		#endregion
 
-		#region use_ability
+        #region attack
+        /// <summary>
+        /// tells the unit to attack another unit
+        /// </summary>
+        /// <param name="target"></param>
+        public void attack(BaseUnit target)
+        {
+            target.HP -= 5; //filler at the moment for an attack formula
+            _delay += _SPD;
+            _isDone = true;
+        }
 
-		//public Boolean use_ability(Ability action, BaseUnit target);
+        #endregion
+
+        #region comparers
+
+        /// <summary>
+        /// Allows units to be sorted by delay
+        /// </summary>
+        public class sortByDelay:IComparer
+        {
+            int IComparer.Compare(Object x, Object y)
+            {
+                BaseUnit a = (BaseUnit)x;
+                BaseUnit b = (BaseUnit)y;
+                if (a.delay < b.delay)
+                {
+                    return 1;
+                }
+                else if (a.delay == b.delay)
+                {
+                    return 0;
+                }
+                return -1;
+            }
+        }
+
+        #endregion
+
+        #region use_ability
+
+        //public Boolean use_ability(Ability action, BaseUnit target);
 
 		/*public Boolean use_ability(Ability action, BasePlayer target)
 		{

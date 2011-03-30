@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -21,10 +22,12 @@ namespace Triumph
 		TileMap map = new TileMap();
 		AnimatedSprite sprite;
 		BaseUnit testUnit;
+        BaseUnit currentUnit;
 		SoundEffect soundMusic;
 		SoundEffectInstance soundMusicInstance;
 		Cursor cursor;
         SpriteFont font, font2;
+        TurnManager turnManager = new TurnManager();
 		
 
         private enum Screen
@@ -82,8 +85,12 @@ namespace Triumph
 			sprite.speed = 2.5f;
 			sprite.originOffset = new Vector2(16, 32);
 
-			testUnit = new BaseUnit("Test Unit", 999, 999, 999, 999, -1);
+			testUnit = new BaseUnit("Test Unit", 999, 999, 999, 990, -1);
 			testUnit.unitSprite = sprite;
+            turnManager.add(testUnit);
+
+
+            currentUnit = turnManager.getNext();
 
 			soundMusicInstance.Volume = 0.75f;
 			soundMusicInstance.IsLooped = true;
@@ -114,6 +121,7 @@ namespace Triumph
 			map.collisionLayer = CollisionLayer.fromFile("Content/Layers/Collision.layer");
 			map.unitLayer = new UnitLayer(map.getWidthInTiles(), map.getHeightInTiles());
 			sprite = new AnimatedSprite(Content.Load<Texture2D>("Sprites/mnt1"));
+            
 
 			soundMusic = Content.Load<SoundEffect>("Music/POL-battle-march-long");
 			soundMusicInstance = soundMusic.CreateInstance();
@@ -168,6 +176,14 @@ namespace Triumph
                             mCurrentScreen = Screen.Menu;
                         }
 
+                        //checks if a unit has finsihed its turn, if it has then make the next unit the active unit
+                        if (currentUnit.isDone)
+                        {
+                            currentUnit.delay += currentUnit.SPD;
+                            turnManager.add(currentUnit);
+                            currentUnit = turnManager.getNext();
+                        }
+
                         if (soundMusicInstance.State == SoundState.Paused || soundMusicInstance.State == SoundState.Paused)
                         {
                             soundMusicInstance.Volume = 0.75f;
@@ -177,7 +193,12 @@ namespace Triumph
 
                         if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                         {
-                            testUnit.goToTile(Engine.convertPositionToTile(cursor.position), map);
+                            currentUnit.goToTile(Engine.convertPositionToTile(cursor.position), map);
+                        }
+
+                        if (Keyboard.GetState().IsKeyDown(Keys.E))
+                        {
+                            currentUnit.isDone = true;
                         }
 
                         // TODO: Add your update logic here 
