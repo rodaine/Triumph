@@ -40,13 +40,13 @@ Content\Sprites\ybo1.xnb
 Content\Sprites\ygr1.xnb
 Content\Sprites\zph1.xnb
 Content\UI\cursor.xnb
-Content\Music\POL-battle-march-long.xnb
 Content\UI\MainScreen.xnb
 Content\UI\Menu.xnb
 Content\UI\MenuOptions.xnb
 Content\UI\Title.xnb
 Content\UI\SpriteFont1.xnb
 Content\UI\SpriteFont2.xnb
+Content\Music\POL-battle-march-long.xnb
 Content\Layers\baseTiles.layer
 Content\Layers\alphaObjects.layer
 Content\Layers\Collision.layer

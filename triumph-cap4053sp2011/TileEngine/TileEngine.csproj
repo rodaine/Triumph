@@ -94,6 +94,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cursor.cs" />
+    <Compile Include="PriorityQueue.cs" />
+    <Compile Include="TurnManager.cs" />
     <Compile Include="Units\Ability.cs" />
     <Compile Include="Sprites\AnimatedSprite.cs" />
     <Compile Include="Camera.cs" />
