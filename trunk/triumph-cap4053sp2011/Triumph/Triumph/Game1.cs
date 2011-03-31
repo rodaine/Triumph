@@ -99,10 +99,15 @@ namespace Triumph
 			testUnit = new BaseUnit("Test Unit", 999, 999, 999, 8, -1);
 			testUnit.unitSprite = sprite;
 
-
-            testUnit2 = new BaseUnit("Test Unit", 999, 999, 999, 9, -1);
+            testUnit2 = new BaseUnit("Test Unit 2", 999, 999, 999, 9, -1);
             testUnit2.unitSprite = sprite2;
-            turnManager.add(testUnit2);
+
+			testUnit.unitIndex = 1;
+			testUnit2.unitIndex = 2;
+
+			testUnit2.teleportToTile(new Point(2, 2), map);
+
+			turnManager.add(testUnit2);
             turnManager.add(testUnit);
 
             currentUnit = turnManager.getNext();
@@ -116,7 +121,6 @@ namespace Triumph
 			cursor.animations.Add("SubSelect", new FrameAnimation(1, 32, 32, 64, 0));
 			cursor.animations.Add("Hidden", new FrameAnimation(1, 32, 32, 96, 0));
 			cursor.currentAnimationName = "Normal";
-			cursor.position = new Vector2(32f, 32f);
 			cursor.capturingKeyboard = true;
 			camera.setFocus(cursor);
 
@@ -218,8 +222,7 @@ namespace Triumph
                             currentUnit.isDone = false;
                             turnManager.add(currentUnit);
                             currentUnit = turnManager.getNext();
-                            cursor.position.X = currentUnit.position.X*Engine.TILE_WIDTH;
-                            cursor.position.Y = currentUnit.position.Y*Engine.TILE_HEIGHT;
+							cursor.location = currentUnit.position;
                         }
 
                         // TODO: Add your update logic here 

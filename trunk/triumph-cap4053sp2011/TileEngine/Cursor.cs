@@ -24,9 +24,28 @@ namespace TileEngine
 		public Dictionary<string, FrameAnimation> animations = new Dictionary<string, FrameAnimation>();
 
 		/// <summary>
-		/// Position (in pixels) of the animated sprite on the map
+		/// _position (in pixels) of the animated sprite on the map
 		/// </summary>
-		public Vector2 position = Vector2.Zero;
+		private Vector2 _position = Vector2.Zero;
+
+		public Vector2 position
+		{
+			get { return _position; }
+		}
+
+		/// <summary>
+		/// Location (in tiles) of the animated sprite on the map
+		/// </summary>
+		public Point location
+		{
+			get { return new Point((int)Math.Floor(_position.X / Engine.TILE_WIDTH), (int)Math.Floor(_position.Y / Engine.TILE_HEIGHT)); }
+			set
+			{
+				_position.X = value.X * Engine.TILE_WIDTH;
+				_position.Y = value.Y * Engine.TILE_HEIGHT;
+			}
+		}
+
 
 		/// <summary>
 		/// Whether or not the sprite is currently controlled by the keyboard
@@ -38,8 +57,8 @@ namespace TileEngine
 			get
 			{
 				return new Vector2(
-					position.X + (float)currentAnimation.currentFrame.Width / 2,
-					position.Y + (float)currentAnimation.currentFrame.Height / 2
+					_position.X + (float)currentAnimation.currentFrame.Width / 2,
+					_position.Y + (float)currentAnimation.currentFrame.Height / 2
 					);
 			}
 		}
@@ -49,8 +68,8 @@ namespace TileEngine
 			get
 			{
 				Rectangle rect = currentAnimation.currentFrame;
-				rect.X = (int)position.X;
-				rect.Y = (int)position.Y;
+				rect.X = (int)_position.X;
+				rect.Y = (int)_position.Y;
 				return rect;
 			}
 		}
@@ -140,7 +159,7 @@ namespace TileEngine
 			if (motion != Vector2.Zero)
 			{
 				motion.Normalize();
-				position += motion * Engine.TILE_WIDTH;
+				_position += motion * Engine.TILE_WIDTH;
 				clampToArea(map.getWidthInPixels(), map.getHeightInPixels());
 			}
 
@@ -156,7 +175,7 @@ namespace TileEngine
 			if (!_isAnimating)
 				return;
 
-			if (map.collisionLayer.getTileCollisionIndex(Engine.convertPositionToTile(position)) == 1)
+			if (map.collisionLayer.getTileCollisionIndex(location) == 1)
 				currentAnimationName = "Collision";
 			else
 				currentAnimationName = "Normal";
@@ -186,15 +205,15 @@ namespace TileEngine
 		/// <param name="height">Hieght in pixels of the area</param>
 		private void clampToArea(int width, int height)
 		{
-			if (position.X > width - currentAnimation.currentFrame.Width)
-				position.X = width - currentAnimation.currentFrame.Width;
-			if (position.Y > height - currentAnimation.currentFrame.Height)
-				position.Y = height - currentAnimation.currentFrame.Height;
+			if (_position.X > width - currentAnimation.currentFrame.Width)
+				_position.X = width - currentAnimation.currentFrame.Width;
+			if (_position.Y > height - currentAnimation.currentFrame.Height)
+				_position.Y = height - currentAnimation.currentFrame.Height;
 
-			if (position.X < 0)
-				position.X = 0;
-			if (position.Y < 0)
-				position.Y = 0;
+			if (_position.X < 0)
+				_position.X = 0;
+			if (_position.Y < 0)
+				_position.Y = 0;
 		}
 
 		/// <summary>
@@ -209,7 +228,7 @@ namespace TileEngine
 				batch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, camera.transformationMatrix);
 				batch.Draw(
 					spriteTexture,
-					position,
+					_position,
 					animation.currentFrame,
 					new Color(1f, 1f, 1f, 0.05f));
 				batch.End();

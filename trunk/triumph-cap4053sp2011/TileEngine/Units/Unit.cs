@@ -171,10 +171,19 @@ namespace TileEngine
 			get { return _position; }
 		}
 
+		/// <summary>
+		/// Get or set the Animated Sprite representing the unit
+		/// </summary>
 		public AnimatedSprite unitSprite
 		{
 			get { return _unitSprite; }
 			set { _unitSprite = value; }
+		}
+
+		public int unitIndex
+		{
+			get { return index; }
+			set { index = value; }
 		}
 
 		#endregion
@@ -412,7 +421,7 @@ namespace TileEngine
 			
 			//check if dead...check if stunned...etc.
 			//update sprite 
-
+			map.unitLayer.moveUnit(index, position);
 			_unitSprite.update(gameTime, screenWidth, screenHeight, map);
 		}
 
@@ -428,6 +437,22 @@ namespace TileEngine
 			unitSprite.goToTile(goal, map);
 			_position = goal;
 			isWalking = true;
+			map.unitLayer.moveUnit(index, goal);
+		}
+
+		/// <summary>
+		/// Teleports the unit to any non-collision point on the map
+		/// </summary>
+		/// <param name="goal">Goal tile location to teleport to.</param>
+		/// <param name="map">Tile Map of play area</param>
+		public void teleportToTile(Point goal, TileMap map)
+		{
+			if (isWalking) return;
+			if (map.unitLayer.getTileUnitIndex(goal) != 0) return;
+			if (map.collisionLayer.getTileCollisionIndex(goal) != 0) return;
+
+			unitSprite.position = new Vector2((float)goal.X * Engine.TILE_WIDTH, (float)goal.Y * Engine.TILE_HEIGHT);
+			_position = goal;
 			map.unitLayer.moveUnit(index, goal);
 		}
 
