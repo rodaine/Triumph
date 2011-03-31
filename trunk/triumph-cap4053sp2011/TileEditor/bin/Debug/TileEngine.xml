@@ -402,6 +402,107 @@
             </summary>
             <remarks>The name refers to the FrameAnimation's key in the animations Dictionary</remarks>
         </member>
+        <member name="T:TileEngine.PriorityQueue">
+            <summary>
+            Represents the priority queue data structure.
+            </summary>
+        </member>
+        <member name="M:TileEngine.PriorityQueue.#ctor">
+            <summary>
+            Initializes a new instance of the PriorityQueue class.
+            </summary>
+            <remarks>
+            The PriorityQueue will cast its elements to the IComparable 
+            interface when making comparisons.
+            </remarks>
+        </member>
+        <member name="M:TileEngine.PriorityQueue.#ctor(System.Collections.IComparer)">
+            <summary>
+            Initializes a new instance of the PriorityQueue class with the
+            specified IComparer.
+            </summary>
+            <param name="comparer">
+            The IComparer to use for comparing and ordering elements.
+            </param>
+            <remarks>
+            If the specified IComparer is null, the PriorityQueue will cast its
+            elements to the IComparable interface when making comparisons.
+            </remarks>
+        </member>
+        <member name="M:TileEngine.PriorityQueue.Enqueue(System.Object)">
+            <summary>
+            Enqueues the specified element into the PriorityQueue.
+            </summary>
+            <param name="element">
+            The element to enqueue into the PriorityQueue.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            If element is null.
+            </exception>
+        </member>
+        <member name="M:TileEngine.PriorityQueue.Dequeue">
+            <summary>
+            Removes the element at the head of the PriorityQueue.
+            </summary>
+            <returns>
+            The element at the head of the PriorityQueue.
+            </returns>
+            <exception cref="T:System.InvalidOperationException">
+            If Count is zero.
+            </exception>
+        </member>
+        <member name="M:TileEngine.PriorityQueue.Remove(System.Object)">
+            <summary>
+            Removes the specified element from the PriorityQueue.
+            </summary>
+            <param name="element">
+            The element to remove.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            If element is null
+            </exception>
+        </member>
+        <member name="M:TileEngine.PriorityQueue.Contains(System.Object)">
+            <summary>
+            Returns a value indicating whether the specified element is in the
+            PriorityQueue.
+            </summary>
+            <param name="element">
+            The element to test.
+            </param>
+            <returns>
+            <b>true</b> if the element is in the PriorityQueue; otherwise
+            <b>false</b>.
+            </returns>
+        </member>
+        <member name="M:TileEngine.PriorityQueue.Peek">
+            <summary>
+            Returns the element at the head of the PriorityQueue without 
+            removing it.
+            </summary>
+            <returns>
+            The element at the head of the PriorityQueue.
+            </returns>
+        </member>
+        <member name="M:TileEngine.PriorityQueue.Clear">
+            <summary>
+            Removes all elements from the PriorityQueue.
+            </summary>
+        </member>
+        <member name="M:TileEngine.PriorityQueue.Synchronized(TileEngine.PriorityQueue)">
+            <summary>
+            Returns a synchronized wrapper of the specified PriorityQueue.
+            </summary>
+            <param name="queue">
+            The PriorityQueue to synchronize.
+            </param>
+            <returns>
+            A synchronized PriorityQueue.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            If queue is null.
+            </exception>
+        </member>
         <member name="T:TileEngine.TileLayer">
             <summary>
             Describes a layer of tile textures for rendering
@@ -548,6 +649,30 @@
             <summary>
             Gets and sets the alpha (opacity) of the layer
             </summary>
+        </member>
+        <member name="M:TileEngine.TurnManager.#ctor(TileEngine.BaseUnit[])">
+            <summary>
+            Constructor to create a turnmanager to manage a set of units
+            </summary>
+            <param name="units"></param>
+        </member>
+        <member name="M:TileEngine.TurnManager.#ctor">
+            <summary>
+            Empty constructor for turnmanager
+            </summary>
+        </member>
+        <member name="M:TileEngine.TurnManager.getNext">
+            <summary>
+            Gets the next unit in line
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TileEngine.TurnManager.add(TileEngine.BaseUnit)">
+            <summary>
+            Puts a unit back into the line
+            </summary>
+            <param name="unit"></param>
+            <returns></returns>
         </member>
         <member name="M:TileEngine.BaseUnit.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,TileEngine.Ability[])">
             <summary>
@@ -773,131 +898,6 @@
             <param name="a">First Point</param>
             <param name="b">Second Point</param>
             <returns>Tile distance between points</returns>
-        </member>
-        <member name="M:TileEngine.TurnManager.#ctor(TileEngine.BaseUnit[])">
-            <summary>
-            Constructor to create a turnmanager to manage a set of units
-            </summary>
-            <param name="units"></param>
-        </member>
-        <member name="M:TileEngine.TurnManager.#ctor">
-            <summary>
-            Empty constructor for turnmanager
-            </summary>
-        </member>
-        <member name="M:TileEngine.TurnManager.getNext">
-            <summary>
-            Gets the next unit in line
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:TileEngine.TurnManager.add(TileEngine.BaseUnit)">
-            <summary>
-            Puts a unit back into the line
-            </summary>
-            <param name="unit"></param>
-            <returns></returns>
-        </member>
-        <member name="T:TileEngine.PriorityQueue">
-            <summary>
-            Represents the priority queue data structure.
-            </summary>
-        </member>
-        <member name="M:TileEngine.PriorityQueue.#ctor">
-            <summary>
-            Initializes a new instance of the PriorityQueue class.
-            </summary>
-            <remarks>
-            The PriorityQueue will cast its elements to the IComparable 
-            interface when making comparisons.
-            </remarks>
-        </member>
-        <member name="M:TileEngine.PriorityQueue.#ctor(System.Collections.IComparer)">
-            <summary>
-            Initializes a new instance of the PriorityQueue class with the
-            specified IComparer.
-            </summary>
-            <param name="comparer">
-            The IComparer to use for comparing and ordering elements.
-            </param>
-            <remarks>
-            If the specified IComparer is null, the PriorityQueue will cast its
-            elements to the IComparable interface when making comparisons.
-            </remarks>
-        </member>
-        <member name="M:TileEngine.PriorityQueue.Enqueue(System.Object)">
-            <summary>
-            Enqueues the specified element into the PriorityQueue.
-            </summary>
-            <param name="element">
-            The element to enqueue into the PriorityQueue.
-            </param>
-            <exception cref="T:System.ArgumentNullException">
-            If element is null.
-            </exception>
-        </member>
-        <member name="M:TileEngine.PriorityQueue.Dequeue">
-            <summary>
-            Removes the element at the head of the PriorityQueue.
-            </summary>
-            <returns>
-            The element at the head of the PriorityQueue.
-            </returns>
-            <exception cref="T:System.InvalidOperationException">
-            If Count is zero.
-            </exception>
-        </member>
-        <member name="M:TileEngine.PriorityQueue.Remove(System.Object)">
-            <summary>
-            Removes the specified element from the PriorityQueue.
-            </summary>
-            <param name="element">
-            The element to remove.
-            </param>
-            <exception cref="T:System.ArgumentNullException">
-            If element is null
-            </exception>
-        </member>
-        <member name="M:TileEngine.PriorityQueue.Contains(System.Object)">
-            <summary>
-            Returns a value indicating whether the specified element is in the
-            PriorityQueue.
-            </summary>
-            <param name="element">
-            The element to test.
-            </param>
-            <returns>
-            <b>true</b> if the element is in the PriorityQueue; otherwise
-            <b>false</b>.
-            </returns>
-        </member>
-        <member name="M:TileEngine.PriorityQueue.Peek">
-            <summary>
-            Returns the element at the head of the PriorityQueue without 
-            removing it.
-            </summary>
-            <returns>
-            The element at the head of the PriorityQueue.
-            </returns>
-        </member>
-        <member name="M:TileEngine.PriorityQueue.Clear">
-            <summary>
-            Removes all elements from the PriorityQueue.
-            </summary>
-        </member>
-        <member name="M:TileEngine.PriorityQueue.Synchronized(TileEngine.PriorityQueue)">
-            <summary>
-            Returns a synchronized wrapper of the specified PriorityQueue.
-            </summary>
-            <param name="queue">
-            The PriorityQueue to synchronize.
-            </param>
-            <returns>
-            A synchronized PriorityQueue.
-            </returns>
-            <exception cref="T:System.ArgumentNullException">
-            If queue is null.
-            </exception>
         </member>
     </members>
 </doc>
