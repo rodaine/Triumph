@@ -214,11 +214,12 @@ namespace Triumph
                         if (currentUnit.isDone)
                         {
                             counter = 100;
-                            currentUnit.goToTile(Engine.convertPositionToTile(cursor.position), map);
                             currentUnit.delay += currentUnit.SPD;
                             currentUnit.isDone = false;
                             turnManager.add(currentUnit);
                             currentUnit = turnManager.getNext();
+                            cursor.position.X = currentUnit.position.X*Engine.TILE_WIDTH;
+                            cursor.position.Y = currentUnit.position.Y*Engine.TILE_HEIGHT;
                         }
 
                         // TODO: Add your update logic here 
