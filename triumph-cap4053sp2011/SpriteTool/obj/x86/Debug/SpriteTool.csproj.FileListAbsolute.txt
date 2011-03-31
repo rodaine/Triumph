@@ -7,3 +7,13 @@ C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\bin\De
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\bin\Debug\SpriteTool.pdb
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\obj\x86\Debug\SpriteTool.exe
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\obj\x86\Debug\SpriteTool.pdb
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\SpriteTool\bin\Debug\SpriteTool.XML
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\SpriteTool\bin\Debug\SpriteTool.exe
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\SpriteTool\bin\Debug\SpriteTool.pdb
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\SpriteTool\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\SpriteTool\obj\x86\Debug\SpriteTool.Form1.resources
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\SpriteTool\obj\x86\Debug\SpriteTool.Properties.Resources.resources
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\SpriteTool\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\SpriteTool\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\SpriteTool\obj\x86\Debug\SpriteTool.exe
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\SpriteTool\obj\x86\Debug\SpriteTool.pdb
