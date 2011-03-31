@@ -30,6 +30,7 @@ namespace Triumph
 		Cursor cursor;
         SpriteFont font, font2;
         TurnManager turnManager = new TurnManager();
+        int counter = 100;
 		
 
         private enum Screen
@@ -95,14 +96,14 @@ namespace Triumph
             sprite2.speed = 2.5f;
             sprite2.originOffset = new Vector2(16, 32);
 
-			testUnit = new BaseUnit("Test Unit", 999, 999, 999, 990, -1);
+			testUnit = new BaseUnit("Test Unit", 999, 999, 999, 8, -1);
 			testUnit.unitSprite = sprite;
+
+
+            testUnit2 = new BaseUnit("Test Unit", 999, 999, 999, 9, -1);
+            testUnit2.unitSprite = sprite2;
+            turnManager.add(testUnit2);
             turnManager.add(testUnit);
-
-
-            testUnit2 = new BaseUnit("Test Unit", 999, 999, 999, 998, -1);
-            testUnit.unitSprite = sprite2;
-            //turnManager.add(testUnit2);
 
             currentUnit = turnManager.getNext();
 
@@ -191,13 +192,6 @@ namespace Triumph
                             mCurrentScreen = Screen.Menu;
                         }
 
-                        //checks if a unit has finsihed its turn, if it has then make the next unit the active unit
-                        if (currentUnit.isDone)
-                        {
-                            currentUnit.delay += currentUnit.SPD;
-                            turnManager.add(currentUnit);
-                            currentUnit = turnManager.getNext();
-                        }
 
                         if (soundMusicInstance.State == SoundState.Paused || soundMusicInstance.State == SoundState.Paused)
                         {
@@ -211,9 +205,20 @@ namespace Triumph
                             currentUnit.goToTile(Engine.convertPositionToTile(cursor.position), map);
                         }
 
-                        if (Keyboard.GetState().IsKeyDown(Keys.E))
+                        if (Keyboard.GetState().IsKeyDown(Keys.E) && counter < 0)
                         {
                             currentUnit.isDone = true;
+                        }
+                        counter--;
+                        //checks if a unit has finsihed its turn, if it has then make the next unit the active unit
+                        if (currentUnit.isDone)
+                        {
+                            counter = 100;
+                            currentUnit.goToTile(Engine.convertPositionToTile(cursor.position), map);
+                            currentUnit.delay += currentUnit.SPD;
+                            currentUnit.isDone = false;
+                            turnManager.add(currentUnit);
+                            currentUnit = turnManager.getNext();
                         }
 
                         // TODO: Add your update logic here 

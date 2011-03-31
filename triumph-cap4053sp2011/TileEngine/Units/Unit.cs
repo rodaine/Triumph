@@ -198,6 +198,7 @@ namespace TileEngine
 			_AP = _maxAP = maxAP;
 			_MP = _maxMP = maxMP;
 			_SPD = _delay = SPD;
+            _isDone = false;
 
 			if (_HP > 0)
 				_isDead = false;
@@ -228,7 +229,7 @@ namespace TileEngine
 			_AP = _maxAP = maxAP;
 			_MP = _maxMP = maxMP;
             _SPD = _delay = SPD;
-
+            _isDone = false;
 			if (_HP > 0)
 				_isDead = false;
 			else
@@ -250,6 +251,7 @@ namespace TileEngine
 			_MP = _maxMP = 1;
 			_SPD = _delay = 1;
 			_isDead = false;
+            _isDone = false;
 
 			this.unitAffinity = -1;
 		
