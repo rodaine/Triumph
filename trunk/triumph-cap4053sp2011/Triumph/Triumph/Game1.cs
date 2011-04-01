@@ -31,6 +31,7 @@ namespace Triumph
 		Cursor cursor;
         SpriteFont font, font2;
         TurnManager turnManager = new TurnManager();
+        RandomNumber random = new RandomNumber();
         int counter = 100;		
         #endregion
 
@@ -157,7 +158,17 @@ namespace Triumph
             }
 
             ui.Update(gameTime, aKeyboardState, currentUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnit, testUnit2, camera);
-           
+            counter--;
+            //checks if a unit has finsihed its turn, if it has then make the next unit the active unit
+            if (currentUnit.isDone)
+            {
+                counter = 100;
+                currentUnit.delay += currentUnit.SPD;
+                currentUnit.isDone = false;
+                turnManager.add(currentUnit);
+                currentUnit = turnManager.getNext();
+                cursor.location = currentUnit.position;
+            }
             base.Update(gameTime);
         }
             

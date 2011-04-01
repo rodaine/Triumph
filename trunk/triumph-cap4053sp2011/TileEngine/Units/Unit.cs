@@ -284,9 +284,9 @@ namespace TileEngine
         /// tells the unit to attack another unit
         /// </summary>
         /// <param name="target"></param>
-        public void attack(BaseUnit target)
+        public void attack(BaseUnit target, int rand)
         {
-            target.HP -= 5; //filler at the moment for an attack formula
+            target.HP -= rand/100000000; //filler at the moment for an attack formula
             _delay += _SPD;
             _isDone = true;
         }
