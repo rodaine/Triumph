@@ -93,6 +93,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RandomNumber.cs" />
     <Compile Include="Cursor.cs" />
     <Compile Include="PriorityQueue.cs" />
     <Compile Include="TurnManager.cs" />

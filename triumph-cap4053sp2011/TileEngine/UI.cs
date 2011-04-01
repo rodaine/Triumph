@@ -82,17 +82,7 @@ namespace TileEngine
                             {
                                 currentUnit.isDone = true;
                             }
-                            counter--;
-                            //checks if a unit has finsihed its turn, if it has then make the next unit the active unit
-                            if (currentUnit.isDone)
-                            {
-                                counter = 100;
-                                currentUnit.delay += currentUnit.SPD;
-                                currentUnit.isDone = false;
-                                turnManager.add(currentUnit);
-                                currentUnit = turnManager.getNext();
-                                cursor.location = currentUnit.position;
-                            }
+   
 
                             // TODO: Add your update logic here 
                             //int screenWidth = GraphicsDevice.Viewport.Width;
