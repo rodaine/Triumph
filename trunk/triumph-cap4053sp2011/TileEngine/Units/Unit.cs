@@ -433,7 +433,7 @@ namespace TileEngine
 		public void goToTile(Point goal, TileMap map)
 		{
 			if (isWalking) return;
-			
+            if (map.unitLayer.getTileUnitIndex(goal) != 0) return;
 			unitSprite.goToTile(goal, map);
 			_position = goal;
 			isWalking = true;
