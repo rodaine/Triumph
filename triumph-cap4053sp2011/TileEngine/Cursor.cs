@@ -11,7 +11,8 @@ namespace TileEngine
 	/// </summary>
 	public class Cursor
 	{
-		private string _currentAnimationName = null;
+        public bool hasMoved = false;
+        private string _currentAnimationName = null;
 		private bool _isAnimating = true;
 		private float _timer = 0f,
 					secondsPerTile = 0.15f;
@@ -146,6 +147,7 @@ namespace TileEngine
 				--motion.X;
 			else if (keyState.IsKeyDown(Keys.D))
 				++motion.X;
+
 
 			_timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 			if (_timer >= secondsPerTile && motion != Vector2.Zero)

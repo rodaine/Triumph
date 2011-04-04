@@ -50,7 +50,7 @@ namespace TileEngine
                 mMenuOptions = Content.Load<Texture2D>("UI/MenuOptions");
             }
             
-            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit testUnit, BaseUnit testUnit2, Camera camera)
+            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit testUnit, BaseUnit testUnit2, Camera camera, RandomNumber random)
             {
                 switch (mCurrentScreen)
                 {
@@ -80,6 +80,10 @@ namespace TileEngine
 
                             if (Keyboard.GetState().IsKeyDown(Keys.E) && counter < 0)
                             {
+                                if (targetUnit != null)
+                                {
+                                    currentUnit.attack(targetUnit, random.getNext());
+                                }
                                 currentUnit.isDone = true;
                             }
    

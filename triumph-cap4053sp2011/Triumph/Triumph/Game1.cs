@@ -23,9 +23,11 @@ namespace Triumph
         UI ui = new UI();
 		AnimatedSprite sprite;
         AnimatedSprite sprite2;
+        BaseUnit[] testUnits;
 		BaseUnit testUnit;
         BaseUnit testUnit2;
         BaseUnit currentUnit;
+        BaseUnit targetUnit;
 		SoundEffect soundMusic;
 		SoundEffectInstance soundMusicInstance;
 		Cursor cursor;
@@ -87,6 +89,10 @@ namespace Triumph
 
 			turnManager.add(testUnit2);
             turnManager.add(testUnit);
+
+            testUnits = new BaseUnit[2];
+            testUnits[0] = testUnit;
+            testUnits[1] = testUnit2;
 
             currentUnit = turnManager.getNext();
 
@@ -157,7 +163,7 @@ namespace Triumph
                 soundMusicInstance.Play();
             }
 
-            ui.Update(gameTime, aKeyboardState, currentUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnit, testUnit2, camera);
+            ui.Update(gameTime, aKeyboardState, currentUnit,targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnit, testUnit2, camera, random);
             counter--;
             //checks if a unit has finsihed its turn, if it has then make the next unit the active unit
             if (currentUnit.isDone)
@@ -168,6 +174,21 @@ namespace Triumph
                 turnManager.add(currentUnit);
                 currentUnit = turnManager.getNext();
                 cursor.location = currentUnit.position;
+            }
+
+            //check current target unit
+            Boolean found = false;
+            for (int i = 0; i < testUnits.Length; i++)
+            {
+                if (testUnits[i].position.X==cursor.location.X && testUnits[i].position.Y == cursor.location.Y)
+                {
+                    targetUnit = testUnits[i];
+                    found = true;
+                }
+            }
+            if (!found)
+            {
+                targetUnit = null;
             }
             base.Update(gameTime);
         }
