@@ -1,55 +1,3 @@
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\obj\x86\Debug\TileEditor.Form1.resources
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\obj\x86\Debug\TileEditor.Properties.Resources.resources
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEditor.exe
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEditor.pdb
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEngine.dll
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEngine.pdb
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\obj\x86\Debug\TileEditor.exe
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\obj\x86\Debug\TileEditor.pdb
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\Content\cursor.png
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\obj\x86\Debug\TileEditor.Form2.resources
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEngine.xml
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEditor.XML
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEditor.XML
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\TileEditor.exe
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\TileEditor.pdb
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\bin\Debug\Content\cursor.png
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEditor.exe
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEditor.pdb
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEngine.dll
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEngine.pdb
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEngine.xml
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\TileEditor.Form1.resources
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\TileEditor.Form2.resources
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\TileEditor.Properties.Resources.resources
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\bin\Debug\Content\cursor.png
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEditor.XML
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEditor.exe
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEditor.pdb
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEngine.dll
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEngine.pdb
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEngine.xml
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\TileEditor.Form1.resources
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\TileEditor.Form2.resources
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\TileEditor.Properties.Resources.resources
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\GenerateResource.read.1.tlog
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\GenerateResource.write.1.tlog
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\TileEditor.exe
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\TileEditor.pdb
-C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\Content\cursor.png
-C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEditor.XML
-C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEditor.exe
-C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEditor.pdb
-C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEngine.dll
-C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEngine.pdb
-C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEngine.xml
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\obj\x86\Debug\TileEditor.Form1.resources
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\obj\x86\Debug\TileEditor.Form2.resources
@@ -58,3 +6,10 @@ C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\obj\x86
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\obj\x86\Debug\TileEditor.exe
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\obj\x86\Debug\TileEditor.pdb
+C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\Content\cursor.png
+C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEditor.XML
+C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEditor.exe
+C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEditor.pdb
+C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEngine.dll
+C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEngine.pdb
+C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\TileEditor\bin\Debug\TileEngine.xml
