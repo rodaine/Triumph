@@ -20,6 +20,8 @@ namespace TileEngine
         private String _name;
         private Player _owner;
         private BaseUnit[] _units;
+        private bool _isDefeated = false;
+        private int _numDead = 0;
         
         #endregion
 
@@ -45,17 +47,41 @@ namespace TileEngine
         #endregion
 
         #region accessor
+        /// <summary>
+        /// gets the name of the faction
+        /// </summary>
         public string name
         {
             get { return _name; }
         }
+        /// <summary>
+        /// gets the name of the owner
+        /// </summary>
         public Player owner
         {
             get { return _owner; }
         }
+        /// <summary>
+        /// gets array of units for the faction
+        /// </summary>
         public BaseUnit[] units
         {
             get { return _units; }
+        }
+        /// <summary>
+        /// number of dead soldiers for this faction
+        /// </summary>
+        public int numDead
+        {
+            get{ return _numDead;}
+            set
+            { 
+                _numDead = value;
+                if (_numDead == _units.Length)
+                {
+                    _isDefeated = true;
+                }
+            }
         }
         #endregion
 

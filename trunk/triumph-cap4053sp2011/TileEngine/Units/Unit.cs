@@ -81,6 +81,10 @@ namespace TileEngine
 			{
 				_HP = (int)MathHelper.Clamp(value, 0, _maxHP);
 				_isDead = (_HP == 0) ? true : false;
+                if (_isDead)
+                {
+                    faction.numDead++;
+                }
 			}
 		}
 
@@ -334,7 +338,7 @@ namespace TileEngine
 
 		#endregion
 
-        #region attack
+        #region methods
         /// <summary>
         /// tells the unit to attack another unit
         /// </summary>
@@ -346,6 +350,10 @@ namespace TileEngine
             _isDone = true;
         }
 
+        public bool withinRange(BaseUnit target)
+        {
+            return (Math.Abs(this.position.X - target.position.X) + Math.Abs(this.position.Y - target.position.Y)) == 1;
+        }
         #endregion
 
         #region comparers

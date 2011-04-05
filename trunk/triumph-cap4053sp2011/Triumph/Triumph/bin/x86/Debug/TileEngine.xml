@@ -481,6 +481,26 @@
             <param name="spritebatch"></param>
             <param name="camera"></param>
         </member>
+        <member name="P:TileEngine.Faction.name">
+            <summary>
+            gets the name of the faction
+            </summary>
+        </member>
+        <member name="P:TileEngine.Faction.owner">
+            <summary>
+            gets the name of the owner
+            </summary>
+        </member>
+        <member name="P:TileEngine.Faction.units">
+            <summary>
+            gets array of units for the faction
+            </summary>
+        </member>
+        <member name="P:TileEngine.Faction.numDead">
+            <summary>
+            number of dead soldiers for this faction
+            </summary>
+        </member>
         <member name="T:TileEngine.PriorityQueue">
             <summary>
             Represents the priority queue data structure.
