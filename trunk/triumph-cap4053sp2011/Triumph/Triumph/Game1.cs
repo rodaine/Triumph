@@ -98,7 +98,7 @@ namespace Triumph
 
 			soundMusicInstance.Volume = 0.75f;
 			soundMusicInstance.IsLooped = true;
-			soundMusicInstance.Play();
+			//soundMusicInstance.Play();
 
 			cursor.animations.Add("Normal", new FrameAnimation(1, 32, 32, 0, 0));
 			cursor.animations.Add("Collision", new FrameAnimation(1, 32, 32, 32, 0));
@@ -160,20 +160,7 @@ namespace Triumph
             {
                 soundMusicInstance.Volume = 0.75f;
                 soundMusicInstance.IsLooped = true;
-                soundMusicInstance.Play();
-            }
-
-            ui.Update(gameTime, aKeyboardState, currentUnit,targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnit, testUnit2, camera, random);
-            counter--;
-            //checks if a unit has finsihed its turn, if it has then make the next unit the active unit
-            if (currentUnit.isDone)
-            {
-                counter = 100;
-                currentUnit.delay += currentUnit.SPD;
-                currentUnit.isDone = false;
-                turnManager.add(currentUnit);
-                currentUnit = turnManager.getNext();
-                cursor.location = currentUnit.position;
+                //soundMusicInstance.Play();
             }
 
             //check current target unit
@@ -190,6 +177,20 @@ namespace Triumph
             {
                 targetUnit = null;
             }
+
+            ui.Update(gameTime, aKeyboardState, currentUnit,targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, random);
+            counter--;
+            //checks if a unit has finsihed its turn, if it has then make the next unit the active unit
+            if (currentUnit.isDone)
+            {
+                counter = 100;
+                currentUnit.delay += currentUnit.SPD;
+                currentUnit.isDone = false;
+                turnManager.add(currentUnit);
+                currentUnit = turnManager.getNext();
+                cursor.location = currentUnit.position;
+            }
+
             base.Update(gameTime);
         }
             
@@ -199,7 +200,7 @@ namespace Triumph
         {
             GraphicsDevice.Clear(Color.Black);
 
-            ui.Draw(gameTime, spriteBatch, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height, map, camera, cursor, testUnit, testUnit2, font, font2);
+            ui.Draw(gameTime, spriteBatch, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height, map, camera, cursor, testUnits, currentUnit, targetUnit, font, font2);
 
             base.Draw(gameTime);
         }
