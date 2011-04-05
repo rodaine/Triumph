@@ -222,18 +222,19 @@ namespace TileEngine
 			updateAnimation(gameTime);
 		}
 
-		public void goToTile(Point goal, TileMap map)
+		public bool goToTile(Point goal, TileMap map, int maxDistance)
 		{
-			if (_isMoving) return;
+			if (_isMoving) return false;
 
 			path = map.getPath(Engine.convertPositionToTile(position), goal, new List<Point>());
-			if (path.Count == 0)
-				return;
+			if (path.Count == 0 || path.Count > maxDistance + 1)
+				return false;
 
 			Point tileDest = path.Pop();
 
 			destination = new Vector2((float)tileDest.X * Engine.TILE_WIDTH, (float)tileDest.Y * Engine.TILE_HEIGHT);
 			_isMoving = true;
+			return true;
 		}
 
 		//private Vector2 adjustMotionForCollision(Vector2 motion,CollisionLayer collisionLayer)
