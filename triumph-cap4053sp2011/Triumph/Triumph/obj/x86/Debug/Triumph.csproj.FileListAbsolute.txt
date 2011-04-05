@@ -249,14 +249,12 @@ C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bi
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont3.xnb
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\SplashScreen.xnb
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\activeUnitBox.xnb
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\activeUnitBox.xnb
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Units\units.txt
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\enemyFaction.xnb
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SplashScreen.xnb
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\experimentation.xnb
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont3.xnb
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Units\units.txt
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\enemyFaction.xnb
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SplashScreen.xnb
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\experimentation.xnb
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont3.xnb
@@ -271,3 +269,11 @@ C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bi
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\green.xnb
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\red.xnb
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Triumph.XML
+C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\activeScroll.xnb
+C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\targetScroll.xnb
+C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\black.xnb
+C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\blue.xnb
+C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\green.xnb
+C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\red.xnb
+C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont4.xnb
+C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont5.xnb
