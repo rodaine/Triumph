@@ -34,6 +34,7 @@ namespace TileEngine
             Texture2D mMainScreen;
             Texture2D mMenu;
             Texture2D mMenuOptions;
+            Texture2D mActive;
 
             KeyboardState mPreviousKeyboardState;
 
@@ -48,9 +49,10 @@ namespace TileEngine
                 mMainScreen = Content.Load<Texture2D>("UI/MainScreen");
                 mMenu = Content.Load<Texture2D>("UI/Menu");
                 mMenuOptions = Content.Load<Texture2D>("UI/MenuOptions");
+                mActive = Content.Load<Texture2D>("UI/ActiveUnitBox");
             }
             
-            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit testUnit, BaseUnit testUnit2, Camera camera, RandomNumber random)
+            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit[] testUnits, Camera camera, RandomNumber random)
             {
                 switch (mCurrentScreen)
                 {
@@ -91,9 +93,10 @@ namespace TileEngine
                             // TODO: Add your update logic here 
                             //int screenWidth = GraphicsDevice.Viewport.Width;
                             //int screenHeight = GraphicsDevice.Viewport.Height;
-
-                            testUnit.update(gameTime, screenWidth, screenHeight, map);
-                            testUnit2.update(gameTime, screenWidth, screenHeight, map);
+                            foreach (BaseUnit unit in testUnits)
+                            {
+                                unit.update(gameTime, screenWidth, screenHeight, map);
+                            }
                             cursor.update(gameTime, screenWidth, screenHeight, map);
 
                             camera.update(screenWidth, screenHeight, map);
@@ -155,7 +158,7 @@ namespace TileEngine
 
 
             //called from update, draws screen
-            public void Draw(GameTime gameTime, SpriteBatch spriteBatch, int winWidth, int winHeight, TileMap map, Camera camera, Cursor cursor, BaseUnit testUnit, BaseUnit testUnit2, SpriteFont font, SpriteFont font2)
+            public void Draw(GameTime gameTime, SpriteBatch spriteBatch, int winWidth, int winHeight, TileMap map, Camera camera, Cursor cursor, BaseUnit[] testUnits, BaseUnit currentUnit, BaseUnit targetUnit, SpriteFont font, SpriteFont font2)
             {
                 //spriteBatch.Begin();
 
@@ -173,15 +176,20 @@ namespace TileEngine
                         {
                             map.draw(spriteBatch, camera);
                             cursor.Draw(spriteBatch, camera);
-                            testUnit.draw(spriteBatch, camera);
-                            testUnit2.draw(spriteBatch, camera);
+                            foreach (BaseUnit unit in testUnits)
+                            {
+                                unit.draw(spriteBatch, camera);
+                            }
+                            drawActiveInformation(spriteBatch, currentUnit, winHeight, winWidth, font);
                             break;
                         }
 
                     case Screen.Menu:
                         {
+                            map.draw(spriteBatch, camera);
                             spriteBatch.Begin();
                             //spriteBatch.Draw(mMainScreen, new Rectangle(0, 0, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height), Color.Gray);
+                            
                             spriteBatch.Draw(mMenu, new Rectangle(winWidth / 2 - mMenu.Width / 2, winHeight / 2 - mMenu.Height / 2, mMenu.Width, mMenu.Height), Color.White);
 
                             switch (mCurrentMenuOption)
@@ -206,6 +214,37 @@ namespace TileEngine
                             break;
                         }
                 }
+            }
+
+            private void drawActiveInformation(SpriteBatch spriteBatch, BaseUnit active, int winHeight, int winWidth, SpriteFont font)
+            {
+                String name = "NAME";
+                String fac = "FACTION";
+                int currHP = active.HP;
+                int maxHP = active.maxHP;
+                int currAP = active.AP;
+                int maxAP = active.maxAP;
+                int currMP = active.MP;
+                int maxMP = active.maxMP;
+
+                spriteBatch.Begin();
+
+                int c1 = Engine.TILE_WIDTH / 2;
+                int c2 = winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2;
+                int c3 = winWidth / 3;
+                int c4 = winHeight / 4;
+                int xOffset = 5;
+                int yOffset = 5;
+
+                spriteBatch.Draw(mActive, new Rectangle(c1, c2, c3, c4), Color.White);
+
+                spriteBatch.DrawString(font, "Name : " + name, new Vector2(c1 + xOffset, c2 + yOffset), Color.Black);
+                spriteBatch.DrawString(font, "Faction : " + fac, new Vector2(c1 + xOffset, c2 + yOffset * 5), Color.Black);
+                spriteBatch.DrawString(font, "HP : " + currHP + "/" + maxHP, new Vector2(c1 + xOffset, c2 + yOffset * 10), Color.Black);
+                spriteBatch.DrawString(font, "AP : " + currAP + "/" + maxAP, new Vector2(c1 + xOffset, c2 + yOffset * 15), Color.Black);
+                spriteBatch.DrawString(font, "MP : " + currMP + "/" + maxMP, new Vector2(c1 + xOffset, c2 + yOffset * 20), Color.Black);
+
+                spriteBatch.End();
             }
     }
 }

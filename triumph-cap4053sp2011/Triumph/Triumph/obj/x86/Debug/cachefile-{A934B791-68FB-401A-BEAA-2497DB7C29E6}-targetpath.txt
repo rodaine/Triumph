@@ -47,6 +47,7 @@ Content\UI\Title.xnb
 Content\UI\SpriteFont1.xnb
 Content\UI\SpriteFont2.xnb
 Content\Music\POL-battle-march-long.xnb
+Content\UI\activeUnitBox.xnb
 Content\Layers\baseTiles.layer
 Content\Layers\alphaObjects.layer
 Content\Layers\Collision.layer
