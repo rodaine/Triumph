@@ -60,17 +60,19 @@ namespace Triumph
             faction2Units[3] = unitList["Goliath"];
             faction2Units[4] = unitList["Snowlancer"];
             testUnits = new BaseUnit[10];
-            for (int i = 0; i < 5; i++)
+            faction1 = new Faction("Faction 1", new Player("Player 1", faction1), faction1Units);
+            faction2 = new Faction("Faction 2", new Player("Player 2", faction2), faction2Units);
+            for (int i = 0; i < faction1Units.Length; i++)
             {
                 turnManager.add(faction1Units[i]);
                 turnManager.add(faction2Units[i]);
                 faction1Units[i].teleportToTile(new Point(i, 1), map);
                 faction2Units[i].teleportToTile(new Point(i, 2), map);
+                faction1Units[i].faction = faction1;
+                faction2Units[i].faction = faction2;
                 testUnits[i] = faction1Units[i];
-                testUnits[i + 5] = faction2Units[i];
+                testUnits[i + faction1Units.Length] = faction2Units[i];
             }
-            faction1 = new Faction("faction 1", new Player("Player 1", faction1), faction1Units);
-            faction2 = new Faction("faction 2", new Player("Player 2", faction2), faction2Units);
             currentUnit = turnManager.getNext();
 
 			soundMusicInstance.Volume = 0.75f;
@@ -141,7 +143,7 @@ namespace Triumph
                     found = true;
                 }
             }
-            if (!found || targetUnit.Equals(currentUnit))
+            if (!found)
             {
                 targetUnit = null;
             }

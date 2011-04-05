@@ -92,13 +92,21 @@ namespace TileEngine
                                 currentUnit.goToTile(Engine.convertPositionToTile(cursor.position), map);
                             }
 
+                            //attacks, does nothing if there is no targetted unit or
+                            //the targetted unit is dead or the current unit
                             if (Keyboard.GetState().IsKeyDown(Keys.E) && counter < 0)
                             {
-                                if (targetUnit != null && targetUnit != currentUnit)
+                                if (targetUnit != null && targetUnit != currentUnit && !targetUnit.isDead)
                                 {
-                                    currentUnit.attack(targetUnit, random.getNext());
+                                    currentUnit.attack(targetUnit, random.getNext(1,20));
                                     System.Console.WriteLine(targetUnit.HP);
+                                    currentUnit.isDone = true;
                                 }
+                            }
+
+                            //ends turn without attacking
+                            if (Keyboard.GetState().IsKeyDown(Keys.R) && counter < 0)
+                            {
                                 currentUnit.isDone = true;
                             }
    

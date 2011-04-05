@@ -17,36 +17,46 @@ namespace TileEngine
     public class Faction
     {
         #region Faction fields
-        String name;
-        Player owner;
-        BaseUnit[] units;
+        private String _name;
+        private Player _owner;
+        private BaseUnit[] _units;
+        
         #endregion
 
         #region constructors
         public Faction(String name, Player owner, params BaseUnit[] units)
         {
-            this.name = name;
-            this.owner = owner;
-            this.units = units;
+            this._name = name;
+            this._owner = owner;
+            this._units = units;
         }
 
         public Faction(String name, Player owner)
         {
-            this.name = name;
-            this.owner = owner;
+            this._name = name;
+            this._owner = owner;
         }
 
         public Faction()
         {
-            this.name = "";
-            this.owner = null;
+            this._name = "";
+            this._owner = null;
         }
         #endregion
 
         #region accessor
-        public string getName() { return name; }
-        public Player getOwner() { return owner; }
-        public BaseUnit getUnit(int index) { return units[index]; }
+        public string name
+        {
+            get { return _name; }
+        }
+        public Player owner
+        {
+            get { return _owner; }
+        }
+        public BaseUnit[] units
+        {
+            get { return _units; }
+        }
         #endregion
 
         #region draw
