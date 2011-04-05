@@ -56,3 +56,4 @@ Content\Layers\fog.layer
 Content\Layers\g2m1.layer
 Content\Layers\g2m2.layer
 Content\Layers\g2m3.layer
+Content\Units\units.txt

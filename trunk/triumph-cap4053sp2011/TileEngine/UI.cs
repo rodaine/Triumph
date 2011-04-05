@@ -94,9 +94,10 @@ namespace TileEngine
 
                             if (Keyboard.GetState().IsKeyDown(Keys.E) && counter < 0)
                             {
-                                if (targetUnit != null)
+                                if (targetUnit != null && targetUnit != currentUnit)
                                 {
                                     currentUnit.attack(targetUnit, random.getNext());
+                                    System.Console.WriteLine(targetUnit.HP);
                                 }
                                 currentUnit.isDone = true;
                             }

@@ -16,8 +16,15 @@ namespace TileEngine
 
         public int getNext()
         {
-            num = (num * 1103515245 + 12345) % 4294967296;
+            num = (num * 1103515245 + 12345) % 2147483647;
             return (int)num;
+        }
+
+        public int getNext(int min, int max)
+        {
+            num = (num * 1103515245 + 12345) % 4294967296;
+            num = num % (max - min + 1);
+            return (int)num + min;
         }
     }
 }
