@@ -41,13 +41,13 @@ Content\Sprites\ygr1.xnb
 Content\Sprites\zph1.xnb
 Content\UI\cursor.xnb
 Content\UI\activeUnitBox.xnb
+Content\UI\enemyFaction.xnb
+Content\UI\SplashScreen.xnb
 Content\UI\SpriteFont1.xnb
 Content\UI\SpriteFont2.xnb
-Content\Music\POL-battle-march-long.xnb
-Content\UI\enemyFaction.xnb
 Content\UI\experimentation.xnb
 Content\UI\SpriteFont3.xnb
-Content\UI\SplashScreen.xnb
+Content\Music\POL-battle-march-long.xnb
 Content\Layers\baseTiles.layer
 Content\Layers\alphaObjects.layer
 Content\Layers\Collision.layer
