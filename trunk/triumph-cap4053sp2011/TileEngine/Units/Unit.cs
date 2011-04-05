@@ -491,10 +491,13 @@ namespace TileEngine
             if (map.unitLayer.getTileUnitIndex(goal) != 0) return;
 			if (map.collisionLayer.getTileCollisionIndex(goal) != 0) return;
 
-			unitSprite.goToTile(goal, map);
-			_position = goal;
-			isWalking = true;
-			map.unitLayer.moveUnit(index, goal);
+			if (unitSprite.goToTile(goal, map, _MP))
+			{
+				MP -= map.getDistance(_position, goal);
+				_position = goal;
+				isWalking = true;
+				map.unitLayer.moveUnit(index, goal);
+			}
 		}
 
 		/// <summary>
