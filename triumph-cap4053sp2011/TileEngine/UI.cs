@@ -19,7 +19,8 @@ namespace TileEngine
             {
                 Title,
                 Main,
-                Pause
+                Pause,
+                Controls
             }
             Screen mCurrentScreen = Screen.Title;
         
@@ -97,7 +98,12 @@ namespace TileEngine
                             if (aKeyboardState.IsKeyDown(Keys.Escape) == true)
                             {
                                 mCurrentScreen = Screen.Pause;
-                            }                 
+                            }
+
+                            if (aKeyboardState.IsKeyDown(Keys.C) == true)
+                            {
+                                mCurrentScreen = Screen.Controls;
+                            }
 
                             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                             {
@@ -146,6 +152,19 @@ namespace TileEngine
                             {
                                 mCurrentScreen = Screen.Main;
                             }
+
+                            if (aKeyboardState.IsKeyDown(Keys.C) == true)
+                            {
+                                mCurrentScreen = Screen.Controls;
+                            }
+                            break;
+                        }
+                    case Screen.Controls:
+                        {
+                            if (aKeyboardState.IsKeyDown(Keys.R) == true || aKeyboardState.IsKeyDown(Keys.Escape) == true)
+                            {
+                                mCurrentScreen = Screen.Pause;
+                            }
                             break;
                         }
                 }
@@ -192,6 +211,55 @@ namespace TileEngine
                             spriteBatch.Begin();
 
                             spriteBatch.Draw(mTitleScreen, new Rectangle(0, 0, winWidth, winHeight), new Color(1f, 1f, 1f, 0.5f));
+                            spriteBatch.DrawString(experiment, "C : Control List", new Vector2(winWidth - 3 * Engine.TILE_WIDTH - Engine.TILE_WIDTH/2, winHeight - 2*Engine.TILE_HEIGHT), new Color(1f, 1f, 1f, .75f));
+                            spriteBatch.DrawString(experiment, "R : Resume", new Vector2(winWidth - 3 * Engine.TILE_WIDTH - Engine.TILE_WIDTH / 2, winHeight - (3 * Engine.TILE_HEIGHT) / 2), new Color(1f,1f,1f,.75f));
+                            spriteBatch.DrawString(experiment, "Q : Quit", new Vector2(winWidth - 3 * Engine.TILE_WIDTH - Engine.TILE_WIDTH / 2, winHeight - Engine.TILE_HEIGHT), new Color(1f, 1f, 1f, .75f));
+
+                            spriteBatch.End();
+                            break;
+                        }
+
+                    case Screen.Controls:
+                        {
+                            map.draw(spriteBatch, camera);
+                            spriteBatch.Begin();
+
+                            spriteBatch.Draw(mBlack, new Rectangle(0, 0, winWidth, winHeight), new Color(1f, 1f, 1f, .4f));
+                            spriteBatch.Draw(mBlack, new Rectangle(winWidth / 4, winHeight / 4, winWidth / 2, winHeight / 2), new Color(1f, 1f, 1f, .6f));
+                            spriteBatch.Draw(mRed, new Rectangle(winWidth / 4 + 10, winHeight / 4 + 10, winWidth / 2 - 20, winHeight / 2 - 20), new Color(1f, 1f, 1f, .1f));
+                            spriteBatch.Draw(mBlack, new Rectangle(winWidth / 4 + 15, winHeight / 4 + 15, winWidth / 2 - 30, winHeight / 2 - 30), Color.White);
+
+                            int offset = 30;
+
+                            string str = "CONTROL LIST";
+                            spriteBatch.DrawString(font, str, new Vector2(winWidth / 2 - 6*str.Length, winHeight / 4 + offset), Color.White);
+
+                            str = "ESC : Pause Game";
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 4 + 30, winHeight / 4 + 2 * offset), Color.White);
+
+                            str = "W : Up";
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 4 + 30, winHeight / 4 + 3 * offset), Color.White);
+
+                            str = "A : Left";
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 4 + 30, winHeight / 4 + 4 * offset), Color.White);
+
+                            str = "S : Down";
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 4 + 30, winHeight / 4 + 5 * offset), Color.White);
+
+                            str = "D : Right";
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 4 + 30, winHeight / 4 + 6 * offset), Color.White);
+
+                            str = "X : Confirm Choice";
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2 + 30, winHeight / 4 + 2 * offset + (offset / 2)), Color.White);
+
+                            str = "Z : Cancel";
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2 + 30, winHeight / 4 + 3 * offset + (offset / 2)), Color.White);
+
+                            str = "C : Controls";
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2 + 30, winHeight / 4 + 4 * offset + (offset / 2)), Color.White);
+
+                            str = "R : Resume Game";
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2 + 30, winHeight / 4 + 5 * offset + (offset / 2)), Color.White);
 
                             spriteBatch.End();
                             break;
