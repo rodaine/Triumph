@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.Collections;
+using System.IO;
 
 /*  Need to determine how we will handle objects blocking target    *
  *  and how we would like to determine distances                    *
@@ -23,9 +24,10 @@ namespace TileEngine
         #region baseUnit fields
 
 		//Identification
+		public static int index_counter;
         int index;
-        string name;
-        Faction faction;
+        string _name;
+        Faction _faction;
 
 		//Attributes
 		private int _maxHP, _maxAP, _maxMP, _HP, _AP, _MP, _SPD, _delay;
@@ -186,6 +188,18 @@ namespace TileEngine
 			set { index = value; }
 		}
 
+		public string name
+		{
+			get { return _name; }
+			set { _name = value; }
+		}
+
+		public Faction faction
+		{
+			get { return _faction; }
+			set { _faction = value; }
+		}
+
 		#endregion
 
         #region constructors
@@ -202,7 +216,7 @@ namespace TileEngine
 		/// <param name="abilities">Abilities of unit</param>
         public BaseUnit(String name, int maxHP, int maxAP, int maxMP, int SPD, int unitAffinity, params Ability[] abilities)
         {
-			this.name = name;
+			_name = name;
 			_HP = _maxHP = maxHP;
 			_AP = _maxAP = maxAP;
 			_MP = _maxMP = maxMP;
@@ -220,6 +234,8 @@ namespace TileEngine
             for (int i = 0; i < abilities.Length; ++i)
                 moves.Add(abilities[i]);
 
+			index = ++index_counter;
+
         }
 
 		/// <summary>
@@ -233,7 +249,7 @@ namespace TileEngine
 		/// <param name="unitAffinity">Index of elemental affinity of unit</param>
         public BaseUnit(String name, int maxHP, int maxAP, int maxMP, int SPD, int unitAffinity)
         {
-			this.name = name;
+			this._name = name;
 			_HP = _maxHP = maxHP;
 			_AP = _maxAP = maxAP;
 			_MP = _maxMP = maxMP;
@@ -247,6 +263,8 @@ namespace TileEngine
 			this.unitAffinity = unitAffinity;
 
 			moves = new List<Ability>();
+
+			index = ++index_counter;
         }
 
 		/// <summary>
@@ -254,7 +272,7 @@ namespace TileEngine
 		/// </summary>
         public BaseUnit()
         {
-			this.name = "";
+			this._name = "";
 			_HP = _maxHP = 1;
 			_AP = _maxAP = 1;
 			_MP = _maxMP = 1;
@@ -265,6 +283,8 @@ namespace TileEngine
 			this.unitAffinity = -1;
 		
 			moves = new List<Ability>();
+
+			index = ++index_counter;
         }
 
 		/// <summary>
@@ -275,6 +295,46 @@ namespace TileEngine
 		{
 			for (int i = 0; i < abilities.Length; ++i)
 				moves.Add(abilities[i]);
+		}
+
+		public static Dictionary<string, BaseUnit> fromFile(ContentManager content, string filename)
+		{
+			Dictionary<string, BaseUnit> unitList = new Dictionary<string, BaseUnit>();
+
+			FrameAnimation up = new FrameAnimation(2, 32, 32, 0, 0);
+			up.framesPerSecond = 5;
+
+			FrameAnimation down = new FrameAnimation(2, 32, 32, 64, 0);
+			down.framesPerSecond = 5;
+
+			FrameAnimation left = new FrameAnimation(2, 32, 32, 128, 0);
+			left.framesPerSecond = 5;
+
+			FrameAnimation right = new FrameAnimation(2, 32, 32, 192, 0);
+			right.framesPerSecond = 5;
+
+			using (StreamReader reader = new StreamReader(filename))
+			{
+				while (!reader.EndOfStream)
+				{
+					string line = reader.ReadLine().Trim();
+					if (string.IsNullOrEmpty(line)) continue;
+					if (line.Contains("///")) continue;
+					string[] unitParams = line.Split(',');
+					BaseUnit unit = new BaseUnit(unitParams[0].Trim(), int.Parse(unitParams[1].Trim()), int.Parse(unitParams[2].Trim()), int.Parse(unitParams[3].Trim()), int.Parse(unitParams[4].Trim()), int.Parse(unitParams[5].Trim()));
+
+					unit.unitSprite = new AnimatedSprite(content.Load<Texture2D>(unitParams[6].Trim()));
+					unit.unitSprite.animations.Add("Up", up);
+					unit.unitSprite.animations.Add("Down", down);
+					unit.unitSprite.animations.Add("Left", left);
+					unit.unitSprite.animations.Add("Right", right);
+					unit.unitSprite.speed = 2.5f;
+					unit.unitSprite.originOffset = new Vector2(16f, 32f);
+					unitList.Add(unit._name, unit);
+				}
+			}
+
+			return unitList;
 		}
 
 		#endregion
@@ -434,6 +494,8 @@ namespace TileEngine
 		{
 			if (isWalking) return;
             if (map.unitLayer.getTileUnitIndex(goal) != 0) return;
+			if (map.collisionLayer.getTileCollisionIndex(goal) != 0) return;
+
 			unitSprite.goToTile(goal, map);
 			_position = goal;
 			isWalking = true;

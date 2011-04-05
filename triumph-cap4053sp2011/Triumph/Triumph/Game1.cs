@@ -34,6 +34,7 @@ namespace Triumph
         SpriteFont font, font2;
         TurnManager turnManager = new TurnManager();
         RandomNumber random = new RandomNumber();
+		Dictionary<string, BaseUnit> unitList;
         int counter = 100;		
         #endregion
 
@@ -82,8 +83,8 @@ namespace Triumph
             testUnit2 = new BaseUnit("Test Unit 2", 999, 999, 999, 9, -1);
             testUnit2.unitSprite = sprite2;
 
-			testUnit.unitIndex = 1;
-			testUnit2.unitIndex = 2;
+			//testUnit.unitIndex = 1;
+			//testUnit2.unitIndex = 2;
 
 			testUnit2.teleportToTile(new Point(2, 2), map);
 
@@ -115,6 +116,7 @@ namespace Triumph
         {
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
+			BaseUnit.index_counter = 0;
 
 			map.layers.Add(TileLayer.fromFile(Content, "Content/Layers/baseTiles.layer"));
 			map.layers.Add(TileLayer.fromFile(Content, "Content/Layers/g2m1.layer"));
@@ -125,7 +127,7 @@ namespace Triumph
 			map.unitLayer = new UnitLayer(map.getWidthInTiles(), map.getHeightInTiles());
 			sprite = new AnimatedSprite(Content.Load<Texture2D>("Sprites/mnt1"));
             sprite2 = new AnimatedSprite(Content.Load<Texture2D>("Sprites/mnv1"));
-            
+			unitList = BaseUnit.fromFile(Content, "Content/Units/units.txt");
 
 			soundMusic = Content.Load<SoundEffect>("Music/POL-battle-march-long");
 			soundMusicInstance = soundMusic.CreateInstance();
