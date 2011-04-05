@@ -21,13 +21,13 @@ namespace Triumph
 		Camera camera = new Camera();
 		TileMap map = new TileMap();
         UI ui = new UI();
-		AnimatedSprite sprite;
-        AnimatedSprite sprite2;
         BaseUnit[] testUnits;
-		BaseUnit testUnit;
-        BaseUnit testUnit2;
         BaseUnit currentUnit;
         BaseUnit targetUnit;
+        BaseUnit[] faction1Units;
+        BaseUnit[] faction2Units;
+        Faction faction1;
+        Faction faction2;
 		SoundEffect soundMusic;
 		SoundEffectInstance soundMusicInstance;
 		Cursor cursor;
@@ -47,53 +47,30 @@ namespace Triumph
         protected override void Initialize()
         {
             base.Initialize();
-
-			FrameAnimation up = new FrameAnimation(2, 32, 32, 0, 0);
-			up.framesPerSecond = 5;
-			sprite.animations.Add("Up", up);
-            sprite2.animations.Add("Up", up);
-
-			FrameAnimation down = new FrameAnimation(2, 32, 32, 64, 0);
-			down.framesPerSecond = 5;
-			sprite.animations.Add("Down", down);
-            sprite2.animations.Add("Down", down);
-		
-			FrameAnimation left = new FrameAnimation(2, 32, 32, 128, 0);
-			left.framesPerSecond = 5;
-			sprite.animations.Add("Left", left);
-            sprite2.animations.Add("Left", left);
-
-			FrameAnimation right = new FrameAnimation(2, 32, 32, 192, 0);
-			right.framesPerSecond = 5;
-			sprite.animations.Add("Right", right);
-            sprite2.animations.Add("Right", right);
-
-			sprite.currentAnimationName = "Down";
-			sprite.speed = 2.5f;
-			sprite.originOffset = new Vector2(16, 32);
-
-            sprite2.currentAnimationName = "Left";
-            sprite2.speed = 2.5f;
-            sprite2.originOffset = new Vector2(16, 32);
-
-			testUnit = new BaseUnit("Test Unit", 999, 999, 999, 8, -1);
-			testUnit.unitSprite = sprite;
-
-            testUnit2 = new BaseUnit("Test Unit 2", 999, 999, 999, 9, -1);
-            testUnit2.unitSprite = sprite2;
-
-			//testUnit.unitIndex = 1;
-			//testUnit2.unitIndex = 2;
-
-			testUnit2.teleportToTile(new Point(2, 2), map);
-
-			turnManager.add(testUnit2);
-            turnManager.add(testUnit);
-
-            testUnits = new BaseUnit[2];
-            testUnits[0] = testUnit;
-            testUnits[1] = testUnit2;
-
+            faction1Units = new BaseUnit[5];
+            faction2Units = new BaseUnit[5];
+            faction1Units[0] = unitList["Artic Hoplite"];
+            faction1Units[1] = unitList["Branchslinger"];
+            faction1Units[2] = unitList["City Guard"];
+            faction1Units[3] = unitList["Moonshiner"];
+            faction1Units[4] = unitList["Aqua Soldier"];
+            faction2Units[0] = unitList["Rock Smasher"];
+            faction2Units[1] = unitList["Scorcher"];
+            faction2Units[2] = unitList["Leviathan"];
+            faction2Units[3] = unitList["Goliath"];
+            faction2Units[4] = unitList["Snowlancer"];
+            testUnits = new BaseUnit[10];
+            for (int i = 0; i < 5; i++)
+            {
+                turnManager.add(faction1Units[i]);
+                turnManager.add(faction2Units[i]);
+                faction1Units[i].teleportToTile(new Point(i, 1), map);
+                faction2Units[i].teleportToTile(new Point(i, 2), map);
+                testUnits[i] = faction1Units[i];
+                testUnits[i + 5] = faction2Units[i];
+            }
+            faction1 = new Faction("faction 1", new Player("Player 1", faction1), faction1Units);
+            faction2 = new Faction("faction 2", new Player("Player 2", faction2), faction2Units);
             currentUnit = turnManager.getNext();
 
 			soundMusicInstance.Volume = 0.75f;
@@ -124,8 +101,6 @@ namespace Triumph
 			map.layers.Add(TileLayer.fromFile(Content, "Content/Layers/fieldObjects.layer"));
 			map.collisionLayer = CollisionLayer.fromFile("Content/Layers/Collision.layer");
 			map.unitLayer = new UnitLayer(map.getWidthInTiles(), map.getHeightInTiles());
-			sprite = new AnimatedSprite(Content.Load<Texture2D>("Sprites/mnt1"));
-            sprite2 = new AnimatedSprite(Content.Load<Texture2D>("Sprites/mnv1"));
 			unitList = BaseUnit.fromFile(Content, "Content/Units/units.txt");
 
 			soundMusic = Content.Load<SoundEffect>("Music/POL-battle-march-long");
@@ -166,7 +141,7 @@ namespace Triumph
                     found = true;
                 }
             }
-            if (!found)
+            if (!found || targetUnit.Equals(currentUnit))
             {
                 targetUnit = null;
             }
@@ -197,7 +172,8 @@ namespace Triumph
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-
+            faction1.draw(spriteBatch, camera);
+            faction2.draw(spriteBatch, camera);
             ui.Draw(gameTime, spriteBatch, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height, map, camera, cursor, testUnits, currentUnit, targetUnit);
 
             base.Draw(gameTime);

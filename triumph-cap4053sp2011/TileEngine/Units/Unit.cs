@@ -346,7 +346,7 @@ namespace TileEngine
         /// <param name="target"></param>
         public void attack(BaseUnit target, int rand)
         {
-            target.HP -= rand/100000000; //filler at the moment for an attack formula
+            target.HP -= rand; //filler at the moment for an attack formula
             _delay += _SPD;
             _isDone = true;
         }
