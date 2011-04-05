@@ -8,33 +8,39 @@ namespace TileEngine
     public class Player
     {
         #region Player fields
-        Faction faction;
-        String name;
+        private Faction _faction;
+        private String _name;
         #endregion
 
         #region constructors
         public Player(String name, Faction faction)
         {
-            this.name = name;
-            this.faction = faction;
+            _name = name;
+            _faction = faction;
         }
 
         public Player(String name)
         {
-            this.name = name;
-            this.faction = null;
+            _name = name;
+            _faction = null;
         }
 
         public Player()
         {
-            this.name = "";
-            this.faction = null;
+            _name = "";
+            _faction = null;
         }
         #endregion
 
         #region accessors
-        public String getName() { return this.name; }
-        public Faction getFaction() { return this.faction; }
+        public String name
+        { 
+            get { return _name; } 
+        }
+        public Faction faction 
+        {
+            get { return _faction; }
+        }
         #endregion
     }
 }

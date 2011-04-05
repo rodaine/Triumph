@@ -41,6 +41,12 @@ Content\Sprites\ygr1.xnb
 Content\Sprites\zph1.xnb
 Content\UI\cursor.xnb
 Content\UI\SplashScreen.xnb
+Content\UI\activeScroll.xnb
+Content\UI\targetScroll.xnb
+Content\UI\black.xnb
+Content\UI\blue.xnb
+Content\UI\green.xnb
+Content\UI\red.xnb
 Content\UI\SpriteFont1.xnb
 Content\UI\SpriteFont2.xnb
 Content\UI\experimentation.xnb
@@ -48,12 +54,6 @@ Content\UI\SpriteFont3.xnb
 Content\UI\SpriteFont4.xnb
 Content\UI\SpriteFont5.xnb
 Content\Music\POL-battle-march-long.xnb
-Content\UI\activeScroll.xnb
-Content\UI\targetScroll.xnb
-Content\UI\black.xnb
-Content\UI\blue.xnb
-Content\UI\green.xnb
-Content\UI\red.xnb
 Content\Layers\baseTiles.layer
 Content\Layers\alphaObjects.layer
 Content\Layers\Collision.layer

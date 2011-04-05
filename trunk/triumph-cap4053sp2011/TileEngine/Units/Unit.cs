@@ -31,6 +31,7 @@ namespace TileEngine
 
 		//Attributes
 		private int _maxHP, _maxAP, _maxMP, _HP, _AP, _MP, _SPD, _delay;
+        private int _wAtk, _mAtk, _mPow, _mRes; //stats used in FFT but not implemented yet here
         private bool _isDead, _isStunned, _isDone;
         private List<Ability> moves;
         private List<Buff> itemsAndBuffs;

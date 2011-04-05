@@ -66,7 +66,7 @@ namespace Triumph
             {
                 turnManager.add(faction1Units[i]);
                 turnManager.add(faction2Units[i]);
-                faction1Units[i].teleportToTile(new Point(i, 1), map);
+                faction1Units[i].teleportToTile(new Point(i, 0), map);
                 faction2Units[i].teleportToTile(new Point(i, 2), map);
                 faction1Units[i].faction = faction1;
                 faction2Units[i].faction = faction2;
