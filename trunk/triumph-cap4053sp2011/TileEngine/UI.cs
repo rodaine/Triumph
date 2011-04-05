@@ -19,37 +19,44 @@ namespace TileEngine
             {
                 Title,
                 Main,
-                Menu
+                Pause
             }
             Screen mCurrentScreen = Screen.Title;
-
-            private enum MenuOptions
-            {
-                Resume,
-                ExitGame
-            }
-            MenuOptions mCurrentMenuOption = MenuOptions.Resume;
-
+        
             Texture2D mTitleScreen;
-            Texture2D mMainScreen;
-            Texture2D mMenu;
-            Texture2D mMenuOptions;
             Texture2D mActive;
+            Texture2D mEnemy;
+
+            SpriteFont font, font2, font3;
+            SpriteFont experiment;
 
             KeyboardState mPreviousKeyboardState;
 
             ContentManager Content;
+
+            bool exit = false;
         #endregion
 
             public void LoadContent(ContentManager c)
             {
                 Content = c;
 
-                mTitleScreen = Content.Load<Texture2D>("UI/Title");
-                mMainScreen = Content.Load<Texture2D>("UI/MainScreen");
-                mMenu = Content.Load<Texture2D>("UI/Menu");
-                mMenuOptions = Content.Load<Texture2D>("UI/MenuOptions");
+                mTitleScreen = Content.Load<Texture2D>("UI/SplashScreen");
                 mActive = Content.Load<Texture2D>("UI/ActiveUnitBox");
+                mEnemy = Content.Load<Texture2D>("UI/enemyFaction");
+
+                font = Content.Load<SpriteFont>("UI/SpriteFont1");
+                font2 = Content.Load<SpriteFont>("UI/SpriteFont2");
+                font3 = Content.Load<SpriteFont>("UI/SpriteFont3");
+                experiment = Content.Load<SpriteFont>("UI/experimentation");
+            }
+
+            public bool readyToExit()
+            {
+                if (exit)
+                    return true;
+
+                return false;
             }
             
             public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit[] testUnits, Camera camera, RandomNumber random)
@@ -64,15 +71,20 @@ namespace TileEngine
                             {
                                 mCurrentScreen = Screen.Main;
                             }
+
+                            if (aKeyboardState.IsKeyDown(Keys.Escape) == true)
+                            {
+                                exit = true;
+                            }
                             break;
                         }
                     case Screen.Main:
                         {
                             //If the user presses the "Q" key while in the main game screen, bring
                             //up the Menu options by switching the current state to Menu
-                            if (aKeyboardState.IsKeyDown(Keys.Q) == true)
+                            if (aKeyboardState.IsKeyDown(Keys.Escape) == true)
                             {
-                                mCurrentScreen = Screen.Menu;
+                                mCurrentScreen = Screen.Pause;
                             }                 
 
                             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
@@ -102,50 +114,16 @@ namespace TileEngine
                             camera.update(screenWidth, screenHeight, map);
                             break;
                         }
-                    case Screen.Menu:
+                    case Screen.Pause:
                         {
-                            //Move the currently highlighted menu option 
-                            //up and down depending on what key the user has pressed
-                            if (aKeyboardState.IsKeyDown(Keys.Down) == true && mPreviousKeyboardState.IsKeyDown(Keys.Down) == false)
+                            if (aKeyboardState.IsKeyDown(Keys.Q) == true)
                             {
-                                //Move selection down
-                                if (mCurrentMenuOption == MenuOptions.Resume)
-                                {
-                                    mCurrentMenuOption = MenuOptions.ExitGame;
-
-                                }
+                                exit = true;
                             }
 
-                            if (aKeyboardState.IsKeyDown(Keys.Up) == true && mPreviousKeyboardState.IsKeyDown(Keys.Up) == false)
+                            if (aKeyboardState.IsKeyDown(Keys.R) == true)
                             {
-                                if (mCurrentMenuOption == MenuOptions.ExitGame)
-                                {
-                                    mCurrentMenuOption = MenuOptions.Resume;
-                                }
-                            }
-
-                            //If the user presses the "X" key, move the state to the 
-                            //appropriate game state based on the current selection
-                            if (aKeyboardState.IsKeyDown(Keys.X) == true)
-                            {
-                                switch (mCurrentMenuOption)
-                                {
-                                    //Return to the Main game screen and close the menu
-                                    case MenuOptions.Resume:
-                                        {
-                                            mCurrentScreen = Screen.Main;
-                                            break;
-                                        }
-                                    //Exit the game
-                                    case MenuOptions.ExitGame:
-                                        {
-                                            //this.Exit();
-                                            break;
-                                        }
-                                }
-
-                                //Reset the selected menu option to Resume
-                                mCurrentMenuOption = MenuOptions.Resume;
+                                mCurrentScreen = Screen.Main;
                             }
                             break;
                         }
@@ -158,7 +136,7 @@ namespace TileEngine
 
 
             //called from update, draws screen
-            public void Draw(GameTime gameTime, SpriteBatch spriteBatch, int winWidth, int winHeight, TileMap map, Camera camera, Cursor cursor, BaseUnit[] testUnits, BaseUnit currentUnit, BaseUnit targetUnit, SpriteFont font, SpriteFont font2)
+            public void Draw(GameTime gameTime, SpriteBatch spriteBatch, int winWidth, int winHeight, TileMap map, Camera camera, Cursor cursor, BaseUnit[] testUnits, BaseUnit currentUnit, BaseUnit targetUnit)
             {
                 //spriteBatch.Begin();
 
@@ -168,6 +146,8 @@ namespace TileEngine
                         {
                             spriteBatch.Begin();
                             spriteBatch.Draw(mTitleScreen, new Rectangle(0, 0, winWidth, winHeight), Color.White);
+                            spriteBatch.DrawString(experiment, "X : Start", new Vector2(winWidth - 2 * Engine.TILE_WIDTH - Engine.TILE_WIDTH / 2, winHeight - 2*Engine.TILE_HEIGHT), Color.White);
+                            spriteBatch.DrawString(experiment, "ESC : Exit", new Vector2(winWidth - 2 * Engine.TILE_WIDTH - Engine.TILE_WIDTH / 2, winHeight - Engine.TILE_HEIGHT), Color.White);
                             spriteBatch.End();
                             break;
                         }
@@ -180,43 +160,25 @@ namespace TileEngine
                             {
                                 unit.draw(spriteBatch, camera);
                             }
-                            drawActiveInformation(spriteBatch, currentUnit, winHeight, winWidth, font);
+                            drawActiveInformation(spriteBatch, currentUnit, winHeight, winWidth);
+                            drawTargetInformation(spriteBatch, targetUnit, currentUnit, winHeight, winWidth);
                             break;
                         }
 
-                    case Screen.Menu:
+                    case Screen.Pause:
                         {
                             map.draw(spriteBatch, camera);
                             spriteBatch.Begin();
-                            //spriteBatch.Draw(mMainScreen, new Rectangle(0, 0, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height), Color.Gray);
-                            
-                            spriteBatch.Draw(mMenu, new Rectangle(winWidth / 2 - mMenu.Width / 2, winHeight / 2 - mMenu.Height / 2, mMenu.Width, mMenu.Height), Color.White);
 
-                            switch (mCurrentMenuOption)
-                            {
-                                case MenuOptions.Resume:
-                                    {
-                                        spriteBatch.DrawString(font2, "Main Menu", new Vector2(winWidth / 2 - 50, winHeight / 2 - mMenu.Height / 2 + 75), Color.Red);
-                                        spriteBatch.DrawString(font, "Resume", new Vector2(winWidth / 2 - 50, winHeight / 2 - mMenu.Height / 2 + 150), Color.Gold);
-                                        spriteBatch.DrawString(font, "Exit", new Vector2(winWidth / 2 - 50, winHeight / 2 - mMenu.Height / 2 + 250), Color.White);
-                                        break;
-                                    }
+                            spriteBatch.Draw(mTitleScreen, new Rectangle(0, 0, winWidth, winHeight), new Color(1f, 1f, 1f, 0.5f));
 
-                                case MenuOptions.ExitGame:
-                                    {
-                                        spriteBatch.DrawString(font2, "Main Menu", new Vector2(winWidth / 2 - 50, winHeight / 2 - mMenu.Height / 2 + 75), Color.Red);
-                                        spriteBatch.DrawString(font, "Resume", new Vector2(winWidth / 2 - 50, winHeight / 2 - mMenu.Height / 2 + 150), Color.White);
-                                        spriteBatch.DrawString(font, "Exit", new Vector2(winWidth / 2 - 50, winHeight / 2 - mMenu.Height / 2 + 250), Color.Gold);
-                                        break;
-                                    }
-                            }
                             spriteBatch.End();
                             break;
                         }
                 }
             }
 
-            private void drawActiveInformation(SpriteBatch spriteBatch, BaseUnit active, int winHeight, int winWidth, SpriteFont font)
+            private void drawActiveInformation(SpriteBatch spriteBatch, BaseUnit active, int winHeight, int winWidth)
             {
                 String name = "NAME";
                 String fac = "FACTION";
@@ -240,11 +202,53 @@ namespace TileEngine
 
                 spriteBatch.DrawString(font, "Name : " + name, new Vector2(c1 + xOffset, c2 + yOffset), Color.Black);
                 spriteBatch.DrawString(font, "Faction : " + fac, new Vector2(c1 + xOffset, c2 + yOffset * 5), Color.Black);
-                spriteBatch.DrawString(font, "HP : " + currHP + "/" + maxHP, new Vector2(c1 + xOffset, c2 + yOffset * 10), Color.Black);
-                spriteBatch.DrawString(font, "AP : " + currAP + "/" + maxAP, new Vector2(c1 + xOffset, c2 + yOffset * 15), Color.Black);
-                spriteBatch.DrawString(font, "MP : " + currMP + "/" + maxMP, new Vector2(c1 + xOffset, c2 + yOffset * 20), Color.Black);
+                spriteBatch.DrawString(font3, "HP : " + currHP + " / " + maxHP, new Vector2(c1 + xOffset, c2 + yOffset * 10), Color.Black);
+                spriteBatch.DrawString(font3, "AP : " + currAP + " / " + maxAP, new Vector2(c1 + xOffset, c2 + yOffset * 15), Color.Black);
+                spriteBatch.DrawString(font3, "MP : " + currMP + " / " + maxMP, new Vector2(c1 + xOffset, c2 + yOffset * 20), Color.Black);
 
                 spriteBatch.End();
+            }
+
+            private void drawTargetInformation(SpriteBatch spriteBatch, BaseUnit target, BaseUnit active, int winHeight, int winWidth)
+            {
+                if (target != null)
+                {
+                    String name = "NAME";
+                    String tFac = "FACTION";
+                    String aFac = "Your Faction";
+                    int currHP = target.HP;
+                    int maxHP = target.maxHP;
+                    int currAP = target.AP;
+                    int maxAP = target.maxAP;
+                    int currMP = target.MP;
+                    int maxMP = target.maxMP;
+
+                    spriteBatch.Begin();
+
+                    int c1 = winWidth - winWidth / 3 - Engine.TILE_WIDTH / 2;
+                    int c2 = winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2;
+                    int c3 = winWidth / 3;
+                    int c4 = winHeight / 4;
+                    int xOffset = 5;
+                    int yOffset = 5;
+
+                    if (tFac == aFac)
+                    {
+                        spriteBatch.Draw(mActive, new Rectangle(c1, c2, c3, c4), Color.White);
+                    }
+                    else
+                    {
+                        spriteBatch.Draw(mEnemy, new Rectangle(c1, c2, c3, c4), Color.White);
+                    }
+
+                    spriteBatch.DrawString(font, "Name : " + name, new Vector2(c1 + xOffset, c2 + yOffset), Color.Black);
+                    spriteBatch.DrawString(font, "Faction : " + tFac, new Vector2(c1 + xOffset, c2 + yOffset * 5), Color.Black);
+                    spriteBatch.DrawString(font3, "HP : " + currHP + " / " + maxHP, new Vector2(c1 + xOffset, c2 + yOffset * 10), Color.Black);
+                    spriteBatch.DrawString(font3, "AP : " + currAP + " / " + maxAP, new Vector2(c1 + xOffset, c2 + yOffset * 15), Color.Black);
+                    spriteBatch.DrawString(font3, "MP : " + currMP + " / " + maxMP, new Vector2(c1 + xOffset, c2 + yOffset * 20), Color.Black);
+
+                    spriteBatch.End();
+                }
             }
     }
 }
