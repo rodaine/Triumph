@@ -31,7 +31,6 @@ namespace Triumph
 		SoundEffect soundMusic;
 		SoundEffectInstance soundMusicInstance;
 		Cursor cursor;
-        SpriteFont font, font2;
         TurnManager turnManager = new TurnManager();
         RandomNumber random = new RandomNumber();
 		Dictionary<string, BaseUnit> unitList;
@@ -133,10 +132,7 @@ namespace Triumph
 			soundMusicInstance = soundMusic.CreateInstance();
 
 			cursor = new Cursor(Content.Load<Texture2D>("UI/cursor"));
-
-            font = Content.Load<SpriteFont>("UI/SpriteFont1");
-            font2 = Content.Load<SpriteFont>("UI/SpriteFont2");
-
+                        
             ui.LoadContent(Content);
 
         }
@@ -152,11 +148,6 @@ namespace Triumph
         {
             KeyboardState aKeyboardState = Keyboard.GetState();
 
-            //If user hits the Escape key exit the game
-            if (aKeyboardState.IsKeyDown(Keys.Escape) == true)
-            {
-                this.Exit();
-            }
 
             if (soundMusicInstance.State == SoundState.Paused || soundMusicInstance.State == SoundState.Paused)
             {
@@ -181,6 +172,11 @@ namespace Triumph
             }
 
             ui.Update(gameTime, aKeyboardState, currentUnit,targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, random);
+            if (ui.readyToExit())
+            {
+                this.Exit();
+            }
+
             counter--;
             //checks if a unit has finsihed its turn, if it has then make the next unit the active unit
             if (currentUnit.isDone)
@@ -202,7 +198,7 @@ namespace Triumph
         {
             GraphicsDevice.Clear(Color.Black);
 
-            ui.Draw(gameTime, spriteBatch, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height, map, camera, cursor, testUnits, currentUnit, targetUnit, font, font2);
+            ui.Draw(gameTime, spriteBatch, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height, map, camera, cursor, testUnits, currentUnit, targetUnit);
 
             base.Draw(gameTime);
         }
