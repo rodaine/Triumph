@@ -474,6 +474,13 @@
             </summary>
             <remarks>The name refers to the FrameAnimation's key in the animations Dictionary</remarks>
         </member>
+        <member name="M:TileEngine.Faction.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
+            <summary>
+            draws every unit in the faction
+            </summary>
+            <param name="spritebatch"></param>
+            <param name="camera"></param>
+        </member>
         <member name="T:TileEngine.PriorityQueue">
             <summary>
             Represents the priority queue data structure.

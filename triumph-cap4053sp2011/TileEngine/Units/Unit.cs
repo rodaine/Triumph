@@ -301,22 +301,16 @@ namespace TileEngine
 		{
 			Dictionary<string, BaseUnit> unitList = new Dictionary<string, BaseUnit>();
 
-			FrameAnimation up = new FrameAnimation(2, 32, 32, 0, 0);
-			up.framesPerSecond = 5;
-
-			FrameAnimation down = new FrameAnimation(2, 32, 32, 64, 0);
-			down.framesPerSecond = 5;
-
-			FrameAnimation left = new FrameAnimation(2, 32, 32, 128, 0);
-			left.framesPerSecond = 5;
-
-			FrameAnimation right = new FrameAnimation(2, 32, 32, 192, 0);
-			right.framesPerSecond = 5;
-
 			using (StreamReader reader = new StreamReader(filename))
 			{
 				while (!reader.EndOfStream)
 				{
+					FrameAnimation up = new FrameAnimation(2, 32, 32, 0, 0);
+					FrameAnimation down = new FrameAnimation(2, 32, 32, 64, 0);
+					FrameAnimation left = new FrameAnimation(2, 32, 32, 128, 0);
+					FrameAnimation right = new FrameAnimation(2, 32, 32, 192, 0);
+					up.framesPerSecond = down.framesPerSecond = left.framesPerSecond = right.framesPerSecond = 5;
+
 					string line = reader.ReadLine().Trim();
 					if (string.IsNullOrEmpty(line)) continue;
 					if (line.Contains("///")) continue;
@@ -330,6 +324,7 @@ namespace TileEngine
 					unit.unitSprite.animations.Add("Right", right);
 					unit.unitSprite.speed = 2.5f;
 					unit.unitSprite.originOffset = new Vector2(16f, 32f);
+					unit.unitSprite.currentAnimationName = "Down";
 					unitList.Add(unit._name, unit);
 				}
 			}

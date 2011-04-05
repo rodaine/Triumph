@@ -247,10 +247,6 @@ C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\obj\x86\De
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\obj\x86\Debug\Triumph.exe
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\obj\x86\Debug\Triumph.pdb
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\MainScreen.xnb
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\Menu.xnb
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\MenuOptions.xnb
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\Title.xnb
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont1.xnb
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont2.xnb
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Triumph.XML
@@ -263,3 +259,9 @@ C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bi
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\activeUnitBox.xnb
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\activeUnitBox.xnb
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Units\units.txt
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\enemyFaction.xnb
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SplashScreen.xnb
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\experimentation.xnb
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont3.xnb
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Units\units.txt
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Triumph.XML
