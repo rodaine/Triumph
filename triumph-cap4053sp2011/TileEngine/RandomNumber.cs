@@ -11,7 +11,9 @@ namespace TileEngine
 
         public RandomNumber()
         {
-            num = 10;
+            Random ran = new Random();
+            num = ran.Next(10000);
+            System.Console.WriteLine(num);
         }
 
         public int getNext(int min, int max)

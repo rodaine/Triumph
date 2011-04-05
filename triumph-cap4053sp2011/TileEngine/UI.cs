@@ -96,7 +96,7 @@ namespace TileEngine
                             //the targetted unit is dead or the current unit
                             if (Keyboard.GetState().IsKeyDown(Keys.E) && counter < 0)
                             {
-                                if (targetUnit != null && targetUnit != currentUnit && !targetUnit.isDead)
+                                if (targetUnit != null && targetUnit != currentUnit && !targetUnit.isDead && currentUnit.withinRange(targetUnit))
                                 {
                                     currentUnit.attack(targetUnit, random.getNext(1,20));
                                     System.Console.WriteLine(targetUnit.HP);
