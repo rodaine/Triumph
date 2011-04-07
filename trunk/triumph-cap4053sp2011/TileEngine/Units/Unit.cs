@@ -41,7 +41,7 @@ namespace TileEngine
 		//Sprite and Movement
 		private AnimatedSprite _unitSprite;
 		private Point _position;
-		private bool isWalking = false;
+		private bool _isWalking = false;
 		private Stack<Point> path;
 		
         #endregion
@@ -149,6 +149,14 @@ namespace TileEngine
             get { return _isDone; }
             set { _isDone = value; }
         }
+
+		/// <summary>
+		/// Get whether or not a unit is walking
+		/// </summary>
+		public bool isWalking
+		{
+			get { return _isWalking; }
+		}
 
 		/// <summary>
 		/// Get the index of the unit's elemental affinity
@@ -497,9 +505,9 @@ namespace TileEngine
 		{
 			//check flags
 			if (_unitSprite.isMoving)
-				isWalking = true;
+				_isWalking = true;
 			else
-				isWalking = false;
+				_isWalking = false;
 			
 			//check if dead...check if stunned...etc.
 			//update sprite 
@@ -514,7 +522,7 @@ namespace TileEngine
 		/// <param name="map">Tile Map of play area</param>
 		public void goToTile(Point goal, TileMap map)
 		{
-			if (isWalking) return;
+			if (_isWalking) return;
             if (map.unitLayer.getTileUnitIndex(goal) != 0) return;
 			if (map.collisionLayer.getTileCollisionIndex(goal) != 0) return;
 
@@ -522,7 +530,7 @@ namespace TileEngine
 			{
 				MP -= map.getDistance(_position, goal);
 				_position = goal;
-				isWalking = true;
+				_isWalking = true;
 				map.unitLayer.moveUnit(index, goal);
 			}
 		}
@@ -534,7 +542,7 @@ namespace TileEngine
 		/// <param name="map">Tile Map of play area</param>
 		public void teleportToTile(Point goal, TileMap map)
 		{
-			if (isWalking) return;
+			if (_isWalking) return;
 			if (map.unitLayer.getTileUnitIndex(goal) != 0) return;
 			if (map.collisionLayer.getTileCollisionIndex(goal) != 0) return;
 

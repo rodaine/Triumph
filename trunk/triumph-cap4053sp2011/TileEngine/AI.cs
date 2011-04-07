@@ -16,6 +16,7 @@ namespace TileEngine
             BaseUnit target = null;
             Point targetPoint = currentUnit.position;
             int minDist = Int32.MaxValue;
+
             foreach(BaseUnit bu in testUnits)
             {
                 if (!bu.isDead && myFaction != bu.faction)
