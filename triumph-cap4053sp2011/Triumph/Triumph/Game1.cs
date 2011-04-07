@@ -98,11 +98,10 @@ namespace Triumph
             spriteBatch = new SpriteBatch(GraphicsDevice);
 			BaseUnit.index_counter = 0;
 
-			map.layers.Add(TileLayer.fromFile(Content, "Content/Layers/baseTiles.layer"));
-			map.layers.Add(TileLayer.fromFile(Content, "Content/Layers/g2m1.layer"));
-			map.layers.Add(TileLayer.fromFile(Content, "Content/Layers/g2m2.layer"));
-			map.layers.Add(TileLayer.fromFile(Content, "Content/Layers/g2m3.layer"));
-			map.layers.Add(TileLayer.fromFile(Content, "Content/Layers/fieldObjects.layer"));
+			map.layers.Add(TileLayer.fromFile(Content, "Content/Layers/outdoor_base2.layer"));
+			map.layers.Add(TileLayer.fromFile(Content, "Content/Layers/outdoor_road2.layer"));
+			map.layers.Add(TileLayer.fromFile(Content, "Content/Layers/outdoor_trans2.layer"));
+			map.layers.Add(TileLayer.fromFile(Content, "Content/Layers/outdoor_objs2.layer"));
 			map.collisionLayer = CollisionLayer.fromFile("Content/Layers/Collision.layer");
 			map.unitLayer = new UnitLayer(map.getWidthInTiles(), map.getHeightInTiles());
 			unitList = BaseUnit.fromFile(Content, "Content/Units/units.txt");
