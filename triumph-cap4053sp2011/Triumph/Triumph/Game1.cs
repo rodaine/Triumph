@@ -178,27 +178,13 @@ namespace Triumph
             }
 
             //checks if all living units are from the same faction
-            int f1Cnt = 0, f2Cnt = 0;
-            foreach (BaseUnit bu in testUnits)
-            {
-                if (!bu.isDead)
-                {
-                    if (bu.faction == faction1)
-                    {
-                        ++f1Cnt;
-                    }
-                    else
-                    {
-                        ++f2Cnt;
-                    }
-                }
-            }
-            if (f1Cnt == 0)
+            
+            if (faction1.isDefeated)
             {
                 inGame = false;
                 //TODO You lost
             }
-            else if (f2Cnt == 0)
+            else if (faction2.isDefeated)
             {
                 inGame = false;
                 //TODO You won

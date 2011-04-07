@@ -434,6 +434,11 @@
             number of dead soldiers for this faction
             </summary>
         </member>
+        <member name="P:TileEngine.Faction.isDefeated">
+            <summary>
+            Are all units of this faction defeated?
+            </summary>
+        </member>
         <member name="T:TileEngine.PriorityQueue">
             <summary>
             Represents the priority queue data structure.
