@@ -116,7 +116,7 @@ namespace TileEngine
                             {
                                 if (targetUnit != null && !targetUnit.faction.Equals(currentUnit.faction) && !targetUnit.isDead && currentUnit.withinRange(targetUnit))
                                 {
-                                    currentUnit.attack(targetUnit, random.getNext(1,20));
+                                    currentUnit.attack(targetUnit, random);
                                     System.Console.WriteLine(targetUnit.HP);
                                     currentUnit.isDone = true;
                                 }

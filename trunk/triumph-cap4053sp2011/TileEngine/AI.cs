@@ -51,7 +51,7 @@ namespace TileEngine
                 
                 if (currentUnit.withinRange(target))
                 {
-                    currentUnit.attack(target, rand.getNext(1, 20));
+                    currentUnit.attack(target, rand);
                 }
                 else
                 {
