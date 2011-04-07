@@ -32,10 +32,10 @@ namespace Triumph
 		SoundEffect soundMusic;
 		SoundEffectInstance soundMusicInstance;
 		Cursor cursor;
-        TurnManager turnManager = new TurnManager();
+        TurnManager turnManager;
         RandomNumber random = new RandomNumber();
 		Dictionary<string, BaseUnit> unitList;
-        int counter = 100;
+        int counter = 10;
         bool inGame = true; //TODO I don't like this, should only be true after UI.screen goes to Main
         #endregion
 
@@ -66,8 +66,6 @@ namespace Triumph
             faction2 = new Faction("Faction 2", new Player("Player 2", faction2), faction2Units);
             for (int i = 0; i < faction1Units.Length; i++)
             {
-                turnManager.add(faction1Units[i]);
-                turnManager.add(faction2Units[i]);
                 faction1Units[i].teleportToTile(new Point(17+i, 1), map);
                 faction2Units[i].teleportToTile(new Point(17+i, 12), map);
                 faction1Units[i].faction = faction1;
@@ -75,6 +73,7 @@ namespace Triumph
                 testUnits[i] = faction1Units[i];
                 testUnits[i + faction1Units.Length] = faction2Units[i];
             }
+            turnManager = new TurnManager(testUnits);
             currentUnit = turnManager.getNext();
 
 			soundMusicInstance.Volume = 0.75f;
@@ -168,14 +167,12 @@ namespace Triumph
             //checks if a unit has finsihed its turn, if it has then make the next unit the active unit
             if (currentUnit.isDone)
             {
-                counter = 100;
-                currentUnit.delay += currentUnit.SPD;
-                currentUnit.MP = currentUnit.maxMP;
-                currentUnit.isDone = false;
-                turnManager.add(currentUnit);
+                counter = 10;
+                currentUnit.endTurn();
                 currentUnit = turnManager.getNext();
                 cursor.location = currentUnit.position;
             }
+
 
             //checks if all living units are from the same faction
             

@@ -265,6 +265,7 @@ Content\Tiles\Town\Pavement\pavement_topleft_in.xnb
 Content\Tiles\Town\Pavement\pavement_topleft_out.xnb
 Content\Tiles\Town\Pavement\pavement_topright_in.xnb
 Content\Tiles\Town\Pavement\pavement_topright_out.xnb
+Content\UI\menuScroll.xnb
 Content\UI\SpriteFont1.xnb
 Content\UI\SpriteFont2.xnb
 Content\UI\experimentation.xnb
@@ -272,7 +273,6 @@ Content\UI\SpriteFont3.xnb
 Content\UI\SpriteFont4.xnb
 Content\UI\SpriteFont5.xnb
 Content\Music\POL-battle-march-long.xnb
-Content\UI\menuScroll.xnb
 Content\Layers\baseTiles.layer
 Content\Layers\alphaObjects.layer
 Content\Layers\Collision.layer
