@@ -27,7 +27,6 @@ C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\SpriteTool\obj\x86\Debug\G
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\SpriteTool\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\SpriteTool\obj\x86\Debug\SpriteTool.exe
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\SpriteTool\obj\x86\Debug\SpriteTool.pdb
-C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\bin\Debug\SpriteTool.XML
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\bin\Debug\SpriteTool.exe
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\bin\Debug\SpriteTool.pdb
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\obj\x86\Debug\ResolveAssemblyReference.cache
@@ -37,3 +36,4 @@ C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\obj\x86
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\obj\x86\Debug\SpriteTool.exe
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\obj\x86\Debug\SpriteTool.pdb
+C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\SpriteTool\bin\Debug\SpriteTool.XML
