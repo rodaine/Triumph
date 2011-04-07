@@ -185,7 +185,7 @@ namespace UnitSkeleton
 
         #region use_ability
 
-        public abstract Boolean use_ability(Ability action, BaseUnit target);
+        //public abstract Boolean use_ability(Ability action, BaseUnit target);
 
         /*public Boolean use_ability(Ability action, BasePlayer target)
         {

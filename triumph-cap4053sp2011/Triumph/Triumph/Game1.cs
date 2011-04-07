@@ -21,6 +21,7 @@ namespace Triumph
 		Camera camera = new Camera();
 		TileMap map = new TileMap();
         UI ui = new UI();
+        AI ai = new AI();
         BaseUnit[] testUnits;
         BaseUnit currentUnit;
         BaseUnit targetUnit;
@@ -34,7 +35,8 @@ namespace Triumph
         TurnManager turnManager = new TurnManager();
         RandomNumber random = new RandomNumber();
 		Dictionary<string, BaseUnit> unitList;
-        int counter = 100;		
+        int counter = 100;
+        bool inGame = true; //TODO I don't like this, should only be true after UI.screen goes to Main
         #endregion
 
         public Game1()
@@ -148,7 +150,16 @@ namespace Triumph
                 targetUnit = null;
             }
 
-            ui.Update(gameTime, aKeyboardState, currentUnit,targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, random);
+            /* Sorta hacky but it works for the time being, replace condition with some parameter inside Faction or Player that 
+             * tells whether or not that player/faction is AI controlled or human controlled. */
+            if (inGame && currentUnit.faction == faction2)
+            {
+                ai.update(currentUnit, map, testUnits, random);
+            }
+
+            ui.Update(gameTime, aKeyboardState, currentUnit, targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, random);
+
+            
             if (ui.readyToExit())
             {
                 this.Exit();
@@ -165,6 +176,34 @@ namespace Triumph
                 currentUnit = turnManager.getNext();
                 cursor.location = currentUnit.position;
             }
+
+            //checks if all living units are from the same faction
+            int f1Cnt = 0, f2Cnt = 0;
+            foreach (BaseUnit bu in testUnits)
+            {
+                if (!bu.isDead)
+                {
+                    if (bu.faction == faction1)
+                    {
+                        ++f1Cnt;
+                    }
+                    else
+                    {
+                        ++f2Cnt;
+                    }
+                }
+            }
+            if (f1Cnt == 0)
+            {
+                inGame = false;
+                //TODO You lost
+            }
+            else if (f2Cnt == 0)
+            {
+                inGame = false;
+                //TODO You won
+            }
+
 
             base.Update(gameTime);
         }

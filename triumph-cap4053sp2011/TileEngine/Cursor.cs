@@ -148,7 +148,6 @@ namespace TileEngine
 			else if (keyState.IsKeyDown(Keys.D))
 				++motion.X;
 
-
 			_timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 			if (_timer >= secondsPerTile && motion != Vector2.Zero)
 				_timer = 0f;

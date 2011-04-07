@@ -11,7 +11,7 @@ namespace TileEngine
 
         int apCost;
         int attackRange;
-        int abilityType;
+        EffectTypes abilityType;
         int abilityAmount;
         String name;
         String description;
@@ -20,7 +20,7 @@ namespace TileEngine
 
         #region constructors
 
-        public Ability(String name, int abilityType, int abilityAmount, int apCost, int attackRange, String description)
+        public Ability(String name, EffectTypes abilityType, int abilityAmount, int apCost, int attackRange, String description)
         {
             this.name = name;
             this.apCost = apCost;
@@ -32,7 +32,7 @@ namespace TileEngine
 
         }
 
-        public Ability(String name, int abilityType, int abilityAmount, int apCost, int attackRange)
+        public Ability(String name, EffectTypes abilityType, int abilityAmount, int apCost, int attackRange)
         {
             this.name = name;
             this.apCost = apCost;
@@ -50,7 +50,7 @@ namespace TileEngine
             attackRange = 0;
             description = "";
 
-            abilityType = -1;
+            abilityType = EffectTypes.nothing;
             abilityAmount = 0;
         }
 
@@ -63,7 +63,7 @@ namespace TileEngine
 
         public int getAPCost() { return apCost; }
         public int getAttackRange() { return attackRange; }
-        public int getAbilityType() { return abilityType; }
+        public EffectTypes getAbilityType() { return abilityType; }
         public int getAbilityAmount() { return abilityAmount; }
 
         #endregion
