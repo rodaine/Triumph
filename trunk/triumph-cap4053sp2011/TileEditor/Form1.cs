@@ -127,6 +127,8 @@ namespace TileEditor
 					List<string> textureList = new List<string>();
 					for (int i = 0; i < textures.Count; ++i)
 					{
+						//try { textureList.Add(textures[i]); }
+						//catch (Exception ex) { }
 						textureList.Add(textures[i]);
 					}
 
