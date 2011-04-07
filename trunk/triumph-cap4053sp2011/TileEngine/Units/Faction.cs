@@ -83,6 +83,14 @@ namespace TileEngine
                 }
             }
         }
+
+        /// <summary>
+        /// Are all units of this faction defeated?
+        /// </summary>
+        public bool isDefeated
+        {
+            get { return _isDefeated; }
+        }
         #endregion
 
         #region draw
