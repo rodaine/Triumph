@@ -35,7 +35,7 @@ namespace Triumph
         TurnManager turnManager = new TurnManager();
         RandomNumber random = new RandomNumber();
 		Dictionary<string, BaseUnit> unitList;
-        int counter = 10;
+        int counter = 100;
         bool inGame = true; //TODO I don't like this, should only be true after UI.screen goes to Main
         #endregion
 
@@ -68,8 +68,8 @@ namespace Triumph
             {
                 turnManager.add(faction1Units[i]);
                 turnManager.add(faction2Units[i]);
-                faction1Units[i].teleportToTile(new Point(i, 0), map);
-                faction2Units[i].teleportToTile(new Point(i, 2), map);
+                faction1Units[i].teleportToTile(new Point(17+i, 1), map);
+                faction2Units[i].teleportToTile(new Point(17+i, 12), map);
                 faction1Units[i].faction = faction1;
                 faction2Units[i].faction = faction2;
                 testUnits[i] = faction1Units[i];
@@ -169,8 +169,10 @@ namespace Triumph
             //checks if a unit has finsihed its turn, if it has then make the next unit the active unit
             if (currentUnit.isDone)
             {
-                counter = 10;
-                currentUnit.endTurn();
+                counter = 100;
+                currentUnit.delay += currentUnit.SPD;
+                currentUnit.MP = currentUnit.maxMP;
+                currentUnit.isDone = false;
                 turnManager.add(currentUnit);
                 currentUnit = turnManager.getNext();
                 cursor.location = currentUnit.position;

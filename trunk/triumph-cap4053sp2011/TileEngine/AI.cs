@@ -14,16 +14,31 @@ namespace TileEngine
         {
             Faction myFaction = currentUnit.faction;
             BaseUnit target = null;
+            Point targetPoint = currentUnit.position;
             int minDist = Int32.MaxValue;
             foreach(BaseUnit bu in testUnits)
             {
                 if (!bu.isDead && myFaction != bu.faction)
                 {
-                    int dist = map.getDistance(currentUnit.position, bu.position);
-                    if (dist < minDist)
+                    Point targetLoc = bu.position;
+                    List<Point> possibleTargets = new List<Point>();
+                    possibleTargets.Add(new Point(targetLoc.X + 1, targetLoc.Y));
+                    possibleTargets.Add(new Point(targetLoc.X - 1, targetLoc.Y));
+                    possibleTargets.Add(new Point(targetLoc.X, targetLoc.Y + 1));
+                    possibleTargets.Add(new Point(targetLoc.X, targetLoc.Y - 1));
+                    foreach (Point p in possibleTargets)
                     {
-                        minDist = dist;
-                        target = bu;
+
+                        if (map.isEmpty(p) || currentUnit.position == p)
+                        {
+                            int dist = map.getPath(currentUnit, p, new List<Point>()).Count;
+                            if(dist < minDist)
+                            {
+                                target = bu;
+                                minDist = dist;
+                                targetPoint = p;
+                            }
+                        }
                     }
                 }
             }
@@ -33,22 +48,18 @@ namespace TileEngine
             }
             else
             {
-                Point targetPoint = target.position;
-                int dX = currentUnit.position.X - targetPoint.X;
-                int dY = currentUnit.position.Y - targetPoint.Y;
-                if (Math.Abs(dX) > Math.Abs(dY))
+                System.Console.Error.WriteLine(currentUnit.name + " is targeting " + target.name);
+                if (!currentUnit.withinRange(target))
                 {
-                    targetPoint.X = targetPoint.X + (dX / Math.Abs(dX));
-                }
-                else if (Math.Abs(dY) > 0)
-                {
-                    targetPoint.Y = targetPoint.Y + (dY / Math.Abs(dY));
+
+                    Stack<Point> path = map.getPath(currentUnit.position, targetPoint, new List<Point>());
+
+                    while (path.Count > 0 && currentUnit.MP > 0)
+                    {
+                        currentUnit.goToTile(path.Pop(), map);
+                    }
                 }
 
-                System.Console.Error.WriteLine(currentUnit.name + " is targeting " + target.name + " and wants to move to " + targetPoint.ToString());
-                
-                currentUnit.goToTile(targetPoint, map);
-                
                 if (currentUnit.withinRange(target))
                 {
                     currentUnit.attack(target, rand);
