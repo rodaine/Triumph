@@ -426,6 +426,7 @@
       <Name>SpriteFont5</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
+      <SubType>Designer</SubType>
     </Compile>
     <None Include="Units\units.txt">
       <Name>units</Name>
@@ -1554,6 +1555,13 @@
     </Compile>
     <Compile Include="Tiles\Town\Pavement\pavement_topright_out.png">
       <Name>pavement_topright_out</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="UI\menuScroll.png">
+      <Name>menuScroll</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

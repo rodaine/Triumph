@@ -23,10 +23,20 @@ namespace TileEngine
                 Controls
             }
             Screen mCurrentScreen = Screen.Title;
+
+            private enum Phase
+            {
+                Menu,
+                Move,
+                Attack,
+                Ability
+            }
+            Phase mCurrentPhase = Phase.Menu;
         
             Texture2D mTitleScreen;
             Texture2D mActive;
             Texture2D mEnemy;
+            Texture2D mMenu;
 
             Texture2D mBlack;
             Texture2D mBlue;
@@ -50,6 +60,7 @@ namespace TileEngine
                 mTitleScreen = Content.Load<Texture2D>("UI/SplashScreen");
                 mActive = Content.Load<Texture2D>("UI/activeScroll");
                 mEnemy = Content.Load<Texture2D>("UI/targetScroll");
+                mMenu = Content.Load<Texture2D>("UI/menuScroll");
 
                 mBlack = Content.Load<Texture2D>("UI/black");
                 mBlue = Content.Load<Texture2D>("UI/blue");
@@ -202,6 +213,7 @@ namespace TileEngine
                             }
                             drawActiveInformation(spriteBatch, currentUnit, winHeight, winWidth);
                             drawTargetInformation(spriteBatch, targetUnit, currentUnit, winHeight, winWidth);
+                            drawMenu(spriteBatch, currentUnit, winHeight, winWidth);
                             break;
                         }
 
@@ -362,6 +374,15 @@ namespace TileEngine
 
                     spriteBatch.End();
                 }
+            }
+
+            private void drawMenu(SpriteBatch spriteBatch, BaseUnit active, int winHeight, int winWidth)
+            {
+                spriteBatch.Begin();
+
+                spriteBatch.Draw(mMenu, new Rectangle(winWidth / 2 - (winWidth / 6) + Engine.TILE_WIDTH, winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2, winWidth / 3 - Engine.TILE_WIDTH * 2, winHeight / 4), Color.White);
+
+                spriteBatch.End();
             }
     }
 }
