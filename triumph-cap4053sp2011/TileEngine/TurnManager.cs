@@ -9,9 +9,8 @@ namespace TileEngine
     public class TurnManager
     {
         #region TurnManager fields
-
+        private BaseUnit[] units;
         private PriorityQueue pq = new PriorityQueue(new BaseUnit.sortByDelay());
-
         #endregion
 
         #region constructors 
@@ -21,10 +20,7 @@ namespace TileEngine
         /// <param name="units"></param>
         public TurnManager(BaseUnit[] units)
         {
-            for(int i = 0; i < units.Length;i++)
-            {
-                 pq.Enqueue(units[i]);
-            }
+            this.units = units;
         }
 
         /// <summary>
@@ -39,32 +35,46 @@ namespace TileEngine
 
 
         #region Methods
+
+        public int getMax()
+        {
+            int index = -1;
+            int max = 999;
+
+            for (int i = 0; i < units.Length; i++)
+            {
+                if (!units[i].isDead && units[i].delay > max)
+                {
+                    max = units[i].delay;
+                    index = i;
+                }
+            }
+
+            return index;
+        }
+
+
+
         /// <summary>
         /// Gets the next unit in line
         /// </summary>
         /// <returns></returns>
         public BaseUnit getNext()
         {
-            BaseUnit next = (BaseUnit)pq.Dequeue();
-            while (next.isDead)
+            for (int i = 0; i < units.Length; i++)
             {
-                next = (BaseUnit)pq.Dequeue();
+                units[i].tick();
             }
-            return next;
+            while (getMax() == -1)
+            {
+                for (int i = 0; i < units.Length; i++)
+                {
+                    units[i].tick();
+                }
+            }
+            return units[getMax()];
         }
 
-        /// <summary>
-        /// Puts a unit back into the line
-        /// </summary>
-        /// <param name="unit"></param>
-        /// <returns></returns>
-        public void add(BaseUnit unit)
-        {
-            if(!unit.isDead)
-            {
-                pq.Enqueue(unit);
-            }
-        }
 
         #endregion
 

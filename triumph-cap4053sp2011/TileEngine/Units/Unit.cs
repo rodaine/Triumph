@@ -32,7 +32,7 @@ namespace TileEngine
 		//Attributes
 		private int _maxHP, _maxAP, _maxMP, _HP, _AP, _MP, _SPD, _delay;
         private int _wAtk, _mAtk, _mPow, _mRes; //stats used in FFT but not implemented yet here
-        private bool _isDead, _isStunned, _isDone;
+        private bool _isDead, _isStunned, _isDone, _hasAttacked, _hasMoved;
         private List<Ability> moves;
         private List<Buff> itemsAndBuffs;
         private int unitAffinity;
@@ -355,6 +355,7 @@ namespace TileEngine
         /// <param name="rand"></param>
         public void attack(BaseUnit target, RandomNumber rand)
         {
+            _hasAttacked = true;
             target.takeDamage(rand.getNext(1,20)); //filler at the moment for an attack formula
             _delay += _SPD;
             _isDone = true;
@@ -378,7 +379,7 @@ namespace TileEngine
         {
             return (Math.Abs(this.position.X - target.position.X) + Math.Abs(this.position.Y - target.position.Y)) == 1;
         }
-        #endregion
+
 
         /// <summary>
         /// the unit ends its turn and resets values
@@ -386,9 +387,23 @@ namespace TileEngine
         public void endTurn()
         {
             this.MP = this.maxMP;
-            this.delay += this.SPD;
+            this.delay = 500;
+            if (this._hasAttacked) delay -= 200;
+            if (this._hasMoved) delay -= 300;
+            _hasAttacked = _hasMoved = false;
             this.isDone = false;
         }
+
+        /// <summary>
+        /// this tells the unit to tick and get closer to its next turn
+        /// </summary>
+        public void tick()
+        {
+            this.delay += this.SPD;
+        }
+
+
+        #endregion
 
         #region comparers
 
@@ -401,7 +416,7 @@ namespace TileEngine
             {
                 BaseUnit a = (BaseUnit)x;
                 BaseUnit b = (BaseUnit)y;
-                if (a.delay < b.delay)
+                if (a.delay > b.delay)
                 {
                     return 1;
                 }
@@ -531,6 +546,7 @@ namespace TileEngine
 				MP -= map.getDistance(_position, goal);
 				_position = goal;
 				_isWalking = true;
+                _hasMoved = true;
 				map.unitLayer.moveUnit(index, goal);
 			}
 		}
