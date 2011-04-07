@@ -424,36 +424,29 @@ namespace TileEngine
             {
                 switch (item.getObjectType())
                 {
-                    case 1:
-                        //heal
+                    case EffectTypes.heal:
 						HP += item.getObjectAmount();
                         break;
-                    case 2:
-                        //damage
+                    case EffectTypes.damage:
 						HP -= item.getObjectAmount();
                         break;
-                    case 3:
-                        //stun
+                    case EffectTypes.stun:
 						isStunned = item.getObjectFlip();
                         break;
-                    case 4:
-                        //increase MP
+                    case EffectTypes.incMP:
 						MP += item.getObjectAmount();
                         break;
-                    case 5:
-                        //decrease MP
+                    case EffectTypes.decMP:
 						MP -= item.getObjectAmount();
                         break;
-                    case 6:
-                        //increase AP
+                    case EffectTypes.incAP:
 						AP += item.getObjectAmount();
                         break;
-                    case 7:
-                        //decrease AP
+                    case EffectTypes.decAP:
 						AP -= item.getObjectAmount();
                         break;
                     default:
-                        //not a valid choice
+                        //EffectTypes.nothing or some invalid enum
                         break;
                 }
 

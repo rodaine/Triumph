@@ -5,6 +5,9 @@ using System.Text;
 
 namespace TileEngine
 {
+
+     public enum EffectTypes { heal, damage, stun, incMP, decMP, incAP, decAP, nothing };
+
      public class Buff
     {
         #region triggerobject fields
@@ -13,24 +16,17 @@ namespace TileEngine
         String description;
         int turnDuration;
         int objectAmount;
-        int objectType;         
+        EffectTypes objectType;         
         /*
-         * heal = 1
-         * damage = 2
-         * stun = 3
-         * incMP = 4
-         * decMP = 5
-         * incAP = 6
-         * decAP = 7
-         * 
-         * */
+         * Enums basically do this for you... using ints just leads to hard to read code
+         */
         Boolean objectFlip;
 
         #endregion
 
         #region constructors
 
-        public Buff(String name, int objectType, int objectAmount, int turnDuration, Boolean objectFlip, String description)
+        public Buff(String name, EffectTypes objectType, int objectAmount, int turnDuration, Boolean objectFlip, String description)
         {
             this.name = name;
             this.objectType = objectType;
@@ -40,7 +36,7 @@ namespace TileEngine
             this.description = description;
         }
 
-        public Buff(String name, int objectType, int objectAmount, int turnDuration, Boolean objectFlip)
+        public Buff(String name, EffectTypes objectType, int objectAmount, int turnDuration, Boolean objectFlip)
         {
             this.name = name;
             this.objectType = objectType;
@@ -53,7 +49,7 @@ namespace TileEngine
         public Buff()
         {
             name = "";
-            objectType = -1;
+            objectType = EffectTypes.nothing;
             objectAmount = 0;
             turnDuration = 0;
             objectFlip = false;
@@ -64,7 +60,7 @@ namespace TileEngine
 
         #region get methods
         
-        public int getObjectType() { return objectType; }
+        public EffectTypes getObjectType() { return objectType; }
         public int getObjectAmount() { return objectAmount; }
         public int getTurnDuration() { return turnDuration; }
         public String getName() { return name; }
