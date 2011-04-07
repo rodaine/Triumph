@@ -344,18 +344,43 @@ namespace TileEngine
         /// tells the unit to attack another unit
         /// </summary>
         /// <param name="target"></param>
-        public void attack(BaseUnit target, int rand)
+        /// <param name="rand"></param>
+        public void attack(BaseUnit target, RandomNumber rand)
         {
-            target.HP -= rand; //filler at the moment for an attack formula
+            target.takeDamage(rand.getNext(1,20)); //filler at the moment for an attack formula
             _delay += _SPD;
             _isDone = true;
         }
 
+        /// <summary>
+        /// unit recieves amt amount of damage before armor and afinity multipliers
+        /// </summary>
+        /// <param name="amt"></param>
+        public void takeDamage(int amt)
+        {
+            this.HP -= amt;
+        }
+
+        /// <summary>
+        /// checks if a target unit is within range
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
         public bool withinRange(BaseUnit target)
         {
             return (Math.Abs(this.position.X - target.position.X) + Math.Abs(this.position.Y - target.position.Y)) == 1;
         }
         #endregion
+
+        /// <summary>
+        /// the unit ends its turn and resets values
+        /// </summary>
+        public void endTurn()
+        {
+            this.MP = this.maxMP;
+            this.delay += this.SPD;
+            this.isDone = false;
+        }
 
         #region comparers
 

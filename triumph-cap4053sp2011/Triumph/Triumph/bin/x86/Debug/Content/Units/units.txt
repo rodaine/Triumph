@@ -3,7 +3,7 @@ Artic Hoplite, 10 , 3, 5, 100, 0, Sprites/mnv1
 Branchslinger, 8  , 4, 2, 150, 0, Sprites/mnv1
 City Guard, 12 , 2, 3,  80, 0, Sprites/mnv1
 Moonshiner, 9  , 3, 2, 100, 0, Sprites/mnv1
-Aqua Soldier, 10 , 3, 0, 160, 0, Sprites/mnv1
+Aqua Soldier, 10 , 3, 3, 160, 0, Sprites/mnv1
 Rock Smasher, 11 , 2, 3,  70, 0, Sprites/mnv1
 Scorcher, 8  , 4, 1, 110, 0, Sprites/mnv1
 Leviathan, 20 , 1, 0,  50, 0, Sprites/mnv1
