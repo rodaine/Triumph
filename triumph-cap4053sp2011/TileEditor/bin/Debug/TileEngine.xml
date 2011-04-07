@@ -574,11 +574,30 @@
             </summary>
             <param name="abilities"></param>
         </member>
-        <member name="M:TileEngine.BaseUnit.attack(TileEngine.BaseUnit,System.Int32)">
+        <member name="M:TileEngine.BaseUnit.attack(TileEngine.BaseUnit,TileEngine.RandomNumber)">
             <summary>
             tells the unit to attack another unit
             </summary>
             <param name="target"></param>
+            <param name="rand"></param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.takeDamage(System.Int32)">
+            <summary>
+            unit recieves amt amount of damage before armor and afinity multipliers
+            </summary>
+            <param name="amt"></param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.withinRange(TileEngine.BaseUnit)">
+            <summary>
+            checks if a target unit is within range
+            </summary>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TileEngine.BaseUnit.endTurn">
+            <summary>
+            the unit ends its turn and resets values
+            </summary>
         </member>
         <member name="M:TileEngine.BaseUnit.update(Microsoft.Xna.Framework.GameTime,System.Int32,System.Int32,TileEngine.TileMap)">
             <summary>
@@ -917,6 +936,16 @@
             <summary>
             Gets the A* Optimal path between two tile points on the map.
             </summary>
+            <param name="start">Starting Point</param>
+            <param name="goal">Goal Point</param>
+            <param name="otherCollisions">Other collisions (i.e., enemy sprites or objects) not on collision layer</param>
+            <returns>Stack of tile points to travel through to reach goal</returns>
+        </member>
+        <member name="M:TileEngine.TileMap.getPath(TileEngine.BaseUnit,Microsoft.Xna.Framework.Point,System.Collections.Generic.List{Microsoft.Xna.Framework.Point})">
+            <summary>
+            Gets the A* Optimal path between two tile points on the map for a particular unit.
+            </summary>
+            <param name="currentUnit">The unit we are checking against.</param>
             <param name="start">Starting Point</param>
             <param name="goal">Goal Point</param>
             <param name="otherCollisions">Other collisions (i.e., enemy sprites or objects) not on collision layer</param>

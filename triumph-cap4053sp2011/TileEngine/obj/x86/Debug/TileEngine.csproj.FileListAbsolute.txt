@@ -30,4 +30,3 @@ C:\Users\TJ\Triumph\Triumph\triumph-cap4053sp2011\TileEngine\obj\x86\Debug\Resol
 C:\Users\TJ\Triumph\Triumph\triumph-cap4053sp2011\TileEngine\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\TJ\Triumph\Triumph\triumph-cap4053sp2011\TileEngine\obj\x86\Debug\TileEngine.dll
 C:\Users\TJ\Triumph\Triumph\triumph-cap4053sp2011\TileEngine\obj\x86\Debug\TileEngine.pdb
-C:\Users\TJ\Triumph\Triumph\triumph-cap4053sp2011\TileEngine\bin\x86\Debug\TileEngine.XML
