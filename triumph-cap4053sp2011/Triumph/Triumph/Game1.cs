@@ -153,11 +153,12 @@ namespace Triumph
              * tells whether or not that player/faction is AI controlled or human controlled. */
             if (inGame && currentUnit.faction == faction2)
             {
-                ai.update(currentUnit, map, testUnits, random);
+                ai.update(gameTime, currentUnit, cursor, map, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, random);
             }
-
-            ui.Update(gameTime, aKeyboardState, currentUnit, targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, random);
-
+            else
+            {
+                ui.Update(gameTime, aKeyboardState, currentUnit, targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, random);
+            }
             
             if (ui.readyToExit())
             {

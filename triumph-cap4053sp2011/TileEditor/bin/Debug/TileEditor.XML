@@ -4,54 +4,21 @@
         <name>TileEditor</name>
     </assembly>
     <members>
-        <member name="F:TileEditor.Form2.components">
+        <member name="T:TileEditor.ServiceContainer">
             <summary>
-            Required designer variable.
+            Container class implements the IServiceProvider interface. This is used
+            to pass shared services between different components, for instance the
+            ContentManager uses it to locate the IGraphicsDeviceService implementation.
             </summary>
         </member>
-        <member name="M:TileEditor.Form2.Dispose(System.Boolean)">
+        <member name="M:TileEditor.ServiceContainer.AddService``1(``0)">
             <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:TileEditor.Form2.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
+            Adds a new service to the collection.
             </summary>
         </member>
-        <member name="F:TileEditor.Form1.components">
+        <member name="M:TileEditor.ServiceContainer.GetService(System.Type)">
             <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:TileEditor.Form1.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:TileEditor.Form1.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="T:TileEditor.Properties.Resources">
-            <summary>
-              A strongly-typed resource class, for looking up localized strings, etc.
-            </summary>
-        </member>
-        <member name="P:TileEditor.Properties.Resources.ResourceManager">
-            <summary>
-              Returns the cached ResourceManager instance used by this class.
-            </summary>
-        </member>
-        <member name="P:TileEditor.Properties.Resources.Culture">
-            <summary>
-              Overrides the current thread's CurrentUICulture property for all
-              resource lookups using this strongly typed resource class.
+            Looks up the specified service.
             </summary>
         </member>
         <member name="T:TileEditor.GraphicsDeviceControl">
@@ -136,28 +103,6 @@
             which use this service to look up the GraphicsDevice.
             </summary>
         </member>
-        <member name="T:TileEditor.Program">
-            <summary>
-            The main entry point for the application.
-            </summary>
-        </member>
-        <member name="T:TileEditor.ServiceContainer">
-            <summary>
-            Container class implements the IServiceProvider interface. This is used
-            to pass shared services between different components, for instance the
-            ContentManager uses it to locate the IGraphicsDeviceService implementation.
-            </summary>
-        </member>
-        <member name="M:TileEditor.ServiceContainer.AddService``1(``0)">
-            <summary>
-            Adds a new service to the collection.
-            </summary>
-        </member>
-        <member name="M:TileEditor.ServiceContainer.GetService(System.Type)">
-            <summary>
-            Looks up the specified service.
-            </summary>
-        </member>
         <member name="T:TileEditor.GraphicsDeviceService">
             <summary>
             Helper class responsible for creating and managing the GraphicsDevice.
@@ -194,6 +139,61 @@
         <member name="P:TileEditor.GraphicsDeviceService.GraphicsDevice">
             <summary>
             Gets the current graphics device.
+            </summary>
+        </member>
+        <member name="F:TileEditor.Form2.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:TileEditor.Form2.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:TileEditor.Form2.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:TileEditor.Form1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:TileEditor.Form1.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:TileEditor.Form1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:TileEditor.Program">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:TileEditor.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:TileEditor.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:TileEditor.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
             </summary>
         </member>
     </members>
