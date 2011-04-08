@@ -8,16 +8,45 @@ namespace TileEngine
 {
     public class AI
     {
+        private bool _startNextTurn;
+        private BaseUnit _target;
+        private Point _targetPoint;
+        private bool _hasAttacked;
 
-
-        public void update(BaseUnit currentUnit, TileMap map, BaseUnit[] testUnits, RandomNumber rand)
+        #region constructor
+        public AI()
         {
+            this.startNextTurn();
+        }
+        #endregion
+
+        #region private methods
+
+        /// <summary>
+        /// Initializes all the flags for the next turn
+        /// </summary>
+        private void startNextTurn()
+        {
+            _startNextTurn = true;
+            _target = null;
+            _hasAttacked = false;
+        }
+
+        /// <summary>
+        /// Should be run on the AI's first update after its turn starts. Chooses a target
+        /// </summary>
+        /// <param name="currentUnit">The AI unit whose turn it is</param>
+        /// <param name="map">The game map</param>
+        /// <param name="testUnits">All the units on the map</param>
+        /// <returns>True if a target was found, false otherwise</returns>
+        private bool chooseTarget(BaseUnit currentUnit, TileMap map, BaseUnit[] testUnits)
+        {
+            _target = null;
             Faction myFaction = currentUnit.faction;
-            BaseUnit target = null;
-            Point targetPoint = currentUnit.position;
+            _targetPoint = currentUnit.position;
             int minDist = Int32.MaxValue;
 
-            foreach(BaseUnit bu in testUnits)
+            foreach (BaseUnit bu in testUnits)
             {
                 if (!bu.isDead && myFaction != bu.faction)
                 {
@@ -33,45 +62,90 @@ namespace TileEngine
                         if (map.isEmpty(p) || currentUnit.position == p)
                         {
                             int dist = map.getPath(currentUnit, p, new List<Point>()).Count;
-                            if(dist < minDist)
+                            if (dist < minDist)
                             {
-                                target = bu;
+                                _target = bu;
                                 minDist = dist;
-                                targetPoint = p;
+                                _targetPoint = p;
                             }
                         }
                     }
                 }
             }
-            if (target == null) //there are no living enemies
+            return (_target != null);
+        }
+        #endregion
+
+        #region public methods
+        /// <summary>
+        /// Does AI stuff
+        /// </summary>
+        /// <param name="currentUnit">The unit whose turn it is</param>
+        /// <param name="map">The game map</param>
+        /// <param name="testUnits">All units on the game map</param>
+        /// <param name="rand">The game's random number generator</param>
+        public void update(GameTime gameTime, BaseUnit currentUnit, Cursor cursor, TileMap map, int viewWidth, int viewHeight, BaseUnit[] testUnits, Camera camera, RandomNumber rand)
+        {
+            if (_startNextTurn)
             {
-                currentUnit.isDone = true;
-            }
-            else
-            {
-                System.Console.Error.WriteLine(currentUnit.name + " is targeting " + target.name);
-                if (!currentUnit.withinRange(target))
+                if (chooseTarget(currentUnit, map, testUnits))
                 {
-
-                    Stack<Point> path = map.getPath(currentUnit.position, targetPoint, new List<Point>());
-
-                    while (path.Count > 0 && currentUnit.MP > 0)
-                    {
-                        currentUnit.goToTile(path.Pop(), map);
-                    }
-                }
-
-                if (currentUnit.withinRange(target))
-                {
-                    currentUnit.attack(target, rand);
+                    _startNextTurn = false;
                 }
                 else
                 {
+                    this.startNextTurn();
                     currentUnit.isDone = true;
                 }
-                
+            }
+            else
+            {
+                if (!currentUnit.isWalking)
+                {
+                    //System.Console.Error.WriteLine(currentUnit.name + " is targeting " + target.name);
+                    if (_hasAttacked)
+                    {
+                        //AI currently too dumb to do anything after attacking
+                        this.startNextTurn();
+                        currentUnit.isDone = true;
+                    }
+                    else if (!_hasAttacked && currentUnit.MP > 0 && !currentUnit.withinRange(_target))
+                    {
+
+                        Stack<Point> path = map.getPath(currentUnit.position, _targetPoint, new List<Point>());
+
+                        Point walkTo = currentUnit.position;
+                        int count = currentUnit.MP;
+                        while (path.Count > 0 && count >= 0)
+                        {
+                            --count;
+                            walkTo = path.Pop();
+                        }
+                        System.Console.Error.WriteLine("Trying to move from " + currentUnit.position + " to " + walkTo);
+                        currentUnit.goToTile(walkTo, map);
+                    }
+                    else if (!_hasAttacked && currentUnit.withinRange(_target))
+                    {
+                        currentUnit.attack(_target, rand);
+                        this._hasAttacked = true;
+                    }
+                    else if (currentUnit.MP == 0)
+                    {
+                        this.startNextTurn();
+                        currentUnit.isDone = true;
+                    }
+                }
+            }
+
+            camera.update(viewWidth, viewHeight, map);
+            cursor.update(gameTime, viewWidth, viewHeight, map);
+            foreach (BaseUnit bu in testUnits)
+            {
+                bu.update(gameTime, viewWidth, viewHeight, map);
             }
         }
+#endregion
+
 
     }
 }
