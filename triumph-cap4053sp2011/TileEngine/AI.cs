@@ -14,6 +14,7 @@ namespace TileEngine
         private Point _targetPoint;
         private bool _hasAttacked;
         private bool _hasMoved;
+        private int _thinkDelay;
         #endregion
 
         #region constructor
@@ -34,6 +35,7 @@ namespace TileEngine
             _target = null;
             _hasAttacked = false;
             _hasMoved = false;
+            _thinkDelay = 0;
         }
 
         /// <summary>
@@ -99,6 +101,7 @@ namespace TileEngine
                 if (chooseTarget(currentUnit, map, testUnits))
                 {
                     _startNextTurn = false;
+                    _thinkDelay = 50;
                 }
                 else
                 {
@@ -111,7 +114,11 @@ namespace TileEngine
                 if (!currentUnit.isWalking && !currentUnit.isAttacking)
                 {
                     //System.Console.Error.WriteLine(currentUnit.name + " is targeting " + target.name);
-                    if (_hasAttacked)
+                    if (_thinkDelay > 0)
+                    {
+                        --_thinkDelay;
+                    }
+                    else if (_hasAttacked)
                     {
                         //AI currently too dumb to do anything after attacking
                         this.startNextTurn();
@@ -140,11 +147,13 @@ namespace TileEngine
                             currentUnit.goToTile(walkTo, map);
                         }
                         _hasMoved = true;
+                        this._thinkDelay = 25;
                     }
                     else if (!_hasAttacked && currentUnit.withinRange(_target))
                     {
                         currentUnit.attack(_target);
                         this._hasAttacked = true;
+                        this._thinkDelay = 25;
                         
                     }
                     else if (_hasMoved)
