@@ -1268,8 +1268,9 @@ C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Tri
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Units\tempunits.txt
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont6.xnb
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Units\tempunits.txt
-C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Triumph.XML
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont6.xnb
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont7.xnb
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Units\tempunits.txt
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Triumph.XML
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont7.xnb
+C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Triumph.XML
