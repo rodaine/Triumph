@@ -646,7 +646,7 @@ namespace TileEngine
 
 			if (unitSprite.goToTile(this, goal, map, _MP))
 			{
-				MP -= map.getDistance(_position, goal);
+				MP -= map.getPath(this, goal, new List<Point>()).Count - 1;
 				_position = goal;
 				_isWalking = true;
                 _hasMoved = true;
