@@ -154,6 +154,9 @@ namespace TileEngine
                                                                 if (aKeyboardState.IsKeyDown(Keys.Enter))
                                                                 {
                                                                     mCurrentPhase = Phase.Move;
+                                                                    range.clearPoints();
+                                                                    range.addPoints(map.walkToPoints(currentUnit));
+                                                                    range.isDrawing = true;
                                                                 }
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.W))
@@ -178,6 +181,10 @@ namespace TileEngine
                                                                 if (aKeyboardState.IsKeyDown(Keys.Enter))
                                                                 {
                                                                     mCurrentPhase = Phase.Attack;
+
+                                                                    range.clearPoints();
+                                                                    range.addPoints(map.attackPoints(currentUnit, 1, false, true, false));
+                                                                    range.isDrawing = true;
                                                                 }
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.W))
@@ -205,6 +212,10 @@ namespace TileEngine
                                                                 if (aKeyboardState.IsKeyDown(Keys.Enter))
                                                                 {
                                                                     mCurrentPhase = Phase.Ability;
+
+                                                                    range.clearPoints();
+                                                                    range.addPoints(map.attackPoints(currentUnit, 1, false, true, false));
+                                                                    range.isDrawing = true;
                                                                 }
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.W))
@@ -267,10 +278,7 @@ namespace TileEngine
 
                                             #region Move
                                             case (Phase.Move):
-                                                {
-                                                    range.clearPoints();
-                                                    range.addPoints(map.walkToPoints(currentUnit));
-                                                    range.isDrawing = true;
+                                                {                                                   
 
                                                     if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                                                     {
@@ -307,9 +315,6 @@ namespace TileEngine
                                             case (Phase.Attack):
                                             case (Phase.Ability):
                                                 {
-                                                    range.clearPoints();
-                                                    range.addPoints(map.attackPoints(currentUnit, 1, false, true, false));
-                                                    range.isDrawing = true;
 
                                                     if (!currentUnit.isAttacking && currentUnit.AP == 0)
                                                     {
