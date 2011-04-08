@@ -118,48 +118,52 @@ namespace TileEngine
                     {
                         --_thinkDelay;
                     }
-                    else if (_hasAttacked)
+                    else
                     {
-                        //AI currently too dumb to do anything after attacking
-                        this.startNextTurn();
-                        currentUnit.isDone = true;
-                    }
-                    else if (!_hasMoved && currentUnit.MP > 0 && !currentUnit.withinRange(_target))
-                    {
-
-                        Stack<Point> path = map.getPath(currentUnit, _targetPoint, new List<Point>());
-                        Stack<Point> myPath = new Stack<Point>();
-                        int count = currentUnit.MP;
-                        while (path.Count > 0 && count >= 0)
+                        if (_hasAttacked)
                         {
-                            --count;
-                            myPath.Push(path.Pop());
+                            //AI currently too dumb to do anything after attacking
+                            this.startNextTurn();
+                            currentUnit.isDone = true;
                         }
-
-                        if (myPath.Count > 0)
+                        else if (!_hasMoved && currentUnit.MP > 0 && !currentUnit.withinRange(_target))
                         {
-                            Point walkTo = myPath.Pop();
-                            while (myPath.Count > 0 && map.getPath(currentUnit, walkTo, new List<Point>()).Count == 0)
+
+                            Stack<Point> path = map.getPath(currentUnit, _targetPoint, new List<Point>());
+                            Stack<Point> myPath = new Stack<Point>();
+                            int count = currentUnit.MP;
+                            while (path.Count > 0 && count >= 0)
                             {
-                                walkTo = myPath.Pop();
+                                --count;
+                                myPath.Push(path.Pop());
                             }
-                            //System.Console.Error.WriteLine("Trying to move from " + currentUnit.position + " to " + walkTo);
-                            currentUnit.goToTile(walkTo, map);
+
+                            if (myPath.Count > 0)
+                            {
+                                Point walkTo = myPath.Pop();
+                                while (myPath.Count > 0 && map.getPath(currentUnit, walkTo, new List<Point>()).Count == 0)
+                                {
+                                    walkTo = myPath.Pop();
+                                }
+                                //System.Console.Error.WriteLine("Trying to move from " + currentUnit.position + " to " + walkTo);
+                                currentUnit.goToTile(walkTo, map);
+                            }
+                            _hasMoved = true;
+                            this._thinkDelay = 25;
                         }
-                        _hasMoved = true;
-                        this._thinkDelay = 25;
-                    }
-                    else if (!_hasAttacked && currentUnit.withinRange(_target))
-                    {
-                        currentUnit.attack(_target);
-                        this._hasAttacked = true;
-                        this._thinkDelay = 25;
-                        
-                    }
-                    else if (_hasMoved)
-                    {
-                        this.startNextTurn();
-                        currentUnit.isDone = true;
+                        else if (!_hasAttacked && currentUnit.withinRange(_target))
+                        {
+                            cursor.location = _target.position;
+                            currentUnit.attack(_target);
+                            this._hasAttacked = true;
+                            this._thinkDelay = 25;
+
+                        }
+                        else if (_hasMoved)
+                        {
+                            this.startNextTurn();
+                            currentUnit.isDone = true;
+                        }
                     }
                 }
             }
