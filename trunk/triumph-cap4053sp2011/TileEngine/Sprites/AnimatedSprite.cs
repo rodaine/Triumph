@@ -222,11 +222,11 @@ namespace TileEngine
 			updateAnimation(gameTime);
 		}
 
-		public bool goToTile(Point goal, TileMap map, int maxDistance)
+		public bool goToTile(BaseUnit unit, Point goal, TileMap map, int maxDistance)
 		{
 			if (_isMoving) return false;
 
-			path = map.getPath(Engine.convertPositionToTile(position), goal, new List<Point>());
+			path = map.getPath(unit, goal, new List<Point>());
 			if (path.Count == 0 || path.Count > maxDistance + 1)
 				return false;
 
