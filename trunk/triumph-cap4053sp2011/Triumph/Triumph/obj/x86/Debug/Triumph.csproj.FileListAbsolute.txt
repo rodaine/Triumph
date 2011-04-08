@@ -1264,3 +1264,5 @@ C:\Users\TJ\Triumph\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\
 C:\Users\TJ\Triumph\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Layers\outdoor_trans2.layer
 C:\Users\TJ\Triumph\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Layers\outdoor_objs2.layer
 C:\Users\TJ\Triumph\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Triumph.XML
+C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Units\tempunits.txt
+C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Triumph.XML

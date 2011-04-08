@@ -10,7 +10,6 @@ namespace TileEngine
     {
         #region TurnManager fields
         private BaseUnit[] units;
-        private PriorityQueue pq = new PriorityQueue(new BaseUnit.sortByDelay());
         #endregion
 
         #region constructors 
