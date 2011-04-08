@@ -431,6 +431,7 @@ namespace TileEngine
 		{
 			Stack<Point> openPoints = new Stack<Point>();
 			List<Point> closedPoints = new List<Point>();
+			List<Point> returnPoints = new List<Point>();
 
 			if (currentUnit.MP == 0) return closedPoints;
 
@@ -445,7 +446,7 @@ namespace TileEngine
 					continue;
 
 				//is it empty?
-				if (!isEmpty(current) && currentUnit.unitIndex != unitLayer.getTileUnitIndex(current))
+				if (!canPass(currentUnit, current))
 					continue;
 
 				//check closedList
@@ -464,8 +465,14 @@ namespace TileEngine
 					openPoints.Push(neighbor.Key);
 				closedPoints.Add(current);
 			}
-			
-			return closedPoints;
+
+			foreach (Point pt in closedPoints)
+			{
+				if (isEmpty(pt))
+					returnPoints.Add(pt);
+			}
+
+			return returnPoints;
 		}
 
 		public List<Point> attackPoints(BaseUnit unit, int range, bool isFriendly, bool isHostile, bool isSelf)
