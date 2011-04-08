@@ -10,8 +10,8 @@
         <Data Key="GenerateMipmaps">True</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\BaseTiles\se_free_dirt_texture.xnb</Output>
-      <Time>2011-03-26T14:15:06.7840718-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\BaseTiles\se_free_dirt_texture.xnb</Output>
+      <Time>2011-04-05T13:49:52.9294-04:00</Time>
     </Item>
     <Item>
       <Source>BaseTiles\se_free_grass_texture.jpg</Source>
@@ -22,8 +22,8 @@
         <Data Key="GenerateMipmaps">True</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\BaseTiles\se_free_grass_texture.xnb</Output>
-      <Time>2011-03-26T14:15:06.7740713-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\BaseTiles\se_free_grass_texture.xnb</Output>
+      <Time>2011-04-05T13:49:52.9274-04:00</Time>
     </Item>
     <Item>
       <Source>BaseTiles\se_free_ground_texture.jpg</Source>
@@ -34,8 +34,8 @@
         <Data Key="GenerateMipmaps">True</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\BaseTiles\se_free_ground_texture.xnb</Output>
-      <Time>2011-03-26T14:15:06.7640707-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\BaseTiles\se_free_ground_texture.xnb</Output>
+      <Time>2011-04-05T13:49:52.9254-04:00</Time>
     </Item>
     <Item>
       <Source>BaseTiles\se_free_mud_texture.jpg</Source>
@@ -46,8 +46,8 @@
         <Data Key="GenerateMipmaps">True</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\BaseTiles\se_free_mud_texture.xnb</Output>
-      <Time>2011-03-26T14:15:06.8020729-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\BaseTiles\se_free_mud_texture.xnb</Output>
+      <Time>2011-04-05T13:49:52.9344-04:00</Time>
     </Item>
     <Item>
       <Source>BaseTiles\se_free_road_texture.jpg</Source>
@@ -58,8 +58,8 @@
         <Data Key="GenerateMipmaps">True</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\BaseTiles\se_free_road_texture.xnb</Output>
-      <Time>2011-03-26T14:15:06.7930723-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\BaseTiles\se_free_road_texture.xnb</Output>
+      <Time>2011-04-05T13:49:52.9324-04:00</Time>
     </Item>
     <Item>
       <Source>BaseTiles\se_free_rock_texture.jpg</Source>
@@ -70,8 +70,8 @@
         <Data Key="GenerateMipmaps">True</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\BaseTiles\se_free_rock_texture.xnb</Output>
-      <Time>2011-03-26T14:15:06.7560702-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\BaseTiles\se_free_rock_texture.xnb</Output>
+      <Time>2011-04-05T13:49:52.9214-04:00</Time>
     </Item>
     <Item>
       <Source>BaseTiles\se_free_wood_texture.jpg</Source>
@@ -82,8 +82,8 @@
         <Data Key="GenerateMipmaps">True</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\BaseTiles\se_free_wood_texture.xnb</Output>
-      <Time>2011-03-26T14:15:06.7470697-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\BaseTiles\se_free_wood_texture.xnb</Output>
+      <Time>2011-04-05T13:49:52.9194-04:00</Time>
     </Item>
     <Item>
       <Source>Trees\bush.png</Source>
@@ -94,8 +94,8 @@
         <Data Key="GenerateMipmaps">True</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Trees\bush.xnb</Output>
-      <Time>2011-03-26T14:15:04.7219539-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Trees\bush.xnb</Output>
+      <Time>2011-04-05T13:49:51.7074-04:00</Time>
     </Item>
     <Item>
       <Source>Trees\shortRock.png</Source>
@@ -106,8 +106,8 @@
         <Data Key="GenerateMipmaps">True</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Trees\shortRock.xnb</Output>
-      <Time>2011-03-26T14:15:04.7079531-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Trees\shortRock.xnb</Output>
+      <Time>2011-04-05T13:49:51.7024-04:00</Time>
     </Item>
     <Item>
       <Source>Trees\tallRock.png</Source>
@@ -118,8 +118,8 @@
         <Data Key="GenerateMipmaps">True</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Trees\tallRock.xnb</Output>
-      <Time>2011-03-26T14:15:04.7679565-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Trees\tallRock.xnb</Output>
+      <Time>2011-04-05T13:49:51.7094-04:00</Time>
     </Item>
     <Item>
       <Source>Trees\tree.png</Source>
@@ -130,8 +130,8 @@
         <Data Key="GenerateMipmaps">True</Data>
       </Parameters>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Trees\tree.xnb</Output>
-      <Time>2011-03-26T14:15:04.7149535-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Trees\tree.xnb</Output>
+      <Time>2011-04-05T13:49:51.7054-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\amg1.png</Source>
@@ -139,8 +139,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\amg1.xnb</Output>
-      <Time>2011-04-08T00:05:27.2329964-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\amg1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5794-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\man1.png</Source>
@@ -148,8 +148,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\man1.xnb</Output>
-      <Time>2011-04-08T00:05:21.7026801-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\man1.xnb</Output>
+      <Time>2011-04-08T00:30:01.4944-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\mnt1.png</Source>
@@ -157,8 +157,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\mnt1.xnb</Output>
-      <Time>2011-04-08T00:05:25.0698727-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\mnt1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5474-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\mnv1.png</Source>
@@ -166,8 +166,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\mnv1.xnb</Output>
-      <Time>2011-04-08T00:05:25.4898967-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\mnv1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5544-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\mst1.png</Source>
@@ -175,8 +175,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\mst1.xnb</Output>
-      <Time>2011-04-08T00:05:24.6358479-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\mst1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5734-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\nja1.png</Source>
@@ -184,8 +184,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\nja1.xnb</Output>
-      <Time>2011-04-08T00:04:50.0408692-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\nja1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5824-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\npc1.png</Source>
@@ -193,8 +193,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc1.xnb</Output>
-      <Time>2011-04-08T00:05:29.9021491-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc1.xnb</Output>
+      <Time>2011-04-08T00:30:01.4974-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\npc2.png</Source>
@@ -202,8 +202,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc2.xnb</Output>
-      <Time>2011-04-08T00:05:31.6752505-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc2.xnb</Output>
+      <Time>2011-04-08T00:30:01.5004-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\npc3.png</Source>
@@ -211,8 +211,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc3.xnb</Output>
-      <Time>2011-04-08T00:05:32.977325-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc3.xnb</Output>
+      <Time>2011-04-08T00:30:01.5104-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\npc4.png</Source>
@@ -220,8 +220,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc4.xnb</Output>
-      <Time>2011-04-08T00:05:30.3521748-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc4.xnb</Output>
+      <Time>2011-04-08T00:30:01.5134-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\npc5.png</Source>
@@ -229,8 +229,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc5.xnb</Output>
-      <Time>2011-04-08T00:05:29.0711016-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc5.xnb</Output>
+      <Time>2011-04-08T00:30:01.5164-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\npc6.png</Source>
@@ -238,8 +238,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc6.xnb</Output>
-      <Time>2011-04-08T00:05:27.697023-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc6.xnb</Output>
+      <Time>2011-04-08T00:30:01.5194-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\npc7.png</Source>
@@ -247,8 +247,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc7.xnb</Output>
-      <Time>2011-04-08T00:05:19.0345275-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc7.xnb</Output>
+      <Time>2011-04-08T00:30:01.5224-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\npc8.png</Source>
@@ -256,8 +256,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc8.xnb</Output>
-      <Time>2011-04-08T00:05:31.2602268-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc8.xnb</Output>
+      <Time>2011-04-08T00:30:01.5324-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\npc9.png</Source>
@@ -265,8 +265,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc9.xnb</Output>
-      <Time>2011-04-08T00:05:20.0515857-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\npc9.xnb</Output>
+      <Time>2011-04-08T00:30:01.5354-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\pdn1.png</Source>
@@ -274,8 +274,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\pdn1.xnb</Output>
-      <Time>2011-04-08T00:05:32.5493005-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\pdn1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5074-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\scr1.png</Source>
@@ -283,8 +283,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\scr1.xnb</Output>
-      <Time>2011-04-08T00:05:32.1172758-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\scr1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5284-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\skl1.png</Source>
@@ -292,8 +292,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\skl1.xnb</Output>
-      <Time>2011-04-08T00:05:23.1117607-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\skl1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5384-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\smr1.png</Source>
@@ -301,8 +301,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\smr1.xnb</Output>
-      <Time>2011-04-08T00:05:28.606075-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\smr1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5574-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\spd1.png</Source>
@@ -310,8 +310,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\spd1.xnb</Output>
-      <Time>2011-04-08T00:05:29.4621239-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\spd1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5264-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\thf1.png</Source>
@@ -319,8 +319,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\thf1.xnb</Output>
-      <Time>2011-04-08T00:05:33.3013435-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\thf1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5034-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\trk1.png</Source>
@@ -328,8 +328,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\trk1.xnb</Output>
-      <Time>2011-04-08T00:05:30.7992004-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\trk1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5504-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\wmg1.png</Source>
@@ -337,8 +337,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\wmg1.xnb</Output>
-      <Time>2011-04-08T00:05:24.3128294-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\wmg1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5444-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\wmn1.png</Source>
@@ -346,8 +346,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\wmn1.xnb</Output>
-      <Time>2011-04-08T00:05:26.7679698-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\wmn1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5664-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\wmn2.png</Source>
@@ -355,8 +355,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\wmn2.xnb</Output>
-      <Time>2011-04-08T00:05:25.9079206-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\wmn2.xnb</Output>
+      <Time>2011-04-08T00:30:01.5704-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\wmn3.png</Source>
@@ -364,8 +364,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\wmn3.xnb</Output>
-      <Time>2011-04-08T00:05:26.3329449-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\wmn3.xnb</Output>
+      <Time>2011-04-08T00:30:01.5764-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\wnv1.png</Source>
@@ -373,8 +373,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\wnv1.xnb</Output>
-      <Time>2011-04-08T00:05:22.417721-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\wnv1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5854-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\ybo1.png</Source>
@@ -382,8 +382,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\ybo1.xnb</Output>
-      <Time>2011-04-08T00:05:23.7787989-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\ybo1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5414-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\ygr1.png</Source>
@@ -391,8 +391,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\ygr1.xnb</Output>
-      <Time>2011-04-08T00:05:20.9096348-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\ygr1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5634-04:00</Time>
     </Item>
     <Item>
       <Source>Sprites\zph1.png</Source>
@@ -400,8 +400,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Sprites\zph1.xnb</Output>
-      <Time>2011-04-08T00:05:28.16905-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Sprites\zph1.xnb</Output>
+      <Time>2011-04-08T00:30:01.5604-04:00</Time>
     </Item>
     <Item>
       <Source>UI\cursor.png</Source>
@@ -409,8 +409,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\cursor.xnb</Output>
-      <Time>2011-04-07T23:16:46.3199298-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\cursor.xnb</Output>
+      <Time>2011-04-07T23:49:09.0094-04:00</Time>
     </Item>
     <Item>
       <Source>UI\SplashScreen.png</Source>
@@ -418,8 +418,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SplashScreen.xnb</Output>
-      <Time>2011-04-04T21:53:34.6555494-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\SplashScreen.xnb</Output>
+      <Time>2011-04-05T13:49:53.7854-04:00</Time>
     </Item>
     <Item>
       <Source>UI\activeScroll.png</Source>
@@ -427,8 +427,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\activeScroll.xnb</Output>
-      <Time>2011-04-04T22:12:48.6045515-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\activeScroll.xnb</Output>
+      <Time>2011-04-05T13:49:53.7834-04:00</Time>
     </Item>
     <Item>
       <Source>UI\targetScroll.png</Source>
@@ -436,8 +436,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\targetScroll.xnb</Output>
-      <Time>2011-04-04T22:13:58.2635357-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\targetScroll.xnb</Output>
+      <Time>2011-04-05T13:49:53.7534-04:00</Time>
     </Item>
     <Item>
       <Source>UI\black.png</Source>
@@ -445,8 +445,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\black.xnb</Output>
-      <Time>2011-04-04T23:52:33.5158688-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\black.xnb</Output>
+      <Time>2011-04-05T13:49:53.7574-04:00</Time>
     </Item>
     <Item>
       <Source>UI\blue.png</Source>
@@ -454,8 +454,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\blue.xnb</Output>
-      <Time>2011-04-04T23:52:33.5208691-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\blue.xnb</Output>
+      <Time>2011-04-05T13:49:53.7764-04:00</Time>
     </Item>
     <Item>
       <Source>UI\green.png</Source>
@@ -463,8 +463,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\green.xnb</Output>
-      <Time>2011-04-04T23:52:33.3358585-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\green.xnb</Output>
+      <Time>2011-04-05T13:49:53.7454-04:00</Time>
     </Item>
     <Item>
       <Source>UI\red.png</Source>
@@ -472,8 +472,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\red.xnb</Output>
-      <Time>2011-04-04T23:52:33.5108685-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\red.xnb</Output>
+      <Time>2011-04-05T13:49:53.7554-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Damaged\wall_bottomleft_turn_in.png</Source>
@@ -481,8 +481,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_bottomleft_turn_in.xnb</Output>
-      <Time>2011-04-05T21:28:18.2312216-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_bottomleft_turn_in.xnb</Output>
+      <Time>2011-04-05T13:49:36.0444-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Damaged\wall_bottomleft_turn_out.png</Source>
@@ -490,8 +490,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_bottomleft_turn_out.xnb</Output>
-      <Time>2011-04-05T21:28:18.2342217-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_bottomleft_turn_out.xnb</Output>
+      <Time>2011-04-05T13:49:36.0464-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Damaged\wall_bottomright_turn_in.png</Source>
@@ -499,8 +499,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_bottomright_turn_in.xnb</Output>
-      <Time>2011-04-05T21:28:18.2362218-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_bottomright_turn_in.xnb</Output>
+      <Time>2011-04-05T13:49:36.1154-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Damaged\wall_bottomright_turn_out.png</Source>
@@ -508,8 +508,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_bottomright_turn_out.xnb</Output>
-      <Time>2011-04-05T21:28:18.239222-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_bottomright_turn_out.xnb</Output>
+      <Time>2011-04-05T13:49:36.1184-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Damaged\wall_bottom_1.png</Source>
@@ -517,8 +517,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_bottom_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.2412221-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_bottom_1.xnb</Output>
+      <Time>2011-04-05T13:49:36.1034-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Damaged\wall_bottom_2.png</Source>
@@ -526,8 +526,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_bottom_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.2442223-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_bottom_2.xnb</Output>
+      <Time>2011-04-05T13:49:36.1054-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Damaged\wall_left_1.png</Source>
@@ -535,8 +535,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_left_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.2462224-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_left_1.xnb</Output>
+      <Time>2011-04-05T13:49:36.1204-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Damaged\wall_left_2.png</Source>
@@ -544,8 +544,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_left_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.2482225-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_left_2.xnb</Output>
+      <Time>2011-04-05T13:49:36.1554-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Damaged\wall_right_1.png</Source>
@@ -553,8 +553,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_right_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.2512227-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_right_1.xnb</Output>
+      <Time>2011-04-05T13:49:36.1074-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Damaged\wall_right_2.png</Source>
@@ -562,8 +562,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_right_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.2532228-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_right_2.xnb</Output>
+      <Time>2011-04-05T13:49:36.1114-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Damaged\wall_topleft_turn_in.png</Source>
@@ -571,8 +571,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_topleft_turn_in.xnb</Output>
-      <Time>2011-04-05T21:28:18.256223-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_topleft_turn_in.xnb</Output>
+      <Time>2011-04-05T13:49:36.1534-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Damaged\wall_topleft_turn_out.png</Source>
@@ -580,8 +580,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_topleft_turn_out.xnb</Output>
-      <Time>2011-04-05T21:28:18.2592232-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_topleft_turn_out.xnb</Output>
+      <Time>2011-04-05T13:49:36.1584-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Damaged\wall_topright_turn_in.png</Source>
@@ -589,8 +589,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_topright_turn_in.xnb</Output>
-      <Time>2011-04-05T21:28:18.2612233-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_topright_turn_in.xnb</Output>
+      <Time>2011-04-05T13:49:36.1094-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Damaged\wall_topright_turn_out.png</Source>
@@ -598,8 +598,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_topright_turn_out.xnb</Output>
-      <Time>2011-04-05T21:28:18.2642234-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_topright_turn_out.xnb</Output>
+      <Time>2011-04-05T13:49:36.1134-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Damaged\wall_top_1.png</Source>
@@ -607,8 +607,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_top_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.2672236-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_top_1.xnb</Output>
+      <Time>2011-04-05T13:49:36.0504-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Damaged\wall_top_2.png</Source>
@@ -616,8 +616,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_top_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.2692237-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Damaged\wall_top_2.xnb</Output>
+      <Time>2011-04-05T13:49:36.1004-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Floor\floor_1.png</Source>
@@ -625,8 +625,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Floor\floor_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.2722239-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Floor\floor_1.xnb</Output>
+      <Time>2011-04-05T13:49:35.7314-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Floor\floor_2.png</Source>
@@ -634,8 +634,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Floor\floor_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.2752241-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Floor\floor_2.xnb</Output>
+      <Time>2011-04-05T13:49:35.7334-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Floor\floor_3.png</Source>
@@ -643,8 +643,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Floor\floor_3.xnb</Output>
-      <Time>2011-04-05T21:28:18.2772242-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Floor\floor_3.xnb</Output>
+      <Time>2011-04-05T13:49:35.7354-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Floor\floor_4.png</Source>
@@ -652,8 +652,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Floor\floor_4.xnb</Output>
-      <Time>2011-04-05T21:28:18.2792243-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Floor\floor_4.xnb</Output>
+      <Time>2011-04-05T13:49:35.7774-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Floor\floor_5.png</Source>
@@ -661,8 +661,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Floor\floor_5.xnb</Output>
-      <Time>2011-04-05T21:28:18.2822245-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Floor\floor_5.xnb</Output>
+      <Time>2011-04-05T13:49:35.7954-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Floor\floor_6.png</Source>
@@ -670,8 +670,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Floor\floor_6.xnb</Output>
-      <Time>2011-04-05T21:28:18.2842246-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Floor\floor_6.xnb</Output>
+      <Time>2011-04-05T13:49:35.7974-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Normal\wall_bottomleft_turn_in.png</Source>
@@ -679,8 +679,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_bottomleft_turn_in.xnb</Output>
-      <Time>2011-04-05T21:28:18.2872248-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_bottomleft_turn_in.xnb</Output>
+      <Time>2011-04-05T13:49:36.8004-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Normal\wall_bottomleft_turn_out.png</Source>
@@ -688,8 +688,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_bottomleft_turn_out.xnb</Output>
-      <Time>2011-04-05T21:28:18.2902249-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_bottomleft_turn_out.xnb</Output>
+      <Time>2011-04-05T13:49:36.8034-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Normal\wall_bottomright_turn_in.png</Source>
@@ -697,8 +697,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_bottomright_turn_in.xnb</Output>
-      <Time>2011-04-05T21:28:18.292225-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_bottomright_turn_in.xnb</Output>
+      <Time>2011-04-05T13:49:36.8434-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Normal\wall_bottomright_turn_out.png</Source>
@@ -706,8 +706,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_bottomright_turn_out.xnb</Output>
-      <Time>2011-04-05T21:28:18.2952252-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_bottomright_turn_out.xnb</Output>
+      <Time>2011-04-05T13:49:36.8464-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Normal\wall_bottom_1.png</Source>
@@ -715,8 +715,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_bottom_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.2972253-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_bottom_1.xnb</Output>
+      <Time>2011-04-05T13:49:36.8304-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Normal\wall_bottom_2.png</Source>
@@ -724,8 +724,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_bottom_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.3002255-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_bottom_2.xnb</Output>
+      <Time>2011-04-05T13:49:36.8324-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Normal\wall_left_1.png</Source>
@@ -733,8 +733,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_left_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.3022256-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_left_1.xnb</Output>
+      <Time>2011-04-05T13:49:36.8484-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Normal\wall_left_2.png</Source>
@@ -742,8 +742,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_left_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.3052258-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_left_2.xnb</Output>
+      <Time>2011-04-05T13:49:36.8524-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Normal\wall_right_1.png</Source>
@@ -751,8 +751,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_right_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.3072259-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_right_1.xnb</Output>
+      <Time>2011-04-05T13:49:36.8354-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Normal\wall_right_2.png</Source>
@@ -760,8 +760,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_right_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.3102261-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_right_2.xnb</Output>
+      <Time>2011-04-05T13:49:36.8394-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Normal\wall_topleft_turn_in.png</Source>
@@ -769,8 +769,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_topleft_turn_in.xnb</Output>
-      <Time>2011-04-05T21:28:18.3132262-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_topleft_turn_in.xnb</Output>
+      <Time>2011-04-05T13:49:36.8504-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Normal\wall_topleft_turn_out.png</Source>
@@ -778,8 +778,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_topleft_turn_out.xnb</Output>
-      <Time>2011-04-05T21:28:18.3152264-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_topleft_turn_out.xnb</Output>
+      <Time>2011-04-05T13:49:36.8554-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Normal\wall_topright_turn_in.png</Source>
@@ -787,8 +787,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_topright_turn_in.xnb</Output>
-      <Time>2011-04-05T21:28:18.3182265-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_topright_turn_in.xnb</Output>
+      <Time>2011-04-05T13:49:36.8374-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Normal\wall_topright_turn_out.png</Source>
@@ -796,8 +796,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_topright_turn_out.xnb</Output>
-      <Time>2011-04-05T21:28:18.3202266-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_topright_turn_out.xnb</Output>
+      <Time>2011-04-05T13:49:36.8414-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Normal\wall_top_1.png</Source>
@@ -805,8 +805,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_top_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.3232268-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_top_1.xnb</Output>
+      <Time>2011-04-05T13:49:36.8054-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Normal\wall_top_2.png</Source>
@@ -814,8 +814,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_top_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.3252269-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Normal\wall_top_2.xnb</Output>
+      <Time>2011-04-05T13:49:36.8284-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\bench.png</Source>
@@ -823,8 +823,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\bench.xnb</Output>
-      <Time>2011-04-05T21:28:18.3282271-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\bench.xnb</Output>
+      <Time>2011-04-05T13:49:37.4414-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\bench_shadow.png</Source>
@@ -832,8 +832,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\bench_shadow.xnb</Output>
-      <Time>2011-04-05T21:28:18.3302272-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\bench_shadow.xnb</Output>
+      <Time>2011-04-05T13:49:37.4524-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\chair.png</Source>
@@ -841,8 +841,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\chair.xnb</Output>
-      <Time>2011-04-05T21:28:18.3332274-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\chair.xnb</Output>
+      <Time>2011-04-05T13:49:37.4544-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\chair_shadow.png</Source>
@@ -850,8 +850,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\chair_shadow.xnb</Output>
-      <Time>2011-04-05T21:28:18.3352275-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\chair_shadow.xnb</Output>
+      <Time>2011-04-05T13:49:37.5574-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\chest.png</Source>
@@ -859,8 +859,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\chest.xnb</Output>
-      <Time>2011-04-05T21:28:18.3382277-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\chest.xnb</Output>
+      <Time>2011-04-05T13:49:37.3554-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\chest_shadow.png</Source>
@@ -868,8 +868,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\chest_shadow.xnb</Output>
-      <Time>2011-04-05T21:28:18.3402278-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\chest_shadow.xnb</Output>
+      <Time>2011-04-05T13:49:37.3984-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\fireplace.png</Source>
@@ -877,8 +877,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\fireplace.xnb</Output>
-      <Time>2011-04-05T21:28:18.343228-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\fireplace.xnb</Output>
+      <Time>2011-04-05T13:49:37.5534-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\fireplace_shadow.png</Source>
@@ -886,8 +886,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\fireplace_shadow.xnb</Output>
-      <Time>2011-04-05T21:28:18.3452281-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\fireplace_shadow.xnb</Output>
+      <Time>2011-04-05T13:49:37.3244-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\table_bottom.png</Source>
@@ -895,8 +895,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_bottom.xnb</Output>
-      <Time>2011-04-05T21:28:18.3482282-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_bottom.xnb</Output>
+      <Time>2011-04-05T13:49:37.3964-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\table_bottomleft.png</Source>
@@ -904,8 +904,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_bottomleft.xnb</Output>
-      <Time>2011-04-05T21:28:18.3502284-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_bottomleft.xnb</Output>
+      <Time>2011-04-05T13:49:37.4854-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\table_bottomright.png</Source>
@@ -913,8 +913,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_bottomright.xnb</Output>
-      <Time>2011-04-05T21:28:18.3532285-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_bottomright.xnb</Output>
+      <Time>2011-04-05T13:49:37.3944-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\table_center.png</Source>
@@ -922,8 +922,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_center.xnb</Output>
-      <Time>2011-04-05T21:28:18.3552286-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_center.xnb</Output>
+      <Time>2011-04-05T13:49:37.5204-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\table_left.png</Source>
@@ -931,8 +931,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_left.xnb</Output>
-      <Time>2011-04-05T21:28:18.3582288-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_left.xnb</Output>
+      <Time>2011-04-05T13:49:37.3264-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\table_right.png</Source>
@@ -940,8 +940,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_right.xnb</Output>
-      <Time>2011-04-05T21:28:18.431233-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_right.xnb</Output>
+      <Time>2011-04-05T13:49:37.4474-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\table_shadow_bottom.png</Source>
@@ -949,8 +949,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_shadow_bottom.xnb</Output>
-      <Time>2011-04-05T21:28:18.4352332-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_shadow_bottom.xnb</Output>
+      <Time>2011-04-05T13:49:37.4444-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\table_shadow_bottomleft.png</Source>
@@ -958,8 +958,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_shadow_bottomleft.xnb</Output>
-      <Time>2011-04-05T21:28:18.4422336-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_shadow_bottomleft.xnb</Output>
+      <Time>2011-04-05T13:49:37.5554-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\table_shadow_bottomright.png</Source>
@@ -967,8 +967,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_shadow_bottomright.xnb</Output>
-      <Time>2011-04-05T21:28:18.4462339-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_shadow_bottomright.xnb</Output>
+      <Time>2011-04-05T13:49:37.4374-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\table_shadow_right.png</Source>
@@ -976,8 +976,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_shadow_right.xnb</Output>
-      <Time>2011-04-05T21:28:18.4512341-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_shadow_right.xnb</Output>
+      <Time>2011-04-05T13:49:37.5514-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\table_shadow_top.png</Source>
@@ -985,8 +985,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_shadow_top.xnb</Output>
-      <Time>2011-04-05T21:28:18.4562344-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_shadow_top.xnb</Output>
+      <Time>2011-04-05T13:49:37.4394-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\table_top.png</Source>
@@ -994,8 +994,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_top.xnb</Output>
-      <Time>2011-04-05T21:28:18.4602347-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_top.xnb</Output>
+      <Time>2011-04-05T13:49:37.3914-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\table_topleft.png</Source>
@@ -1003,8 +1003,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_topleft.xnb</Output>
-      <Time>2011-04-05T21:28:18.4652349-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_topleft.xnb</Output>
+      <Time>2011-04-05T13:49:37.4494-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Objects\table_topright.png</Source>
@@ -1012,8 +1012,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_topright.xnb</Output>
-      <Time>2011-04-05T21:28:18.4702352-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Objects\table_topright.xnb</Output>
+      <Time>2011-04-05T13:49:37.3894-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Shadows\shadow_bottom.png</Source>
@@ -1021,8 +1021,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Shadows\shadow_bottom.xnb</Output>
-      <Time>2011-04-05T21:28:18.4772356-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Shadows\shadow_bottom.xnb</Output>
+      <Time>2011-04-05T13:49:36.9824-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Shadows\shadow_left.png</Source>
@@ -1030,8 +1030,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Shadows\shadow_left.xnb</Output>
-      <Time>2011-04-05T21:28:18.4812359-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Shadows\shadow_left.xnb</Output>
+      <Time>2011-04-05T13:49:36.9114-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Shadows\shadow_top.png</Source>
@@ -1039,8 +1039,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Shadows\shadow_top.xnb</Output>
-      <Time>2011-04-05T21:28:18.4862361-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Shadows\shadow_top.xnb</Output>
+      <Time>2011-04-05T13:49:36.9804-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Shadows\shadow_topleft.png</Source>
@@ -1048,8 +1048,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Shadows\shadow_topleft.xnb</Output>
-      <Time>2011-04-05T21:28:18.4902364-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Shadows\shadow_topleft.xnb</Output>
+      <Time>2011-04-05T13:49:36.9134-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Shadows\shadow_topright.png</Source>
@@ -1057,8 +1057,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Shadows\shadow_topright.xnb</Output>
-      <Time>2011-04-05T21:28:18.4952367-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Shadows\shadow_topright.xnb</Output>
+      <Time>2011-04-05T13:49:36.9784-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Shadows\shadow_turn_in.png</Source>
@@ -1066,8 +1066,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Shadows\shadow_turn_in.xnb</Output>
-      <Time>2011-04-05T21:28:18.4982368-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Shadows\shadow_turn_in.xnb</Output>
+      <Time>2011-04-05T13:49:36.9424-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Interior\Shadows\shadow_turn_out.png</Source>
@@ -1075,8 +1075,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Shadows\shadow_turn_out.xnb</Output>
-      <Time>2011-04-05T21:28:18.5042372-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Interior\Shadows\shadow_turn_out.xnb</Output>
+      <Time>2011-04-05T13:49:36.9764-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_bottomleft.png</Source>
@@ -1084,8 +1084,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_bottomleft.xnb</Output>
-      <Time>2011-04-05T21:28:18.5132377-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_bottomleft.xnb</Output>
+      <Time>2011-04-05T13:49:38.2514-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_bottomright.png</Source>
@@ -1093,8 +1093,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_bottomright.xnb</Output>
-      <Time>2011-04-05T21:28:18.5172379-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_bottomright.xnb</Output>
+      <Time>2011-04-05T13:49:38.1664-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_bottom_1.png</Source>
@@ -1102,8 +1102,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_bottom_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.5222382-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_bottom_1.xnb</Output>
+      <Time>2011-04-05T13:49:38.6554-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_bottom_2.png</Source>
@@ -1111,8 +1111,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_bottom_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.5262384-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_bottom_2.xnb</Output>
+      <Time>2011-04-05T13:49:38.6584-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_diag_bottomleft.png</Source>
@@ -1120,8 +1120,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_bottomleft.xnb</Output>
-      <Time>2011-04-05T21:28:18.5312387-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_bottomleft.xnb</Output>
+      <Time>2011-04-05T13:49:38.1684-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_diag_bottomleft_2.png</Source>
@@ -1129,8 +1129,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_bottomleft_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.536239-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_bottomleft_2.xnb</Output>
+      <Time>2011-04-05T13:49:38.6534-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_diag_bottomright.png</Source>
@@ -1138,8 +1138,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_bottomright.xnb</Output>
-      <Time>2011-04-05T21:28:18.5402392-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_bottomright.xnb</Output>
+      <Time>2011-04-05T13:49:38.6604-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_diag_bottomright_2.png</Source>
@@ -1147,8 +1147,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_bottomright_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.5442395-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_bottomright_2.xnb</Output>
+      <Time>2011-04-05T13:49:38.2164-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_diag_left.png</Source>
@@ -1156,8 +1156,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_left.xnb</Output>
-      <Time>2011-04-05T21:28:18.5492397-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_left.xnb</Output>
+      <Time>2011-04-05T13:49:38.2494-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_diag_right.png</Source>
@@ -1165,8 +1165,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_right.xnb</Output>
-      <Time>2011-04-05T21:28:18.55324-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_right.xnb</Output>
+      <Time>2011-04-05T13:49:38.1644-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_diag_topleft.png</Source>
@@ -1174,8 +1174,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_topleft.xnb</Output>
-      <Time>2011-04-05T21:28:18.5582403-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_topleft.xnb</Output>
+      <Time>2011-04-05T13:49:38.1614-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_diag_topleft_2.png</Source>
@@ -1183,8 +1183,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_topleft_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.5642406-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_topleft_2.xnb</Output>
+      <Time>2011-04-05T13:49:38.2534-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_diag_topright.png</Source>
@@ -1192,8 +1192,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_topright.xnb</Output>
-      <Time>2011-04-05T21:28:18.5692409-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_topright.xnb</Output>
+      <Time>2011-04-05T13:49:38.6504-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_diag_topright_2.png</Source>
@@ -1201,8 +1201,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_topright_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.5722411-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_diag_topright_2.xnb</Output>
+      <Time>2011-04-05T13:49:38.2124-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_left_1.png</Source>
@@ -1210,8 +1210,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_left_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.5772413-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_left_1.xnb</Output>
+      <Time>2011-04-05T13:49:38.2184-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_left_2.png</Source>
@@ -1219,8 +1219,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_left_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.5822416-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_left_2.xnb</Output>
+      <Time>2011-04-05T13:49:38.2204-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_right_1.png</Source>
@@ -1228,8 +1228,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_right_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.5862419-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_right_1.xnb</Output>
+      <Time>2011-04-05T13:49:38.0864-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_right_2.png</Source>
@@ -1237,8 +1237,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_right_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.5912421-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_right_2.xnb</Output>
+      <Time>2011-04-05T13:49:38.0894-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_topleft.png</Source>
@@ -1246,8 +1246,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_topleft.xnb</Output>
-      <Time>2011-04-05T21:28:18.5952424-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_topleft.xnb</Output>
+      <Time>2011-04-05T13:49:38.2234-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_topright.png</Source>
@@ -1255,8 +1255,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_topright.xnb</Output>
-      <Time>2011-04-05T21:28:18.5992426-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_topright.xnb</Output>
+      <Time>2011-04-05T13:49:38.1304-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_top_1.png</Source>
@@ -1264,8 +1264,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_top_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.6032428-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_top_1.xnb</Output>
+      <Time>2011-04-05T13:49:38.2564-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Cliff\cliff_top_2.png</Source>
@@ -1273,8 +1273,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_top_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.6082431-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Cliff\cliff_top_2.xnb</Output>
+      <Time>2011-04-05T13:49:38.6334-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\grass.png</Source>
@@ -1282,8 +1282,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\grass.xnb</Output>
-      <Time>2011-04-05T21:28:18.6152435-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\grass.xnb</Output>
+      <Time>2011-04-05T13:49:39.3964-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock.png</Source>
@@ -1291,8 +1291,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock.xnb</Output>
-      <Time>2011-04-05T21:28:18.6202438-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock.xnb</Output>
+      <Time>2011-04-05T13:49:39.3454-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_1.png</Source>
@@ -1300,8 +1300,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.624244-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_1.xnb</Output>
+      <Time>2011-04-05T13:49:39.3934-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_2.png</Source>
@@ -1309,8 +1309,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.6292443-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_2.xnb</Output>
+      <Time>2011-04-05T13:49:39.3984-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_3.png</Source>
@@ -1318,8 +1318,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_3.xnb</Output>
-      <Time>2011-04-05T21:28:18.6332445-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_3.xnb</Output>
+      <Time>2011-04-05T13:49:39.4024-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_4.png</Source>
@@ -1327,8 +1327,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_4.xnb</Output>
-      <Time>2011-04-05T21:28:18.6382448-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_4.xnb</Output>
+      <Time>2011-04-05T13:49:39.4094-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_5.png</Source>
@@ -1336,8 +1336,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_5.xnb</Output>
-      <Time>2011-04-05T21:28:18.6432451-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_5.xnb</Output>
+      <Time>2011-04-05T13:49:39.4114-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_bottom.png</Source>
@@ -1345,8 +1345,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_bottom.xnb</Output>
-      <Time>2011-04-05T21:28:18.6472453-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_bottom.xnb</Output>
+      <Time>2011-04-05T13:49:39.4134-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_bottomleft_in.png</Source>
@@ -1354,8 +1354,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_bottomleft_in.xnb</Output>
-      <Time>2011-04-05T21:28:18.6522456-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_bottomleft_in.xnb</Output>
+      <Time>2011-04-05T13:49:39.4454-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_bottomleft_out.png</Source>
@@ -1363,8 +1363,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_bottomleft_out.xnb</Output>
-      <Time>2011-04-05T21:28:18.6572459-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_bottomleft_out.xnb</Output>
+      <Time>2011-04-05T13:49:39.4774-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_bottomright_in.png</Source>
@@ -1372,8 +1372,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_bottomright_in.xnb</Output>
-      <Time>2011-04-05T21:28:18.6622462-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_bottomright_in.xnb</Output>
+      <Time>2011-04-05T13:49:39.3854-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_bottomright_out.png</Source>
@@ -1381,8 +1381,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_bottomright_out.xnb</Output>
-      <Time>2011-04-05T21:28:18.6662464-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_bottomright_out.xnb</Output>
+      <Time>2011-04-05T13:49:39.3874-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_left.png</Source>
@@ -1390,8 +1390,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_left.xnb</Output>
-      <Time>2011-04-05T21:28:18.6712467-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_left.xnb</Output>
+      <Time>2011-04-05T13:49:39.3914-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_right.png</Source>
@@ -1399,8 +1399,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_right.xnb</Output>
-      <Time>2011-04-05T21:28:18.676247-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_right.xnb</Output>
+      <Time>2011-04-05T13:49:39.4824-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_top.png</Source>
@@ -1408,8 +1408,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_top.xnb</Output>
-      <Time>2011-04-05T21:28:18.6812473-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_top.xnb</Output>
+      <Time>2011-04-05T13:49:39.4044-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_topleft_in.png</Source>
@@ -1417,8 +1417,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_topleft_in.xnb</Output>
-      <Time>2011-04-05T21:28:18.6852475-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_topleft_in.xnb</Output>
+      <Time>2011-04-05T13:49:39.4064-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_topleft_out.png</Source>
@@ -1426,8 +1426,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_topleft_out.xnb</Output>
-      <Time>2011-04-05T21:28:18.6922479-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_topleft_out.xnb</Output>
+      <Time>2011-04-05T13:49:39.4434-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_topright_in.png</Source>
@@ -1435,8 +1435,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_topright_in.xnb</Output>
-      <Time>2011-04-05T21:28:18.6972482-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_topright_in.xnb</Output>
+      <Time>2011-04-05T13:49:39.3484-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Ground\rock_topright_out.png</Source>
@@ -1444,8 +1444,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_topright_out.xnb</Output>
-      <Time>2011-04-05T21:28:18.7022485-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Ground\rock_topright_out.xnb</Output>
+      <Time>2011-04-05T13:49:39.3504-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Objects\bush.png</Source>
@@ -1453,8 +1453,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Objects\bush.xnb</Output>
-      <Time>2011-04-05T21:28:18.7092489-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Objects\bush.xnb</Output>
+      <Time>2011-04-05T13:49:38.8804-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Objects\bush_shadow.png</Source>
@@ -1462,8 +1462,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Objects\bush_shadow.xnb</Output>
-      <Time>2011-04-05T21:28:18.7142492-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Objects\bush_shadow.xnb</Output>
+      <Time>2011-04-05T13:49:39.0054-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Objects\rock_short.png</Source>
@@ -1471,8 +1471,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Objects\rock_short.xnb</Output>
-      <Time>2011-04-05T21:28:18.7192495-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Objects\rock_short.xnb</Output>
+      <Time>2011-04-05T13:49:38.8374-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Objects\rock_short_shadow.png</Source>
@@ -1480,8 +1480,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Objects\rock_short_shadow.xnb</Output>
-      <Time>2011-04-05T21:28:18.7232497-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Objects\rock_short_shadow.xnb</Output>
+      <Time>2011-04-05T13:49:38.8824-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Objects\rock_tall.png</Source>
@@ -1489,8 +1489,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Objects\rock_tall.xnb</Output>
-      <Time>2011-04-05T21:28:18.72825-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Objects\rock_tall.xnb</Output>
+      <Time>2011-04-05T13:49:39.0084-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Objects\rock_tall_shadow.png</Source>
@@ -1498,8 +1498,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Objects\rock_tall_shadow.xnb</Output>
-      <Time>2011-04-05T21:28:18.7332503-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Objects\rock_tall_shadow.xnb</Output>
+      <Time>2011-04-05T13:49:38.8424-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Objects\tree.png</Source>
@@ -1507,8 +1507,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Objects\tree.xnb</Output>
-      <Time>2011-04-05T21:28:18.7372505-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Objects\tree.xnb</Output>
+      <Time>2011-04-05T13:49:38.8394-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Outside\Objects\tree_shadow.png</Source>
@@ -1516,8 +1516,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Objects\tree_shadow.xnb</Output>
-      <Time>2011-04-05T21:28:18.7422508-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Outside\Objects\tree_shadow.xnb</Output>
+      <Time>2011-04-05T13:49:38.8844-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\doorway.png</Source>
@@ -1525,8 +1525,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\doorway.xnb</Output>
-      <Time>2011-04-05T21:28:18.7522514-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\doorway.xnb</Output>
+      <Time>2011-04-05T13:49:35.6384-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\door_knob.png</Source>
@@ -1534,8 +1534,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\door_knob.xnb</Output>
-      <Time>2011-04-05T21:28:18.7562516-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\door_knob.xnb</Output>
+      <Time>2011-04-05T13:49:35.6284-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\door_left.png</Source>
@@ -1543,8 +1543,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\door_left.xnb</Output>
-      <Time>2011-04-05T21:28:18.7612519-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\door_left.xnb</Output>
+      <Time>2011-04-05T13:49:35.6304-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\door_right.png</Source>
@@ -1552,8 +1552,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\door_right.xnb</Output>
-      <Time>2011-04-05T21:28:18.7662522-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\door_right.xnb</Output>
+      <Time>2011-04-05T13:49:35.6344-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\fence_1.png</Source>
@@ -1561,8 +1561,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.7742526-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_1.xnb</Output>
+      <Time>2011-04-05T13:49:35.1844-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\fence_2.png</Source>
@@ -1570,8 +1570,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.7792529-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_2.xnb</Output>
+      <Time>2011-04-05T13:49:35.1864-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\fence_3.png</Source>
@@ -1579,8 +1579,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_3.xnb</Output>
-      <Time>2011-04-05T21:28:18.7832531-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_3.xnb</Output>
+      <Time>2011-04-05T13:49:35.1914-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\fence_end_bottom.png</Source>
@@ -1588,8 +1588,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_end_bottom.xnb</Output>
-      <Time>2011-04-05T21:28:18.7882534-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_end_bottom.xnb</Output>
+      <Time>2011-04-05T13:49:35.2094-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\fence_end_left.png</Source>
@@ -1597,8 +1597,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_end_left.xnb</Output>
-      <Time>2011-04-05T21:28:18.7922536-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_end_left.xnb</Output>
+      <Time>2011-04-05T13:49:35.1794-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\fence_end_right.png</Source>
@@ -1606,8 +1606,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_end_right.xnb</Output>
-      <Time>2011-04-05T21:28:18.7972539-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_end_right.xnb</Output>
+      <Time>2011-04-05T13:49:35.1944-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\fence_end_top.png</Source>
@@ -1615,8 +1615,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_end_top.xnb</Output>
-      <Time>2011-04-05T21:28:18.8022542-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_end_top.xnb</Output>
+      <Time>2011-04-05T13:49:35.2014-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\fence_turn_bottomleft.png</Source>
@@ -1624,8 +1624,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_turn_bottomleft.xnb</Output>
-      <Time>2011-04-05T21:28:18.8062544-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_turn_bottomleft.xnb</Output>
+      <Time>2011-04-05T13:49:35.1994-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\fence_turn_bottomright.png</Source>
@@ -1633,8 +1633,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_turn_bottomright.xnb</Output>
-      <Time>2011-04-05T21:28:18.8112547-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_turn_bottomright.xnb</Output>
+      <Time>2011-04-05T13:49:35.2074-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\fence_turn_topleft.png</Source>
@@ -1642,8 +1642,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_turn_topleft.xnb</Output>
-      <Time>2011-04-05T21:28:18.815255-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_turn_topleft.xnb</Output>
+      <Time>2011-04-05T13:49:35.1964-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\fence_turn_topright.png</Source>
@@ -1651,8 +1651,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_turn_topright.xnb</Output>
-      <Time>2011-04-05T21:28:18.8202552-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_turn_topright.xnb</Output>
+      <Time>2011-04-05T13:49:35.2034-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\fence_vert_1.png</Source>
@@ -1660,8 +1660,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_vert_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.8242555-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_vert_1.xnb</Output>
+      <Time>2011-04-05T13:49:35.1814-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\fence_vert_2.png</Source>
@@ -1669,8 +1669,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_vert_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.8302558-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\fence_vert_2.xnb</Output>
+      <Time>2011-04-05T13:49:35.1894-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_bottom.png</Source>
@@ -1678,8 +1678,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_bottom.xnb</Output>
-      <Time>2011-04-05T21:28:18.8372562-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_bottom.xnb</Output>
+      <Time>2011-04-05T13:49:35.1134-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_bottomleft.png</Source>
@@ -1687,8 +1687,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_bottomleft.xnb</Output>
-      <Time>2011-04-05T21:28:18.8422565-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_bottomleft.xnb</Output>
+      <Time>2011-04-05T13:49:35.1044-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_bottomright.png</Source>
@@ -1696,8 +1696,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_bottomright.xnb</Output>
-      <Time>2011-04-05T21:28:18.8472568-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_bottomright.xnb</Output>
+      <Time>2011-04-05T13:49:35.1084-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_end_bottom.png</Source>
@@ -1705,8 +1705,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_end_bottom.xnb</Output>
-      <Time>2011-04-05T21:28:18.8522571-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_end_bottom.xnb</Output>
+      <Time>2011-04-05T13:49:35.0994-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_end_right.png</Source>
@@ -1714,8 +1714,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_end_right.xnb</Output>
-      <Time>2011-04-05T21:28:18.8562573-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_end_right.xnb</Output>
+      <Time>2011-04-05T13:49:35.1114-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_left.png</Source>
@@ -1723,8 +1723,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_left.xnb</Output>
-      <Time>2011-04-05T21:28:18.8622576-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_left.xnb</Output>
+      <Time>2011-04-05T13:49:35.1014-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_sliver.png</Source>
@@ -1732,8 +1732,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_sliver.xnb</Output>
-      <Time>2011-04-05T21:28:18.8672579-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_sliver.xnb</Output>
+      <Time>2011-04-05T13:49:35.1164-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_top.png</Source>
@@ -1741,8 +1741,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_top.xnb</Output>
-      <Time>2011-04-05T21:28:18.8712582-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_top.xnb</Output>
+      <Time>2011-04-05T13:49:35.1064-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_turn.png</Source>
@@ -1750,8 +1750,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_turn.xnb</Output>
-      <Time>2011-04-05T21:28:18.8762584-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Damaged\Shadow\fence_shadow_turn.xnb</Output>
+      <Time>2011-04-05T13:49:35.0974-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\fence_1.png</Source>
@@ -1759,8 +1759,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.8832588-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_1.xnb</Output>
+      <Time>2011-04-05T13:49:35.4504-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\fence_2.png</Source>
@@ -1768,8 +1768,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.8882591-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_2.xnb</Output>
+      <Time>2011-04-05T13:49:35.4534-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\fence_3.png</Source>
@@ -1777,8 +1777,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_3.xnb</Output>
-      <Time>2011-04-05T21:28:18.8922594-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_3.xnb</Output>
+      <Time>2011-04-05T13:49:35.4574-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\fence_end_bottom.png</Source>
@@ -1786,8 +1786,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_end_bottom.xnb</Output>
-      <Time>2011-04-05T21:28:18.8982597-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_end_bottom.xnb</Output>
+      <Time>2011-04-05T13:49:35.4744-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\fence_end_left.png</Source>
@@ -1795,8 +1795,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_end_left.xnb</Output>
-      <Time>2011-04-05T21:28:18.9022599-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_end_left.xnb</Output>
+      <Time>2011-04-05T13:49:35.4454-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\fence_end_right.png</Source>
@@ -1804,8 +1804,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_end_right.xnb</Output>
-      <Time>2011-04-05T21:28:18.9102604-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_end_right.xnb</Output>
+      <Time>2011-04-05T13:49:35.4604-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\fence_end_top.png</Source>
@@ -1813,8 +1813,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_end_top.xnb</Output>
-      <Time>2011-04-05T21:28:18.9142606-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_end_top.xnb</Output>
+      <Time>2011-04-05T13:49:35.4674-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\fence_turn_bottomleft.png</Source>
@@ -1822,8 +1822,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_turn_bottomleft.xnb</Output>
-      <Time>2011-04-05T21:28:18.9192609-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_turn_bottomleft.xnb</Output>
+      <Time>2011-04-05T13:49:35.4654-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\fence_turn_bottomright.png</Source>
@@ -1831,8 +1831,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_turn_bottomright.xnb</Output>
-      <Time>2011-04-05T21:28:18.9242612-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_turn_bottomright.xnb</Output>
+      <Time>2011-04-05T13:49:35.4724-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\fence_turn_topleft.png</Source>
@@ -1840,8 +1840,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_turn_topleft.xnb</Output>
-      <Time>2011-04-05T21:28:18.9282614-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_turn_topleft.xnb</Output>
+      <Time>2011-04-05T13:49:35.4624-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\fence_turn_topright.png</Source>
@@ -1849,8 +1849,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_turn_topright.xnb</Output>
-      <Time>2011-04-05T21:28:18.9332617-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_turn_topright.xnb</Output>
+      <Time>2011-04-05T13:49:35.4704-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\fence_vert_1.png</Source>
@@ -1858,8 +1858,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_vert_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.9392621-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_vert_1.xnb</Output>
+      <Time>2011-04-05T13:49:35.4474-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\fence_vert_2.png</Source>
@@ -1867,8 +1867,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_vert_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.9442623-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\fence_vert_2.xnb</Output>
+      <Time>2011-04-05T13:49:35.4554-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_bottom.png</Source>
@@ -1876,8 +1876,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_bottom.xnb</Output>
-      <Time>2011-04-05T21:28:18.9502627-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_bottom.xnb</Output>
+      <Time>2011-04-05T13:49:35.3794-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_bottomleft.png</Source>
@@ -1885,8 +1885,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_bottomleft.xnb</Output>
-      <Time>2011-04-05T21:28:18.956263-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_bottomleft.xnb</Output>
+      <Time>2011-04-05T13:49:35.3704-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_bottomright.png</Source>
@@ -1894,8 +1894,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_bottomright.xnb</Output>
-      <Time>2011-04-05T21:28:18.9602633-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_bottomright.xnb</Output>
+      <Time>2011-04-05T13:49:35.3754-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_end_bottom.png</Source>
@@ -1903,8 +1903,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_end_bottom.xnb</Output>
-      <Time>2011-04-05T21:28:18.9642635-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_end_bottom.xnb</Output>
+      <Time>2011-04-05T13:49:35.3654-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_end_right.png</Source>
@@ -1912,8 +1912,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_end_right.xnb</Output>
-      <Time>2011-04-05T21:28:18.9692638-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_end_right.xnb</Output>
+      <Time>2011-04-05T13:49:35.3774-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_left.png</Source>
@@ -1921,8 +1921,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_left.xnb</Output>
-      <Time>2011-04-05T21:28:18.9742641-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_left.xnb</Output>
+      <Time>2011-04-05T13:49:35.3674-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_sliver.png</Source>
@@ -1930,8 +1930,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_sliver.xnb</Output>
-      <Time>2011-04-05T21:28:18.9792643-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_sliver.xnb</Output>
+      <Time>2011-04-05T13:49:35.3814-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_top.png</Source>
@@ -1939,8 +1939,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_top.xnb</Output>
-      <Time>2011-04-05T21:28:18.9832646-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_top.xnb</Output>
+      <Time>2011-04-05T13:49:35.3724-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_turn.png</Source>
@@ -1948,8 +1948,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_turn.xnb</Output>
-      <Time>2011-04-05T21:28:18.9882649-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\Fence\Normal\Shadow\fence_shadow_turn.xnb</Output>
+      <Time>2011-04-05T13:49:35.3624-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\window_1.png</Source>
@@ -1957,8 +1957,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\window_1.xnb</Output>
-      <Time>2011-04-05T21:28:18.9922651-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\window_1.xnb</Output>
+      <Time>2011-04-05T13:49:35.6424-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\window_2.png</Source>
@@ -1966,8 +1966,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\window_2.xnb</Output>
-      <Time>2011-04-05T21:28:18.9972654-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\window_2.xnb</Output>
+      <Time>2011-04-05T13:49:35.6454-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\window_broken_1.png</Source>
@@ -1975,8 +1975,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\window_broken_1.xnb</Output>
-      <Time>2011-04-05T21:28:19.0022657-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\window_broken_1.xnb</Output>
+      <Time>2011-04-05T13:49:35.6404-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Fixtures\window_broken_2.png</Source>
@@ -1984,8 +1984,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\window_broken_2.xnb</Output>
-      <Time>2011-04-05T21:28:19.0062659-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Fixtures\window_broken_2.xnb</Output>
+      <Time>2011-04-05T13:49:35.6474-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_bottom_1.png</Source>
@@ -1993,8 +1993,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_bottom_1.xnb</Output>
-      <Time>2011-04-05T21:28:19.0132663-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_bottom_1.xnb</Output>
+      <Time>2011-04-05T13:49:34.8514-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_bottom_2.png</Source>
@@ -2002,8 +2002,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_bottom_2.xnb</Output>
-      <Time>2011-04-05T21:28:19.0202667-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_bottom_2.xnb</Output>
+      <Time>2011-04-05T13:49:34.8634-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_bottom_left_1.png</Source>
@@ -2011,8 +2011,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_bottom_left_1.xnb</Output>
-      <Time>2011-04-05T21:28:19.0242669-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_bottom_left_1.xnb</Output>
+      <Time>2011-04-05T13:49:34.7074-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_bottom_left_2.png</Source>
@@ -2020,8 +2020,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_bottom_left_2.xnb</Output>
-      <Time>2011-04-05T21:28:19.0292672-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_bottom_left_2.xnb</Output>
+      <Time>2011-04-05T13:49:34.7574-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_bottom_right_1.png</Source>
@@ -2029,8 +2029,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_bottom_right_1.xnb</Output>
-      <Time>2011-04-05T21:28:19.0342675-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_bottom_right_1.xnb</Output>
+      <Time>2011-04-05T13:49:34.8414-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_bottom_right_2.png</Source>
@@ -2038,8 +2038,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_bottom_right_2.xnb</Output>
-      <Time>2011-04-05T21:28:19.0382677-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_bottom_right_2.xnb</Output>
+      <Time>2011-04-05T13:49:34.8464-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_joint_bottom_left_1.png</Source>
@@ -2047,8 +2047,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_joint_bottom_left_1.xnb</Output>
-      <Time>2011-04-05T21:28:19.043268-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_joint_bottom_left_1.xnb</Output>
+      <Time>2011-04-05T13:49:34.7684-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_joint_bottom_left_2.png</Source>
@@ -2056,8 +2056,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_joint_bottom_left_2.xnb</Output>
-      <Time>2011-04-05T21:28:19.0482683-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_joint_bottom_left_2.xnb</Output>
+      <Time>2011-04-05T13:49:34.7704-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_joint_bottom_right_1.png</Source>
@@ -2065,8 +2065,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_joint_bottom_right_1.xnb</Output>
-      <Time>2011-04-05T21:28:19.0532686-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_joint_bottom_right_1.xnb</Output>
+      <Time>2011-04-05T13:49:34.8554-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_joint_bottom_right_2.png</Source>
@@ -2074,8 +2074,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_joint_bottom_right_2.xnb</Output>
-      <Time>2011-04-05T21:28:19.0582689-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_joint_bottom_right_2.xnb</Output>
+      <Time>2011-04-05T13:49:34.8604-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_joint_top_left_1.png</Source>
@@ -2083,8 +2083,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_joint_top_left_1.xnb</Output>
-      <Time>2011-04-05T21:28:19.0622691-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_joint_top_left_1.xnb</Output>
+      <Time>2011-04-05T13:49:34.7344-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_joint_top_left_2.png</Source>
@@ -2092,8 +2092,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_joint_top_left_2.xnb</Output>
-      <Time>2011-04-05T21:28:19.0672694-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_joint_top_left_2.xnb</Output>
+      <Time>2011-04-05T13:49:34.7594-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_joint_top_right_1.png</Source>
@@ -2101,8 +2101,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_joint_top_right_1.xnb</Output>
-      <Time>2011-04-05T21:28:19.0722697-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_joint_top_right_1.xnb</Output>
+      <Time>2011-04-05T13:49:34.8434-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_joint_top_right_2.png</Source>
@@ -2110,8 +2110,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_joint_top_right_2.xnb</Output>
-      <Time>2011-04-05T21:28:19.0762699-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_joint_top_right_2.xnb</Output>
+      <Time>2011-04-05T13:49:34.8484-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_topside_left_1.png</Source>
@@ -2119,8 +2119,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_topside_left_1.xnb</Output>
-      <Time>2011-04-05T21:28:19.0822702-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_topside_left_1.xnb</Output>
+      <Time>2011-04-05T13:49:34.7634-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_topside_left_2.png</Source>
@@ -2128,8 +2128,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_topside_left_2.xnb</Output>
-      <Time>2011-04-05T21:28:19.0872705-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_topside_left_2.xnb</Output>
+      <Time>2011-04-05T13:49:34.7734-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_topside_middle_1.png</Source>
@@ -2137,8 +2137,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_topside_middle_1.xnb</Output>
-      <Time>2011-04-05T21:28:19.0922708-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_topside_middle_1.xnb</Output>
+      <Time>2011-04-05T13:49:34.7754-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_topside_middle_2.png</Source>
@@ -2146,8 +2146,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_topside_middle_2.xnb</Output>
-      <Time>2011-04-05T21:28:19.096271-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_topside_middle_2.xnb</Output>
+      <Time>2011-04-05T13:49:34.8074-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_topside_right_1.png</Source>
@@ -2155,8 +2155,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_topside_right_1.xnb</Output>
-      <Time>2011-04-05T21:28:19.1012713-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_topside_right_1.xnb</Output>
+      <Time>2011-04-05T13:49:34.8534-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_topside_right_2.png</Source>
@@ -2164,8 +2164,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_topside_right_2.xnb</Output>
-      <Time>2011-04-05T21:28:19.1052715-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_topside_right_2.xnb</Output>
+      <Time>2011-04-05T13:49:34.8584-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_top_left_1.png</Source>
@@ -2173,8 +2173,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_top_left_1.xnb</Output>
-      <Time>2011-04-05T21:28:19.1112719-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_top_left_1.xnb</Output>
+      <Time>2011-04-05T13:49:34.6774-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_top_left_2.png</Source>
@@ -2182,8 +2182,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_top_left_2.xnb</Output>
-      <Time>2011-04-05T21:28:19.1152721-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_top_left_2.xnb</Output>
+      <Time>2011-04-05T13:49:34.6794-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_top_middle_1.png</Source>
@@ -2191,8 +2191,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_top_middle_1.xnb</Output>
-      <Time>2011-04-05T21:28:19.1202724-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_top_middle_1.xnb</Output>
+      <Time>2011-04-05T13:49:34.7614-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_top_middle_2.png</Source>
@@ -2200,8 +2200,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_top_middle_2.xnb</Output>
-      <Time>2011-04-05T21:28:19.1252727-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_top_middle_2.xnb</Output>
+      <Time>2011-04-05T13:49:34.7664-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_top_right_1.png</Source>
@@ -2209,8 +2209,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_top_right_1.xnb</Output>
-      <Time>2011-04-05T21:28:19.130273-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_top_right_1.xnb</Output>
+      <Time>2011-04-05T13:49:34.8104-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\house_top_right_2.png</Source>
@@ -2218,8 +2218,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_top_right_2.xnb</Output>
-      <Time>2011-04-05T21:28:19.1342732-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\house_top_right_2.xnb</Output>
+      <Time>2011-04-05T13:49:34.8384-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\Shadow\house_shadow_bottom.png</Source>
@@ -2227,8 +2227,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\Shadow\house_shadow_bottom.xnb</Output>
-      <Time>2011-04-05T21:28:19.1422737-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\Shadow\house_shadow_bottom.xnb</Output>
+      <Time>2011-04-05T13:49:33.7854-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\Shadow\house_shadow_bottomleft.png</Source>
@@ -2236,8 +2236,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\Shadow\house_shadow_bottomleft.xnb</Output>
-      <Time>2011-04-05T21:28:19.1472739-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\Shadow\house_shadow_bottomleft.xnb</Output>
+      <Time>2011-04-05T13:49:33.8144-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\Shadow\house_shadow_bottomright.png</Source>
@@ -2245,8 +2245,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\Shadow\house_shadow_bottomright.xnb</Output>
-      <Time>2011-04-05T21:28:19.1512742-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\Shadow\house_shadow_bottomright.xnb</Output>
+      <Time>2011-04-05T13:49:33.8174-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\Shadow\house_shadow_left.png</Source>
@@ -2254,8 +2254,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\Shadow\house_shadow_left.xnb</Output>
-      <Time>2011-04-05T21:28:19.1572745-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\Shadow\house_shadow_left.xnb</Output>
+      <Time>2011-04-05T13:49:33.8124-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\Shadow\house_shadow_top.png</Source>
@@ -2263,8 +2263,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\Shadow\house_shadow_top.xnb</Output>
-      <Time>2011-04-05T21:28:19.1612747-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\Shadow\house_shadow_top.xnb</Output>
+      <Time>2011-04-05T13:49:33.8194-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\Shadow\house_shadow_turn_1.png</Source>
@@ -2272,8 +2272,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\Shadow\house_shadow_turn_1.xnb</Output>
-      <Time>2011-04-05T21:28:19.166275-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\Shadow\house_shadow_turn_1.xnb</Output>
+      <Time>2011-04-05T13:49:33.7874-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\House\Shadow\house_shadow_turn_2.png</Source>
@@ -2281,8 +2281,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\Shadow\house_shadow_turn_2.xnb</Output>
-      <Time>2011-04-05T21:28:19.1702753-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\House\Shadow\house_shadow_turn_2.xnb</Output>
+      <Time>2011-04-05T13:49:33.8094-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_1.png</Source>
@@ -2290,8 +2290,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_1.xnb</Output>
-      <Time>2011-04-05T21:28:19.1772757-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_1.xnb</Output>
+      <Time>2011-04-05T13:49:33.3494-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_2.png</Source>
@@ -2299,8 +2299,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_2.xnb</Output>
-      <Time>2011-04-05T21:28:19.1812759-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_2.xnb</Output>
+      <Time>2011-04-05T13:49:33.3514-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_3.png</Source>
@@ -2308,8 +2308,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_3.xnb</Output>
-      <Time>2011-04-05T21:28:19.1862762-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_3.xnb</Output>
+      <Time>2011-04-05T13:49:33.3704-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_4.png</Source>
@@ -2317,8 +2317,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_4.xnb</Output>
-      <Time>2011-04-05T21:28:19.1922765-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_4.xnb</Output>
+      <Time>2011-04-05T13:49:33.4064-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_5.png</Source>
@@ -2326,8 +2326,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_5.xnb</Output>
-      <Time>2011-04-05T21:28:19.1972768-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_5.xnb</Output>
+      <Time>2011-04-05T13:49:33.4114-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_bottom.png</Source>
@@ -2335,8 +2335,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_bottom.xnb</Output>
-      <Time>2011-04-05T21:28:19.201277-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_bottom.xnb</Output>
+      <Time>2011-04-05T13:49:33.4134-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_bottomleft_in.png</Source>
@@ -2344,8 +2344,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_bottomleft_in.xnb</Output>
-      <Time>2011-04-05T21:28:19.2052773-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_bottomleft_in.xnb</Output>
+      <Time>2011-04-05T13:49:33.4194-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_bottomleft_out.png</Source>
@@ -2353,8 +2353,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_bottomleft_out.xnb</Output>
-      <Time>2011-04-05T21:28:19.2112776-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_bottomleft_out.xnb</Output>
+      <Time>2011-04-05T13:49:33.4214-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_bottomright_in.png</Source>
@@ -2362,8 +2362,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_bottomright_in.xnb</Output>
-      <Time>2011-04-05T21:28:19.2152778-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_bottomright_in.xnb</Output>
+      <Time>2011-04-05T13:49:33.4304-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_bottomright_out.png</Source>
@@ -2371,8 +2371,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_bottomright_out.xnb</Output>
-      <Time>2011-04-05T21:28:19.2192781-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_bottomright_out.xnb</Output>
+      <Time>2011-04-05T13:49:33.4324-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_left.png</Source>
@@ -2380,8 +2380,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_left.xnb</Output>
-      <Time>2011-04-05T21:28:19.2232783-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_left.xnb</Output>
+      <Time>2011-04-05T13:49:33.5314-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_right.png</Source>
@@ -2389,8 +2389,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_right.xnb</Output>
-      <Time>2011-04-05T21:28:19.2282786-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_right.xnb</Output>
+      <Time>2011-04-05T13:49:33.4234-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_top.png</Source>
@@ -2398,8 +2398,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_top.xnb</Output>
-      <Time>2011-04-05T21:28:19.2332789-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_top.xnb</Output>
+      <Time>2011-04-05T13:49:33.4044-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_topleft_in.png</Source>
@@ -2407,8 +2407,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_topleft_in.xnb</Output>
-      <Time>2011-04-05T21:28:19.2382792-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_topleft_in.xnb</Output>
+      <Time>2011-04-05T13:49:33.4084-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_topleft_out.png</Source>
@@ -2416,8 +2416,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_topleft_out.xnb</Output>
-      <Time>2011-04-05T21:28:19.2422794-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_topleft_out.xnb</Output>
+      <Time>2011-04-05T13:49:33.4164-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_topright_in.png</Source>
@@ -2425,8 +2425,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_topright_in.xnb</Output>
-      <Time>2011-04-05T21:28:19.2472797-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_topright_in.xnb</Output>
+      <Time>2011-04-05T13:49:33.4264-04:00</Time>
     </Item>
     <Item>
       <Source>Tiles\Town\Pavement\pavement_topright_out.png</Source>
@@ -2434,8 +2434,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_topright_out.xnb</Output>
-      <Time>2011-04-05T21:28:19.2512799-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Tiles\Town\Pavement\pavement_topright_out.xnb</Output>
+      <Time>2011-04-05T13:49:33.4284-04:00</Time>
     </Item>
     <Item>
       <Source>UI\menuScroll.png</Source>
@@ -2443,8 +2443,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\menuScroll.xnb</Output>
-      <Time>2011-04-07T18:52:13.3768473-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\menuScroll.xnb</Output>
+      <Time>2011-04-07T18:36:40.8772-04:00</Time>
     </Item>
     <Item>
       <Source>UI\SpriteFont1.spritefont</Source>
@@ -2452,8 +2452,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont1.xnb</Output>
-      <Time>2011-04-07T18:21:11.5979225-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont1.xnb</Output>
+      <Time>2011-04-07T18:06:32.024-04:00</Time>
     </Item>
     <Item>
       <Source>UI\SpriteFont2.spritefont</Source>
@@ -2461,8 +2461,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont2.xnb</Output>
-      <Time>2011-04-07T23:28:42.4878922-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont2.xnb</Output>
+      <Time>2011-04-07T19:33:46.6344-04:00</Time>
     </Item>
     <Item>
       <Source>UI\experimentation.spritefont</Source>
@@ -2470,8 +2470,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\experimentation.xnb</Output>
-      <Time>2011-04-04T21:53:34.6425486-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\experimentation.xnb</Output>
+      <Time>2011-04-05T13:49:53.7674-04:00</Time>
     </Item>
     <Item>
       <Source>UI\SpriteFont3.spritefont</Source>
@@ -2479,8 +2479,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont3.xnb</Output>
-      <Time>2011-04-04T21:53:34.6475489-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont3.xnb</Output>
+      <Time>2011-04-05T13:49:53.7804-04:00</Time>
     </Item>
     <Item>
       <Source>UI\SpriteFont4.spritefont</Source>
@@ -2488,8 +2488,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont4.xnb</Output>
-      <Time>2011-04-07T18:52:13.3768473-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont4.xnb</Output>
+      <Time>2011-04-07T18:48:16.4594-04:00</Time>
     </Item>
     <Item>
       <Source>UI\SpriteFont5.spritefont</Source>
@@ -2497,8 +2497,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont5.xnb</Output>
-      <Time>2011-04-07T18:52:13.3924474-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont5.xnb</Output>
+      <Time>2011-04-07T18:51:56.5534-04:00</Time>
     </Item>
     <Item>
       <Source>UI\SpriteFont6.spritefont</Source>
@@ -2506,8 +2506,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont6.xnb</Output>
-      <Time>2011-04-07T23:28:42.4818919-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont6.xnb</Output>
+      <Time>2011-04-07T21:28:21.2914-04:00</Time>
     </Item>
     <Item>
       <Source>UI\SpriteFont7.spritefont</Source>
@@ -2515,8 +2515,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont7.xnb</Output>
-      <Time>2011-04-08T00:33:56.5517639-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\SpriteFont7.xnb</Output>
+      <Time>2011-04-08T00:15:59.0984-04:00</Time>
     </Item>
     <Item>
       <Source>Music\POL-battle-march-long.wav</Source>
@@ -2524,8 +2524,8 @@
       <Importer>WavImporter</Importer>
       <Processor>SoundEffectProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Music\POL-battle-march-long.xnb</Output>
-      <Time>2011-03-26T14:15:04.4359375-04:00</Time>
+      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Music\POL-battle-march-long.xnb</Output>
+      <Time>2011-04-05T13:49:51.2084-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -2533,39 +2533,39 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\TriumphContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\TriumphContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\TriumphContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\TriumphContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2010-08-23T13:41:18-04:00</Value>
+        <Value>2010-08-23T12:41:18-04:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
-        <Value>2010-08-23T13:41:18-04:00</Value>
+        <Value>2010-08-23T12:41:18-04:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2010-08-23T13:41:18-04:00</Value>
+        <Value>2010-08-23T12:41:18-04:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2010-08-23T13:41:18-04:00</Value>
+        <Value>2010-08-23T12:41:18-04:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2010-08-23T13:41:18-04:00</Value>
+        <Value>2010-08-23T12:41:18-04:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2010-08-23T13:41:18-04:00</Value>
+        <Value>2010-08-23T12:41:18-04:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2011-02-21T09:57:11.2019999-05:00</Value>
+        <Value>2011-03-23T19:35:17.7976-04:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>
