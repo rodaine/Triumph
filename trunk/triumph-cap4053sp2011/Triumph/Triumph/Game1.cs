@@ -165,7 +165,10 @@ namespace Triumph
             }
             else
             {
-                ui.Update(gameTime, aKeyboardState, currentUnit, targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera);
+                bool end = false;
+                if (faction1.isDefeated || faction2.isDefeated)
+                    end = true;
+                ui.Update(gameTime, aKeyboardState, currentUnit, targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, range, end);
             }
             
             if (ui.readyToExit())
@@ -206,9 +209,14 @@ namespace Triumph
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            //faction1.draw(spriteBatch, camera);
-            //faction2.draw(spriteBatch, camera);
-            ui.Draw(gameTime, spriteBatch, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height, map, camera, cursor, testUnits, currentUnit, targetUnit);
+
+            int winner = 0;
+            if (faction2.isDefeated)
+                winner = 1;
+            else if (faction1.isDefeated)
+                winner = 2;
+
+            ui.Draw(gameTime, spriteBatch, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height, map, camera, cursor, testUnits, currentUnit, targetUnit, range, winner);
 
             base.Draw(gameTime);
         }

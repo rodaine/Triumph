@@ -20,7 +20,8 @@ namespace TileEngine
                 Title,
                 Main,
                 Pause,
-                Controls
+                Controls,
+                End
             }
             Screen mCurrentScreen = Screen.Title;
 
@@ -52,7 +53,7 @@ namespace TileEngine
             Texture2D mGreen;
             Texture2D mRed;
 
-            SpriteFont font, font2, font3, font4, font5, font6;
+            SpriteFont font, font2, font3, font4, font5, font6, font7;
             SpriteFont experiment;
         
             ContentManager Content;
@@ -83,6 +84,7 @@ namespace TileEngine
                 font4 = Content.Load<SpriteFont>("UI/SpriteFont4");
                 font5 = Content.Load<SpriteFont>("UI/SpriteFont5");
                 font6 = Content.Load<SpriteFont>("UI/SpriteFont6");
+                font7 = Content.Load<SpriteFont>("UI/SpriteFont7");
                 experiment = Content.Load<SpriteFont>("UI/experimentation");
             }
 
@@ -94,7 +96,7 @@ namespace TileEngine
                 return false;
             }
             
-            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit[] testUnits, Camera camera)
+            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit[] testUnits, Camera camera, Range range, bool gameWon)
             {
                 switch (mCurrentScreen)
                 {
@@ -119,234 +121,250 @@ namespace TileEngine
                     #region Main Game
                     case Screen.Main:
                         {
-                            //If the user presses the "Q" key while in the main game screen, bring
-                            //up the Menu options by switching the current state to Menu
-                            if (aKeyboardState.IsKeyDown(Keys.Escape) == true)
+                            if (!gameWon)
                             {
-                                mCurrentScreen = Screen.Pause;
-                            }
-
-                            if (aKeyboardState.IsKeyDown(Keys.C) == true)
-                            {
-                                mCurrentScreen = Screen.Controls;
-                            }
-
-
-                            if (currentUnit.faction.name == "Faction 1")
-                            {
-                                switch (mCurrentPhase)
+                                //If the user presses the "Q" key while in the main game screen, bring
+                                //up the Menu options by switching the current state to Menu
+                                if (aKeyboardState.IsKeyDown(Keys.Escape) == true)
                                 {
-                                    #region Menu
-                                    case (Phase.Menu):
+                                    mCurrentScreen = Screen.Pause;
+                                }
+
+                                if (aKeyboardState.IsKeyDown(Keys.C) == true)
+                                {
+                                    mCurrentScreen = Screen.Controls;
+                                }
+
+                                uiTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                                if (uiTimer >= secondsPerOption)
+                                {
+                                    if (currentUnit.faction.name == "Faction 1")
+                                    {
+                                        switch (mCurrentPhase)
                                         {
-                                            uiTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
-                                            if (uiTimer >= secondsPerOption)
-                                            {
-                                                uiTimer = 0;
-                                                switch (mCurrentOption)
+                                            #region Menu
+                                            case (Phase.Menu):
                                                 {
-                                                    #region Move
-                                                    case (MenuOption.Move):
-                                                        {
-                                                            if (aKeyboardState.IsKeyDown(Keys.X))
+                                                    uiTimer = 0;
+                                                    switch (mCurrentOption)
+                                                    {
+                                                        #region Move
+                                                        case (MenuOption.Move):
                                                             {
-                                                                mCurrentPhase = Phase.Move;
-                                                            }
+                                                                if (aKeyboardState.IsKeyDown(Keys.Enter))
+                                                                {
+                                                                    mCurrentPhase = Phase.Move;
+                                                                }
 
-                                                            if (aKeyboardState.IsKeyDown(Keys.W))
-                                                            {
-                                                                mCurrentOption = MenuOption.EndTurn;
-                                                            }
-
-                                                            if (aKeyboardState.IsKeyDown(Keys.S))
-                                                            {
-                                                                if (currentUnit.AP != 0)
-                                                                    mCurrentOption = MenuOption.Attack;
-                                                                else
+                                                                if (aKeyboardState.IsKeyDown(Keys.W))
+                                                                {
                                                                     mCurrentOption = MenuOption.EndTurn;
-                                                            }
-                                                            break;
-                                                        }
-                                                    #endregion
+                                                                }
 
-                                                    #region Attack
-                                                    case (MenuOption.Attack):
-                                                        {
-                                                            if (aKeyboardState.IsKeyDown(Keys.X))
-                                                            {
-                                                                mCurrentPhase = Phase.Attack;
+                                                                if (aKeyboardState.IsKeyDown(Keys.S))
+                                                                {
+                                                                    if (currentUnit.AP != 0)
+                                                                        mCurrentOption = MenuOption.Attack;
+                                                                    else
+                                                                        mCurrentOption = MenuOption.EndTurn;
+                                                                }
+                                                                break;
                                                             }
+                                                        #endregion
 
-                                                            if (aKeyboardState.IsKeyDown(Keys.W))
+                                                        #region Attack
+                                                        case (MenuOption.Attack):
                                                             {
-                                                                if (currentUnit.MP != 0)
+                                                                if (aKeyboardState.IsKeyDown(Keys.Enter))
+                                                                {
+                                                                    mCurrentPhase = Phase.Attack;
+                                                                }
+
+                                                                if (aKeyboardState.IsKeyDown(Keys.W))
+                                                                {
+                                                                    if (currentUnit.MP != 0)
+                                                                        mCurrentOption = MenuOption.Move;
+                                                                    else
+                                                                        mCurrentOption = MenuOption.EndTurn;
+                                                                }
+
+                                                                if (aKeyboardState.IsKeyDown(Keys.S))
+                                                                {
+                                                                    if (currentUnit.AP != 0)
+                                                                        mCurrentOption = MenuOption.Ability;
+                                                                    else
+                                                                        mCurrentOption = MenuOption.EndTurn;
+                                                                }
+                                                                break;
+                                                            }
+                                                        #endregion
+
+                                                        #region Ability
+                                                        case (MenuOption.Ability):
+                                                            {
+                                                                if (aKeyboardState.IsKeyDown(Keys.Enter))
+                                                                {
+                                                                    mCurrentPhase = Phase.Ability;
+                                                                }
+
+                                                                if (aKeyboardState.IsKeyDown(Keys.W))
+                                                                {
+                                                                    if (currentUnit.AP != 0)
+                                                                        mCurrentOption = MenuOption.Attack;
+                                                                    else if (currentUnit.MP != 0)
+                                                                        mCurrentOption = MenuOption.Move;
+                                                                    else
+                                                                        mCurrentOption = MenuOption.EndTurn;
+                                                                }
+
+                                                                if (aKeyboardState.IsKeyDown(Keys.S))
+                                                                {
+                                                                    mCurrentOption = MenuOption.EndTurn;
+                                                                }
+                                                                break;
+                                                            }
+                                                        #endregion
+
+                                                        #region End Turn
+                                                        case (MenuOption.EndTurn):
+                                                            {
+                                                                if (aKeyboardState.IsKeyDown(Keys.Enter))
+                                                                {
+                                                                    currentUnit.isDone = true;
+                                                                    mCurrentPhase = Phase.Menu;
                                                                     mCurrentOption = MenuOption.Move;
-                                                                else
-                                                                    mCurrentOption = MenuOption.EndTurn;
-                                                            }
 
-                                                            if (aKeyboardState.IsKeyDown(Keys.S))
-                                                            {
-                                                                if (currentUnit.AP != 0)
-                                                                    mCurrentOption = MenuOption.Ability;
-                                                                else
-                                                                    mCurrentOption = MenuOption.EndTurn;
-                                                            }
-                                                            break;
-                                                        }
-                                                    #endregion
+                                                                }
 
-                                                    #region Ability
-                                                    case (MenuOption.Ability):
-                                                        {
-                                                            if (aKeyboardState.IsKeyDown(Keys.X))
-                                                            {
-                                                                mCurrentPhase = Phase.Ability;
-                                                            }
+                                                                if (aKeyboardState.IsKeyDown(Keys.W))
+                                                                {
+                                                                    if (currentUnit.AP != 0)
+                                                                        mCurrentOption = MenuOption.Ability;
+                                                                    else if (currentUnit.MP != 0)
+                                                                        mCurrentOption = MenuOption.Move;
+                                                                    else
+                                                                        mCurrentOption = MenuOption.EndTurn;
+                                                                }
 
-                                                            if (aKeyboardState.IsKeyDown(Keys.W))
-                                                            {
-                                                                if (currentUnit.AP != 0)
-                                                                    mCurrentOption = MenuOption.Attack;
-                                                                else if (currentUnit.MP != 0)
-                                                                    mCurrentOption = MenuOption.Move;
-                                                                else
-                                                                    mCurrentOption = MenuOption.EndTurn;
+                                                                if (aKeyboardState.IsKeyDown(Keys.S))
+                                                                {
+                                                                    if (currentUnit.MP != 0)
+                                                                        mCurrentOption = MenuOption.Move;
+                                                                    else if (currentUnit.AP != 0)
+                                                                        mCurrentOption = MenuOption.Attack;
+                                                                    else
+                                                                        mCurrentOption = MenuOption.EndTurn;
+                                                                }
+                                                                break;
                                                             }
+                                                        #endregion
+                                                    }
 
-                                                            if (aKeyboardState.IsKeyDown(Keys.S))
-                                                            {
-                                                                mCurrentOption = MenuOption.EndTurn;
-                                                            }
-                                                            break;
-                                                        }
-                                                    #endregion
 
-                                                    #region End Turn
-                                                    case (MenuOption.EndTurn):
-                                                        {
-                                                            if (aKeyboardState.IsKeyDown(Keys.X))
-                                                            {
-                                                                currentUnit.isDone = true;
-                                                                mCurrentPhase = Phase.Menu;
-                                                                mCurrentOption = MenuOption.Move;
-
-                                                            }
-
-                                                            if (aKeyboardState.IsKeyDown(Keys.W))
-                                                            {
-                                                                if (currentUnit.AP != 0)
-                                                                    mCurrentOption = MenuOption.Ability;
-                                                                else if (currentUnit.MP != 0)
-                                                                    mCurrentOption = MenuOption.Move;
-                                                                else
-                                                                    mCurrentOption = MenuOption.EndTurn;
-                                                            }
-
-                                                            if (aKeyboardState.IsKeyDown(Keys.S))
-                                                            {
-                                                                if (currentUnit.MP != 0)
-                                                                    mCurrentOption = MenuOption.Move;
-                                                                else if (currentUnit.AP != 0)
-                                                                    mCurrentOption = MenuOption.Attack;
-                                                                else
-                                                                    mCurrentOption = MenuOption.EndTurn;
-                                                            }
-                                                            break;
-                                                        }
-                                                    #endregion
+                                                    break;
                                                 }
-                                            }
+                                            #endregion
 
-                                            break;
-                                        }
-                                    #endregion
-
-                                    #region Move
-                                    case (Phase.Move):
-                                        {
-                                            if (Keyboard.GetState().IsKeyDown(Keys.Enter))
-                                            {
-                                                currentUnit.goToTile(Engine.convertPositionToTile(cursor.position), map);
-                                            }
-
-                                            if (!currentUnit.isWalking && currentUnit.MP == 0)
-                                            {
-                                                mCurrentPhase = Phase.Menu;
-                                                if (currentUnit.AP != 0)
-                                                    mCurrentOption = MenuOption.Attack;
-                                                else
-                                                    mCurrentOption = MenuOption.EndTurn;
-                                            }
-
-                                            if (aKeyboardState.IsKeyDown(Keys.Z) == true)
-                                            {
-                                                mCurrentPhase = Phase.Menu;
-                                                if (currentUnit.MP != 0)
-                                                    mCurrentOption = MenuOption.Move;
-                                                else if (currentUnit.AP != 0)
-                                                    mCurrentOption = MenuOption.Attack;
-                                                else
-                                                    mCurrentOption = MenuOption.EndTurn;
-                                            }
-
-                                            break;
-                                        }
-                                    #endregion
-
-                                    #region Attack/Ability
-                                    case (Phase.Attack):
-                                    case (Phase.Ability):
-                                        {
-                                            if (!currentUnit.isAttacking && currentUnit.AP == 0)
-                                            {
-                                                mCurrentPhase = Phase.Menu;
-                                                if (currentUnit.MP != 0)
-                                                    mCurrentOption = MenuOption.Move;
-                                                else
-                                                    mCurrentOption = MenuOption.EndTurn;
-                                            }
-                                            //attack or ability
-                                            //attacks, does nothing if there is no targetted unit or
-                                            //the targetted unit is dead or the current unit
-                                            if (Keyboard.GetState().IsKeyDown(Keys.E) && counter < 0)
-                                            {
-                                                if (targetUnit != null && !targetUnit.faction.Equals(currentUnit.faction) && !targetUnit.isDead && currentUnit.withinRange(targetUnit))
+                                            #region Move
+                                            case (Phase.Move):
                                                 {
-                                                    currentUnit.attack(targetUnit);
-                                                    System.Console.WriteLine(targetUnit.HP);
-                                                    currentUnit.isDone = true;
+                                                    range.clearPoints();
+                                                    range.addPoints(map.walkToPoints(currentUnit));
+                                                    range.isDrawing = true;
+
+                                                    if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                                                    {
+                                                        currentUnit.goToTile(Engine.convertPositionToTile(cursor.position), map);
+                                                    }
+
+                                                    if (!currentUnit.isWalking && currentUnit.MP == 0)
+                                                    {
+                                                        range.isDrawing = false;
+                                                        mCurrentPhase = Phase.Menu;
+                                                        if (currentUnit.AP != 0)
+                                                            mCurrentOption = MenuOption.Attack;
+                                                        else
+                                                            mCurrentOption = MenuOption.EndTurn;
+                                                    }
+
+                                                    if (aKeyboardState.IsKeyDown(Keys.Back) == true)
+                                                    {
+                                                        range.isDrawing = false;
+                                                        mCurrentPhase = Phase.Menu;
+                                                        if (currentUnit.MP != 0)
+                                                            mCurrentOption = MenuOption.Move;
+                                                        else if (currentUnit.AP != 0)
+                                                            mCurrentOption = MenuOption.Attack;
+                                                        else
+                                                            mCurrentOption = MenuOption.EndTurn;
+                                                    }
+
+                                                    break;
                                                 }
-                                            }
+                                            #endregion
 
-                                            if (aKeyboardState.IsKeyDown(Keys.Z) == true)
-                                            {
-                                                mCurrentPhase = Phase.Menu;
-                                                if (currentUnit.MP != 0)
-                                                    mCurrentOption = MenuOption.Move;
-                                                else if (currentUnit.AP != 0)
-                                                    mCurrentOption = MenuOption.Attack;
-                                                else
-                                                    mCurrentOption = MenuOption.EndTurn;
-                                            }
+                                            #region Attack/Ability
+                                            case (Phase.Attack):
+                                            case (Phase.Ability):
+                                                {
+                                                    range.clearPoints();
+                                                    range.addPoints(map.attackPoints(currentUnit, 1, false, true, false));
+                                                    range.isDrawing = true;
 
-                                            break;
+                                                    if (!currentUnit.isAttacking && currentUnit.AP == 0)
+                                                    {
+                                                        mCurrentPhase = Phase.Menu;
+                                                        if (currentUnit.MP != 0)
+                                                            mCurrentOption = MenuOption.Move;
+                                                        else
+                                                            mCurrentOption = MenuOption.EndTurn;
+                                                    }
+                                                    //attack or ability
+                                                    //attacks, does nothing if there is no targetted unit or
+                                                    //the targetted unit is dead or the current unit
+                                                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) && counter < 0)
+                                                    {
+                                                        if (targetUnit != null && !targetUnit.faction.Equals(currentUnit.faction) && !targetUnit.isDead && currentUnit.withinRange(targetUnit))
+                                                        {
+                                                            currentUnit.attack(targetUnit);
+                                                        }
+                                                    }
+
+                                                    if (aKeyboardState.IsKeyDown(Keys.Back) == true)
+                                                    {
+                                                        range.isDrawing = false;
+                                                        mCurrentPhase = Phase.Menu;
+                                                        if (currentUnit.MP != 0)
+                                                            mCurrentOption = MenuOption.Move;
+                                                        else if (currentUnit.AP != 0)
+                                                            mCurrentOption = MenuOption.Attack;
+                                                        else
+                                                            mCurrentOption = MenuOption.EndTurn;
+                                                    }
+
+                                                    break;
+                                                }
+                                            #endregion
                                         }
-                                    #endregion
+                                    }
+
+                                    foreach (BaseUnit unit in testUnits)
+                                    {
+                                        unit.update(gameTime, screenWidth, screenHeight, map);
+                                    }
+                                    if (mCurrentPhase != Phase.Menu)
+                                        cursor.update(gameTime, screenWidth, screenHeight, map);
+
+                                    camera.update(screenWidth, screenHeight, map);
                                 }
                             }
-
-                            foreach (BaseUnit unit in testUnits)
+                            else
                             {
-                                unit.update(gameTime, screenWidth, screenHeight, map);
+                                mCurrentScreen = Screen.End;
                             }
-                            if (mCurrentPhase != Phase.Menu)
-                                cursor.update(gameTime, screenWidth, screenHeight, map);
-
-                            camera.update(screenWidth, screenHeight, map);
-
                             break;
                         }
+                        
                     #endregion
 
                     #region Pause Screen
@@ -380,13 +398,30 @@ namespace TileEngine
                             break;
                         }
                     #endregion
+
+                    #region End
+                    case (Screen.End):
+                        {                            
+                            if(aKeyboardState.IsKeyDown(Keys.Escape))
+                            {
+                                exit = true;
+                            }
+
+                            if (aKeyboardState.IsKeyDown(Keys.Enter))
+                            {
+                                //reset method
+                                mCurrentScreen = Screen.Title;
+                            }
+                            break;
+                        }
+                    #endregion
                 }
 
             }
 
 
             //called from update, draws screen
-            public void Draw(GameTime gameTime, SpriteBatch spriteBatch, int winWidth, int winHeight, TileMap map, Camera camera, Cursor cursor, BaseUnit[] testUnits, BaseUnit currentUnit, BaseUnit targetUnit)
+            public void Draw(GameTime gameTime, SpriteBatch spriteBatch, int winWidth, int winHeight, TileMap map, Camera camera, Cursor cursor, BaseUnit[] testUnits, BaseUnit currentUnit, BaseUnit targetUnit, Range range, int winner)
             {
                 //spriteBatch.Begin();
 
@@ -408,6 +443,7 @@ namespace TileEngine
                     case Screen.Main:
                         {
                             map.draw(spriteBatch, camera);
+                            range.draw(spriteBatch, camera);
                             cursor.Draw(spriteBatch, camera);
                             foreach (BaseUnit unit in testUnits)
                             {
@@ -511,17 +547,45 @@ namespace TileEngine
                             str = "D : Right";
                             spriteBatch.DrawString(font2, str, new Vector2(winWidth / 4 + 30, winHeight / 4 + 6 * offset), Color.White);
 
-                            str = "X : Confirm Choice";
-                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2 + 30, winHeight / 4 + 2 * offset + (offset / 2)), Color.White);
+                            str = "ENTER : Confirm";
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2, winHeight / 4 + 2 * offset + (offset / 2)), Color.White);
 
-                            str = "Z : Cancel";
-                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2 + 30, winHeight / 4 + 3 * offset + (offset / 2)), Color.White);
+                            str = "BACKSPACE : Cancel";
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2, winHeight / 4 + 3 * offset + (offset / 2)), Color.White);
 
                             str = "C : Controls";
-                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2 + 30, winHeight / 4 + 4 * offset + (offset / 2)), Color.White);
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2, winHeight / 4 + 4 * offset + (offset / 2)), Color.White);
 
                             str = "R : Resume Game";
-                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2 + 30, winHeight / 4 + 5 * offset + (offset / 2)), Color.White);
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2, winHeight / 4 + 5 * offset + (offset / 2)), Color.White);
+
+                            spriteBatch.End();
+                            break;
+                        }
+                    #endregion
+
+                    #region End
+                    case (Screen.End):
+                        {
+                            map.draw(spriteBatch, camera);
+                            spriteBatch.Begin();
+
+                            String msg1 = "", msg2 = "";
+
+                            if (winner == 1)
+                            {
+                                msg1 = "Congratulations!";
+                                msg2 = "You have won!";
+                            }
+                            else if (winner == 2)
+                            {
+                                msg1 = "Good try...";
+                                msg2 = "The AI has won.";
+                            }
+
+                            spriteBatch.Draw(mTitleScreen, new Rectangle(0, 0, winWidth, winHeight), new Color(1f, 1f, 1f, .7f));
+                            spriteBatch.DrawString(font7, msg1, new Vector2(winWidth / 2 - 19 * msg1.Length, 50), Color.White);
+                            spriteBatch.DrawString(font7, msg2, new Vector2(winWidth / 2 - 19 * msg2.Length, 325), Color.White);
 
                             spriteBatch.End();
                             break;
