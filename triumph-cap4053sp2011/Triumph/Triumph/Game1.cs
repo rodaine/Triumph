@@ -112,7 +112,7 @@ namespace Triumph
 			map.layers.Add(TileLayer.fromFile(Content, "Content/Layers/outdoor_objs2.layer"));
 			map.collisionLayer = CollisionLayer.fromFile("Content/Layers/Collision.layer");
 			map.unitLayer = new UnitLayer(map.getWidthInTiles(), map.getHeightInTiles());
-			unitList = BaseUnit.fromFile(Content, "Content/Units/units.txt");
+			unitList = BaseUnit.fromFile(Content, "Content/Units/tempunits.txt");
 
 			soundMusic = Content.Load<SoundEffect>("Music/POL-battle-march-long");
 			soundMusicInstance = soundMusic.CreateInstance();

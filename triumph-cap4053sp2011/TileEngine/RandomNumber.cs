@@ -14,7 +14,6 @@ namespace TileEngine
         {
             Random ran = new Random();
             num = ran.Next(10000);
-            System.Console.WriteLine(num);
         }
 
         public static RandomNumber getInstance()

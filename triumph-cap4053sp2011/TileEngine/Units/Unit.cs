@@ -250,7 +250,8 @@ namespace TileEngine
 			_SPD = _delay = SPD;
             _isDone = false;
             _evade = _SPD/10;
-
+            _wDef = 0;
+            _wAtk = 0;
 			if (_HP > 0)
 				_isDead = false;
 			else
@@ -284,6 +285,8 @@ namespace TileEngine
             _SPD = _delay = SPD;
             _isDone = false;
             _evade = _SPD / 10;
+            _wDef = 0;
+            _wAtk = 0;
 			if (_HP > 0)
 				_isDead = false;
 			else
@@ -384,9 +387,9 @@ namespace TileEngine
 					if (string.IsNullOrEmpty(line)) continue;
 					if (line.Contains("///")) continue;
 					string[] unitParams = line.Split(',');
-					BaseUnit unit = new BaseUnit(unitParams[0].Trim(), int.Parse(unitParams[1].Trim()), int.Parse(unitParams[2].Trim()), int.Parse(unitParams[3].Trim()), int.Parse(unitParams[4].Trim()), int.Parse(unitParams[5].Trim()));
+					BaseUnit unit = new BaseUnit(unitParams[0].Trim(), int.Parse(unitParams[1].Trim()), int.Parse(unitParams[2].Trim()), int.Parse(unitParams[3].Trim()), int.Parse(unitParams[4].Trim()), int.Parse(unitParams[5].Trim()),  int.Parse(unitParams[6].Trim())*9/10,  int.Parse(unitParams[7].Trim())*3/2,  int.Parse(unitParams[8].Trim()),  int.Parse(unitParams[9].Trim()));
 
-					unit.unitSprite = new AnimatedSprite(content.Load<Texture2D>(unitParams[6].Trim()));
+					unit.unitSprite = new AnimatedSprite(content.Load<Texture2D>(unitParams[10].Trim()));
 					unit.unitSprite.animations.Add("Up", up);
 					unit.unitSprite.animations.Add("Down", down);
 					unit.unitSprite.animations.Add("Left", left);
@@ -411,10 +414,27 @@ namespace TileEngine
         /// <param name="rand"></param>
         public void attack(BaseUnit target)
         {
+            if (_isAttacking) return;
             _hasAttacked = true;
-            target.takeDamage(RandomNumber.getInstance().getNext(1,20)); //filler at the moment for an attack formula
             _isAttacking = true;
             _attackCD = 50;
+            int damage = 0;
+            if (_wAtk >0)
+            {
+                damage = _wAtk;
+            }
+            else
+            {
+                damage = RandomNumber.getInstance().getNext(1, 10); //filler at the moment for an attack formula
+            }
+
+            //check for critical hit
+            if (RandomNumber.getInstance().getNext(1, 100) < SPD / 20)
+            {
+                damage += damage / 2;
+            }
+            System.Console.WriteLine("Damage: " + damage);
+            target.takeDamage(damage);
         }
 
         /// <summary>
@@ -424,12 +444,18 @@ namespace TileEngine
         public void takeDamage(int amt)
         {
             int hit = RandomNumber.getInstance().getNext(1, 100);
-            System.Console.WriteLine("Hit chance rolled a " + hit);
-            if (hit > _evade)
+            if (hit > _evade) //hit
             {
-                this.HP -= amt;
+                //apply random variance
+                int dmg = Math.Max(amt - _wDef / 2, 1);
+                int x = dmg / 10;
+                dmg += RandomNumber.getInstance().getNext(0, 2 * x) - x;
+
+                //deal damage
+                System.Console.WriteLine("Damage after armor: " + dmg);
+                this.HP -= dmg;
             }
-            else
+            else // dodged attack
             {
                 System.Console.WriteLine(this.name + " dodged the attack.");
             }
