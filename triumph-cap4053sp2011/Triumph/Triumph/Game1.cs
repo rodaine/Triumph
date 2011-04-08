@@ -94,8 +94,6 @@ namespace Triumph
 			range.rangeTypes.Add("Select", new FrameAnimation(1, 32, 32, 64, 0));
 			range.rangeTypes.Add("Hidden", new FrameAnimation(1, 32, 32, 96, 0));
 			range.currentRangeTypeName = "Select";
-			range.addPoints(map.walkToPoints(faction1Units[0]));
-			range.isDrawing = true;
 
         }
 

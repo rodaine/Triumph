@@ -468,6 +468,76 @@ namespace TileEngine
 			return closedPoints;
 		}
 
+		public List<Point> attackPoints(BaseUnit unit, int range, bool isFriendly, bool isHostile, bool isSelf)
+		{
+			Stack<Point> openPoints = new Stack<Point>();
+			List<Point> closedPoints = new List<Point>();
+
+			if (range == 0) return closedPoints;
+			if (!isFriendly && !isHostile && !isSelf) return closedPoints;
+
+			openPoints.Push(unit.position);
+
+			while (openPoints.Count > 0)
+			{
+				Point current = openPoints.Pop();
+
+				//within range?
+				if (getDistance(unit.position, current) > range)
+					continue;
+
+				//check closedList
+				bool isClosed = false;
+				foreach (Point pt in closedPoints)
+					if (current.X == pt.X && current.Y == pt.Y)
+					{
+						isClosed = true;
+						break;
+					}
+				if (isClosed) continue;
+
+				//get neighbors
+				List<KeyValuePair<Point, int[]>> neighbors = getNeighbors(current);
+				foreach (KeyValuePair<Point, int[]> neighbor in neighbors)
+					openPoints.Push(neighbor.Key);
+
+				if (unitLayer.getTileUnitIndex(current) == 0)
+					continue;
+				else
+				{
+					bool self = false, hostile = true;
+					
+					if (unitLayer.getTileUnitIndex(current) == unit.unitIndex)
+						self = true;
+
+					foreach (BaseUnit ut in unit.faction.units)
+					{
+						if (unitLayer.getTileUnitIndex(current) == ut.unitIndex)
+							hostile = false;
+					}
+
+					if (self && isSelf)
+					{
+						closedPoints.Add(current);
+						continue;
+					}
+
+					if (hostile && isHostile)
+					{
+						closedPoints.Add(current);
+						continue;
+					}
+
+					if (!hostile && !self && isFriendly)
+					{
+						closedPoints.Add(current);
+					}
+				}
+			}
+
+			return closedPoints;
+		}
+
 		/// <summary>
 		/// Comparison function used by the getPath() method
 		/// </summary>
