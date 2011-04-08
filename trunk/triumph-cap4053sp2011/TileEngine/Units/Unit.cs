@@ -359,10 +359,10 @@ namespace TileEngine
         /// </summary>
         /// <param name="target"></param>
         /// <param name="rand"></param>
-        public void attack(BaseUnit target, RandomNumber rand)
+        public void attack(BaseUnit target)
         {
             _hasAttacked = true;
-            target.takeDamage(rand.getNext(1,20), rand); //filler at the moment for an attack formula
+            target.takeDamage(RandomNumber.getInstance().getNext(1,20)); //filler at the moment for an attack formula
             _delay += _SPD;
             _isDone = true;
         }
@@ -371,9 +371,9 @@ namespace TileEngine
         /// unit recieves amt amount of damage before armor and afinity multipliers
         /// </summary>
         /// <param name="amt"></param>
-        public void takeDamage(int amt, RandomNumber rand)
+        public void takeDamage(int amt)
         {
-            int hit = rand.getNext(1, 100);
+            int hit = RandomNumber.getInstance().getNext(1, 100);
             System.Console.WriteLine("Hit chance rolled a " + hit);
             if (hit > _evade)
             {

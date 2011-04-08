@@ -8,10 +8,12 @@ namespace TileEngine
 {
     public class AI
     {
+        #region data members
         private bool _startNextTurn;
         private BaseUnit _target;
         private Point _targetPoint;
         private bool _hasAttacked;
+        #endregion
 
         #region constructor
         public AI()
@@ -78,13 +80,17 @@ namespace TileEngine
 
         #region public methods
         /// <summary>
-        /// Does AI stuff
+        /// 
         /// </summary>
-        /// <param name="currentUnit">The unit whose turn it is</param>
-        /// <param name="map">The game map</param>
-        /// <param name="testUnits">All units on the game map</param>
-        /// <param name="rand">The game's random number generator</param>
-        public void update(GameTime gameTime, BaseUnit currentUnit, Cursor cursor, TileMap map, int viewWidth, int viewHeight, BaseUnit[] testUnits, Camera camera, RandomNumber rand)
+        /// <param name="gameTime"></param>
+        /// <param name="currentUnit"></param>
+        /// <param name="cursor"></param>
+        /// <param name="map"></param>
+        /// <param name="viewWidth"></param>
+        /// <param name="viewHeight"></param>
+        /// <param name="testUnits"></param>
+        /// <param name="camera"></param>
+        public void update(GameTime gameTime, BaseUnit currentUnit, Cursor cursor, TileMap map, int viewWidth, int viewHeight, BaseUnit[] testUnits, Camera camera)
         {
             if (_startNextTurn)
             {
@@ -126,7 +132,7 @@ namespace TileEngine
                     }
                     else if (!_hasAttacked && currentUnit.withinRange(_target))
                     {
-                        currentUnit.attack(_target, rand);
+                        currentUnit.attack(_target);
                         this._hasAttacked = true;
                     }
                     else if (currentUnit.MP == 0)
