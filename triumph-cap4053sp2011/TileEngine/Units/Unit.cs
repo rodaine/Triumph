@@ -31,7 +31,7 @@ namespace TileEngine
         Faction _faction;
 
 		//Attributes
-		private int _maxHP, _maxAP, _maxMP, _HP, _AP, _MP, _SPD, _delay;
+		private int _maxHP, _maxAP, _maxMP, _HP, _AP, _MP, _SPD, _delay, _range;
         private int _wAtk, _wDef, _mPow, _mRes, _evade; //stats used in FFT but not implemented yet here
         private bool _isDead, _isStunned, _isDone, _hasAttacked, _hasMoved;
         private List<Ability> moves;
@@ -300,7 +300,7 @@ namespace TileEngine
         }
 
         /// <summary>
-        /// creates an abilityless unit that has weapon attack, weapond def, magic power, magic resistance
+        /// creates an abilityless unit that has weapon attack, weapond def, magic power, magic resistance, attack range
         /// </summary>
         /// <param name="name"></param>
         /// <param name="maxHP"></param>
@@ -312,7 +312,7 @@ namespace TileEngine
         /// <param name="wDef"></param>
         /// <param name="mPow"></param>
         /// <param name="mRes"></param>
-        public BaseUnit(String name, int maxHP, int maxAP, int maxMP, int SPD, int unitAffinity, int wAtk, int wDef, int mPow, int mRes)
+        public BaseUnit(String name, int maxHP, int maxAP, int maxMP, int SPD, int unitAffinity, int wAtk, int wDef, int mPow, int mRes, int range)
         {
             this._name = name;
             _HP = _maxHP = maxHP;
@@ -325,6 +325,7 @@ namespace TileEngine
             _wDef = wDef;
             _mPow = mPow;
             _mRes = mRes;
+            _range = range;
             if (_HP > 0)
                 _isDead = false;
             else
@@ -387,9 +388,9 @@ namespace TileEngine
 					if (string.IsNullOrEmpty(line)) continue;
 					if (line.Contains("///")) continue;
 					string[] unitParams = line.Split(',');
-					BaseUnit unit = new BaseUnit(unitParams[0].Trim(), int.Parse(unitParams[1].Trim()), int.Parse(unitParams[2].Trim()), int.Parse(unitParams[3].Trim()), int.Parse(unitParams[4].Trim()), int.Parse(unitParams[5].Trim()),  int.Parse(unitParams[6].Trim())*9/10,  int.Parse(unitParams[7].Trim())*3/2,  int.Parse(unitParams[8].Trim()),  int.Parse(unitParams[9].Trim()));
+                    BaseUnit unit = new BaseUnit(unitParams[0].Trim(), int.Parse(unitParams[1].Trim()), int.Parse(unitParams[2].Trim()), int.Parse(unitParams[3].Trim()), int.Parse(unitParams[4].Trim()), int.Parse(unitParams[5].Trim()), int.Parse(unitParams[6].Trim()) * 9 / 10, int.Parse(unitParams[7].Trim()) * 3 / 2, int.Parse(unitParams[8].Trim()), int.Parse(unitParams[9].Trim()), int.Parse(unitParams[10].Trim()));
 
-					unit.unitSprite = new AnimatedSprite(content.Load<Texture2D>(unitParams[10].Trim()));
+					unit.unitSprite = new AnimatedSprite(content.Load<Texture2D>(unitParams[11].Trim()));
 					unit.unitSprite.animations.Add("Up", up);
 					unit.unitSprite.animations.Add("Down", down);
 					unit.unitSprite.animations.Add("Left", left);
@@ -414,27 +415,22 @@ namespace TileEngine
         /// <param name="rand"></param>
         public void attack(BaseUnit target)
         {
-            if (_isAttacking) return;
+            if (_hasAttacked) return;
             _hasAttacked = true;
             _isAttacking = true;
             _attackCD = 50;
-            int damage = 0;
+            int dmg = 0;
             if (_wAtk >0)
             {
-                damage = _wAtk;
+                dmg = _wAtk;
             }
             else
             {
-                damage = RandomNumber.getInstance().getNext(1, 10); //filler at the moment for an attack formula
+                dmg = RandomNumber.getInstance().getNext(1, 10); //filler at the moment for an attack formula
             }
 
-            //check for critical hit
-            if (RandomNumber.getInstance().getNext(1, 100) < SPD / 20)
-            {
-                damage += damage / 2;
-            }
-            System.Console.WriteLine("Damage: " + damage);
-            target.takeDamage(damage);
+            System.Console.WriteLine("Damage: " + dmg);
+            target.takeDamage(dmg);
         }
 
         /// <summary>
@@ -450,6 +446,13 @@ namespace TileEngine
                 int dmg = Math.Max(amt - _wDef / 2, 1);
                 int x = dmg / 10;
                 dmg += RandomNumber.getInstance().getNext(0, 2 * x) - x;
+
+                //check for critical hit
+                if (RandomNumber.getInstance().getNext(1, 100) < SPD / 20)
+                {
+                    dmg += dmg / 2;
+                    System.Console.WriteLine("CRITICAL HIT!");
+                }
 
                 //deal damage
                 System.Console.WriteLine("Damage after armor: " + dmg);
@@ -468,7 +471,7 @@ namespace TileEngine
         /// <returns></returns>
         public bool withinRange(BaseUnit target)
         {
-            return (Math.Abs(this.position.X - target.position.X) + Math.Abs(this.position.Y - target.position.Y)) == 1;
+            return (Math.Abs(this.position.X - target.position.X) + Math.Abs(this.position.Y - target.position.Y)) <= _range;
         }
 
 
