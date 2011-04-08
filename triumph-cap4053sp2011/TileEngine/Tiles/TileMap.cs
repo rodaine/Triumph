@@ -280,7 +280,6 @@ namespace TileEngine
                 isCollision = false,
                 isOpen = false,
                 isClosed = false,
-				isWalkOverable = false,
                 tentIsBetter = false;
             int openIndex = -1;
 
@@ -422,6 +421,52 @@ namespace TileEngine
             return path;
         }
 
+		/// <summary>
+		/// Get the points within walking range of a unit
+		/// </summary>
+		/// <param name="currentUnit">The unit currently attempting to walk</param>
+		/// <param name="map">The tilemap</param>
+		/// <returns>A list of points within walking range</returns>
+		public List<Point> walkToPoints(BaseUnit currentUnit)
+		{
+			Stack<Point> openPoints = new Stack<Point>();
+			List<Point> closedPoints = new List<Point>();
+
+			if (currentUnit.MP == 0) return closedPoints;
+
+			openPoints.Push(currentUnit.position);
+
+			while (openPoints.Count > 0)
+			{
+				Point current = openPoints.Pop();
+
+				//within walking range?
+				if (getDistance(currentUnit.position, current) > currentUnit.MP)
+					continue;
+
+				//is it empty?
+				if (!isEmpty(current) && currentUnit.unitIndex != unitLayer.getTileUnitIndex(current))
+					continue;
+
+				//check closedList
+				bool isClosed = false;
+				foreach (Point pt in closedPoints)
+					if (current.X == pt.X && current.Y == pt.Y)
+					{
+						isClosed = true;
+						break;
+					}
+				if (isClosed) continue;
+
+				//good to go...get the neighbors and add to closedList
+				List<KeyValuePair<Point, int[]>> neighbors = getNeighbors(current);
+				foreach (KeyValuePair<Point, int[]> neighbor in neighbors)
+					openPoints.Push(neighbor.Key);
+				closedPoints.Add(current);
+			}
+			
+			return closedPoints;
+		}
 
 		/// <summary>
 		/// Comparison function used by the getPath() method
