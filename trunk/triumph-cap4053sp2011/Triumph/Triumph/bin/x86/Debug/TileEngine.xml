@@ -4,6 +4,102 @@
         <name>TileEngine</name>
     </assembly>
     <members>
+        <member name="T:TileEngine.Camera">
+            <summary>
+            Describes the view of the map visible through the game's viewport
+            </summary>
+        </member>
+        <member name="F:TileEngine.Camera.position">
+            <summary>
+            The position (in pixels) of the camera
+            </summary>
+        </member>
+        <member name="M:TileEngine.Camera.setFocus(TileEngine.Cursor)">
+            <summary>
+            Sets the camera to follow around a particular AnimatedSprite
+            </summary>
+            <param name="focusCursor">The AnimatedSprite the camera should follow</param>
+            <remarks>When focused, the Camera cannot be controlled by the keyboard.</remarks>
+        </member>
+        <member name="M:TileEngine.Camera.unsetFocus">
+            <summary>
+            Unsets the focus of the camera
+            </summary>
+            <remarks>The camera will reobtain keyboard functionality</remarks>
+        </member>
+        <member name="M:TileEngine.Camera.update(System.Int32,System.Int32,TileEngine.TileMap)">
+            <summary>
+            Updates the camera location with respect to its focus, the viewport, and the current TileMap
+            </summary>
+            <param name="screenWidth">Integer width in pixels of the viewport</param>
+            <param name="screenHeight">Integer height in pixels of the viewport</param>
+            <param name="map">The TileMap currently being rendered in the viewport</param>
+        </member>
+        <member name="M:TileEngine.Camera.clampToArea(System.Int32,System.Int32)">
+            <summary>
+            Clamps the camera to only move within a specific area
+            </summary>
+            <param name="width">Width in pixels of the area the camera can move</param>
+            <param name="height">Height in pixels of the area the camera can move</param>
+        </member>
+        <member name="P:TileEngine.Camera.speed">
+            <summary>
+            Get or set the speed (pixels per update) of the camera motion
+            </summary>
+        </member>
+        <member name="P:TileEngine.Camera.transformationMatrix">
+            <summary>
+            Get the Matrix used to shift the position of the camera relative to the map
+            </summary>
+            <remarks>More accurately, the Matrix shifts the map to the camera location in the viewport</remarks>
+        </member>
+        <member name="P:TileEngine.Camera.isFocused">
+            <summary>
+            Returns whether or not the camera is focused on a particular Animated Sprite
+            </summary>
+        </member>
+        <member name="M:TileEngine.AI.startNextTurn">
+            <summary>
+            Initializes all the flags for the next turn
+            </summary>
+        </member>
+        <member name="M:TileEngine.AI.chooseTarget(TileEngine.BaseUnit,TileEngine.TileMap,TileEngine.BaseUnit[])">
+            <summary>
+            Should be run on the AI's first update after its turn starts. Chooses a target
+            </summary>
+            <param name="currentUnit">The AI unit whose turn it is</param>
+            <param name="map">The game map</param>
+            <param name="testUnits">All the units on the map</param>
+            <returns>True if a target was found, false otherwise</returns>
+        </member>
+        <member name="M:TileEngine.AI.update(Microsoft.Xna.Framework.GameTime,TileEngine.BaseUnit,TileEngine.Cursor,TileEngine.TileMap,System.Int32,System.Int32,TileEngine.BaseUnit[],TileEngine.Camera)">
+            <summary>
+            
+            </summary>
+            <param name="gameTime"></param>
+            <param name="currentUnit"></param>
+            <param name="cursor"></param>
+            <param name="map"></param>
+            <param name="viewWidth"></param>
+            <param name="viewHeight"></param>
+            <param name="testUnits"></param>
+            <param name="camera"></param>
+        </member>
+        <member name="T:TileEngine.Engine">
+            <summary>
+            Describes global Tile Engine constants and static methods used throughout the project
+            </summary>
+        </member>
+        <member name="F:TileEngine.Engine.TILE_WIDTH">
+            <summary>
+            Width in pixels of a tile rendered on the map
+            </summary>
+        </member>
+        <member name="F:TileEngine.Engine.TILE_HEIGHT">
+            <summary>
+            Height in pixels of a tile rendered on the map
+            </summary>
+        </member>
         <member name="T:TileEngine.CollisionLayer">
             <summary>
             Describes a collision map layer
@@ -70,58 +166,54 @@
             Returns the height in tiles of the Tile Layer
             </summary>
         </member>
-        <member name="T:TileEngine.Camera">
+        <member name="T:TileEngine.UnitLayer">
             <summary>
-            Describes the view of the map visible through the game's viewport
+            Describes a collision map layer
             </summary>
         </member>
-        <member name="F:TileEngine.Camera.position">
+        <member name="F:TileEngine.UnitLayer.layout">
             <summary>
-            The position (in pixels) of the camera
+            
             </summary>
         </member>
-        <member name="M:TileEngine.Camera.setFocus(TileEngine.Cursor)">
+        <member name="M:TileEngine.UnitLayer.#ctor(System.Int32,System.Int32)">
             <summary>
-            Sets the camera to follow around a particular AnimatedSprite
+            Creates an empty Tile Layer with specified dimensions
             </summary>
-            <param name="focusCursor">The AnimatedSprite the camera should follow</param>
-            <remarks>When focused, the Camera cannot be controlled by the keyboard.</remarks>
+            <param name="width">Integer width (x-direction) of layer</param>
+            <param name="height">Integer height (y-direction) of layer</param>
         </member>
-        <member name="M:TileEngine.Camera.unsetFocus">
+        <member name="M:TileEngine.UnitLayer.fromFile(System.String)">
             <summary>
-            Unsets the focus of the camera
+            Performs the IO on a .layer file to obtain a saved Tile Layer used by both fromFile() methods
             </summary>
-            <remarks>The camera will reobtain keyboard functionality</remarks>
+            <param name="filename">Path (relative or absolute) to the .layer file</param>
+            <param name="textureNames">List of string texture names referenced by the layer</param>
+            <returns>New Tile Layer</returns>
         </member>
-        <member name="M:TileEngine.Camera.update(System.Int32,System.Int32,TileEngine.TileMap)">
+        <member name="M:TileEngine.UnitLayer.save(System.String,System.String[])">
             <summary>
-            Updates the camera location with respect to its focus, the viewport, and the current TileMap
+            Saves a Tile Layer to file [used by Tile Editor]
             </summary>
-            <param name="screenWidth">Integer width in pixels of the viewport</param>
-            <param name="screenHeight">Integer height in pixels of the viewport</param>
-            <param name="map">The TileMap currently being rendered in the viewport</param>
+            <param name="filename">Path (relative or absolute) where the .layer file should be saved</param>
+            <param name="textureNames">String array of texture names (relative to a content root) used by the layer</param>
         </member>
-        <member name="M:TileEngine.Camera.clampToArea(System.Int32,System.Int32)">
+        <member name="M:TileEngine.UnitLayer.getTileUnitIndex(System.Int32,System.Int32)">
             <summary>
-            Clamps the camera to only move within a specific area
+            Get the index of a texture at a particular tile
             </summary>
-            <param name="width">Width in pixels of the area the camera can move</param>
-            <param name="height">Height in pixels of the area the camera can move</param>
+            <param name="x">0-Based x-direction tile location</param>
+            <param name="y">0-Based y-direction tile location</param>
+            <returns>0-Based texture index; else, -1 for an empty tile or -2 if x/y out of range</returns>
         </member>
-        <member name="P:TileEngine.Camera.speed">
+        <member name="P:TileEngine.UnitLayer.widthInTiles">
             <summary>
-            Get or set the speed (pixels per update) of the camera motion
+            Returns the width in tiles of the Tile Layer
             </summary>
         </member>
-        <member name="P:TileEngine.Camera.transformationMatrix">
+        <member name="P:TileEngine.UnitLayer.heightInTiles">
             <summary>
-            Get the Matrix used to shift the position of the camera relative to the map
-            </summary>
-            <remarks>More accurately, the Matrix shifts the map to the camera location in the viewport</remarks>
-        </member>
-        <member name="P:TileEngine.Camera.isFocused">
-            <summary>
-            Returns whether or not the camera is focused on a particular Animated Sprite
+            Returns the height in tiles of the Tile Layer
             </summary>
         </member>
         <member name="T:TileEngine.FrameAnimation">
@@ -172,21 +264,6 @@
         <member name="P:TileEngine.FrameAnimation.currentFrameIndex">
             <summary>
             Get or set the current frame index of the animation
-            </summary>
-        </member>
-        <member name="T:TileEngine.Engine">
-            <summary>
-            Describes global Tile Engine constants and static methods used throughout the project
-            </summary>
-        </member>
-        <member name="F:TileEngine.Engine.TILE_WIDTH">
-            <summary>
-            Width in pixels of a tile rendered on the map
-            </summary>
-        </member>
-        <member name="F:TileEngine.Engine.TILE_HEIGHT">
-            <summary>
-            Height in pixels of a tile rendered on the map
             </summary>
         </member>
         <member name="T:TileEngine.AnimatedSprite">
@@ -357,56 +434,6 @@
             </summary>
             <remarks>The name refers to the FrameAnimation's key in the animations Dictionary</remarks>
         </member>
-        <member name="T:TileEngine.UnitLayer">
-            <summary>
-            Describes a collision map layer
-            </summary>
-        </member>
-        <member name="F:TileEngine.UnitLayer.layout">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:TileEngine.UnitLayer.#ctor(System.Int32,System.Int32)">
-            <summary>
-            Creates an empty Tile Layer with specified dimensions
-            </summary>
-            <param name="width">Integer width (x-direction) of layer</param>
-            <param name="height">Integer height (y-direction) of layer</param>
-        </member>
-        <member name="M:TileEngine.UnitLayer.fromFile(System.String)">
-            <summary>
-            Performs the IO on a .layer file to obtain a saved Tile Layer used by both fromFile() methods
-            </summary>
-            <param name="filename">Path (relative or absolute) to the .layer file</param>
-            <param name="textureNames">List of string texture names referenced by the layer</param>
-            <returns>New Tile Layer</returns>
-        </member>
-        <member name="M:TileEngine.UnitLayer.save(System.String,System.String[])">
-            <summary>
-            Saves a Tile Layer to file [used by Tile Editor]
-            </summary>
-            <param name="filename">Path (relative or absolute) where the .layer file should be saved</param>
-            <param name="textureNames">String array of texture names (relative to a content root) used by the layer</param>
-        </member>
-        <member name="M:TileEngine.UnitLayer.getTileUnitIndex(System.Int32,System.Int32)">
-            <summary>
-            Get the index of a texture at a particular tile
-            </summary>
-            <param name="x">0-Based x-direction tile location</param>
-            <param name="y">0-Based y-direction tile location</param>
-            <returns>0-Based texture index; else, -1 for an empty tile or -2 if x/y out of range</returns>
-        </member>
-        <member name="P:TileEngine.UnitLayer.widthInTiles">
-            <summary>
-            Returns the width in tiles of the Tile Layer
-            </summary>
-        </member>
-        <member name="P:TileEngine.UnitLayer.heightInTiles">
-            <summary>
-            Returns the height in tiles of the Tile Layer
-            </summary>
-        </member>
         <member name="M:TileEngine.Faction.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
             <summary>
             draws every unit in the faction
@@ -539,185 +566,6 @@
             <exception cref="T:System.ArgumentNullException">
             If queue is null.
             </exception>
-        </member>
-        <member name="M:TileEngine.BaseUnit.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,TileEngine.Ability[])">
-            <summary>
-            Create baseUnit object with abilities
-            </summary>
-            <param name="name">Name of unit</param>
-            <param name="maxHP">Maximum Hit Points of unit</param>
-            <param name="maxAP">Maximum Action Points of unit</param>
-            <param name="maxMP">Maximum Movement Points of unit</param>
-            <param name="SPD">Speed of unit</param>
-            <param name="unitAffinity">Index of elemental affinity of unit</param>
-            <param name="abilities">Abilities of unit</param>
-        </member>
-        <member name="M:TileEngine.BaseUnit.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Create baseUnit object without abilities
-            </summary>
-            <param name="name">Name of unit</param>
-            <param name="maxHP">Maximum Hit Points of unit</param>
-            <param name="maxAP">Maximum Action Points of unit</param>
-            <param name="maxMP">Maximum Movement Points of unit</param>
-            <param name="SPD">Speed of unit</param>
-            <param name="unitAffinity">Index of elemental affinity of unit</param>
-        </member>
-        <member name="M:TileEngine.BaseUnit.#ctor">
-            <summary>
-            Create an empty baseUnit
-            </summary>
-        </member>
-        <member name="M:TileEngine.BaseUnit.addAbility(TileEngine.Ability[])">
-            <summary>
-            Add one or more abilities to the unit
-            </summary>
-            <param name="abilities"></param>
-        </member>
-        <member name="M:TileEngine.BaseUnit.attack(TileEngine.BaseUnit)">
-            <summary>
-            tells the unit to attack another unit
-            </summary>
-            <param name="target"></param>
-            <param name="rand"></param>
-        </member>
-        <member name="M:TileEngine.BaseUnit.takeDamage(System.Int32)">
-            <summary>
-            unit recieves amt amount of damage before armor and afinity multipliers
-            </summary>
-            <param name="amt"></param>
-        </member>
-        <member name="M:TileEngine.BaseUnit.withinRange(TileEngine.BaseUnit)">
-            <summary>
-            checks if a target unit is within range
-            </summary>
-            <param name="target"></param>
-            <returns></returns>
-        </member>
-        <member name="M:TileEngine.BaseUnit.endTurn">
-            <summary>
-            the unit ends its turn and resets values
-            </summary>
-        </member>
-        <member name="M:TileEngine.BaseUnit.tick">
-            <summary>
-            this tells the unit to tick and get closer to its next turn
-            </summary>
-        </member>
-        <member name="M:TileEngine.BaseUnit.update(Microsoft.Xna.Framework.GameTime,System.Int32,System.Int32,TileEngine.TileMap)">
-            <summary>
-            Updates the units sprite representation based on flags.
-            </summary>
-            <param name="gameTime">GameTime object passed from Game class</param>
-            <param name="screenWidth">Viewport screen width in pixels</param>
-            <param name="screenHeight">Viewport screen height in pixels</param>
-            <param name="map">Tile Map of play area</param>
-        </member>
-        <member name="M:TileEngine.BaseUnit.goToTile(Microsoft.Xna.Framework.Point,TileEngine.TileMap)">
-            <summary>
-            Move the unit to a specified tile. This function does not check for the MP cost of the move!
-            </summary>
-            <param name="goal">Goal location of the </param>
-            <param name="map">Tile Map of play area</param>
-        </member>
-        <member name="M:TileEngine.BaseUnit.teleportToTile(Microsoft.Xna.Framework.Point,TileEngine.TileMap)">
-            <summary>
-            Teleports the unit to any non-collision point on the map
-            </summary>
-            <param name="goal">Goal tile location to teleport to.</param>
-            <param name="map">Tile Map of play area</param>
-        </member>
-        <member name="M:TileEngine.BaseUnit.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
-            <summary>
-            Draws the unit on the map
-            </summary>
-            <param name="spriteBatch">SpriteBatch passed from Game class</param>
-            <param name="camera">Camera object passed from Game class</param>
-        </member>
-        <member name="P:TileEngine.BaseUnit.maxHP">
-            <summary>
-            Gets the maxHP of the unit.
-            </summary>
-        </member>
-        <member name="P:TileEngine.BaseUnit.maxAP">
-            <summary>
-            Gets the maxAP of the unit.
-            </summary>
-        </member>
-        <member name="P:TileEngine.BaseUnit.maxMP">
-            <summary>
-            Gets the maxMP of the unit.
-            </summary>
-        </member>
-        <member name="P:TileEngine.BaseUnit.HP">
-            <summary>
-            Get or set the HP of the unit inclusively between 0 and maxHP. If HP reaches zero, unit isDead = true; otherwise, unit isDead = false.
-            </summary>
-        </member>
-        <member name="P:TileEngine.BaseUnit.AP">
-            <summary>
-            Get or set the AP of the unit inclusively between 0 and maxAP.
-            </summary>
-        </member>
-        <member name="P:TileEngine.BaseUnit.MP">
-            <summary>
-            Get or set the MP of the unit inclusively between 0 and maxMP.
-            </summary>
-        </member>
-        <member name="P:TileEngine.BaseUnit.SPD">
-            <summary>
-            Get the base speed of the unit.
-            </summary>
-        </member>
-        <member name="P:TileEngine.BaseUnit.delay">
-            <summary>
-            Get the current delay of the unit
-            </summary>
-        </member>
-        <member name="P:TileEngine.BaseUnit.isDead">
-            <summary>
-            Get whether or not the unit isDead
-            </summary>
-        </member>
-        <member name="P:TileEngine.BaseUnit.isStunned">
-            <summary>
-            Get or set whether or not the unit isStunned
-            </summary>
-        </member>
-        <member name="P:TileEngine.BaseUnit.isDone">
-            <summary>
-             Get or set whether a unit is done with its turn
-             </summary>
-        </member>
-        <member name="P:TileEngine.BaseUnit.isWalking">
-            <summary>
-            Get whether or not a unit is walking
-            </summary>
-        </member>
-        <member name="P:TileEngine.BaseUnit.affinityIndex">
-            <summary>
-            Get the index of the unit's elemental affinity
-            </summary>
-        </member>
-        <member name="P:TileEngine.BaseUnit.affinityName">
-            <summary>
-            Get the name of the unit's elemental affinity
-            </summary>
-        </member>
-        <member name="P:TileEngine.BaseUnit.position">
-            <summary>
-            Get the position (by tiles) of the unit
-            </summary>
-        </member>
-        <member name="P:TileEngine.BaseUnit.unitSprite">
-            <summary>
-            Get or set the Animated Sprite representing the unit
-            </summary>
-        </member>
-        <member name="T:TileEngine.BaseUnit.sortByDelay">
-            <summary>
-            Allows units to be sorted by delay
-            </summary>
         </member>
         <member name="T:TileEngine.TileLayer">
             <summary>
@@ -883,6 +731,205 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:TileEngine.BaseUnit.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,TileEngine.Ability[])">
+            <summary>
+            Create baseUnit object with abilities
+            </summary>
+            <param name="name">Name of unit</param>
+            <param name="maxHP">Maximum Hit Points of unit</param>
+            <param name="maxAP">Maximum Action Points of unit</param>
+            <param name="maxMP">Maximum Movement Points of unit</param>
+            <param name="SPD">Speed of unit</param>
+            <param name="unitAffinity">Index of elemental affinity of unit</param>
+            <param name="abilities">Abilities of unit</param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Create baseUnit object without abilities
+            </summary>
+            <param name="name">Name of unit</param>
+            <param name="maxHP">Maximum Hit Points of unit</param>
+            <param name="maxAP">Maximum Action Points of unit</param>
+            <param name="maxMP">Maximum Movement Points of unit</param>
+            <param name="SPD">Speed of unit</param>
+            <param name="unitAffinity">Index of elemental affinity of unit</param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            creates an abilityless unit that has weapon attack, weapond def, magic power, magic resistance
+            </summary>
+            <param name="name"></param>
+            <param name="maxHP"></param>
+            <param name="maxAP"></param>
+            <param name="maxMP"></param>
+            <param name="SPD"></param>
+            <param name="unitAffinity"></param>
+            <param name="wAtk"></param>
+            <param name="wDef"></param>
+            <param name="mPow"></param>
+            <param name="mRes"></param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.#ctor">
+            <summary>
+            Create an empty baseUnit
+            </summary>
+        </member>
+        <member name="M:TileEngine.BaseUnit.addAbility(TileEngine.Ability[])">
+            <summary>
+            Add one or more abilities to the unit
+            </summary>
+            <param name="abilities"></param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.attack(TileEngine.BaseUnit)">
+            <summary>
+            tells the unit to attack another unit
+            </summary>
+            <param name="target"></param>
+            <param name="rand"></param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.takeDamage(System.Int32)">
+            <summary>
+            unit recieves amt amount of damage before armor and afinity multipliers
+            </summary>
+            <param name="amt"></param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.withinRange(TileEngine.BaseUnit)">
+            <summary>
+            checks if a target unit is within range
+            </summary>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TileEngine.BaseUnit.endTurn">
+            <summary>
+            the unit ends its turn and resets values
+            </summary>
+        </member>
+        <member name="M:TileEngine.BaseUnit.tick">
+            <summary>
+            this tells the unit to tick and get closer to its next turn
+            </summary>
+        </member>
+        <member name="M:TileEngine.BaseUnit.update(Microsoft.Xna.Framework.GameTime,System.Int32,System.Int32,TileEngine.TileMap)">
+            <summary>
+            Updates the units sprite representation based on flags.
+            </summary>
+            <param name="gameTime">GameTime object passed from Game class</param>
+            <param name="screenWidth">Viewport screen width in pixels</param>
+            <param name="screenHeight">Viewport screen height in pixels</param>
+            <param name="map">Tile Map of play area</param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.goToTile(Microsoft.Xna.Framework.Point,TileEngine.TileMap)">
+            <summary>
+            Move the unit to a specified tile. This function does not check for the MP cost of the move!
+            </summary>
+            <param name="goal">Goal location of the </param>
+            <param name="map">Tile Map of play area</param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.teleportToTile(Microsoft.Xna.Framework.Point,TileEngine.TileMap)">
+            <summary>
+            Teleports the unit to any non-collision point on the map
+            </summary>
+            <param name="goal">Goal tile location to teleport to.</param>
+            <param name="map">Tile Map of play area</param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
+            <summary>
+            Draws the unit on the map
+            </summary>
+            <param name="spriteBatch">SpriteBatch passed from Game class</param>
+            <param name="camera">Camera object passed from Game class</param>
+        </member>
+        <member name="P:TileEngine.BaseUnit.maxHP">
+            <summary>
+            Gets the maxHP of the unit.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.maxAP">
+            <summary>
+            Gets the maxAP of the unit.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.maxMP">
+            <summary>
+            Gets the maxMP of the unit.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.HP">
+            <summary>
+            Get or set the HP of the unit inclusively between 0 and maxHP. If HP reaches zero, unit isDead = true; otherwise, unit isDead = false.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.AP">
+            <summary>
+            Get or set the AP of the unit inclusively between 0 and maxAP.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.MP">
+            <summary>
+            Get or set the MP of the unit inclusively between 0 and maxMP.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.SPD">
+            <summary>
+            Get the base speed of the unit.
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.delay">
+            <summary>
+            Get the current delay of the unit
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.isDead">
+            <summary>
+            Get whether or not the unit isDead
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.isStunned">
+            <summary>
+            Get or set whether or not the unit isStunned
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.isDone">
+            <summary>
+             Get or set whether a unit is done with its turn
+             </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.isWalking">
+            <summary>
+            Get whether or not a unit is walking
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.isAttacking">
+            <summary>
+            Get whether or nto a unit is attacking
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.affinityIndex">
+            <summary>
+            Get the index of the unit's elemental affinity
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.affinityName">
+            <summary>
+            Get the name of the unit's elemental affinity
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.position">
+            <summary>
+            Get the position (by tiles) of the unit
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.unitSprite">
+            <summary>
+            Get or set the Animated Sprite representing the unit
+            </summary>
+        </member>
+        <member name="T:TileEngine.BaseUnit.sortByDelay">
+            <summary>
+            Allows units to be sorted by delay
+            </summary>
+        </member>
         <member name="T:TileEngine.TileMap">
             <summary>
             Describes a collection of Tile Layers to be drawn together
@@ -987,33 +1034,6 @@
             <param name="bu"></param>
             <param name="p"></param>
             <returns></returns>
-        </member>
-        <member name="M:TileEngine.AI.startNextTurn">
-            <summary>
-            Initializes all the flags for the next turn
-            </summary>
-        </member>
-        <member name="M:TileEngine.AI.chooseTarget(TileEngine.BaseUnit,TileEngine.TileMap,TileEngine.BaseUnit[])">
-            <summary>
-            Should be run on the AI's first update after its turn starts. Chooses a target
-            </summary>
-            <param name="currentUnit">The AI unit whose turn it is</param>
-            <param name="map">The game map</param>
-            <param name="testUnits">All the units on the map</param>
-            <returns>True if a target was found, false otherwise</returns>
-        </member>
-        <member name="M:TileEngine.AI.update(Microsoft.Xna.Framework.GameTime,TileEngine.BaseUnit,TileEngine.Cursor,TileEngine.TileMap,System.Int32,System.Int32,TileEngine.BaseUnit[],TileEngine.Camera)">
-            <summary>
-            
-            </summary>
-            <param name="gameTime"></param>
-            <param name="currentUnit"></param>
-            <param name="cursor"></param>
-            <param name="map"></param>
-            <param name="viewWidth"></param>
-            <param name="viewHeight"></param>
-            <param name="testUnits"></param>
-            <param name="camera"></param>
         </member>
     </members>
 </doc>

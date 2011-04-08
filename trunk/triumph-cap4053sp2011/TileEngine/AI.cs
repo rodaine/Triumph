@@ -106,7 +106,7 @@ namespace TileEngine
             }
             else
             {
-                if (!currentUnit.isWalking)
+                if (!currentUnit.isWalking&&!currentUnit.isAttacking)
                 {
                     //System.Console.Error.WriteLine(currentUnit.name + " is targeting " + target.name);
                     if (_hasAttacked)

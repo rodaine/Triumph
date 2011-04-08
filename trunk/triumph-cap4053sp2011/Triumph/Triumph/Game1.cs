@@ -166,7 +166,7 @@ namespace Triumph
 
             counter--;
             //checks if a unit has finsihed its turn, if it has then make the next unit the active unit
-            if (currentUnit.isDone)
+            if (currentUnit.isDone&& !currentUnit.isWalking && !currentUnit.isAttacking)
             {
                 counter = 10;
                 currentUnit.endTurn();
