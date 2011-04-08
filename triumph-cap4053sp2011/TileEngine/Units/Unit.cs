@@ -32,7 +32,7 @@ namespace TileEngine
 
 		//Attributes
 		private int _maxHP, _maxAP, _maxMP, _HP, _AP, _MP, _SPD, _delay;
-        private int _wAtk, _mAtk, _mPow, _mRes, _evade; //stats used in FFT but not implemented yet here
+        private int _wAtk, _wDef, _mPow, _mRes, _evade; //stats used in FFT but not implemented yet here
         private bool _isDead, _isStunned, _isDone, _hasAttacked, _hasMoved;
         private List<Ability> moves;
         private List<Buff> itemsAndBuffs;
@@ -43,6 +43,8 @@ namespace TileEngine
 		private AnimatedSprite _unitSprite;
 		private Point _position;
 		private bool _isWalking = false;
+        private bool _isAttacking = false;
+        private int _attackCD;
 		private Stack<Point> path;
 		
         #endregion
@@ -159,6 +161,14 @@ namespace TileEngine
 			get { return _isWalking; }
 		}
 
+        /// <summary>
+        /// Get whether or nto a unit is attacking
+        /// </summary>
+        public bool isAttacking
+        {
+            get { return _isAttacking; }
+        }
+       
 		/// <summary>
 		/// Get the index of the unit's elemental affinity
 		/// </summary>
@@ -286,6 +296,46 @@ namespace TileEngine
 			index = ++index_counter;
         }
 
+        /// <summary>
+        /// creates an abilityless unit that has weapon attack, weapond def, magic power, magic resistance
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="maxHP"></param>
+        /// <param name="maxAP"></param>
+        /// <param name="maxMP"></param>
+        /// <param name="SPD"></param>
+        /// <param name="unitAffinity"></param>
+        /// <param name="wAtk"></param>
+        /// <param name="wDef"></param>
+        /// <param name="mPow"></param>
+        /// <param name="mRes"></param>
+        public BaseUnit(String name, int maxHP, int maxAP, int maxMP, int SPD, int unitAffinity, int wAtk, int wDef, int mPow, int mRes)
+        {
+            this._name = name;
+            _HP = _maxHP = maxHP;
+            _AP = _maxAP = maxAP;
+            _MP = _maxMP = maxMP;
+            _SPD = _delay = SPD;
+            _isDone = false;
+            _evade = _SPD / 10;
+            _wAtk = wAtk;
+            _wDef = wDef;
+            _mPow = mPow;
+            _mRes = mRes;
+            if (_HP > 0)
+                _isDead = false;
+            else
+                _isDead = true;
+
+            this.unitAffinity = unitAffinity;
+
+            moves = new List<Ability>();
+
+            index = ++index_counter;
+        }
+
+
+
 		/// <summary>
 		/// Create an empty baseUnit
 		/// </summary>
@@ -363,8 +413,8 @@ namespace TileEngine
         {
             _hasAttacked = true;
             target.takeDamage(RandomNumber.getInstance().getNext(1,20)); //filler at the moment for an attack formula
-            _delay += _SPD;
-            _isDone = true;
+            _isAttacking = true;
+            _attackCD = 50;
         }
 
         /// <summary>
@@ -539,6 +589,15 @@ namespace TileEngine
 				_isWalking = true;
 			else
 				_isWalking = false;
+
+            if (_isAttacking)
+            {
+                _attackCD--;
+                if (_attackCD <= 0)
+                {
+                    _isAttacking = false ;
+                }
+            }
 			
 			//check if dead...check if stunned...etc.
 			//update sprite 
