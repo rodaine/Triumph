@@ -745,7 +745,7 @@
             <param name="target"></param>
             <param name="rand"></param>
         </member>
-        <member name="M:TileEngine.BaseUnit.takeDamage(System.Int32)">
+        <member name="M:TileEngine.BaseUnit.takeDamage(System.Int32,TileEngine.RandomNumber)">
             <summary>
             unit recieves amt amount of damage before armor and afinity multipliers
             </summary>

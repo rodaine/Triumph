@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.Collections;
 using System.IO;
+using TileEngine;
 
 /*  Need to determine how we will handle objects blocking target    *
  *  and how we would like to determine distances                    *
@@ -31,7 +32,7 @@ namespace TileEngine
 
 		//Attributes
 		private int _maxHP, _maxAP, _maxMP, _HP, _AP, _MP, _SPD, _delay;
-        private int _wAtk, _mAtk, _mPow, _mRes; //stats used in FFT but not implemented yet here
+        private int _wAtk, _mAtk, _mPow, _mRes, _evade; //stats used in FFT but not implemented yet here
         private bool _isDead, _isStunned, _isDone, _hasAttacked, _hasMoved;
         private List<Ability> moves;
         private List<Buff> itemsAndBuffs;
@@ -238,6 +239,7 @@ namespace TileEngine
 			_MP = _maxMP = maxMP;
 			_SPD = _delay = SPD;
             _isDone = false;
+            _evade = _SPD/10;
 
 			if (_HP > 0)
 				_isDead = false;
@@ -271,6 +273,7 @@ namespace TileEngine
 			_MP = _maxMP = maxMP;
             _SPD = _delay = SPD;
             _isDone = false;
+            _evade = _SPD / 10;
 			if (_HP > 0)
 				_isDead = false;
 			else
@@ -359,7 +362,7 @@ namespace TileEngine
         public void attack(BaseUnit target, RandomNumber rand)
         {
             _hasAttacked = true;
-            target.takeDamage(rand.getNext(1,20)); //filler at the moment for an attack formula
+            target.takeDamage(rand.getNext(1,20), rand); //filler at the moment for an attack formula
             _delay += _SPD;
             _isDone = true;
         }
@@ -368,9 +371,18 @@ namespace TileEngine
         /// unit recieves amt amount of damage before armor and afinity multipliers
         /// </summary>
         /// <param name="amt"></param>
-        public void takeDamage(int amt)
+        public void takeDamage(int amt, RandomNumber rand)
         {
-            this.HP -= amt;
+            int hit = rand.getNext(1, 100);
+            System.Console.WriteLine("Hit chance rolled a " + hit);
+            if (hit > _evade)
+            {
+                this.HP -= amt;
+            }
+            else
+            {
+                System.Console.WriteLine(this.name + " dodged the attack.");
+            }
         }
 
         /// <summary>
@@ -390,6 +402,7 @@ namespace TileEngine
         public void endTurn()
         {
             this.MP = this.maxMP;
+            this.AP = this.maxAP;
             this.delay = 500;
             if (this._hasAttacked) delay -= 200;
             if (this._hasMoved) delay -= 300;

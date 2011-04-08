@@ -33,7 +33,7 @@ namespace Triumph
 		SoundEffectInstance soundMusicInstance;
 		Cursor cursor;
         TurnManager turnManager;
-        RandomNumber random = new RandomNumber();
+        static RandomNumber random = new RandomNumber();
 		Dictionary<string, BaseUnit> unitList;
         int counter = 10;
         bool inGame = true; //TODO I don't like this, should only be true after UI.screen goes to Main
@@ -75,6 +75,7 @@ namespace Triumph
             }
             turnManager = new TurnManager(testUnits);
             currentUnit = turnManager.getNext();
+            cursor.location = currentUnit.position;
 
 			soundMusicInstance.Volume = 0.75f;
 			soundMusicInstance.IsLooped = true;
