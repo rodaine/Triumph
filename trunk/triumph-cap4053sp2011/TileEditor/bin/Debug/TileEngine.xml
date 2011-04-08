@@ -216,6 +216,73 @@
             Returns the height in tiles of the Tile Layer
             </summary>
         </member>
+        <member name="T:TileEngine.Range">
+            <summary>
+            Defines a range of tiles to highlight for movement, attack, etc...
+            </summary>
+        </member>
+        <member name="F:TileEngine.Range.isDrawing">
+            <summary>
+            Whether or not the range should be drawn
+            </summary>
+        </member>
+        <member name="F:TileEngine.Range.rangeTypes">
+            <summary>
+            Dictionary of range types
+            </summary>
+        </member>
+        <member name="M:TileEngine.Range.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+            Create a range object
+            </summary>
+            <param name="spriteTexture">Sprite map of range types</param>
+        </member>
+        <member name="M:TileEngine.Range.addPoints(Microsoft.Xna.Framework.Point[])">
+            <summary>
+            Add tile points to the range
+            </summary>
+            <param name="points">Points to add to the range</param>
+        </member>
+        <member name="M:TileEngine.Range.addPoints(System.Collections.Generic.List{Microsoft.Xna.Framework.Point})">
+            <summary>
+            Add tile points to the range
+            </summary>
+            <param name="points">List of points to add to the range</param>
+        </member>
+        <member name="M:TileEngine.Range.removePoints(Microsoft.Xna.Framework.Point[])">
+            <summary>
+            Remove tile points from the range
+            </summary>
+            <param name="points">Points to remove from the range</param>
+        </member>
+        <member name="M:TileEngine.Range.removePoints(System.Collections.Generic.List{Microsoft.Xna.Framework.Point})">
+            <summary>
+            Remove tile points from the range
+            </summary>
+            <param name="points">List of point to remove from the range</param>
+        </member>
+        <member name="M:TileEngine.Range.clearPoints">
+            <summary>
+            Remove all points from the range
+            </summary>
+        </member>
+        <member name="M:TileEngine.Range.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
+            <summary>
+            Draw the range on the map
+            </summary>
+            <param name="batch">Sprite Batch passed from Game</param>
+            <param name="camera">Camera passed from Game</param>
+        </member>
+        <member name="P:TileEngine.Range.currentRangeType">
+            <summary>
+            Get the Current Range Type frame for drawing
+            </summary>
+        </member>
+        <member name="P:TileEngine.Range.currentRangeTypeName">
+            <summary>
+            Get or set the Current Range Type by name
+            </summary>
+        </member>
         <member name="T:TileEngine.FrameAnimation">
             <summary>
             Describes the frame animation used by a sprite.
