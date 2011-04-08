@@ -58,7 +58,7 @@ namespace TileEngine
         
             ContentManager Content;
 
-            private float uiTimer = 0f, secondsPerOption = .15f;
+            private float uiTimer = 0f, secondsPerOption = .13f;
 
             bool exit = false;
 
@@ -452,7 +452,7 @@ namespace TileEngine
                             drawActiveInformation(spriteBatch, currentUnit, winHeight, winWidth);
                             drawTargetInformation(spriteBatch, targetUnit, currentUnit, winHeight, winWidth);
 
-                            if (mCurrentPhase == Phase.Menu)
+                            if (mCurrentPhase == Phase.Menu && currentUnit.faction.name == "Faction 1")
                             {
                                 int m = 0, at = 0, ab = 0, et = 0;
 
