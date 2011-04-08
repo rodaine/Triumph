@@ -108,7 +108,7 @@ namespace TileEngine
             }
             else
             {
-                if (!currentUnit.isWalking&&!currentUnit.isAttacking)
+                if (!currentUnit.isWalking && !currentUnit.isAttacking)
                 {
                     //System.Console.Error.WriteLine(currentUnit.name + " is targeting " + target.name);
                     if (_hasAttacked)
@@ -129,19 +129,23 @@ namespace TileEngine
                             myPath.Push(path.Pop());
                         }
 
-                        Point walkTo = myPath.Pop();
-                        while (myPath.Count > 0 && map.getPath(currentUnit, walkTo, new List<Point>()).Count == 0)
+                        if (myPath.Count > 0)
                         {
-                            walkTo = myPath.Pop();
+                            Point walkTo = myPath.Pop();
+                            while (myPath.Count > 0 && map.getPath(currentUnit, walkTo, new List<Point>()).Count == 0)
+                            {
+                                walkTo = myPath.Pop();
+                            }
+                            //System.Console.Error.WriteLine("Trying to move from " + currentUnit.position + " to " + walkTo);
+                            currentUnit.goToTile(walkTo, map);
                         }
-                        //System.Console.Error.WriteLine("Trying to move from " + currentUnit.position + " to " + walkTo);
-                        currentUnit.goToTile(walkTo, map);
                         _hasMoved = true;
                     }
                     else if (!_hasAttacked && currentUnit.withinRange(_target))
                     {
                         currentUnit.attack(_target);
                         this._hasAttacked = true;
+                        
                     }
                     else if (_hasMoved)
                     {
