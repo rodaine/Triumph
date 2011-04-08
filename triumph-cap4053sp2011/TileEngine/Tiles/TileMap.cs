@@ -128,6 +128,9 @@ namespace TileEngine
 				goal.X < 0 || goal.X >= getWidthInTiles() || goal.Y < 0 || goal.Y >= getHeightInTiles())
 				return path;
 
+			if (!isEmpty(goal))
+				return path;
+
 			//add start to open set
 			openSet.Add(new KeyValuePair<Point, int[]>(start, new int[] { 0, getDistance(start, goal), getDistance(start, goal), 0 }));
 
@@ -277,6 +280,7 @@ namespace TileEngine
                 isCollision = false,
                 isOpen = false,
                 isClosed = false,
+				isWalkOverable = false,
                 tentIsBetter = false;
             int openIndex = -1;
 
@@ -284,6 +288,10 @@ namespace TileEngine
             if (start.X < 0 || start.X >= getWidthInTiles() || start.Y < 0 || start.Y >= getHeightInTiles() ||
                 goal.X < 0 || goal.X >= getWidthInTiles() || goal.Y < 0 || goal.Y >= getHeightInTiles() || !canPass(currentUnit, goal))
                 return path;
+
+			//check goal
+			if (!isEmpty(goal))
+				return path;
 
             //add start to open set
             openSet.Add(new KeyValuePair<Point, int[]>(start, new int[] { 0, getDistance(start, goal), getDistance(start, goal), 0 }));
@@ -312,8 +320,8 @@ namespace TileEngine
                         continue;
 
                     //check unit map
-                    if (unitLayer.getTileUnitIndex(neighbor.Key) > 0 && unitLayer.getTileUnitIndex(start) != unitLayer.getTileUnitIndex(neighbor.Key))
-                        continue;
+					if (!canPass(currentUnit, neighbor.Key))
+						continue;
 
                     //check other collisions
                     foreach (Point collision in otherCollisions)
@@ -468,10 +476,24 @@ namespace TileEngine
 			return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y);
 		}
 
+		/// <summary>
+		/// Specifies whether a unit can pass through a given tile on the map. Units may pass over allies
+		/// </summary>
+		/// <param name="bu"></param>
+		/// <param name="p"></param>
+		/// <returns></returns>
         public bool canPass(BaseUnit bu, Point p)
         {
-            return (isEmpty(p) && true);
-            //the true will be replaced with the logic to see if 
+			if (isEmpty(p)) return true;
+			if (this.unitLayer.getTileUnitIndex(p) < 0) return true;
+
+			foreach (BaseUnit unit in bu.faction.units)
+			{
+				if (this.unitLayer.getTileUnitIndex(p) == unit.unitIndex)
+					return true;
+			}
+
+			return false;
         }
 
         public bool isEmpty(Point p)

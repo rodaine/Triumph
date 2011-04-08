@@ -6,7 +6,7 @@ Moonshiner, 9  , 3, 2, 100, 0, Sprites/mnv1
 Aqua Soldier, 10 , 3, 3, 160, 0, Sprites/mnv1
 Rock Smasher, 11 , 2, 3,  70, 0, Sprites/mnv1
 Scorcher, 8  , 4, 1, 110, 0, Sprites/mnv1
-Leviathan, 20 , 1, 0,  50, 0, Sprites/mnv1
+Leviathan, 20 , 1, 2,  50, 0, Sprites/mnv1
 Goliath, 20 , 1, 3,  40, 0, Sprites/mnv1
 Snowlancer, 5  , 2, 5, 100, 0, Sprites/mnv1
 Spearman, 6  , 4, 2,  90, 0, Sprites/mnv1

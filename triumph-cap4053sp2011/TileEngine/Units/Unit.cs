@@ -197,7 +197,10 @@ namespace TileEngine
 
 		public int unitIndex
 		{
-			get { return index; }
+			get 
+			{
+				return (isDead) ? -1 * index : index; 
+			}
 			set { index = value; }
 		}
 
@@ -526,7 +529,7 @@ namespace TileEngine
 			
 			//check if dead...check if stunned...etc.
 			//update sprite 
-			map.unitLayer.moveUnit(index, position);
+			map.unitLayer.moveUnit(unitIndex, position);
 			_unitSprite.update(gameTime, screenWidth, screenHeight, map);
 		}
 
@@ -541,13 +544,13 @@ namespace TileEngine
             if (map.unitLayer.getTileUnitIndex(goal) != 0) return;
 			if (map.collisionLayer.getTileCollisionIndex(goal) != 0) return;
 
-			if (unitSprite.goToTile(goal, map, _MP))
+			if (unitSprite.goToTile(this, goal, map, _MP))
 			{
 				MP -= map.getDistance(_position, goal);
 				_position = goal;
 				_isWalking = true;
                 _hasMoved = true;
-				map.unitLayer.moveUnit(index, goal);
+				map.unitLayer.moveUnit(unitIndex, goal);
 			}
 		}
 
@@ -564,7 +567,7 @@ namespace TileEngine
 
 			unitSprite.position = new Vector2((float)goal.X * Engine.TILE_WIDTH, (float)goal.Y * Engine.TILE_HEIGHT);
 			_position = goal;
-			map.unitLayer.moveUnit(index, goal);
+			map.unitLayer.moveUnit(unitIndex, goal);
 		}
 
 		#endregion
