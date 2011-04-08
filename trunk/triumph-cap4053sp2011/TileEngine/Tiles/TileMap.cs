@@ -441,7 +441,7 @@ namespace TileEngine
 				Point current = openPoints.Pop();
 
 				//within walking range?
-				if (getDistance(currentUnit.position, current) > currentUnit.MP)
+				if (getPath(currentUnit, current, new List<Point>()).Count - 1 > currentUnit.MP)
 					continue;
 
 				//is it empty?
@@ -472,6 +472,7 @@ namespace TileEngine
 		{
 			Stack<Point> openPoints = new Stack<Point>();
 			List<Point> closedPoints = new List<Point>();
+			List<Point> ditchedPoints = new List<Point>();
 
 			if (range == 0) return closedPoints;
 			if (!isFriendly && !isHostile && !isSelf) return closedPoints;
@@ -489,6 +490,12 @@ namespace TileEngine
 				//check closedList
 				bool isClosed = false;
 				foreach (Point pt in closedPoints)
+					if (current.X == pt.X && current.Y == pt.Y)
+					{
+						isClosed = true;
+						break;
+					}
+				foreach (Point pt in ditchedPoints)
 					if (current.X == pt.X && current.Y == pt.Y)
 					{
 						isClosed = true;
@@ -531,7 +538,10 @@ namespace TileEngine
 					if (!hostile && !self && isFriendly)
 					{
 						closedPoints.Add(current);
+						continue;
 					}
+
+					ditchedPoints.Add(current);
 				}
 			}
 
