@@ -13,6 +13,7 @@ namespace TileEngine
         private BaseUnit _target;
         private Point _targetPoint;
         private bool _hasAttacked;
+        private bool _hasMoved;
         #endregion
 
         #region constructor
@@ -32,6 +33,7 @@ namespace TileEngine
             _startNextTurn = true;
             _target = null;
             _hasAttacked = false;
+            _hasMoved = false;
         }
 
         /// <summary>
@@ -80,16 +82,16 @@ namespace TileEngine
 
         #region public methods
         /// <summary>
-        /// 
+        /// AI tells the current unit what to do
         /// </summary>
-        /// <param name="gameTime"></param>
-        /// <param name="currentUnit"></param>
-        /// <param name="cursor"></param>
-        /// <param name="map"></param>
-        /// <param name="viewWidth"></param>
-        /// <param name="viewHeight"></param>
-        /// <param name="testUnits"></param>
-        /// <param name="camera"></param>
+        /// <param name="gameTime">Current gametime</param>
+        /// <param name="currentUnit">The unit whose turn it is</param>
+        /// <param name="cursor">The cursor</param>
+        /// <param name="map">The map</param>
+        /// <param name="viewWidth">The width of the viewport</param>
+        /// <param name="viewHeight">The height of the viewport</param>
+        /// <param name="testUnits">The list of all units</param>
+        /// <param name="camera">The current camera</param>
         public void update(GameTime gameTime, BaseUnit currentUnit, Cursor cursor, TileMap map, int viewWidth, int viewHeight, BaseUnit[] testUnits, Camera camera)
         {
             if (_startNextTurn)
@@ -115,27 +117,33 @@ namespace TileEngine
                         this.startNextTurn();
                         currentUnit.isDone = true;
                     }
-                    else if (!_hasAttacked && currentUnit.MP > 0 && !currentUnit.withinRange(_target))
+                    else if (!_hasMoved && currentUnit.MP > 0 && !currentUnit.withinRange(_target))
                     {
 
-                        Stack<Point> path = map.getPath(currentUnit.position, _targetPoint, new List<Point>());
-
-                        Point walkTo = currentUnit.position;
+                        Stack<Point> path = map.getPath(currentUnit, _targetPoint, new List<Point>());
+                        Stack<Point> myPath = new Stack<Point>();
                         int count = currentUnit.MP;
                         while (path.Count > 0 && count >= 0)
                         {
                             --count;
-                            walkTo = path.Pop();
+                            myPath.Push(path.Pop());
                         }
-                        System.Console.Error.WriteLine("Trying to move from " + currentUnit.position + " to " + walkTo);
+
+                        Point walkTo = myPath.Pop();
+                        while (myPath.Count > 0 && map.getPath(currentUnit, walkTo, new List<Point>()).Count == 0)
+                        {
+                            walkTo = myPath.Pop();
+                        }
+                        //System.Console.Error.WriteLine("Trying to move from " + currentUnit.position + " to " + walkTo);
                         currentUnit.goToTile(walkTo, map);
+                        _hasMoved = true;
                     }
                     else if (!_hasAttacked && currentUnit.withinRange(_target))
                     {
                         currentUnit.attack(_target);
                         this._hasAttacked = true;
                     }
-                    else if (currentUnit.MP == 0)
+                    else if (_hasMoved)
                     {
                         this.startNextTurn();
                         currentUnit.isDone = true;
