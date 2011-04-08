@@ -19,6 +19,7 @@ namespace Triumph
 		GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 		Camera camera = new Camera();
+		Range range;
 		TileMap map = new TileMap();
         UI ui = new UI();
         AI ai = new AI();
@@ -82,11 +83,19 @@ namespace Triumph
 
 			cursor.animations.Add("Normal", new FrameAnimation(1, 32, 32, 0, 0));
 			cursor.animations.Add("Collision", new FrameAnimation(1, 32, 32, 32, 0));
-			cursor.animations.Add("SubSelect", new FrameAnimation(1, 32, 32, 64, 0));
+			cursor.animations.Add("Select", new FrameAnimation(1, 32, 32, 64, 0));
 			cursor.animations.Add("Hidden", new FrameAnimation(1, 32, 32, 96, 0));
 			cursor.currentAnimationName = "Normal";
 			cursor.capturingKeyboard = true;
 			camera.setFocus(cursor);
+
+			range.rangeTypes.Add("Normal", new FrameAnimation(1, 32, 32, 0, 0));
+			range.rangeTypes.Add("Collision", new FrameAnimation(1, 32, 32, 32, 0));
+			range.rangeTypes.Add("Select", new FrameAnimation(1, 32, 32, 64, 0));
+			range.rangeTypes.Add("Hidden", new FrameAnimation(1, 32, 32, 96, 0));
+			range.currentRangeTypeName = "Select";
+			range.addPoints(map.walkToPoints(faction1Units[0]));
+			range.isDrawing = true;
 
         }
 
@@ -109,7 +118,9 @@ namespace Triumph
 			soundMusicInstance = soundMusic.CreateInstance();
 
 			cursor = new Cursor(Content.Load<Texture2D>("UI/cursor"));
-                        
+			range = new Range(Content.Load <Texture2D>("UI/cursor"));
+            
+
             ui.LoadContent(Content);
 
         }
@@ -197,8 +208,8 @@ namespace Triumph
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            faction1.draw(spriteBatch, camera);
-            faction2.draw(spriteBatch, camera);
+            //faction1.draw(spriteBatch, camera);
+            //faction2.draw(spriteBatch, camera);
             ui.Draw(gameTime, spriteBatch, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height, map, camera, cursor, testUnits, currentUnit, targetUnit);
 
             base.Draw(gameTime);

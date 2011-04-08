@@ -468,7 +468,6 @@ namespace TileEngine
             this.delay += this.SPD;
         }
 
-
         #endregion
 
         #region comparers
