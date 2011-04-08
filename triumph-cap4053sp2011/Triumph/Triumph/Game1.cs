@@ -33,7 +33,6 @@ namespace Triumph
 		SoundEffectInstance soundMusicInstance;
 		Cursor cursor;
         TurnManager turnManager;
-        static RandomNumber random = new RandomNumber();
 		Dictionary<string, BaseUnit> unitList;
         int counter = 10;
         bool inGame = true; //TODO I don't like this, should only be true after UI.screen goes to Main
@@ -153,11 +152,11 @@ namespace Triumph
              * tells whether or not that player/faction is AI controlled or human controlled. */
             if (inGame && currentUnit.faction == faction2)
             {
-                ai.update(gameTime, currentUnit, cursor, map, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, random);
+                ai.update(gameTime, currentUnit, cursor, map, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera);
             }
             else
             {
-                ui.Update(gameTime, aKeyboardState, currentUnit, targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, random);
+                ui.Update(gameTime, aKeyboardState, currentUnit, targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera);
             }
             
             if (ui.readyToExit())

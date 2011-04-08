@@ -574,14 +574,14 @@
             </summary>
             <param name="abilities"></param>
         </member>
-        <member name="M:TileEngine.BaseUnit.attack(TileEngine.BaseUnit,TileEngine.RandomNumber)">
+        <member name="M:TileEngine.BaseUnit.attack(TileEngine.BaseUnit)">
             <summary>
             tells the unit to attack another unit
             </summary>
             <param name="target"></param>
             <param name="rand"></param>
         </member>
-        <member name="M:TileEngine.BaseUnit.takeDamage(System.Int32,TileEngine.RandomNumber)">
+        <member name="M:TileEngine.BaseUnit.takeDamage(System.Int32)">
             <summary>
             unit recieves amt amount of damage before armor and afinity multipliers
             </summary>
@@ -980,6 +980,14 @@
             <param name="b">Second Point</param>
             <returns>Tile distance between points</returns>
         </member>
+        <member name="M:TileEngine.TileMap.canPass(TileEngine.BaseUnit,Microsoft.Xna.Framework.Point)">
+            <summary>
+            Specifies whether a unit can pass through a given tile on the map. Units may pass over allies
+            </summary>
+            <param name="bu"></param>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
         <member name="M:TileEngine.AI.startNextTurn">
             <summary>
             Initializes all the flags for the next turn
@@ -994,14 +1002,18 @@
             <param name="testUnits">All the units on the map</param>
             <returns>True if a target was found, false otherwise</returns>
         </member>
-        <member name="M:TileEngine.AI.update(Microsoft.Xna.Framework.GameTime,TileEngine.BaseUnit,TileEngine.Cursor,TileEngine.TileMap,System.Int32,System.Int32,TileEngine.BaseUnit[],TileEngine.Camera,TileEngine.RandomNumber)">
+        <member name="M:TileEngine.AI.update(Microsoft.Xna.Framework.GameTime,TileEngine.BaseUnit,TileEngine.Cursor,TileEngine.TileMap,System.Int32,System.Int32,TileEngine.BaseUnit[],TileEngine.Camera)">
             <summary>
-            Does AI stuff
+            
             </summary>
-            <param name="currentUnit">The unit whose turn it is</param>
-            <param name="map">The game map</param>
-            <param name="testUnits">All units on the game map</param>
-            <param name="rand">The game's random number generator</param>
+            <param name="gameTime"></param>
+            <param name="currentUnit"></param>
+            <param name="cursor"></param>
+            <param name="map"></param>
+            <param name="viewWidth"></param>
+            <param name="viewHeight"></param>
+            <param name="testUnits"></param>
+            <param name="camera"></param>
         </member>
     </members>
 </doc>

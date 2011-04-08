@@ -7,13 +7,23 @@ namespace TileEngine
 {
     public class RandomNumber
     {
+        private static RandomNumber singleton;
         private long num;
 
-        public RandomNumber()
+        private RandomNumber()
         {
             Random ran = new Random();
             num = ran.Next(10000);
             System.Console.WriteLine(num);
+        }
+
+        public static RandomNumber getInstance()
+        {
+            if (singleton == null)
+            {
+                singleton = new RandomNumber();
+            }
+            return singleton;
         }
 
         public int getNext(int min, int max)

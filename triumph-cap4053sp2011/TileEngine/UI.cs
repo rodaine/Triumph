@@ -83,7 +83,7 @@ namespace TileEngine
                 return false;
             }
             
-            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit[] testUnits, Camera camera, RandomNumber random)
+            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit[] testUnits, Camera camera)
             {
                 switch (mCurrentScreen)
                 {
@@ -127,7 +127,7 @@ namespace TileEngine
                             {
                                 if (targetUnit != null && !targetUnit.faction.Equals(currentUnit.faction) && !targetUnit.isDead && currentUnit.withinRange(targetUnit))
                                 {
-                                    currentUnit.attack(targetUnit, random);
+                                    currentUnit.attack(targetUnit);
                                     System.Console.WriteLine(targetUnit.HP);
                                     currentUnit.isDone = true;
                                 }
