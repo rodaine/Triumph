@@ -436,6 +436,11 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
+    <Compile Include="UI\SpriteFont7.spritefont">
+      <Name>SpriteFont7</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
     <None Include="Units\units.txt">
       <Name>units</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
