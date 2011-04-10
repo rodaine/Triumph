@@ -601,7 +601,7 @@ namespace TileEngine
 
         #endregion
 
-        #region use_ability
+        #region ability
         /// <summary>
         /// uses an ability against a target unit
         /// </summary>
@@ -667,6 +667,20 @@ namespace TileEngine
             }
             else return -1;
             return 0;
+        }
+
+        /// <summary>
+        /// checks if an unit can use any ability
+        /// </summary>
+        /// <returns></returns>
+        public bool canAbility()
+        {
+            bool ret = false;
+            for (int i = 0; i < _moves.Count; i++)
+            {
+                if (this.AP >= _moves[i].APCost) ret = true;
+            }
+            return ret;
         }
 
 		#endregion
