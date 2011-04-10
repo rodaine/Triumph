@@ -515,18 +515,22 @@ namespace TileEngine
 				foreach (KeyValuePair<Point, int[]> neighbor in neighbors)
 					openPoints.Push(neighbor.Key);
 
+				//check tile for targetable unit
 				if (unitLayer.getTileUnitIndex(current) == 0)
 					continue;
 				else
 				{
-					bool self = false, hostile = true;
+					bool self = false, hostile = true, dead = false;
 					
 					if (unitLayer.getTileUnitIndex(current) == unit.unitIndex)
 						self = true;
 
+					if (unitLayer.getTileUnitIndex(current) < 0)
+						dead = true;
+
 					foreach (BaseUnit ut in unit.faction.units)
 					{
-						if (unitLayer.getTileUnitIndex(current) == ut.unitIndex)
+						if (Math.Abs(unitLayer.getTileUnitIndex(current)) == ut.unitIndex)
 							hostile = false;
 					}
 
@@ -536,7 +540,7 @@ namespace TileEngine
 						continue;
 					}
 
-					if (hostile && isHostile)
+					if (hostile && isHostile && !dead)
 					{
 						closedPoints.Add(current);
 						continue;

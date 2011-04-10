@@ -36,7 +36,7 @@ namespace Triumph
         TurnManager turnManager;
 		Dictionary<string, BaseUnit> unitList;
         int counter = 10;
-        bool inGame = true; //TODO I don't like this, should only be true after UI.screen goes to Main
+        bool inGame = false; //TODO I don't like this, should only be true after UI.screen goes to Main
         #endregion
 
         public Game1()
@@ -168,7 +168,7 @@ namespace Triumph
                 bool end = false;
                 if (faction1.isDefeated || faction2.isDefeated)
                     end = true;
-                ui.Update(gameTime, aKeyboardState, currentUnit, targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, range, end);
+                ui.Update(gameTime, aKeyboardState, currentUnit, targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, range, end, ref inGame);
             }
             
             if (ui.readyToExit())
@@ -227,5 +227,6 @@ namespace Triumph
 
             base.Draw(gameTime);
         }
+
     }
 }
