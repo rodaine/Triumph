@@ -33,8 +33,9 @@ namespace TileEngine
 		//Attributes
 		private int _maxHP, _maxAP, _maxMP, _HP, _AP, _MP, _SPD, _delay, _range;
         private int _wAtk, _wDef, _mPow, _mRes, _evade; //stats used in FFT but not implemented yet here
+        private int _stunLength;
         private bool _isDead, _isStunned, _isDone, _hasAttacked, _hasMoved;
-        private List<Ability> moves;
+        private List<Ability> _moves;
         private List<Buff> itemsAndBuffs;
         private int unitAffinity;
         private static string[] affinities = { "Water", "Fire", "Earth", "Stone", "Wind", "Ice" };
@@ -144,6 +145,22 @@ namespace TileEngine
 			set { _isStunned = value; }
 		}
 
+        /// <summary>
+        /// gets the remaining length of the stun
+        /// </summary>
+        public int stunLength
+        {
+            get { return _stunLength; }
+            set 
+            { 
+                _stunLength = value;
+                if (_stunLength <= 0)
+                {
+                    _isStunned = false;
+                }
+            }
+        }
+
         ///<summary>
         /// Get or set whether a unit is done with its turn
         /// </summary>
@@ -221,11 +238,31 @@ namespace TileEngine
 			set { _name = value; }
 		}
 
+        /// <summary>
+        /// gets the faction of the unit
+        /// </summary>
 		public Faction faction
 		{
 			get { return _faction; }
 			set { _faction = value; }
 		}
+
+        /// <summary>
+        /// gets the range of the unit
+        /// </summary>
+        public int range
+        {
+            get { return _range; }
+        }
+
+        /// <summary>
+        /// gets the list of moves for the unit
+        /// </summary>
+        public List<Ability> moves
+        {
+            get { return _moves; }
+        }
+
 
 		#endregion
 
@@ -259,9 +296,9 @@ namespace TileEngine
 
 			this.unitAffinity = unitAffinity;
 
-			moves = new List<Ability>();
+			_moves = new List<Ability>();
             for (int i = 0; i < abilities.Length; ++i)
-                moves.Add(abilities[i]);
+                _moves.Add(abilities[i]);
 
 			index = ++index_counter;
 
@@ -294,7 +331,7 @@ namespace TileEngine
 
 			this.unitAffinity = unitAffinity;
 
-			moves = new List<Ability>();
+			_moves = new List<Ability>();
 
 			index = ++index_counter;
         }
@@ -333,8 +370,8 @@ namespace TileEngine
 
             this.unitAffinity = unitAffinity;
 
-            moves = new List<Ability>();
-
+            _moves = new List<Ability>();
+            _moves.Add(new Ability("Test Ability", EffectTypes.damage, 150, 2, this._range));
             index = ++index_counter;
         }
 
@@ -355,7 +392,7 @@ namespace TileEngine
 
 			this.unitAffinity = -1;
 		
-			moves = new List<Ability>();
+			_moves = new List<Ability>();
 
 			index = ++index_counter;
         }
@@ -367,7 +404,7 @@ namespace TileEngine
 		public void addAbility(params Ability[] abilities)
 		{
 			for (int i = 0; i < abilities.Length; ++i)
-				moves.Add(abilities[i]);
+				_moves.Add(abilities[i]);
 		}
 
 		public static Dictionary<string, BaseUnit> fromFile(ContentManager content, string filename)
@@ -413,9 +450,10 @@ namespace TileEngine
         /// </summary>
         /// <param name="target"></param>
         /// <param name="rand"></param>
-        public void attack(BaseUnit target)
+        public int attack(BaseUnit target)
         {
-            if (_hasAttacked) return;
+            if (_AP <= 0 || _isAttacking) return -1;
+            _AP -= 1;
             _hasAttacked = true;
             _isAttacking = true;
             _attackCD = 50;
@@ -430,14 +468,15 @@ namespace TileEngine
             }
 
             System.Console.WriteLine("Damage: " + dmg);
-            target.takeDamage(dmg);
+            return target.takeDamage(dmg, 100);
+
         }
 
         /// <summary>
         /// unit recieves amt amount of damage before armor and afinity multipliers
         /// </summary>
         /// <param name="amt"></param>
-        public void takeDamage(int amt)
+        public int takeDamage(int amt, int mult)
         {
             int hit = RandomNumber.getInstance().getNext(1, 100);
             if (hit > _evade) //hit
@@ -454,16 +493,48 @@ namespace TileEngine
                     System.Console.WriteLine("CRITICAL HIT!");
                 }
 
+                //apply multiplier
+                dmg = dmg * mult / 100;
+
                 //deal damage
                 System.Console.WriteLine("Damage after armor: " + dmg);
                 this.HP -= dmg;
+                return dmg;
             }
             else // dodged attack
             {
                 System.Console.WriteLine(this.name + " dodged the attack.");
+                return 0;
             }
         }
 
+        /// <summary>
+        /// takes magic damage
+        /// </summary>
+        /// <param name="amt"></param>
+        /// <param name="mult"></param>
+        public int takeMagicDamage(int amt, int mult)
+        {
+            //apply random variance
+            int dmg = Math.Max(amt - _mRes / 2, 1);
+            int x = dmg / 10;
+            dmg += RandomNumber.getInstance().getNext(0, 2 * x) - x;
+
+            //check for critical hit
+            if (RandomNumber.getInstance().getNext(1, 100) < SPD / 20)
+            {
+                dmg += dmg / 2;
+                System.Console.WriteLine("CRITICAL HIT!");
+            }
+
+            //apply multiplier
+            dmg = dmg * mult / 100;
+
+            //deal damage
+            System.Console.WriteLine("Damage after armor: " + dmg);
+            this.HP -= dmg;
+            return dmg;
+        }
         /// <summary>
         /// checks if a target unit is within range
         /// </summary>
@@ -526,34 +597,63 @@ namespace TileEngine
 
         #region use_ability
 
-        //public Boolean use_ability(Ability action, BaseUnit target);
-
-		/*public Boolean use_ability(Ability action, BasePlayer target)
-		{
-			//check that ability may be performed (enough ap and target within range is all for now)
-			if (action.getAPCost() > AP) { return false; }
-
-			if (action.getAttackRange() < distanceTo(target)) { return false; }
-
-			if (isBlocked(target)) { return false; }
-
-			//if all checks pass then carry out action
-			//include buffs/debuffs/affinities here as well
-			if (action.getAbilityType() == 0)                   //attack
-			{
-				target.damage(action.getAbilityAmount());
-			}
-			else if (action.getAbilityType() == 1)              //heal
-			{
-				target.heal(action.getAbilityAmount());
-			}                                                   //more to come (buffs/debuffs)
-			else
-			{
-
-			}
-
-			return true;
-		}*/
+        public int useAbility(Ability ability, BaseUnit target)
+        {
+            if (ability.abilityType == EffectTypes.damage)
+            {
+                if (this.faction == target.faction || _AP - ability.APCost < 0 || _isAttacking) return -1;
+                _AP -= ability.APCost;
+                _hasAttacked = true;
+                _isAttacking = true;
+                _attackCD = 50;
+                int dmg = _wAtk;
+                System.Console.WriteLine("Damage from ability " + ability.name + ": " + dmg);
+                return target.takeDamage(dmg, ability.abilityAmount);
+            }
+            else if (ability.abilityType == EffectTypes.magicDamage)
+            {
+                if (this.faction == target.faction || _AP - ability.APCost < 0 || _isAttacking) return -1;
+                _AP -= ability.APCost;
+                _hasAttacked = true;
+                _isAttacking = true;
+                _attackCD = 50;
+                int dmg = _mPow;
+                System.Console.WriteLine("Damage from ability " + ability.name + ": " + dmg);
+                target.takeMagicDamage(dmg, ability.abilityAmount);
+            }
+            else if (ability.abilityType == EffectTypes.decAP)
+            {
+                if (target.faction == this.faction) return -1;
+                target.AP -= ability.abilityAmount;
+            }
+            else if (ability.abilityType == EffectTypes.decMP)
+            {
+                if (target.faction == this.faction) return -1;
+                target.MP -= ability.abilityAmount;
+            }
+            else if (ability.abilityType == EffectTypes.heal)
+            {
+                if(target.faction  != this.faction) return -1;
+                target.HP += ability.abilityAmount;
+            }
+            else if (ability.abilityType == EffectTypes.incAP)
+            {
+                if (target.faction != this.faction) return -1;
+                target.AP += ability.abilityAmount;
+            }
+            else if (ability.abilityType == EffectTypes.incMP)
+            {
+                if (target.faction != this.faction) return -1;
+                target.MP += ability.abilityAmount;
+            }
+            else if (ability.abilityType == EffectTypes.stun)
+            {
+                target.isStunned = true;
+                _stunLength = ability.abilityAmount;
+            }
+            else return -1;
+            return 0;
+        }
 
 		#endregion
 

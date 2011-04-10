@@ -81,6 +81,10 @@ namespace TileEngine
                 {
                     _isDefeated = true;
                 }
+                if (_numDead != units.Length)
+                {
+                    _isDefeated = false;
+                }
             }
         }
 

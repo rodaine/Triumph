@@ -183,6 +183,12 @@ namespace Triumph
                 counter = 10;
                 currentUnit.endTurn();
                 currentUnit = turnManager.getNext();
+                if (currentUnit.isStunned)
+                {
+                    currentUnit.MP = 0;
+                    currentUnit.AP = 0;
+                    currentUnit.stunLength-=1;
+                }
                 cursor.location = currentUnit.position;
             }
 

@@ -6,7 +6,7 @@ using System.Text;
 namespace TileEngine
 {
 
-     public enum EffectTypes { heal, damage, stun, incMP, decMP, incAP, decAP, nothing };
+     public enum EffectTypes { heal, magicDamage, damage, stun, incMP, decMP, incAP, decAP, nothing };
 
      public class Buff
     {
