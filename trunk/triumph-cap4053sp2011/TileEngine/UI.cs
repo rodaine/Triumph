@@ -53,7 +53,6 @@ namespace TileEngine
             Texture2D mGreen;
             Texture2D mRed;
 
-            Texture2D bTimer;
             Texture2D tTimer;
             Texture2D wTimer;
 
@@ -85,7 +84,6 @@ namespace TileEngine
                 mGreen = Content.Load<Texture2D>("UI/green");
                 mRed = Content.Load<Texture2D>("UI/red");
 
-                bTimer = Content.Load<Texture2D>("UI/timer_black");
                 tTimer = Content.Load<Texture2D>("UI/timer_tan");
                 wTimer = Content.Load<Texture2D>("UI/timer_white");
 
@@ -300,6 +298,8 @@ namespace TileEngine
                                                     if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                                                     {
                                                         currentUnit.goToTile(Engine.convertPositionToTile(cursor.position), map);
+                                                        range.clearPoints();
+                                                        range.addPoints(map.walkToPoints(currentUnit));
                                                     }
 
                                                     if (!currentUnit.isWalking && currentUnit.MP == 0)
@@ -349,6 +349,8 @@ namespace TileEngine
                                                         if (targetUnit != null && !targetUnit.faction.Equals(currentUnit.faction) && !targetUnit.isDead && currentUnit.withinRange(targetUnit))
                                                         {
                                                             currentUnit.attack(targetUnit);
+                                                            range.clearPoints();
+                                                            range.addPoints(map.attackPoints(currentUnit, 1, false, true, false));
                                                         }
                                                     }
 

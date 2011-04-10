@@ -275,7 +275,6 @@ Content\UI\SpriteFont5.xnb
 Content\UI\SpriteFont6.xnb
 Content\UI\SpriteFont7.xnb
 Content\Music\POL-battle-march-long.xnb
-Content\UI\timer_black.xnb
 Content\UI\timer_tan.xnb
 Content\UI\timer_white.xnb
 Content\Layers\baseTiles.layer
