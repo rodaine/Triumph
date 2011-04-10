@@ -2528,15 +2528,6 @@
       <Time>2011-04-05T13:49:51.2084-04:00</Time>
     </Item>
     <Item>
-      <Source>UI\timer_black.png</Source>
-      <Name>UI\timer_black</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\timer_black.xnb</Output>
-      <Time>2011-04-10T13:41:22-04:00</Time>
-    </Item>
-    <Item>
       <Source>UI\timer_tan.png</Source>
       <Name>UI\timer_tan</Name>
       <Importer>TextureImporter</Importer>
