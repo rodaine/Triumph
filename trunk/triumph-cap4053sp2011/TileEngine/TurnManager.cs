@@ -35,7 +35,7 @@ namespace TileEngine
 
         #region Methods
 
-        public int getMax()
+        private int getMax()
         {
             int index = -1;
             int max = 999;

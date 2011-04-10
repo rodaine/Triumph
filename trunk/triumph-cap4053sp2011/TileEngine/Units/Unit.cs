@@ -13,9 +13,6 @@ using System.Collections;
 using System.IO;
 using TileEngine;
 
-/*  Need to determine how we will handle objects blocking target    *
- *  and how we would like to determine distances                    *
- *  distanceTo(target) & isBlocked(target)                          */
 
 
 namespace TileEngine
@@ -223,6 +220,9 @@ namespace TileEngine
 			set { _unitSprite = value; }
 		}
 
+        /// <summary>
+        /// gets the unit index
+        /// </summary>
 		public int unitIndex
 		{
 			get 
@@ -232,6 +232,10 @@ namespace TileEngine
 			set { index = value; }
 		}
 
+
+        /// <summary>
+        /// gets the name of the object
+        /// </summary>
 		public string name
 		{
 			get { return _name; }
@@ -371,7 +375,9 @@ namespace TileEngine
             this.unitAffinity = unitAffinity;
 
             _moves = new List<Ability>();
-            _moves.Add(new Ability("Test Ability", EffectTypes.damage, 150, 2, this._range));
+            _moves.Add(new Ability("Test Ability 1", EffectTypes.damage, 150, 2, this._range));
+            _moves.Add(new Ability("Test Ability 2", EffectTypes.heal, 10, 3, 4));
+            _moves.Add(new Ability("Test Ability 3", EffectTypes.stun, 1, 3, 3));
             index = ++index_counter;
         }
 
@@ -596,12 +602,18 @@ namespace TileEngine
         #endregion
 
         #region use_ability
-
+        /// <summary>
+        /// uses an ability against a target unit
+        /// </summary>
+        /// <param name="ability"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
         public int useAbility(Ability ability, BaseUnit target)
         {
+            if (!_moves.Contains(ability) || _AP - ability.APCost < 0|| _isAttacking) return -1;
             if (ability.abilityType == EffectTypes.damage)
             {
-                if (this.faction == target.faction || _AP - ability.APCost < 0 || _isAttacking) return -1;
+                if (this.faction == target.faction) return -1;
                 _AP -= ability.APCost;
                 _hasAttacked = true;
                 _isAttacking = true;
@@ -612,7 +624,7 @@ namespace TileEngine
             }
             else if (ability.abilityType == EffectTypes.magicDamage)
             {
-                if (this.faction == target.faction || _AP - ability.APCost < 0 || _isAttacking) return -1;
+                if (this.faction == target.faction) return -1;
                 _AP -= ability.APCost;
                 _hasAttacked = true;
                 _isAttacking = true;
@@ -624,31 +636,56 @@ namespace TileEngine
             else if (ability.abilityType == EffectTypes.decAP)
             {
                 if (target.faction == this.faction) return -1;
+                _AP -= ability.APCost;
+                _hasAttacked = true;
+                _isAttacking = true;
+                _attackCD = 50;
                 target.AP -= ability.abilityAmount;
             }
             else if (ability.abilityType == EffectTypes.decMP)
             {
                 if (target.faction == this.faction) return -1;
+                _AP -= ability.APCost;
+                _hasAttacked = true;
+                _isAttacking = true;
+                _attackCD = 50;
                 target.MP -= ability.abilityAmount;
             }
             else if (ability.abilityType == EffectTypes.heal)
             {
                 if(target.faction  != this.faction) return -1;
+                _AP -= ability.APCost;
+                _hasAttacked = true;
+                _isAttacking = true;
+                _attackCD = 50;
                 target.HP += ability.abilityAmount;
             }
             else if (ability.abilityType == EffectTypes.incAP)
             {
                 if (target.faction != this.faction) return -1;
+                _AP -= ability.APCost;
+                _hasAttacked = true;
+                _isAttacking = true;
+                _attackCD = 50;
                 target.AP += ability.abilityAmount;
             }
             else if (ability.abilityType == EffectTypes.incMP)
             {
                 if (target.faction != this.faction) return -1;
+                _AP -= ability.APCost;
+                _hasAttacked = true;
+                _isAttacking = true;
+                _attackCD = 50;
                 target.MP += ability.abilityAmount;
             }
             else if (ability.abilityType == EffectTypes.stun)
             {
+                if (target.faction != this.faction) return -1;
                 target.isStunned = true;
+                _AP -= ability.APCost;
+                _hasAttacked = true;
+                _isAttacking = true;
+                _attackCD = 50;
                 _stunLength = ability.abilityAmount;
             }
             else return -1;
