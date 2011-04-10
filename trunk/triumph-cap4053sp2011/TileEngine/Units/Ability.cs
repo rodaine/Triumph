@@ -36,13 +36,13 @@ namespace TileEngine
             if (abilityType == EffectTypes.heal || abilityType == EffectTypes.incAP || abilityType == EffectTypes.incMP)
             {
                 _isHostile = false;
-                _isFriendly = true;
+                _isFriendly = _isSelf=true;
                 _isSelf = true;
             }
             else
             {
                 _isHostile = true;
-                _isFriendly = _isSelf = true;
+                _isFriendly = _isSelf = false;
             }
         }
 
@@ -64,7 +64,7 @@ namespace TileEngine
             else
             {
                 _isHostile = true;
-                _isFriendly = _isSelf = true;
+                _isFriendly = _isSelf = false;
             }
         }
 

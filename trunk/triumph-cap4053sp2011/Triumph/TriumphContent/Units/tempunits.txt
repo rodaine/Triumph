@@ -18,7 +18,7 @@ Singed Axman, 5  , 2, 1,  80, 0, 100, 100, 1, 1, 1, Sprites/pdn1
 Airbender, 6  , 3, 4, 110, 0, 100, 100, 1, 1, 1, Sprites/scr1
 Chlorosponger, 6  , 3, 2,  90, 0, 100, 100, 1, 1, 1, Sprites/skl1
 Council Mage, 7  , 4, 3, 100, 0, 100, 100, 1, 1, 1, Sprites/smr1
-Charlie the Destroyer of Worlds, 666  , 1, 7, 150, 0, 125, 100, 1, 1, 2, Sprites/spd1
+Charlie the Destroyer of Worlds, 666  , 1, 7, 150, 0, 125, 80, 1, 1, 2, Sprites/spd1
 Alchemist, 7  , 3, 2, 100, 0, 100, 100, 1, 1, 1, Sprites/thf1
 Witchdoctor, 5  , 4, 2, 130, 0, 100, 100, 1, 1, 1, Sprites/trk1
 Frostkeeper, 6  , 3, 5,  90, 0, 100, 100, 1, 1, 1, Sprites/wmg1
