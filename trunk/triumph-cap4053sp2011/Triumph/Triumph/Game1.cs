@@ -221,6 +221,7 @@ namespace Triumph
                 winner = 1;
             else if (faction1.isDefeated)
                 winner = 2;
+                  
 
             ui.Draw(gameTime, spriteBatch, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height, map, camera, cursor, testUnits, currentUnit, targetUnit, range, winner);
 
