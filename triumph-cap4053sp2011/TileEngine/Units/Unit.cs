@@ -610,82 +610,59 @@ namespace TileEngine
         /// <returns></returns>
         public int useAbility(Ability ability, BaseUnit target)
         {
+            if (target.faction != this.faction)
+            {
+                if (!ability.isHostile) return -1;
+            }
+            else if (target == this)
+            {
+                if (!ability.isSelf) return -1;
+            }
+            else if (target.faction == this.faction)
+            {
+                if (!ability.isFriendly) return -1;
+            }
+
+            _AP -= ability.APCost;
+            _hasAttacked = true;
+            _isAttacking = true;
+            _attackCD = 50;
+                
             if (!_moves.Contains(ability) || _AP - ability.APCost < 0|| _isAttacking) return -1;
             if (ability.abilityType == EffectTypes.damage)
             {
-                if (this.faction == target.faction) return -1;
-                _AP -= ability.APCost;
-                _hasAttacked = true;
-                _isAttacking = true;
-                _attackCD = 50;
                 int dmg = _wAtk;
                 System.Console.WriteLine("Damage from ability " + ability.name + ": " + dmg);
                 return target.takeDamage(dmg, ability.abilityAmount);
             }
             else if (ability.abilityType == EffectTypes.magicDamage)
             {
-                if (this.faction == target.faction) return -1;
-                _AP -= ability.APCost;
-                _hasAttacked = true;
-                _isAttacking = true;
-                _attackCD = 50;
                 int dmg = _mPow;
                 System.Console.WriteLine("Damage from ability " + ability.name + ": " + dmg);
                 target.takeMagicDamage(dmg, ability.abilityAmount);
             }
             else if (ability.abilityType == EffectTypes.decAP)
             {
-                if (target.faction == this.faction) return -1;
-                _AP -= ability.APCost;
-                _hasAttacked = true;
-                _isAttacking = true;
-                _attackCD = 50;
                 target.AP -= ability.abilityAmount;
             }
             else if (ability.abilityType == EffectTypes.decMP)
             {
-                if (target.faction == this.faction) return -1;
-                _AP -= ability.APCost;
-                _hasAttacked = true;
-                _isAttacking = true;
-                _attackCD = 50;
-                target.MP -= ability.abilityAmount;
+               target.MP -= ability.abilityAmount;
             }
             else if (ability.abilityType == EffectTypes.heal)
             {
-                if(target.faction  != this.faction) return -1;
-                _AP -= ability.APCost;
-                _hasAttacked = true;
-                _isAttacking = true;
-                _attackCD = 50;
                 target.HP += ability.abilityAmount;
             }
             else if (ability.abilityType == EffectTypes.incAP)
             {
-                if (target.faction != this.faction) return -1;
-                _AP -= ability.APCost;
-                _hasAttacked = true;
-                _isAttacking = true;
-                _attackCD = 50;
                 target.AP += ability.abilityAmount;
             }
             else if (ability.abilityType == EffectTypes.incMP)
             {
-                if (target.faction != this.faction) return -1;
-                _AP -= ability.APCost;
-                _hasAttacked = true;
-                _isAttacking = true;
-                _attackCD = 50;
                 target.MP += ability.abilityAmount;
             }
             else if (ability.abilityType == EffectTypes.stun)
             {
-                if (target.faction != this.faction) return -1;
-                target.isStunned = true;
-                _AP -= ability.APCost;
-                _hasAttacked = true;
-                _isAttacking = true;
-                _attackCD = 50;
                 _stunLength = ability.abilityAmount;
             }
             else return -1;

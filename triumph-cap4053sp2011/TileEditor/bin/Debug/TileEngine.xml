@@ -198,6 +198,21 @@
             it is a percentage for damage abilities
             </summary>
         </member>
+        <member name="P:TileEngine.Ability.isHostile">
+            <summary>
+            gets if this ability can target hostile units
+            </summary>
+        </member>
+        <member name="P:TileEngine.Ability.isFriendly">
+            <summary>
+            gets if this ability can target friendly units
+            </summary>
+        </member>
+        <member name="P:TileEngine.Ability.isSelf">
+            <summary>
+            gets if this ability can target self
+            </summary>
+        </member>
         <member name="T:TileEngine.UnitLayer">
             <summary>
             Describes a collision map layer

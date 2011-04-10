@@ -60,7 +60,7 @@ namespace Triumph
             faction2Units[1] = unitList["Scorcher"];
             faction2Units[2] = unitList["Leviathan"];
             faction2Units[3] = unitList["Goliath"];
-            faction2Units[4] = unitList["Snowlancer"];
+            faction2Units[4] = unitList["Charlie the Destroyer of Worlds"];
             testUnits = new BaseUnit[10];
             faction1 = new Faction("Faction 1", new Player("Player 1", faction1), faction1Units);
             faction2 = new Faction("Faction 2", new Player("Player 2", faction2), faction2Units);
