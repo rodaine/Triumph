@@ -375,6 +375,7 @@ namespace TileEngine
             this.unitAffinity = unitAffinity;
 
             _moves = new List<Ability>();
+            //remove this later
             _moves.Add(new Ability("Test Ability 1", EffectTypes.damage, 150, 2, this._range));
             _moves.Add(new Ability("Test Ability 2", EffectTypes.heal, 10, 3, 4));
             _moves.Add(new Ability("Test Ability 3", EffectTypes.stun, 1, 3, 3));
@@ -610,6 +611,8 @@ namespace TileEngine
         /// <returns></returns>
         public int useAbility(Ability ability, BaseUnit target)
         {
+            if (Math.Abs(this.position.X - target.position.X) + Math.Abs(this.position.Y - target.position.Y) > ability.attackRange)
+                return -1;
             if (target.faction != this.faction)
             {
                 if (!ability.isHostile) return -1;

@@ -939,6 +939,12 @@
             <param name="target"></param>
             <returns></returns>
         </member>
+        <member name="M:TileEngine.BaseUnit.canAbility">
+            <summary>
+            checks if an unit can use any ability
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:TileEngine.BaseUnit.update(Microsoft.Xna.Framework.GameTime,System.Int32,System.Int32,TileEngine.TileMap)">
             <summary>
             Updates the units sprite representation based on flags.
