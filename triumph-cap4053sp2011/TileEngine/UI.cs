@@ -348,7 +348,8 @@ namespace TileEngine
                                                     {
                                                         if (targetUnit != null && !targetUnit.faction.Equals(currentUnit.faction) && !targetUnit.isDead && currentUnit.withinRange(targetUnit))
                                                         {
-                                                            currentUnit.attack(targetUnit);
+                                                            //currentUnit.attack(targetUnit);
+                                                            currentUnit.useAbility(currentUnit.moves[0],targetUnit);
                                                             range.clearPoints();
                                                             range.addPoints(map.attackPoints(currentUnit, 1, false, true, false));
                                                         }

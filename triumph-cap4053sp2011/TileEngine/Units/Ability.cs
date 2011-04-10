@@ -9,12 +9,13 @@ namespace TileEngine
     {
         #region ability fields
 
-        int apCost;
-        int attackRange;
-        EffectTypes abilityType;
-        int abilityAmount;
-        String name;
-        String description;
+        int _apCost;
+        int _attackRange;
+        int _multiplier;
+        EffectTypes _abilityType;
+        int _abilityAmount;
+        String _name;
+        String _description;
 
         #endregion
 
@@ -22,49 +23,91 @@ namespace TileEngine
 
         public Ability(String name, EffectTypes abilityType, int abilityAmount, int apCost, int attackRange, String description)
         {
-            this.name = name;
-            this.apCost = apCost;
-            this.attackRange = attackRange;
-            this.description = description;
+            this._name = name;
+            this._apCost = apCost;
+            this._attackRange = attackRange;
+            this._description = description;
 
-            this.abilityType = abilityType;
-            this.abilityAmount = abilityAmount;
+            this._abilityType = abilityType;
+            this._abilityAmount = abilityAmount;
 
         }
 
         public Ability(String name, EffectTypes abilityType, int abilityAmount, int apCost, int attackRange)
         {
-            this.name = name;
-            this.apCost = apCost;
-            this.attackRange = attackRange;
-            this.description = "No description provided.";
+            this._name = name;
+            this._apCost = apCost;
+            this._attackRange = attackRange;
+            this._description = "No description provided.";
 
-            this.abilityType = abilityType;
-            this.abilityAmount = abilityAmount;
+            this._abilityType = abilityType;
+            this._abilityAmount = abilityAmount;
         }
 
         public Ability()
         {
-            name = "";
-            apCost = 0;
-            attackRange = 0;
-            description = "";
+            _name = "";
+            _apCost = 0;
+            _attackRange = 0;
+            _description = "";
 
-            abilityType = EffectTypes.nothing;
-            abilityAmount = 0;
+            _abilityType = EffectTypes.nothing;
+            _abilityAmount = 0;
         }
 
         #endregion
 
         #region get methods
 
-        public String getName() { return name; }
-        public String getDescription() { return description; }
+        /// <summary>
+        /// gets the name of the ability
+        /// </summary>
+        public String name
+        {
+            get { return _name; }
+        }
 
-        public int getAPCost() { return apCost; }
-        public int getAttackRange() { return attackRange; }
-        public EffectTypes getAbilityType() { return abilityType; }
-        public int getAbilityAmount() { return abilityAmount; }
+        /// <summary>
+        /// gets the description of the ability
+        /// </summary>
+        public String description
+        {
+            get { return _description; }
+        }
+
+        /// <summary>
+        /// gets the apcost of the ability
+        /// </summary>
+        public int APCost 
+        { 
+            get { return _apCost; }
+        }
+
+        /// <summary>
+        /// gets the attackRange of the ability
+        /// </summary>
+        public int attackRange
+        {
+            get { return _attackRange; }
+        }
+
+        /// <summary>
+        /// gets the abiltiy type of the ability
+        /// </summary>
+        public EffectTypes abilityType
+        {
+            get { return _abilityType; }
+        }
+
+        /// <summary>
+        /// gets the abilityamount of the ability
+        /// It is the flat amount for ap/mp modifiers and heals
+        /// it is a percentage for damage abilities
+        /// </summary>
+        public int abilityAmount
+        {
+            get { return _abilityAmount; }
+        }
 
         #endregion
     }
