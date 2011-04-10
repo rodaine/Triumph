@@ -3,6 +3,7 @@ using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace TileEngine
 {
@@ -158,7 +159,7 @@ namespace TileEngine
 
 			for (int X = 0; X < widthInTiles; ++X)
 				for (int Y = 0; Y < heightInTiles; ++Y)
-					if (layout[Y, X] == unitIndex)
+					if (Math.Abs(layout[Y, X]) == Math.Abs(unitIndex))
 					{
 						layout[Y, X] = 0;
 					}
@@ -173,7 +174,7 @@ namespace TileEngine
 
 			for (int X = 0; X < widthInTiles; ++X)
 				for (int Y = 0; Y < heightInTiles; ++Y)
-					if (layout[Y, X] == unitIndex)
+					if (Math.Abs(layout[Y, X]) == Math.Abs(unitIndex))
 					{
 						layout[Y, X] = 0;
 					}

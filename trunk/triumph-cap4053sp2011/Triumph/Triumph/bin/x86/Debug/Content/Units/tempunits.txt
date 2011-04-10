@@ -3,7 +3,7 @@ Artic Hoplite, 40 , 3, 4, 100, 0, 88, 88, 1, 1, 1, Sprites/amg1
 Moonshiner, 38  , 3, 3, 98, 0, 80, 92, 1, 1, 1, Sprites/man1
 City Guard, 36 , 2, 4,  104, 0, 92, 80, 1, 1, 1, Sprites/mnt1
 Branchslinger, 25  , 3, 4, 110, 0, 114, 48, 1, 1, 4, Sprites/mnv1
-Aqua Soldier, 29 , 3, 15, 120, 0, 84, 72, 1, 1, 1, Sprites/mst1
+Aqua Soldier, 29 , 3, 5, 120, 0, 84, 72, 1, 1, 1, Sprites/mst1
 Rock Smasher, 46 , 2, 3,  95, 0, 92, 84, 1, 1, 1, Sprites/nja1
 Scorcher, 40  , 4, 4, 104, 0, 96, 84, 1, 1, 1, Sprites/npc1
 Leviathan, 45 , 1, 2,  72, 0, 90, 105, 1, 1, 1, Sprites/npc2

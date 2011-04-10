@@ -107,7 +107,7 @@ namespace TileEngine
                 return false;
             }
             
-            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit[] testUnits, Camera camera, Range range, bool gameWon)
+            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit[] testUnits, Camera camera, Range range, bool gameWon, ref bool inGame)
             {
                 switch (mCurrentScreen)
                 {
@@ -118,6 +118,7 @@ namespace TileEngine
                             //by switching the current state to the Main Screen
                             if (aKeyboardState.IsKeyDown(Keys.X) == true)
                             {
+								inGame = true;
                                 mCurrentScreen = Screen.Main;
                             }
 
@@ -437,7 +438,7 @@ namespace TileEngine
 
                             if (aKeyboardState.IsKeyDown(Keys.Enter))
                             {
-                                //reset method
+								reset(testUnits, turnManager, currentUnit, map, ref inGame);
                                 mCurrentScreen = Screen.Title;
                             }
                             break;
@@ -858,5 +859,33 @@ namespace TileEngine
             
                 spriteBatch.End();
             }
-    }
+
+			private void reset(BaseUnit[] testUnits, TurnManager turnManager, BaseUnit currentUnit, TileMap map, ref bool inGame)
+			{
+				int i = 0, j = 0;
+				foreach (BaseUnit unit in testUnits)
+				{
+					unit.HP = unit.maxHP;
+					unit.MP = unit.maxMP;
+					unit.AP = unit.maxAP;
+
+					unit.delay = 0;
+					unit.faction.numDead = 0;
+
+					if (unit.faction.name == "Faction 1")
+					{
+						unit.teleportToTile(new Point(17 + i, 1), map);
+						++i;
+					}
+					if (unit.faction.name == "Faction 2")
+					{
+						unit.teleportToTile(new Point(17 + j, 12), map);
+						++j;
+					}
+				}
+
+				currentUnit = turnManager.getNext();
+				totalTimeInSeconds = hr = min = sec = 0;
+			}
+	}
 }
