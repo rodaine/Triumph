@@ -53,12 +53,19 @@ namespace TileEngine
             Texture2D mGreen;
             Texture2D mRed;
 
+            Texture2D bTimer;
+            Texture2D tTimer;
+            Texture2D wTimer;
+
             SpriteFont font, font2, font3, font4, font5, font6, font7;
             SpriteFont experiment;
         
             ContentManager Content;
 
             private float uiTimer = 0f, secondsPerOption = .13f;
+
+            private double totalTimeInSeconds = 0;
+            int hr = 0, min = 0, sec = 0;
 
             bool exit = false;
 
@@ -77,6 +84,10 @@ namespace TileEngine
                 mBlue = Content.Load<Texture2D>("UI/blue");
                 mGreen = Content.Load<Texture2D>("UI/green");
                 mRed = Content.Load<Texture2D>("UI/red");
+
+                bTimer = Content.Load<Texture2D>("UI/timer_black");
+                tTimer = Content.Load<Texture2D>("UI/timer_tan");
+                wTimer = Content.Load<Texture2D>("UI/timer_white");
 
                 font = Content.Load<SpriteFont>("UI/SpriteFont1");
                 font2 = Content.Load<SpriteFont>("UI/SpriteFont2");
@@ -123,6 +134,12 @@ namespace TileEngine
                         {
                             if (!gameWon)
                             {
+                                totalTimeInSeconds += gameTime.ElapsedGameTime.TotalSeconds;
+                                int temp = (int)totalTimeInSeconds;
+                                hr = (temp / 3600);
+                                min = (temp % 3600) / 60;
+                                sec = (temp % 3600) % 60;
+
                                 //If the user presses the "Q" key while in the main game screen, bring
                                 //up the Menu options by switching the current state to Menu
                                 if (aKeyboardState.IsKeyDown(Keys.Escape) == true)
@@ -423,8 +440,7 @@ namespace TileEngine
                 }
 
             }
-
-
+        
             //called from update, draws screen
             public void Draw(GameTime gameTime, SpriteBatch spriteBatch, int winWidth, int winHeight, TileMap map, Camera camera, Cursor cursor, BaseUnit[] testUnits, BaseUnit currentUnit, BaseUnit targetUnit, Range range, int winner)
             {
@@ -456,6 +472,7 @@ namespace TileEngine
                             }
                             drawActiveInformation(spriteBatch, currentUnit, winHeight, winWidth);
                             drawTargetInformation(spriteBatch, targetUnit, currentUnit, winHeight, winWidth);
+                            drawClock(spriteBatch, winHeight, winWidth);
 
                             if (mCurrentPhase == Phase.Menu && currentUnit.faction.name == "Faction 1")
                             {
@@ -591,6 +608,9 @@ namespace TileEngine
                             spriteBatch.Draw(mTitleScreen, new Rectangle(0, 0, winWidth, winHeight), new Color(1f, 1f, 1f, .7f));
                             spriteBatch.DrawString(font7, msg1, new Vector2(winWidth / 2 - 19 * msg1.Length, 50), Color.White);
                             spriteBatch.DrawString(font7, msg2, new Vector2(winWidth / 2 - 19 * msg2.Length, 325), Color.White);
+
+                            spriteBatch.DrawString(experiment, "Esc : Exit", new Vector2(winWidth - 3 * Engine.TILE_WIDTH - Engine.TILE_WIDTH / 2, winHeight - (3 * Engine.TILE_HEIGHT) / 2), new Color(1f, 1f, 1f, .75f));
+                            spriteBatch.DrawString(experiment, "Enter : Begin New Game", new Vector2(winWidth - 6 * Engine.TILE_WIDTH - Engine.TILE_WIDTH / 2, winHeight - Engine.TILE_HEIGHT), new Color(1f, 1f, 1f, .75f));
 
                             spriteBatch.End();
                             break;
@@ -744,6 +764,35 @@ namespace TileEngine
                 spriteBatch.DrawString(font6, "Attack", new Vector2(winWidth / 2 - 22, winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2 + 40), atColor);
                 spriteBatch.DrawString(font6, "Ability", new Vector2(winWidth / 2 - 23, winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2 + 60), abColor);
                 spriteBatch.DrawString(font6, "End Turn", new Vector2(winWidth / 2 - 30, winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2 + 80), etColor);
+                spriteBatch.End();
+            }
+
+            private void drawClock(SpriteBatch spriteBatch, int winHeight, int winWidth)
+            {
+                spriteBatch.Begin();
+
+                spriteBatch.Draw(mBlack, new Rectangle(winWidth / 2 - Engine.TILE_WIDTH, Engine.TILE_HEIGHT / 8, Engine.TILE_WIDTH * 2 + Engine.TILE_WIDTH / 4, Engine.TILE_HEIGHT / 2), new Color(1f,1f, 1f, .4f));
+                spriteBatch.Draw(wTimer, new Rectangle(winWidth / 2 - Engine.TILE_WIDTH, Engine.TILE_HEIGHT / 8 + 1, Engine.TILE_HEIGHT / 2, Engine.TILE_HEIGHT / 2), Color.White);
+                   
+                string h = "", m = "", s = "";
+                if (hr < 10)
+                {
+                    h = "0";
+                }
+                h += hr.ToString();
+                if (min < 10)
+                {
+                    m = "0";
+                }
+                m += min.ToString();
+                if (sec < 10)
+                {
+                    s = "0";
+                }
+                s += sec.ToString();
+
+                spriteBatch.DrawString(font3, h + ":" + m + ":" + s, new Vector2(winWidth / 2 - Engine.TILE_WIDTH / 3, Engine.TILE_HEIGHT / 8), Color.White);                
+            
                 spriteBatch.End();
             }
     }
