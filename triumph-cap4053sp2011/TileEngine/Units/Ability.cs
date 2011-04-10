@@ -16,6 +16,9 @@ namespace TileEngine
         int _abilityAmount;
         String _name;
         String _description;
+        bool _isHostile;
+        bool _isFriendly;
+        bool _isSelf;
 
         #endregion
 
@@ -30,7 +33,17 @@ namespace TileEngine
 
             this._abilityType = abilityType;
             this._abilityAmount = abilityAmount;
-
+            if (abilityType == EffectTypes.heal || abilityType == EffectTypes.incAP || abilityType == EffectTypes.incMP)
+            {
+                _isHostile = false;
+                _isFriendly = true;
+                _isSelf = true;
+            }
+            else
+            {
+                _isHostile = true;
+                _isFriendly = _isSelf = true;
+            }
         }
 
         public Ability(String name, EffectTypes abilityType, int abilityAmount, int apCost, int attackRange)
@@ -42,6 +55,17 @@ namespace TileEngine
 
             this._abilityType = abilityType;
             this._abilityAmount = abilityAmount;
+            if (abilityType == EffectTypes.heal || abilityType == EffectTypes.incAP || abilityType == EffectTypes.incMP)
+            {
+                _isHostile = false;
+                _isFriendly = true;
+                _isSelf = true;
+            }
+            else
+            {
+                _isHostile = true;
+                _isFriendly = _isSelf = true;
+            }
         }
 
         public Ability()
@@ -107,6 +131,30 @@ namespace TileEngine
         public int abilityAmount
         {
             get { return _abilityAmount; }
+        }
+
+        /// <summary>
+        /// gets if this ability can target hostile units
+        /// </summary>
+        public bool isHostile
+        {
+            get { return _isHostile; }
+        }
+
+        /// <summary>
+        /// gets if this ability can target friendly units
+        /// </summary>
+        public bool isFriendly
+        {
+            get { return _isFriendly;}
+        }
+
+        /// <summary>
+        /// gets if this ability can target self
+        /// </summary>
+        public bool isSelf
+        {
+            get { return _isSelf; }
         }
 
         #endregion

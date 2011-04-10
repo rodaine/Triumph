@@ -916,6 +916,14 @@
             this tells the unit to tick and get closer to its next turn
             </summary>
         </member>
+        <member name="M:TileEngine.BaseUnit.useAbility(TileEngine.Ability,TileEngine.BaseUnit)">
+            <summary>
+            uses an ability against a target unit
+            </summary>
+            <param name="ability"></param>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
         <member name="M:TileEngine.BaseUnit.update(Microsoft.Xna.Framework.GameTime,System.Int32,System.Int32,TileEngine.TileMap)">
             <summary>
             Updates the units sprite representation based on flags.
@@ -1034,6 +1042,16 @@
         <member name="P:TileEngine.BaseUnit.unitSprite">
             <summary>
             Get or set the Animated Sprite representing the unit
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.unitIndex">
+            <summary>
+            gets the unit index
+            </summary>
+        </member>
+        <member name="P:TileEngine.BaseUnit.name">
+            <summary>
+            gets the name of the object
             </summary>
         </member>
         <member name="P:TileEngine.BaseUnit.faction">
