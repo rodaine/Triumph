@@ -68,6 +68,8 @@ namespace TileEngine
 
             bool exit = false;
 
+            string statusMessage = "";
+
         #endregion
 
             public void LoadContent(ContentManager c)
@@ -348,8 +350,9 @@ namespace TileEngine
                                                     {
                                                         if (targetUnit != null && !targetUnit.faction.Equals(currentUnit.faction) && !targetUnit.isDead && currentUnit.withinRange(targetUnit))
                                                         {
-                                                            //currentUnit.attack(targetUnit);
-                                                            currentUnit.useAbility(currentUnit.moves[0],targetUnit);
+                                                            //return an int - -1 if invalid, 0 if miss, value of damage
+                                                            currentUnit.attack(targetUnit);
+                                                            
                                                             range.clearPoints();
                                                             range.addPoints(map.attackPoints(currentUnit, 1, false, true, false));
                                                         }
@@ -473,9 +476,20 @@ namespace TileEngine
                             {
                                 unit.draw(spriteBatch, camera);
                             }
-                            drawActiveInformation(spriteBatch, currentUnit, winHeight, winWidth);
-                            drawTargetInformation(spriteBatch, targetUnit, currentUnit, winHeight, winWidth);
-                            drawClock(spriteBatch, winHeight, winWidth);
+
+                            bool bottom = false;
+                            if (cursor.location.Y > (32 - 8))
+                            {
+                                bottom = true;
+                            }
+                            else
+                            {
+                                bottom = false;
+                            }
+                            
+                            drawActiveInformation(spriteBatch, currentUnit, winHeight, winWidth, bottom);
+                            drawTargetInformation(spriteBatch, targetUnit, currentUnit, winHeight, winWidth, bottom);
+                            drawClock(spriteBatch, winHeight, winWidth, bottom);
 
                             if (mCurrentPhase == Phase.Menu && currentUnit.faction.name == "Faction 1")
                             {
@@ -519,7 +533,7 @@ namespace TileEngine
                                         break;
                                 }
 
-                                drawMenu(spriteBatch, m, at, ab, et, winHeight, winWidth);
+                                drawMenu(spriteBatch, m, at, ab, et, winHeight, winWidth, bottom);
                             }
                             break;
                         }
@@ -622,7 +636,7 @@ namespace TileEngine
                 }
             }
 
-            private void drawActiveInformation(SpriteBatch spriteBatch, BaseUnit active, int winHeight, int winWidth)
+            private void drawActiveInformation(SpriteBatch spriteBatch, BaseUnit active, int winHeight, int winWidth, bool bottom)
             {
                 String name = active.name;
                 String fac = active.faction.name;
@@ -636,12 +650,22 @@ namespace TileEngine
                 spriteBatch.Begin();
 
                 int c1 = Engine.TILE_WIDTH / 2;
-                int c2 = winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2;
-                int c3 = winWidth / 3;
-                int c4 = winHeight / 4;
+                int c2;
+
+                if (bottom)
+                {
+                    c2 = Engine.TILE_HEIGHT / 2;
+                }
+                else
+                {
+                    c2 = winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2;
+                }
+
+                int wid = winWidth / 3;
+                int hei = winHeight / 4;
 
 
-                spriteBatch.Draw(mActive, new Rectangle(c1, c2, c3, c4), Color.White);
+                spriteBatch.Draw(mActive, new Rectangle(c1, c2, wid, hei), Color.White);
 
                 spriteBatch.DrawString(font4, name, new Vector2(c1 + 45, c2 + 20), Color.Blue);
                 spriteBatch.DrawString(font5, fac, new Vector2(c1 + 90, c2 + 40), Color.Blue);
@@ -664,7 +688,7 @@ namespace TileEngine
                 spriteBatch.End();
             }
 
-            private void drawTargetInformation(SpriteBatch spriteBatch, BaseUnit target, BaseUnit active, int winHeight, int winWidth)
+            private void drawTargetInformation(SpriteBatch spriteBatch, BaseUnit target, BaseUnit active, int winHeight, int winWidth, bool bottom)
             {
                 if (target != null)
                 {
@@ -682,18 +706,28 @@ namespace TileEngine
                     spriteBatch.Begin();
 
                     int c1 = winWidth - winWidth / 3 - Engine.TILE_WIDTH / 2;
-                    int c2 = winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2;
-                    int c3 = winWidth / 3;
-                    int c4 = winHeight / 4;
+
+                    int c2;
+
+                    if (bottom)
+                    {
+                        c2 = Engine.TILE_HEIGHT / 2;
+                    }
+                    else
+                    {
+                        c2 = winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2;
+                    }
+                    int wid = winWidth / 3;
+                    int hei = winHeight / 4;
 
                     if (tFac == aFac)
                     {
-                        spriteBatch.Draw(mEnemy, new Rectangle(c1, c2, c3, c4), Color.White);
+                        spriteBatch.Draw(mEnemy, new Rectangle(c1, c2, wid, hei), Color.White);
                         facColor = Color.Blue;
                     }
                     else
                     {
-                        spriteBatch.Draw(mEnemy, new Rectangle(c1, c2, c3, c4), Color.White);
+                        spriteBatch.Draw(mEnemy, new Rectangle(c1, c2, wid, hei), Color.White);
                         facColor = Color.Red;
                     }
                     
@@ -719,11 +753,23 @@ namespace TileEngine
                 }
             }
 
-            private void drawMenu(SpriteBatch spriteBatch, int m, int at, int ab, int et, int winHeight, int winWidth)
+            private void drawMenu(SpriteBatch spriteBatch, int m, int at, int ab, int et, int winHeight, int winWidth, bool bottom)
             {
                 spriteBatch.Begin();
 
-                spriteBatch.Draw(mMenu, new Rectangle(winWidth / 2 - (winWidth / 6) + Engine.TILE_WIDTH, winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2, winWidth / 3 - Engine.TILE_WIDTH * 2, winHeight / 4), Color.White);
+                int c1 = winWidth / 2 - (winWidth / 6) + Engine.TILE_WIDTH;
+                int c2;
+
+                if (bottom)
+                {
+                    c2 = Engine.TILE_HEIGHT / 2;
+                }
+                else
+                {
+                    c2 = winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2;
+                }
+
+                spriteBatch.Draw(mMenu, new Rectangle(c1, c2, winWidth / 3 - Engine.TILE_WIDTH * 2, winHeight / 4), Color.White);
 
                 Color mColor = Color.Black;
                 Color atColor = Color.Black;
@@ -763,19 +809,33 @@ namespace TileEngine
                     etColor = Color.Green;
                 }
 
-                spriteBatch.DrawString(font6, "Move", new Vector2(winWidth / 2 - 20, winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2 + 20), mColor);
-                spriteBatch.DrawString(font6, "Attack", new Vector2(winWidth / 2 - 22, winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2 + 40), atColor);
-                spriteBatch.DrawString(font6, "Ability", new Vector2(winWidth / 2 - 23, winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2 + 60), abColor);
-                spriteBatch.DrawString(font6, "End Turn", new Vector2(winWidth / 2 - 30, winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2 + 80), etColor);
+                spriteBatch.DrawString(font6, "Move", new Vector2(winWidth / 2 - 20, c2 + 20), mColor);
+                spriteBatch.DrawString(font6, "Attack", new Vector2(winWidth / 2 - 22, c2 + 40), atColor);
+                spriteBatch.DrawString(font6, "Ability", new Vector2(winWidth / 2 - 23, c2 + 60), abColor);
+                spriteBatch.DrawString(font6, "End Turn", new Vector2(winWidth / 2 - 30, c2 + 80), etColor);
                 spriteBatch.End();
             }
 
-            private void drawClock(SpriteBatch spriteBatch, int winHeight, int winWidth)
+            private void drawClock(SpriteBatch spriteBatch, int winHeight, int winWidth, bool bottom)
             {
                 spriteBatch.Begin();
 
-                spriteBatch.Draw(mBlack, new Rectangle(winWidth / 2 - Engine.TILE_WIDTH, Engine.TILE_HEIGHT / 8, Engine.TILE_WIDTH * 2 + Engine.TILE_WIDTH / 4, Engine.TILE_HEIGHT / 2), new Color(1f,1f, 1f, .4f));
-                spriteBatch.Draw(wTimer, new Rectangle(winWidth / 2 - Engine.TILE_WIDTH, Engine.TILE_HEIGHT / 8 + 1, Engine.TILE_HEIGHT / 2, Engine.TILE_HEIGHT / 2), Color.White);
+                int c1 = winWidth / 2 - Engine.TILE_WIDTH;
+                int clockX = winWidth / 2 - Engine.TILE_WIDTH / 3;
+                int c2, adj;
+
+                if (bottom)
+                {
+                    c2 = winHeight - Engine.TILE_HEIGHT / 2 - Engine.TILE_HEIGHT / 8;
+                    adj = -1;
+                }
+                else
+                {
+                    c2 = Engine.TILE_HEIGHT / 8;
+                    adj = 1;
+                }
+                spriteBatch.Draw(mBlack, new Rectangle(c1, c2, Engine.TILE_WIDTH * 2 + Engine.TILE_WIDTH / 4, Engine.TILE_HEIGHT / 2), new Color(1f,1f, 1f, .4f));
+                spriteBatch.Draw(wTimer, new Rectangle(c1, c2 + adj, Engine.TILE_HEIGHT / 2, Engine.TILE_HEIGHT / 2), Color.White);
                    
                 string h = "", m = "", s = "";
                 if (hr < 10)
@@ -794,7 +854,7 @@ namespace TileEngine
                 }
                 s += sec.ToString();
 
-                spriteBatch.DrawString(font3, h + ":" + m + ":" + s, new Vector2(winWidth / 2 - Engine.TILE_WIDTH / 3, Engine.TILE_HEIGHT / 8), Color.White);                
+                spriteBatch.DrawString(font3, h + ":" + m + ":" + s, new Vector2(clockX, c2), Color.White);                
             
                 spriteBatch.End();
             }
