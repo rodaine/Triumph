@@ -4,102 +4,6 @@
         <name>TileEngine</name>
     </assembly>
     <members>
-        <member name="T:TileEngine.Camera">
-            <summary>
-            Describes the view of the map visible through the game's viewport
-            </summary>
-        </member>
-        <member name="F:TileEngine.Camera.position">
-            <summary>
-            The position (in pixels) of the camera
-            </summary>
-        </member>
-        <member name="M:TileEngine.Camera.setFocus(TileEngine.Cursor)">
-            <summary>
-            Sets the camera to follow around a particular AnimatedSprite
-            </summary>
-            <param name="focusCursor">The AnimatedSprite the camera should follow</param>
-            <remarks>When focused, the Camera cannot be controlled by the keyboard.</remarks>
-        </member>
-        <member name="M:TileEngine.Camera.unsetFocus">
-            <summary>
-            Unsets the focus of the camera
-            </summary>
-            <remarks>The camera will reobtain keyboard functionality</remarks>
-        </member>
-        <member name="M:TileEngine.Camera.update(System.Int32,System.Int32,TileEngine.TileMap)">
-            <summary>
-            Updates the camera location with respect to its focus, the viewport, and the current TileMap
-            </summary>
-            <param name="screenWidth">Integer width in pixels of the viewport</param>
-            <param name="screenHeight">Integer height in pixels of the viewport</param>
-            <param name="map">The TileMap currently being rendered in the viewport</param>
-        </member>
-        <member name="M:TileEngine.Camera.clampToArea(System.Int32,System.Int32)">
-            <summary>
-            Clamps the camera to only move within a specific area
-            </summary>
-            <param name="width">Width in pixels of the area the camera can move</param>
-            <param name="height">Height in pixels of the area the camera can move</param>
-        </member>
-        <member name="P:TileEngine.Camera.speed">
-            <summary>
-            Get or set the speed (pixels per update) of the camera motion
-            </summary>
-        </member>
-        <member name="P:TileEngine.Camera.transformationMatrix">
-            <summary>
-            Get the Matrix used to shift the position of the camera relative to the map
-            </summary>
-            <remarks>More accurately, the Matrix shifts the map to the camera location in the viewport</remarks>
-        </member>
-        <member name="P:TileEngine.Camera.isFocused">
-            <summary>
-            Returns whether or not the camera is focused on a particular Animated Sprite
-            </summary>
-        </member>
-        <member name="M:TileEngine.AI.startNextTurn">
-            <summary>
-            Initializes all the flags for the next turn
-            </summary>
-        </member>
-        <member name="M:TileEngine.AI.chooseTarget(TileEngine.BaseUnit,TileEngine.TileMap,TileEngine.BaseUnit[])">
-            <summary>
-            Should be run on the AI's first update after its turn starts. Chooses a target
-            </summary>
-            <param name="currentUnit">The AI unit whose turn it is</param>
-            <param name="map">The game map</param>
-            <param name="testUnits">All the units on the map</param>
-            <returns>True if a target was found, false otherwise</returns>
-        </member>
-        <member name="M:TileEngine.AI.update(Microsoft.Xna.Framework.GameTime,TileEngine.BaseUnit,TileEngine.Cursor,TileEngine.TileMap,System.Int32,System.Int32,TileEngine.BaseUnit[],TileEngine.Camera)">
-            <summary>
-            AI tells the current unit what to do
-            </summary>
-            <param name="gameTime">Current gametime</param>
-            <param name="currentUnit">The unit whose turn it is</param>
-            <param name="cursor">The cursor</param>
-            <param name="map">The map</param>
-            <param name="viewWidth">The width of the viewport</param>
-            <param name="viewHeight">The height of the viewport</param>
-            <param name="testUnits">The list of all units</param>
-            <param name="camera">The current camera</param>
-        </member>
-        <member name="T:TileEngine.Engine">
-            <summary>
-            Describes global Tile Engine constants and static methods used throughout the project
-            </summary>
-        </member>
-        <member name="F:TileEngine.Engine.TILE_WIDTH">
-            <summary>
-            Width in pixels of a tile rendered on the map
-            </summary>
-        </member>
-        <member name="F:TileEngine.Engine.TILE_HEIGHT">
-            <summary>
-            Height in pixels of a tile rendered on the map
-            </summary>
-        </member>
         <member name="T:TileEngine.CollisionLayer">
             <summary>
             Describes a collision map layer
@@ -166,6 +70,127 @@
             Returns the height in tiles of the Tile Layer
             </summary>
         </member>
+        <member name="T:TileEngine.Camera">
+            <summary>
+            Describes the view of the map visible through the game's viewport
+            </summary>
+        </member>
+        <member name="F:TileEngine.Camera.position">
+            <summary>
+            The position (in pixels) of the camera
+            </summary>
+        </member>
+        <member name="M:TileEngine.Camera.setFocus(TileEngine.Cursor)">
+            <summary>
+            Sets the camera to follow around a particular AnimatedSprite
+            </summary>
+            <param name="focusCursor">The AnimatedSprite the camera should follow</param>
+            <remarks>When focused, the Camera cannot be controlled by the keyboard.</remarks>
+        </member>
+        <member name="M:TileEngine.Camera.unsetFocus">
+            <summary>
+            Unsets the focus of the camera
+            </summary>
+            <remarks>The camera will reobtain keyboard functionality</remarks>
+        </member>
+        <member name="M:TileEngine.Camera.update(System.Int32,System.Int32,TileEngine.TileMap)">
+            <summary>
+            Updates the camera location with respect to its focus, the viewport, and the current TileMap
+            </summary>
+            <param name="screenWidth">Integer width in pixels of the viewport</param>
+            <param name="screenHeight">Integer height in pixels of the viewport</param>
+            <param name="map">The TileMap currently being rendered in the viewport</param>
+        </member>
+        <member name="M:TileEngine.Camera.clampToArea(System.Int32,System.Int32)">
+            <summary>
+            Clamps the camera to only move within a specific area
+            </summary>
+            <param name="width">Width in pixels of the area the camera can move</param>
+            <param name="height">Height in pixels of the area the camera can move</param>
+        </member>
+        <member name="P:TileEngine.Camera.speed">
+            <summary>
+            Get or set the speed (pixels per update) of the camera motion
+            </summary>
+        </member>
+        <member name="P:TileEngine.Camera.transformationMatrix">
+            <summary>
+            Get the Matrix used to shift the position of the camera relative to the map
+            </summary>
+            <remarks>More accurately, the Matrix shifts the map to the camera location in the viewport</remarks>
+        </member>
+        <member name="P:TileEngine.Camera.isFocused">
+            <summary>
+            Returns whether or not the camera is focused on a particular Animated Sprite
+            </summary>
+        </member>
+        <member name="T:TileEngine.Range">
+            <summary>
+            Defines a range of tiles to highlight for movement, attack, etc...
+            </summary>
+        </member>
+        <member name="F:TileEngine.Range.isDrawing">
+            <summary>
+            Whether or not the range should be drawn
+            </summary>
+        </member>
+        <member name="F:TileEngine.Range.rangeTypes">
+            <summary>
+            Dictionary of range types
+            </summary>
+        </member>
+        <member name="M:TileEngine.Range.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+            Create a range object
+            </summary>
+            <param name="spriteTexture">Sprite map of range types</param>
+        </member>
+        <member name="M:TileEngine.Range.addPoints(Microsoft.Xna.Framework.Point[])">
+            <summary>
+            Add tile points to the range
+            </summary>
+            <param name="points">Points to add to the range</param>
+        </member>
+        <member name="M:TileEngine.Range.addPoints(System.Collections.Generic.List{Microsoft.Xna.Framework.Point})">
+            <summary>
+            Add tile points to the range
+            </summary>
+            <param name="points">List of points to add to the range</param>
+        </member>
+        <member name="M:TileEngine.Range.removePoints(Microsoft.Xna.Framework.Point[])">
+            <summary>
+            Remove tile points from the range
+            </summary>
+            <param name="points">Points to remove from the range</param>
+        </member>
+        <member name="M:TileEngine.Range.removePoints(System.Collections.Generic.List{Microsoft.Xna.Framework.Point})">
+            <summary>
+            Remove tile points from the range
+            </summary>
+            <param name="points">List of point to remove from the range</param>
+        </member>
+        <member name="M:TileEngine.Range.clearPoints">
+            <summary>
+            Remove all points from the range
+            </summary>
+        </member>
+        <member name="M:TileEngine.Range.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
+            <summary>
+            Draw the range on the map
+            </summary>
+            <param name="batch">Sprite Batch passed from Game</param>
+            <param name="camera">Camera passed from Game</param>
+        </member>
+        <member name="P:TileEngine.Range.currentRangeType">
+            <summary>
+            Get the Current Range Type frame for drawing
+            </summary>
+        </member>
+        <member name="P:TileEngine.Range.currentRangeTypeName">
+            <summary>
+            Get or set the Current Range Type by name
+            </summary>
+        </member>
         <member name="P:TileEngine.Ability.name">
             <summary>
             gets the name of the ability
@@ -211,56 +236,6 @@
         <member name="P:TileEngine.Ability.isSelf">
             <summary>
             gets if this ability can target self
-            </summary>
-        </member>
-        <member name="T:TileEngine.UnitLayer">
-            <summary>
-            Describes a collision map layer
-            </summary>
-        </member>
-        <member name="F:TileEngine.UnitLayer.layout">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:TileEngine.UnitLayer.#ctor(System.Int32,System.Int32)">
-            <summary>
-            Creates an empty Tile Layer with specified dimensions
-            </summary>
-            <param name="width">Integer width (x-direction) of layer</param>
-            <param name="height">Integer height (y-direction) of layer</param>
-        </member>
-        <member name="M:TileEngine.UnitLayer.fromFile(System.String)">
-            <summary>
-            Performs the IO on a .layer file to obtain a saved Tile Layer used by both fromFile() methods
-            </summary>
-            <param name="filename">Path (relative or absolute) to the .layer file</param>
-            <param name="textureNames">List of string texture names referenced by the layer</param>
-            <returns>New Tile Layer</returns>
-        </member>
-        <member name="M:TileEngine.UnitLayer.save(System.String,System.String[])">
-            <summary>
-            Saves a Tile Layer to file [used by Tile Editor]
-            </summary>
-            <param name="filename">Path (relative or absolute) where the .layer file should be saved</param>
-            <param name="textureNames">String array of texture names (relative to a content root) used by the layer</param>
-        </member>
-        <member name="M:TileEngine.UnitLayer.getTileUnitIndex(System.Int32,System.Int32)">
-            <summary>
-            Get the index of a texture at a particular tile
-            </summary>
-            <param name="x">0-Based x-direction tile location</param>
-            <param name="y">0-Based y-direction tile location</param>
-            <returns>0-Based texture index; else, -1 for an empty tile or -2 if x/y out of range</returns>
-        </member>
-        <member name="P:TileEngine.UnitLayer.widthInTiles">
-            <summary>
-            Returns the width in tiles of the Tile Layer
-            </summary>
-        </member>
-        <member name="P:TileEngine.UnitLayer.heightInTiles">
-            <summary>
-            Returns the height in tiles of the Tile Layer
             </summary>
         </member>
         <member name="T:TileEngine.FrameAnimation">
@@ -311,6 +286,21 @@
         <member name="P:TileEngine.FrameAnimation.currentFrameIndex">
             <summary>
             Get or set the current frame index of the animation
+            </summary>
+        </member>
+        <member name="T:TileEngine.Engine">
+            <summary>
+            Describes global Tile Engine constants and static methods used throughout the project
+            </summary>
+        </member>
+        <member name="F:TileEngine.Engine.TILE_WIDTH">
+            <summary>
+            Width in pixels of a tile rendered on the map
+            </summary>
+        </member>
+        <member name="F:TileEngine.Engine.TILE_HEIGHT">
+            <summary>
+            Height in pixels of a tile rendered on the map
             </summary>
         </member>
         <member name="T:TileEngine.AnimatedSprite">
@@ -481,6 +471,56 @@
             </summary>
             <remarks>The name refers to the FrameAnimation's key in the animations Dictionary</remarks>
         </member>
+        <member name="T:TileEngine.UnitLayer">
+            <summary>
+            Describes a collision map layer
+            </summary>
+        </member>
+        <member name="F:TileEngine.UnitLayer.layout">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TileEngine.UnitLayer.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Creates an empty Tile Layer with specified dimensions
+            </summary>
+            <param name="width">Integer width (x-direction) of layer</param>
+            <param name="height">Integer height (y-direction) of layer</param>
+        </member>
+        <member name="M:TileEngine.UnitLayer.fromFile(System.String)">
+            <summary>
+            Performs the IO on a .layer file to obtain a saved Tile Layer used by both fromFile() methods
+            </summary>
+            <param name="filename">Path (relative or absolute) to the .layer file</param>
+            <param name="textureNames">List of string texture names referenced by the layer</param>
+            <returns>New Tile Layer</returns>
+        </member>
+        <member name="M:TileEngine.UnitLayer.save(System.String,System.String[])">
+            <summary>
+            Saves a Tile Layer to file [used by Tile Editor]
+            </summary>
+            <param name="filename">Path (relative or absolute) where the .layer file should be saved</param>
+            <param name="textureNames">String array of texture names (relative to a content root) used by the layer</param>
+        </member>
+        <member name="M:TileEngine.UnitLayer.getTileUnitIndex(System.Int32,System.Int32)">
+            <summary>
+            Get the index of a texture at a particular tile
+            </summary>
+            <param name="x">0-Based x-direction tile location</param>
+            <param name="y">0-Based y-direction tile location</param>
+            <returns>0-Based texture index; else, -1 for an empty tile or -2 if x/y out of range</returns>
+        </member>
+        <member name="P:TileEngine.UnitLayer.widthInTiles">
+            <summary>
+            Returns the width in tiles of the Tile Layer
+            </summary>
+        </member>
+        <member name="P:TileEngine.UnitLayer.heightInTiles">
+            <summary>
+            Returns the height in tiles of the Tile Layer
+            </summary>
+        </member>
         <member name="M:TileEngine.Faction.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
             <summary>
             draws every unit in the faction
@@ -613,237 +653,6 @@
             <exception cref="T:System.ArgumentNullException">
             If queue is null.
             </exception>
-        </member>
-        <member name="T:TileEngine.TileLayer">
-            <summary>
-            Describes a layer of tile textures for rendering
-            </summary>
-        </member>
-        <member name="M:TileEngine.TileLayer.#ctor(System.Int32,System.Int32)">
-            <summary>
-            Creates an empty Tile Layer with specified dimensions
-            </summary>
-            <param name="width">Integer width (x-direction) of layer</param>
-            <param name="height">Integer height (y-direction) of layer</param>
-        </member>
-        <member name="M:TileEngine.TileLayer.#ctor(System.Int32[0:,0:])">
-            <summary>
-            Creates a Tile Layer with an existing layout
-            </summary>
-            <param name="existingLayout">Integer texture index array of existing layout</param>
-        </member>
-        <member name="M:TileEngine.TileLayer.fromFile(Microsoft.Xna.Framework.Content.ContentManager,System.String)">
-            <summary>
-            Creates a Tile Layer from file using the XNA Content Pipeline
-            </summary>
-            <param name="content">Content manager reference</param>
-            <param name="filename">Path (relative or absolute) to the .layer file</param>
-            <returns>New Tile Layer</returns>
-        </member>
-        <member name="M:TileEngine.TileLayer.fromFile(System.String,System.String[]@)">
-            <summary>
-            Creates a Tile Layer from file without using the XNA Content Pipeline [used by Tile Editor]
-            </summary>
-            <param name="filename">Path (relative or absolute) to the .layer file</param>
-            <param name="textureNameArray">Output of string texture names referenced by the layer</param>
-            <returns>New Tile Layer</returns>
-            <remarks>Textures must be added after initialization to the layer before calling draw()</remarks>
-        </member>
-        <member name="M:TileEngine.TileLayer.processLayerFile(System.String,System.Collections.Generic.List{System.String})">
-            <summary>
-            Performs the IO on a .layer file to obtain a saved Tile Layer used by both fromFile() methods
-            </summary>
-            <param name="filename">Path (relative or absolute) to the .layer file</param>
-            <param name="textureNames">List of string texture names referenced by the layer</param>
-            <returns>New Tile Layer</returns>
-        </member>
-        <member name="M:TileEngine.TileLayer.save(System.String,System.String[])">
-            <summary>
-            Saves a Tile Layer to file [used by Tile Editor]
-            </summary>
-            <param name="filename">Path (relative or absolute) where the .layer file should be saved</param>
-            <param name="textureNames">String array of texture names (relative to a content root) used by the layer</param>
-        </member>
-        <member name="M:TileEngine.TileLayer.loadTileTextures(Microsoft.Xna.Framework.Content.ContentManager,System.String[])">
-            <summary>
-            Loads tile textures from file using the XNA Content Pipeline
-            </summary>
-            <param name="content">Content manager reference</param>
-            <param name="textureNames">String array of relative paths to texture asset names</param>
-        </member>
-        <member name="M:TileEngine.TileLayer.addTexture(Microsoft.Xna.Framework.Graphics.Texture2D)">
-            <summary>
-            Add a tile texture to the layer
-            </summary>
-            <param name="texture">Texture2D of tile</param>
-        </member>
-        <member name="M:TileEngine.TileLayer.removeTexture(Microsoft.Xna.Framework.Graphics.Texture2D)">
-            <summary>
-            Remove texture from layer [used by Tile Editor]
-            </summary>
-            <param name="texture">Texture2D of tile</param>
-        </member>
-        <member name="M:TileEngine.TileLayer.textureIndex(Microsoft.Xna.Framework.Graphics.Texture2D)">
-            <summary>
-            Get the index of a texture in tileTextures
-            </summary>
-            <param name="texture">Texture2D of tile</param>
-            <returns>0-Based index of texture if it exists in the layer; else -1.</returns>
-        </member>
-        <member name="M:TileEngine.TileLayer.setTileTexureIndex(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Set a particular tile's texture index
-            </summary>
-            <param name="x">0-Based x-direction tile location</param>
-            <param name="y">0-Based y-direction tile location</param>
-            <param name="tileIndex">0-Based texture index; else, -1 for an empty tile</param>
-        </member>
-        <member name="M:TileEngine.TileLayer.getTileTextureIndex(System.Int32,System.Int32)">
-            <summary>
-            Get the index of a texture at a particular tile
-            </summary>
-            <param name="x">0-Based x-direction tile location</param>
-            <param name="y">0-Based y-direction tile location</param>
-            <returns>0-Based texture index; else, -1 for an empty tile or -2 if x/y out of range</returns>
-        </member>
-        <member name="M:TileEngine.TileLayer.getTileTextureIndex(Microsoft.Xna.Framework.Point)">
-            <summary>
-            Get the index of a texture at a particular tile
-            </summary>
-            <param name="point">Point location of the tile</param>
-            <returns>Index of the texture located at the tile</returns>
-        </member>
-        <member name="M:TileEngine.TileLayer.replaceTextureIndex(System.Int32,System.Int32)">
-            <summary>
-            Replace all instances of on tile texture with another on the layer
-            </summary>
-            <param name="existingIndex">0-Based texture index or -1 for empty tile</param>
-            <param name="newIndex">0-Based texture index or -1 for empty tile</param>
-        </member>
-        <member name="M:TileEngine.TileLayer.removeTextureIndex(System.Int32)">
-            <summary>
-            Remove all reference to an index and shift all higher indexes down 1
-            </summary>
-            <param name="existingIndex">0-Based texture index</param>
-            <remarks>Should only be used by removeTexture()</remarks>
-        </member>
-        <member name="M:TileEngine.TileLayer.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
-            <summary>
-            Draws the Tile Layer
-            </summary>
-            <param name="batch">SpriteBatch used to render the layer</param>
-            <param name="camera">Camera used to view the layer</param>
-        </member>
-        <member name="P:TileEngine.TileLayer.widthInTiles">
-            <summary>
-            Returns the width in tiles of the Tile Layer
-            </summary>
-        </member>
-        <member name="P:TileEngine.TileLayer.heightInTiles">
-            <summary>
-            Returns the height in tiles of the Tile Layer
-            </summary>
-        </member>
-        <member name="P:TileEngine.TileLayer.widthInPixels">
-            <summary>
-            Returns the width in pixels of the Tile Layer
-            </summary>
-            <remarks>Relies on Engine.TILE_WIDTH constant</remarks>
-        </member>
-        <member name="P:TileEngine.TileLayer.heightInPixels">
-            <summary>
-            Returns the height in pixels of the Tile Layer
-            </summary>
-            <remarks>Relies on Engine.TILE_HEIGHT constant</remarks>
-        </member>
-        <member name="P:TileEngine.TileLayer.alpha">
-            <summary>
-            Gets and sets the alpha (opacity) of the layer
-            </summary>
-        </member>
-        <member name="M:TileEngine.TurnManager.#ctor(TileEngine.BaseUnit[])">
-            <summary>
-            Constructor to create a turnmanager to manage a set of units
-            </summary>
-            <param name="units"></param>
-        </member>
-        <member name="M:TileEngine.TurnManager.#ctor">
-            <summary>
-            Empty constructor for turnmanager
-            </summary>
-        </member>
-        <member name="M:TileEngine.TurnManager.getNext">
-            <summary>
-            Gets the next unit in line
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:TileEngine.Range">
-            <summary>
-            Defines a range of tiles to highlight for movement, attack, etc...
-            </summary>
-        </member>
-        <member name="F:TileEngine.Range.isDrawing">
-            <summary>
-            Whether or not the range should be drawn
-            </summary>
-        </member>
-        <member name="F:TileEngine.Range.rangeTypes">
-            <summary>
-            Dictionary of range types
-            </summary>
-        </member>
-        <member name="M:TileEngine.Range.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D)">
-            <summary>
-            Create a range object
-            </summary>
-            <param name="spriteTexture">Sprite map of range types</param>
-        </member>
-        <member name="M:TileEngine.Range.addPoints(Microsoft.Xna.Framework.Point[])">
-            <summary>
-            Add tile points to the range
-            </summary>
-            <param name="points">Points to add to the range</param>
-        </member>
-        <member name="M:TileEngine.Range.addPoints(System.Collections.Generic.List{Microsoft.Xna.Framework.Point})">
-            <summary>
-            Add tile points to the range
-            </summary>
-            <param name="points">List of points to add to the range</param>
-        </member>
-        <member name="M:TileEngine.Range.removePoints(Microsoft.Xna.Framework.Point[])">
-            <summary>
-            Remove tile points from the range
-            </summary>
-            <param name="points">Points to remove from the range</param>
-        </member>
-        <member name="M:TileEngine.Range.removePoints(System.Collections.Generic.List{Microsoft.Xna.Framework.Point})">
-            <summary>
-            Remove tile points from the range
-            </summary>
-            <param name="points">List of point to remove from the range</param>
-        </member>
-        <member name="M:TileEngine.Range.clearPoints">
-            <summary>
-            Remove all points from the range
-            </summary>
-        </member>
-        <member name="M:TileEngine.Range.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
-            <summary>
-            Draw the range on the map
-            </summary>
-            <param name="batch">Sprite Batch passed from Game</param>
-            <param name="camera">Camera passed from Game</param>
-        </member>
-        <member name="P:TileEngine.Range.currentRangeType">
-            <summary>
-            Get the Current Range Type frame for drawing
-            </summary>
-        </member>
-        <member name="P:TileEngine.Range.currentRangeTypeName">
-            <summary>
-            Get or set the Current Range Type by name
-            </summary>
         </member>
         <member name="M:TileEngine.BaseUnit.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,TileEngine.Ability[])">
             <summary>
@@ -1095,6 +904,170 @@
             Allows units to be sorted by delay
             </summary>
         </member>
+        <member name="T:TileEngine.TileLayer">
+            <summary>
+            Describes a layer of tile textures for rendering
+            </summary>
+        </member>
+        <member name="M:TileEngine.TileLayer.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Creates an empty Tile Layer with specified dimensions
+            </summary>
+            <param name="width">Integer width (x-direction) of layer</param>
+            <param name="height">Integer height (y-direction) of layer</param>
+        </member>
+        <member name="M:TileEngine.TileLayer.#ctor(System.Int32[0:,0:])">
+            <summary>
+            Creates a Tile Layer with an existing layout
+            </summary>
+            <param name="existingLayout">Integer texture index array of existing layout</param>
+        </member>
+        <member name="M:TileEngine.TileLayer.fromFile(Microsoft.Xna.Framework.Content.ContentManager,System.String)">
+            <summary>
+            Creates a Tile Layer from file using the XNA Content Pipeline
+            </summary>
+            <param name="content">Content manager reference</param>
+            <param name="filename">Path (relative or absolute) to the .layer file</param>
+            <returns>New Tile Layer</returns>
+        </member>
+        <member name="M:TileEngine.TileLayer.fromFile(System.String,System.String[]@)">
+            <summary>
+            Creates a Tile Layer from file without using the XNA Content Pipeline [used by Tile Editor]
+            </summary>
+            <param name="filename">Path (relative or absolute) to the .layer file</param>
+            <param name="textureNameArray">Output of string texture names referenced by the layer</param>
+            <returns>New Tile Layer</returns>
+            <remarks>Textures must be added after initialization to the layer before calling draw()</remarks>
+        </member>
+        <member name="M:TileEngine.TileLayer.processLayerFile(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            Performs the IO on a .layer file to obtain a saved Tile Layer used by both fromFile() methods
+            </summary>
+            <param name="filename">Path (relative or absolute) to the .layer file</param>
+            <param name="textureNames">List of string texture names referenced by the layer</param>
+            <returns>New Tile Layer</returns>
+        </member>
+        <member name="M:TileEngine.TileLayer.save(System.String,System.String[])">
+            <summary>
+            Saves a Tile Layer to file [used by Tile Editor]
+            </summary>
+            <param name="filename">Path (relative or absolute) where the .layer file should be saved</param>
+            <param name="textureNames">String array of texture names (relative to a content root) used by the layer</param>
+        </member>
+        <member name="M:TileEngine.TileLayer.loadTileTextures(Microsoft.Xna.Framework.Content.ContentManager,System.String[])">
+            <summary>
+            Loads tile textures from file using the XNA Content Pipeline
+            </summary>
+            <param name="content">Content manager reference</param>
+            <param name="textureNames">String array of relative paths to texture asset names</param>
+        </member>
+        <member name="M:TileEngine.TileLayer.addTexture(Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+            Add a tile texture to the layer
+            </summary>
+            <param name="texture">Texture2D of tile</param>
+        </member>
+        <member name="M:TileEngine.TileLayer.removeTexture(Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+            Remove texture from layer [used by Tile Editor]
+            </summary>
+            <param name="texture">Texture2D of tile</param>
+        </member>
+        <member name="M:TileEngine.TileLayer.textureIndex(Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+            Get the index of a texture in tileTextures
+            </summary>
+            <param name="texture">Texture2D of tile</param>
+            <returns>0-Based index of texture if it exists in the layer; else -1.</returns>
+        </member>
+        <member name="M:TileEngine.TileLayer.setTileTexureIndex(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Set a particular tile's texture index
+            </summary>
+            <param name="x">0-Based x-direction tile location</param>
+            <param name="y">0-Based y-direction tile location</param>
+            <param name="tileIndex">0-Based texture index; else, -1 for an empty tile</param>
+        </member>
+        <member name="M:TileEngine.TileLayer.getTileTextureIndex(System.Int32,System.Int32)">
+            <summary>
+            Get the index of a texture at a particular tile
+            </summary>
+            <param name="x">0-Based x-direction tile location</param>
+            <param name="y">0-Based y-direction tile location</param>
+            <returns>0-Based texture index; else, -1 for an empty tile or -2 if x/y out of range</returns>
+        </member>
+        <member name="M:TileEngine.TileLayer.getTileTextureIndex(Microsoft.Xna.Framework.Point)">
+            <summary>
+            Get the index of a texture at a particular tile
+            </summary>
+            <param name="point">Point location of the tile</param>
+            <returns>Index of the texture located at the tile</returns>
+        </member>
+        <member name="M:TileEngine.TileLayer.replaceTextureIndex(System.Int32,System.Int32)">
+            <summary>
+            Replace all instances of on tile texture with another on the layer
+            </summary>
+            <param name="existingIndex">0-Based texture index or -1 for empty tile</param>
+            <param name="newIndex">0-Based texture index or -1 for empty tile</param>
+        </member>
+        <member name="M:TileEngine.TileLayer.removeTextureIndex(System.Int32)">
+            <summary>
+            Remove all reference to an index and shift all higher indexes down 1
+            </summary>
+            <param name="existingIndex">0-Based texture index</param>
+            <remarks>Should only be used by removeTexture()</remarks>
+        </member>
+        <member name="M:TileEngine.TileLayer.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
+            <summary>
+            Draws the Tile Layer
+            </summary>
+            <param name="batch">SpriteBatch used to render the layer</param>
+            <param name="camera">Camera used to view the layer</param>
+        </member>
+        <member name="P:TileEngine.TileLayer.widthInTiles">
+            <summary>
+            Returns the width in tiles of the Tile Layer
+            </summary>
+        </member>
+        <member name="P:TileEngine.TileLayer.heightInTiles">
+            <summary>
+            Returns the height in tiles of the Tile Layer
+            </summary>
+        </member>
+        <member name="P:TileEngine.TileLayer.widthInPixels">
+            <summary>
+            Returns the width in pixels of the Tile Layer
+            </summary>
+            <remarks>Relies on Engine.TILE_WIDTH constant</remarks>
+        </member>
+        <member name="P:TileEngine.TileLayer.heightInPixels">
+            <summary>
+            Returns the height in pixels of the Tile Layer
+            </summary>
+            <remarks>Relies on Engine.TILE_HEIGHT constant</remarks>
+        </member>
+        <member name="P:TileEngine.TileLayer.alpha">
+            <summary>
+            Gets and sets the alpha (opacity) of the layer
+            </summary>
+        </member>
+        <member name="M:TileEngine.TurnManager.#ctor(TileEngine.BaseUnit[])">
+            <summary>
+            Constructor to create a turnmanager to manage a set of units
+            </summary>
+            <param name="units"></param>
+        </member>
+        <member name="M:TileEngine.TurnManager.#ctor">
+            <summary>
+            Empty constructor for turnmanager
+            </summary>
+        </member>
+        <member name="M:TileEngine.TurnManager.getNext">
+            <summary>
+            Gets the next unit in line
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:TileEngine.TileMap">
             <summary>
             Describes a collection of Tile Layers to be drawn together
@@ -1207,6 +1180,51 @@
             <param name="bu"></param>
             <param name="p"></param>
             <returns></returns>
+        </member>
+        <member name="M:TileEngine.AI.startNextTurn">
+            <summary>
+            Initializes all the flags for the next turn
+            </summary>
+        </member>
+        <member name="M:TileEngine.AI.chooseMoveIntoRange(TileEngine.BaseUnit,TileEngine.TileMap,TileEngine.BaseUnit[])">
+            <summary>
+            Should be run on the AI's first update after its turn starts. Chooses a target
+            </summary>
+            <param name="currentUnit">The AI unit whose turn it is</param>
+            <param name="map">The game map</param>
+            <param name="testUnits">All the units on the map</param>
+            <returns>True if a target was found, false otherwise</returns>
+        </member>
+        <member name="M:TileEngine.AI.chooseAttackTarget(TileEngine.BaseUnit,TileEngine.TileMap,TileEngine.BaseUnit[])">
+            <summary>
+            Chooses who to attack from the set of units in attack range
+            </summary>
+            <param name="currentUnit"></param>
+            <param name="map"></param>
+            <param name="testUnits"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TileEngine.AI.determineMostPrudentAbility(TileEngine.BaseUnit,TileEngine.TileMap,TileEngine.BaseUnit[])">
+            <summary>
+            Figures out which ability is the best to be used from this spot.
+            </summary>
+            <param name="currentUnit"></param>
+            <param name="map"></param>
+            <param name="testUnits"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TileEngine.AI.update(Microsoft.Xna.Framework.GameTime,TileEngine.BaseUnit,TileEngine.Cursor,TileEngine.TileMap,System.Int32,System.Int32,TileEngine.BaseUnit[],TileEngine.Camera)">
+            <summary>
+            AI tells the current unit what to do
+            </summary>
+            <param name="gameTime">Current gametime</param>
+            <param name="currentUnit">The unit whose turn it is</param>
+            <param name="cursor">The cursor</param>
+            <param name="map">The map</param>
+            <param name="viewWidth">The width of the viewport</param>
+            <param name="viewHeight">The height of the viewport</param>
+            <param name="testUnits">The list of all units</param>
+            <param name="camera">The current camera</param>
         </member>
     </members>
 </doc>
