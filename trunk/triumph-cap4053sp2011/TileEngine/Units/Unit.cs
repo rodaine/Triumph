@@ -382,8 +382,6 @@ namespace TileEngine
             index = ++index_counter;
         }
 
-
-
 		/// <summary>
 		/// Create an empty baseUnit
 		/// </summary>
@@ -426,6 +424,7 @@ namespace TileEngine
 					FrameAnimation down = new FrameAnimation(2, 32, 32, 64, 0);
 					FrameAnimation left = new FrameAnimation(2, 32, 32, 128, 0);
 					FrameAnimation right = new FrameAnimation(2, 32, 32, 192, 0);
+					FrameAnimation dead = new FrameAnimation(1, 32, 32, 256, 0);
 					up.framesPerSecond = down.framesPerSecond = left.framesPerSecond = right.framesPerSecond = 5;
 
 					string line = reader.ReadLine().Trim();
@@ -439,6 +438,7 @@ namespace TileEngine
 					unit.unitSprite.animations.Add("Down", down);
 					unit.unitSprite.animations.Add("Left", left);
 					unit.unitSprite.animations.Add("Right", right);
+					unit.unitSprite.animations.Add("Dead", dead);
 					unit.unitSprite.speed = 2.5f;
 					unit.unitSprite.originOffset = new Vector2(16f, 32f);
 					unit.unitSprite.currentAnimationName = "Down";
@@ -459,7 +459,7 @@ namespace TileEngine
         /// <param name="rand"></param>
         public int attack(BaseUnit target)
         {
-            if (_AP <= 0 || _isAttacking) return -1;
+            if (_AP <= 0 || _isAttacking || _isWalking) return -1;
             _AP -= 1;
             _hasAttacked = true;
             _isAttacking = true;
@@ -474,6 +474,7 @@ namespace TileEngine
                 dmg = RandomNumber.getInstance().getNext(1, 10); //filler at the moment for an attack formula
             }
 
+			_unitSprite.attack(this, target); 
             System.Console.WriteLine("Damage: " + dmg);
             return target.takeDamage(dmg, 100);
 
@@ -749,19 +750,14 @@ namespace TileEngine
 			else
 				_isWalking = false;
 
-            if (_isAttacking)
-            {
-                _attackCD--;
-                if (_attackCD <= 0)
-                {
-                    _isAttacking = false ;
-                }
-            }
-			
-			//check if dead...check if stunned...etc.
-			//update sprite 
-			map.unitLayer.moveUnit(unitIndex, position);
+			if (isDead)
+				unitSprite.currentAnimationName = "Dead";
+
+			//map.unitLayer.moveUnit(unitIndex, position);
 			_unitSprite.update(gameTime, screenWidth, screenHeight, map);
+
+			if (_isAttacking && !_unitSprite.isAttacking)
+				_isAttacking = false;
 		}
 
 		/// <summary>

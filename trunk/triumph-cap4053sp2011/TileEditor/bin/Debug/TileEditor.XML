@@ -4,6 +4,60 @@
         <name>TileEditor</name>
     </assembly>
     <members>
+        <member name="T:TileEditor.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:TileEditor.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:TileEditor.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:TileEditor.GraphicsDeviceService">
+            <summary>
+            Helper class responsible for creating and managing the GraphicsDevice.
+            All GraphicsDeviceControl instances share the same GraphicsDeviceService,
+            so even though there can be many controls, there will only ever be a single
+            underlying GraphicsDevice. This implements the standard IGraphicsDeviceService
+            interface, which provides notification events for when the device is reset
+            or disposed.
+            </summary>
+        </member>
+        <member name="M:TileEditor.GraphicsDeviceService.#ctor(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+            Constructor is private, because this is a singleton class:
+            client controls should use the public AddRef method instead.
+            </summary>
+        </member>
+        <member name="M:TileEditor.GraphicsDeviceService.AddRef(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+            Gets a reference to the singleton instance.
+            </summary>
+        </member>
+        <member name="M:TileEditor.GraphicsDeviceService.Release(System.Boolean)">
+            <summary>
+            Releases a reference to the singleton instance.
+            </summary>
+        </member>
+        <member name="M:TileEditor.GraphicsDeviceService.ResetDevice(System.Int32,System.Int32)">
+            <summary>
+            Resets the graphics device to whichever is bigger out of the specified
+            resolution or its current size. This behavior means the device will
+            demand-grow to the largest of all its GraphicsDeviceControl clients.
+            </summary>
+        </member>
+        <member name="P:TileEditor.GraphicsDeviceService.GraphicsDevice">
+            <summary>
+            Gets the current graphics device.
+            </summary>
+        </member>
         <member name="F:TileEditor.Form2.components">
             <summary>
             Required designer variable.
@@ -36,22 +90,6 @@
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="T:TileEditor.Properties.Resources">
-            <summary>
-              A strongly-typed resource class, for looking up localized strings, etc.
-            </summary>
-        </member>
-        <member name="P:TileEditor.Properties.Resources.ResourceManager">
-            <summary>
-              Returns the cached ResourceManager instance used by this class.
-            </summary>
-        </member>
-        <member name="P:TileEditor.Properties.Resources.Culture">
-            <summary>
-              Overrides the current thread's CurrentUICulture property for all
-              resource lookups using this strongly typed resource class.
             </summary>
         </member>
         <member name="T:TileEditor.GraphicsDeviceControl">
@@ -156,44 +194,6 @@
         <member name="M:TileEditor.ServiceContainer.GetService(System.Type)">
             <summary>
             Looks up the specified service.
-            </summary>
-        </member>
-        <member name="T:TileEditor.GraphicsDeviceService">
-            <summary>
-            Helper class responsible for creating and managing the GraphicsDevice.
-            All GraphicsDeviceControl instances share the same GraphicsDeviceService,
-            so even though there can be many controls, there will only ever be a single
-            underlying GraphicsDevice. This implements the standard IGraphicsDeviceService
-            interface, which provides notification events for when the device is reset
-            or disposed.
-            </summary>
-        </member>
-        <member name="M:TileEditor.GraphicsDeviceService.#ctor(System.IntPtr,System.Int32,System.Int32)">
-            <summary>
-            Constructor is private, because this is a singleton class:
-            client controls should use the public AddRef method instead.
-            </summary>
-        </member>
-        <member name="M:TileEditor.GraphicsDeviceService.AddRef(System.IntPtr,System.Int32,System.Int32)">
-            <summary>
-            Gets a reference to the singleton instance.
-            </summary>
-        </member>
-        <member name="M:TileEditor.GraphicsDeviceService.Release(System.Boolean)">
-            <summary>
-            Releases a reference to the singleton instance.
-            </summary>
-        </member>
-        <member name="M:TileEditor.GraphicsDeviceService.ResetDevice(System.Int32,System.Int32)">
-            <summary>
-            Resets the graphics device to whichever is bigger out of the specified
-            resolution or its current size. This behavior means the device will
-            demand-grow to the largest of all its GraphicsDeviceControl clients.
-            </summary>
-        </member>
-        <member name="P:TileEditor.GraphicsDeviceService.GraphicsDevice">
-            <summary>
-            Gets the current graphics device.
             </summary>
         </member>
     </members>
