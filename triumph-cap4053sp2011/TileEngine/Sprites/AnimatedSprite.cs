@@ -17,9 +17,12 @@ namespace TileEngine
 					  _collisionRadius = 10f;
 		private Texture2D spriteTexture;
 		private Vector2 _originOffset = Vector2.Zero;
-		private bool _isMoving = false;
+		private bool _isMoving = false, _isAttacking = false, _isHit = false, _isDodging = false, _isCritHit = false;
+		private bool[] attackPhases = {false, false, false};
 		private Vector2 destination;
+		private Vector2 initial;
 		private Stack<Point> path;
+		private float timer;
 
 		/// <summary>
 		/// Collection of FrameAnimations with assigned (arbitrary) names
@@ -83,6 +86,11 @@ namespace TileEngine
 		public bool isMoving
 		{
 			get { return _isMoving; }
+		}
+
+		public bool isAttacking
+		{
+			get { return _isAttacking; }
 		}
 
 		/// <summary>
@@ -162,6 +170,137 @@ namespace TileEngine
 		public void update(GameTime gameTime, int screenWidth, int screenHeight, TileMap map)
 		{
 
+			updateWalking(map);
+			updateAttacking();
+			updateAnimation(gameTime);
+		}
+
+		private void updateAttacking()
+		{
+			if (_isMoving) return;
+
+			if (_isAttacking)
+			{
+				isAnimating = true;
+				Vector2 motion = Vector2.Zero;
+
+				if (attackPhases[2])
+				{
+					//walk back to initial location
+
+					//at destination
+					if (position.X == destination.X && position.Y == destination.Y)
+					{
+						isAnimating = false;
+						_isAttacking = false;
+					}
+					else //not at destination
+					{
+						motion = destination - position;
+						motion.Normalize();
+						motion *= speed * 1.5f;
+						if (motion.Length() > (destination - position).Length())
+							motion = destination - position;
+						if (motion != Vector2.Zero)
+							position += motion;
+					}
+				}
+				else if (attackPhases[1])
+				{
+					//run foward
+
+					//at destination
+					if (position.X == destination.X && position.Y == destination.Y)
+					{
+						attackPhases[2] = true;
+						destination = initial;
+					}
+					else //not at destination
+					{
+						motion = destination - position;
+						motion.Normalize();
+						motion *= speed * 2f;
+						if (motion.Length() > (destination - position).Length())
+							motion = destination - position;
+						if (motion != Vector2.Zero)
+							position += motion;
+					}
+				} 
+				else if (attackPhases[0])
+				{
+					//step backward
+
+					//at destination
+					if (position.X == destination.X && position.Y == destination.Y)
+					{
+						attackPhases[1] = true;
+						switch (currentAnimationName)
+						{
+							case "Up":
+								destination = this.position - new Vector2(0f, (float)(Engine.TILE_HEIGHT * .75));
+								break;
+							case "Down":
+								destination = this.position + new Vector2(0f, (float)(Engine.TILE_HEIGHT * .75));
+								break;
+							case "Left":
+								destination = this.position - new Vector2((float)(Engine.TILE_WIDTH * .75), 0f);
+								break;
+							case "Right":
+								destination = this.position + new Vector2((float)(Engine.TILE_WIDTH * .75), 0f);
+								break;
+							default:
+								_isAnimating = false;
+								_isAttacking = false;
+								break;
+
+						}
+					}
+					else //not at destination
+					{
+						motion = destination - position;
+						motion.Normalize();
+						motion *= speed * 0.25f;
+						if (motion.Length() > (destination - position).Length())
+							motion = destination - position;
+						if (motion != Vector2.Zero)
+							position += motion;
+					}
+
+				} 
+				else 
+				{
+					//initialize attack
+
+					initial = new Vector2(position.X, position.Y);
+					attackPhases[0] = true;
+					switch (currentAnimationName)
+					{
+						case "Up":
+							destination = this.position + new Vector2(0f, (float)(Engine.TILE_HEIGHT * 0.25)); 
+							break;
+						case "Down":
+							destination = this.position - new Vector2(0f, (float)(Engine.TILE_HEIGHT * 0.25)); 
+							break;
+						case "Left":
+							destination = this.position + new Vector2((float)(Engine.TILE_WIDTH * 0.25), 0f); 
+							break;
+						case "Right":
+							destination = this.position - new Vector2((float)(Engine.TILE_WIDTH * 0.25), 0f); 
+							break;
+						default:
+							_isAnimating = false;
+							_isAttacking = false;
+							break;
+
+					}
+				}
+			}
+			else
+				_isAnimating = false;
+		}
+
+		private void updateWalking(TileMap map)
+		{
 			Vector2 motion = Vector2.Zero;
 			if (_isMoving && position.X == destination.X && position.Y == destination.Y)
 			{
@@ -214,17 +353,30 @@ namespace TileEngine
 				position += motion;
 
 				clampToArea(map.getWidthInPixels(), map.getHeightInPixels());
-				
+
 			}
 			else
 				isAnimating = false;
+		}
 
-			updateAnimation(gameTime);
+		private void updateHit()
+		{
+
+		}
+
+		private void updateDodge()
+		{
+
+		}
+
+		private void updateCrit()
+		{
+
 		}
 
 		public bool goToTile(BaseUnit unit, Point goal, TileMap map, int maxDistance)
 		{
-			if (_isMoving) return false;
+			if (_isMoving || _isAttacking) return false;
 
 			path = map.getPath(unit, goal, new List<Point>());
 			if (path.Count == 0 || path.Count > maxDistance + 1)
@@ -237,53 +389,58 @@ namespace TileEngine
 			return true;
 		}
 
-		//private Vector2 adjustMotionForCollision(Vector2 motion,CollisionLayer collisionLayer)
-		//{
-		//    Point originTile = Engine.convertPositionToTile(origin);
-		//    Point centerTile = Engine.convertPositionToTile(center);
-		//    Point? up, down, left, right;
-		//    Rectangle tileRect;
-		//    int collIndex = collisionLayer.getTileCollisionIndex(originTile);
+		public bool attack(BaseUnit unit, BaseUnit target)
+		{
+			if (_isMoving) return false;
 
-		//    //HANDLE NON-UNWALKABLE COLLISIONS HERE
-		//    if (collIndex == 2)
-		//        motion /= 2;
+			attackPhases[0] =
+			attackPhases[1] =
+			attackPhases[2] = false;
+			
+			_isAttacking = true;
 
-		//    //HANDLE UNWALKABLE COLLISIONS HERE
-		//    if (centerTile.X != 0)
-		//    {
-		//        left = new Point(centerTile.X - 1, centerTile.Y);
-		//        tileRect = Engine.createRectForTile(left.Value);
-		//        if (collisionLayer.getTileCollisionIndex(left.Value) == 1 && tileRect.Intersects(bounds))
-		//            motion.X = Math.Max(0, motion.X);
+			int x = target.position.X - unit.position.X;
+			int y = target.position.Y - unit.position.Y;
 
-		//    }
-		//    if (centerTile.X != collisionLayer.widthInTiles - 1)
-		//    {
-		//        right = new Point(centerTile.X + 1, centerTile.Y);
-		//        tileRect = Engine.createRectForTile(right.Value);
-		//        if (collisionLayer.getTileCollisionIndex(right.Value) == 1 && tileRect.Intersects(bounds))
-		//            motion.X = Math.Min(0,motion.X);
-		//    }
+			//face unit...this favors X-Dir over Y-Dir if equivalent
+			if (Math.Abs(y) > Math.Abs(x))
+			{
+				if (y > 0)
+					currentAnimationName = "Down";
+				else
+					currentAnimationName = "Up";
+			}
+			else
+			{
+				if (x > 0)
+					currentAnimationName = "Right";
+				else
+					currentAnimationName = "Left";
+			}
 
-		//    if (centerTile.Y != 0)
-		//    {
-		//        up = new Point(centerTile.X, centerTile.Y - 1);
-		//        tileRect = Engine.createRectForTile(up.Value);
-		//        if (collisionLayer.getTileCollisionIndex(up.Value) == 1 && tileRect.Intersects(bounds))
-		//            motion.Y = Math.Max(0, motion.Y);
-		//    }
+			if (x == y && y == 0)
+			{
+				currentAnimationName = "Down";
+				_isAttacking = false;
+			}
 
-		//    if (centerTile.Y != collisionLayer.heightInTiles - 1)
-		//    {
-		//        down = new Point(centerTile.X, centerTile.Y + 1);
-		//        tileRect = Engine.createRectForTile(down.Value);
-		//        if (collisionLayer.getTileCollisionIndex(down.Value) == 1 && tileRect.Intersects(bounds))
-		//            motion.Y = Math.Min(0, motion.Y);
-		//    }
+			return true;
+		}
 
-		//    return motion;
-		//}
+		public bool beHit(BaseUnit unit, BaseUnit attackSource)
+		{
+			return true;
+		}
+
+		public bool dodge(BaseUnit unit, BaseUnit attackSource)
+		{
+			return true;
+		}
+
+		public bool beCritHit(BaseUnit unit, BaseUnit attackSource)
+		{
+			return true;
+		}
 
 		/// <summary>
 		/// If the sprite is currently animating, the FrameAnimation is updated
