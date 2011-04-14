@@ -868,7 +868,6 @@ namespace TileEngine
 					unit.HP = unit.maxHP;
 					unit.MP = unit.maxMP;
 					unit.AP = unit.maxAP;
-
 					unit.delay = 0;
 					unit.faction.numDead = 0;
 
@@ -884,7 +883,7 @@ namespace TileEngine
 					}
 				}
 
-				currentUnit = turnManager.getNext();
+				currentUnit.isDone = true;
 				totalTimeInSeconds = hr = min = sec = 0;
 			}
 	}
