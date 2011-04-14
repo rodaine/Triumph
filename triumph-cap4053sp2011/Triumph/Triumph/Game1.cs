@@ -37,7 +37,7 @@ namespace Triumph
 		Dictionary<string, BaseUnit> unitList;
         int counter = 10;
         bool inGame = false; //TODO I don't like this, should only be true after UI.screen goes to Main
-        GameConsole console = new GameConsole();
+        bool unitBeingAttacked = false;
         #endregion
 
         public Game1()
@@ -124,7 +124,7 @@ namespace Triumph
             
 
             ui.LoadContent(Content);
-            console.LoadContent(Content);
+            GameConsole.getInstanceOf().LoadContent(Content);
 
         }
         
@@ -149,6 +149,7 @@ namespace Triumph
 
             //check current target unit
             Boolean found = false;
+            unitBeingAttacked = false;
             for (int i = 0; i < testUnits.Length; i++)
             {
                 if (testUnits[i].position.X==cursor.location.X && testUnits[i].position.Y == cursor.location.Y)
@@ -156,11 +157,14 @@ namespace Triumph
                     targetUnit = testUnits[i];
                     found = true;
                 }
+
+                if (testUnits[i].isBeingHit) unitBeingAttacked = true;
             }
             if (!found)
             {
                 targetUnit = null;
             }
+
 
             /* Sorta hacky but it works for the time being, replace condition with some parameter inside Faction or Player that 
              * tells whether or not that player/faction is AI controlled or human controlled. */
@@ -173,7 +177,7 @@ namespace Triumph
                 bool end = false;
                 if (faction1.isDefeated || faction2.isDefeated)
                     end = true;
-                ui.Update(gameTime, aKeyboardState, currentUnit, targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, range, end, ref inGame, console);
+                ui.Update(gameTime, aKeyboardState, currentUnit, targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, range, end, ref inGame);
             }
             
             if (ui.readyToExit())
@@ -183,7 +187,7 @@ namespace Triumph
 
             counter--;
             //checks if a unit has finsihed its turn, if it has then make the next unit the active unit
-            if (currentUnit.isDone&& !currentUnit.isWalking && !currentUnit.isAttacking)
+            if (currentUnit.isDone&& !currentUnit.isWalking && !currentUnit.isAttacking&&!unitBeingAttacked)
             {
                 counter = 10;
                 currentUnit.endTurn();
@@ -228,7 +232,7 @@ namespace Triumph
                 winner = 2;
                   
 
-            ui.Draw(gameTime, spriteBatch, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height, map, camera, cursor, testUnits, currentUnit, targetUnit, range, winner, console);
+            ui.Draw(gameTime, spriteBatch, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height, map, camera, cursor, testUnits, currentUnit, targetUnit, range, winner);
 
             base.Draw(gameTime);
         }

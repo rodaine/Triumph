@@ -550,6 +550,12 @@
             Are all units of this faction defeated?
             </summary>
         </member>
+        <member name="M:TileEngine.GameConsole.getInstanceOf">
+            <summary>
+            returns a singleton of GameConsole
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:TileEngine.PriorityQueue">
             <summary>
             Represents the priority queue data structure.

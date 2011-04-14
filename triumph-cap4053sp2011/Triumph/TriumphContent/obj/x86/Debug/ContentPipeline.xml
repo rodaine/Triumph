@@ -2545,6 +2545,51 @@
       <Output>C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Music\POL-battle-march-long.xnb</Output>
       <Time>2011-03-26T15:26:49.1025348-04:00</Time>
     </Item>
+    <Item>
+      <Source>Console\black.png</Source>
+      <Name>Console\black</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Console\black.xnb</Output>
+      <Time>2011-04-13T23:41:57.8407398-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Console\consoleScroll.png</Source>
+      <Name>Console\consoleScroll</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Console\consoleScroll.xnb</Output>
+      <Time>2011-04-13T23:41:57.8567407-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Console\timer_white.png</Source>
+      <Name>Console\timer_white</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Console\timer_white.xnb</Output>
+      <Time>2011-04-13T23:41:57.8497403-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Console\arial9pt.spritefont</Source>
+      <Name>Console\arial9pt</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Console\arial9pt.xnb</Output>
+      <Time>2011-04-13T23:41:57.84474-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Console\consolas.spritefont</Source>
+      <Name>Console\consolas</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Console\consolas.xnb</Output>
+      <Time>2011-04-13T23:41:57.8607409-04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <TargetPlatform>Windows</TargetPlatform>

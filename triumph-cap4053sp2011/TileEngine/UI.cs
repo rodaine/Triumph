@@ -104,7 +104,7 @@ namespace TileEngine
                 return false;
             }
             
-            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit[] testUnits, Camera camera, Range range, bool gameWon, ref bool inGame, GameConsole console)
+            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit[] testUnits, Camera camera, Range range, bool gameWon, ref bool inGame)
             {
                 switch (mCurrentScreen)
                 {
@@ -363,7 +363,7 @@ namespace TileEngine
                                             case (Phase.Ability):
                                                 {
 
-                                                    if (!currentUnit.isAttacking && currentUnit.AP == 0 && !targetUnit.isBeingHit)
+                                                    if (!currentUnit.isAttacking && currentUnit.AP == 0)
                                                     {
                                                         range.isDrawing = false;
                                                         mCurrentPhase = Phase.Menu;
@@ -475,7 +475,7 @@ namespace TileEngine
 
                                 if (aKeyboardState.IsKeyDown(Keys.Enter))
                                 {
-                                    reset(testUnits, turnManager, currentUnit, map, ref inGame, console);
+                                    reset(testUnits, turnManager, currentUnit, map, ref inGame);
                                     mCurrentScreen = Screen.Title;
                                     uiTimer = 0;
                                 }
@@ -488,7 +488,7 @@ namespace TileEngine
             }
         
             //called from update, draws screen
-            public void Draw(GameTime gameTime, SpriteBatch spriteBatch, int winWidth, int winHeight, TileMap map, Camera camera, Cursor cursor, BaseUnit[] testUnits, BaseUnit currentUnit, BaseUnit targetUnit, Range range, int winner, GameConsole console)
+            public void Draw(GameTime gameTime, SpriteBatch spriteBatch, int winWidth, int winHeight, TileMap map, Camera camera, Cursor cursor, BaseUnit[] testUnits, BaseUnit currentUnit, BaseUnit targetUnit, Range range, int winner)
             {
                 //spriteBatch.Begin();
 
@@ -509,7 +509,7 @@ namespace TileEngine
                     #region Main Game
                     case Screen.Main:
                         {
-                            console.UpdateClockTime(gameTime.ElapsedGameTime.TotalSeconds);
+                            GameConsole.getInstanceOf().UpdateClockTime(gameTime.ElapsedGameTime.TotalSeconds);
                             map.draw(spriteBatch, camera);
                             range.draw(spriteBatch, camera);
                             cursor.Draw(spriteBatch, camera);
@@ -538,7 +538,7 @@ namespace TileEngine
                                 left = false;
                             }
                             
-                            console.Draw(spriteBatch, winWidth, winHeight, left, bottom, hide);
+                            GameConsole.getInstanceOf().Draw(spriteBatch, winWidth, winHeight, left, bottom, hide);
                             
                             drawActiveInformation(spriteBatch, currentUnit, winHeight, winWidth, bottom);
                             drawTargetInformation(spriteBatch, targetUnit, currentUnit, winHeight, winWidth, bottom);
@@ -868,7 +868,7 @@ namespace TileEngine
                 spriteBatch.End();
             }            
 
-			private void reset(BaseUnit[] testUnits, TurnManager turnManager, BaseUnit currentUnit, TileMap map, ref bool inGame, GameConsole console)
+			private void reset(BaseUnit[] testUnits, TurnManager turnManager, BaseUnit currentUnit, TileMap map, ref bool inGame)
 			{
 				int i = 0, j = 0;
 				foreach (BaseUnit unit in testUnits)
@@ -892,7 +892,7 @@ namespace TileEngine
 				}
 
 				currentUnit.isDone = true;
-                console.reset();
+                GameConsole.getInstanceOf().reset();
 			}
 	}
 }
