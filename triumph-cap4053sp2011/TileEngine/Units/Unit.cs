@@ -31,6 +31,8 @@ namespace TileEngine
 		private int _maxHP, _maxAP, _maxMP, _HP, _AP, _MP, _SPD, _delay, _range;
         private int _wAtk, _wDef, _mPow, _mRes, _evade; //stats used in FFT but not implemented yet here
         private int _stunLength;
+        private int _dmgToBeTaken;
+        private BaseUnit _attacker;
         private bool _isDead, _isStunned, _isDone, _hasAttacked, _hasMoved;
         private List<Ability> _moves;
         private List<Buff> itemsAndBuffs;
@@ -476,7 +478,7 @@ namespace TileEngine
 
 			_unitSprite.attack(this, target); 
             System.Console.WriteLine("Damage: " + dmg);
-            return target.takeDamage(dmg, 100);
+            return target.takeDamage(dmg, 100, this);
 
         }
 
@@ -484,7 +486,7 @@ namespace TileEngine
         /// unit recieves amt amount of damage before armor and afinity multipliers
         /// </summary>
         /// <param name="amt"></param>
-        public int takeDamage(int amt, int mult)
+        public int takeDamage(int amt, int mult, BaseUnit attacker)
         {
             int hit = RandomNumber.getInstance().getNext(1, 100);
             if (hit > _evade) //hit
@@ -506,7 +508,8 @@ namespace TileEngine
 
                 //deal damage
                 System.Console.WriteLine("Damage after armor: " + dmg);
-                this.HP -= dmg;
+                _dmgToBeTaken = dmg;
+                _attacker = attacker;
                 return dmg;
             }
             else // dodged attack
@@ -521,7 +524,7 @@ namespace TileEngine
         /// </summary>
         /// <param name="amt"></param>
         /// <param name="mult"></param>
-        public int takeMagicDamage(int amt, int mult)
+        public int takeMagicDamage(int amt, int mult, BaseUnit attacker)
         {
             //apply random variance
             int dmg = Math.Max(amt - _mRes / 2, 1);
@@ -540,7 +543,8 @@ namespace TileEngine
 
             //deal damage
             System.Console.WriteLine("Damage after armor: " + dmg);
-            this.HP -= dmg;
+            _dmgToBeTaken = dmg;
+            _attacker = attacker;
             return dmg;
         }
         /// <summary>
@@ -637,13 +641,13 @@ namespace TileEngine
             {
                 int dmg = _wAtk;
                 System.Console.WriteLine("Damage from ability " + ability.name + ": " + dmg);
-                return target.takeDamage(dmg, ability.abilityAmount);
+                return target.takeDamage(dmg, ability.abilityAmount, this);
             }
             else if (ability.abilityType == EffectTypes.magicDamage)
             {
                 int dmg = _mPow;
                 System.Console.WriteLine("Damage from ability " + ability.name + ": " + dmg);
-                target.takeMagicDamage(dmg, ability.abilityAmount);
+                target.takeMagicDamage(dmg, ability.abilityAmount, this);
             }
             else if (ability.abilityType == EffectTypes.decAP)
             {
@@ -758,6 +762,13 @@ namespace TileEngine
 
 			if (_isAttacking && !_unitSprite.isAttacking)
 				_isAttacking = false;
+
+            if (_attacker != null && !_attacker.isAttacking)
+            {
+                this.HP -= _dmgToBeTaken;
+                _dmgToBeTaken = 0;
+                _attacker = null;
+            }
 		}
 
 		/// <summary>
