@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AI.cs" />
+    <Compile Include="GameConsole.cs" />
     <Compile Include="Range.cs" />
     <Compile Include="RandomNumber.cs" />
     <Compile Include="Cursor.cs" />

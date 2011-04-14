@@ -127,6 +127,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Console\arial9pt.spritefont">
+      <Name>arial9pt</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="Console\consolas.spritefont">
+      <Name>consolas</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
     <None Include="Layers\baseTiles.layer">
       <Name>baseTiles</Name>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -1592,6 +1602,23 @@
       <Processor>TextureProcessor</Processor>
     </Compile>
     <Compile Include="UI\timer_white.png">
+      <Name>timer_white</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Console\black.png">
+      <Name>black</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Console\consoleScroll.png">
+      <Name>consoleScroll</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Console\timer_white.png">
       <Name>timer_white</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>

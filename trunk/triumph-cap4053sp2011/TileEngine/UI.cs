@@ -63,12 +63,9 @@ namespace TileEngine
 
             private float uiTimer = 0f, secondsPerOption = .13f;
 
-            private double totalTimeInSeconds = 0;
-            int hr = 0, min = 0, sec = 0;
-
             bool exit = false;
 
-            string statusMessage = "";
+            bool hide = false;
 
         #endregion
 
@@ -107,7 +104,7 @@ namespace TileEngine
                 return false;
             }
             
-            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit[] testUnits, Camera camera, Range range, bool gameWon, ref bool inGame)
+            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit[] testUnits, Camera camera, Range range, bool gameWon, ref bool inGame, GameConsole console)
             {
                 switch (mCurrentScreen)
                 {
@@ -135,11 +132,6 @@ namespace TileEngine
                         {
                             if (!gameWon)
                             {
-                                totalTimeInSeconds += gameTime.ElapsedGameTime.TotalSeconds;
-                                int temp = (int)totalTimeInSeconds;
-                                hr = (temp / 3600);
-                                min = (temp % 3600) / 60;
-                                sec = (temp % 3600) % 60;
 
                                 //If the user presses the "Q" key while in the main game screen, bring
                                 //up the Menu options by switching the current state to Menu
@@ -152,10 +144,16 @@ namespace TileEngine
                                 {
                                     mCurrentScreen = Screen.Controls;
                                 }
-
+                                
                                 uiTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
                                 if (uiTimer >= secondsPerOption)
                                 {
+                                    if (aKeyboardState.IsKeyDown(Keys.H) == true)
+                                    {
+                                        hide = !hide;
+                                        uiTimer = 0;
+                                    }
+
                                     if (currentUnit.faction.name == "Faction 1")
                                     {
                                         switch (mCurrentPhase)
@@ -163,7 +161,6 @@ namespace TileEngine
                                             #region Menu
                                             case (Phase.Menu):
                                                 {
-                                                    uiTimer = 0;
                                                     switch (mCurrentOption)
                                                     {
                                                         #region Move
@@ -175,11 +172,15 @@ namespace TileEngine
                                                                     range.clearPoints();
                                                                     range.addPoints(map.walkToPoints(currentUnit));
                                                                     range.isDrawing = true;
+
+                                                                    uiTimer = 0;
                                                                 }
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.W))
                                                                 {
                                                                     mCurrentOption = MenuOption.EndTurn;
+
+                                                                    uiTimer = 0;
                                                                 }
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.S))
@@ -188,6 +189,8 @@ namespace TileEngine
                                                                         mCurrentOption = MenuOption.Attack;
                                                                     else
                                                                         mCurrentOption = MenuOption.EndTurn;
+
+                                                                    uiTimer = 0;
                                                                 }
                                                                 break;
                                                             }
@@ -203,6 +206,8 @@ namespace TileEngine
                                                                     range.clearPoints();
                                                                     range.addPoints(map.attackPoints(currentUnit, 1, false, true, false));
                                                                     range.isDrawing = true;
+
+                                                                    uiTimer = 0;
                                                                 }
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.W))
@@ -211,6 +216,8 @@ namespace TileEngine
                                                                         mCurrentOption = MenuOption.Move;
                                                                     else
                                                                         mCurrentOption = MenuOption.EndTurn;
+
+                                                                    uiTimer = 0;
                                                                 }
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.S))
@@ -219,6 +226,8 @@ namespace TileEngine
                                                                         mCurrentOption = MenuOption.Ability;
                                                                     else
                                                                         mCurrentOption = MenuOption.EndTurn;
+
+                                                                    uiTimer = 0;
                                                                 }
                                                                 break;
                                                             }
@@ -234,6 +243,8 @@ namespace TileEngine
                                                                     range.clearPoints();
                                                                     range.addPoints(map.attackPoints(currentUnit, 1, false, true, false));
                                                                     range.isDrawing = true;
+
+                                                                    uiTimer = 0;
                                                                 }
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.W))
@@ -244,11 +255,15 @@ namespace TileEngine
                                                                         mCurrentOption = MenuOption.Move;
                                                                     else
                                                                         mCurrentOption = MenuOption.EndTurn;
+
+                                                                    uiTimer = 0;
                                                                 }
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.S))
                                                                 {
                                                                     mCurrentOption = MenuOption.EndTurn;
+
+                                                                    uiTimer = 0;
                                                                 }
                                                                 break;
                                                             }
@@ -263,6 +278,8 @@ namespace TileEngine
                                                                     mCurrentPhase = Phase.Menu;
                                                                     mCurrentOption = MenuOption.Move;
 
+                                                                    uiTimer = 0;
+
                                                                 }
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.W))
@@ -273,6 +290,8 @@ namespace TileEngine
                                                                         mCurrentOption = MenuOption.Move;
                                                                     else
                                                                         mCurrentOption = MenuOption.EndTurn;
+
+                                                                    uiTimer = 0;
                                                                 }
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.S))
@@ -283,6 +302,8 @@ namespace TileEngine
                                                                         mCurrentOption = MenuOption.Attack;
                                                                     else
                                                                         mCurrentOption = MenuOption.EndTurn;
+
+                                                                    uiTimer = 0;
                                                                 }
                                                                 break;
                                                             }
@@ -303,6 +324,8 @@ namespace TileEngine
                                                         currentUnit.goToTile(Engine.convertPositionToTile(cursor.position), map);
                                                         range.clearPoints();
                                                         range.addPoints(map.walkToPoints(currentUnit));
+
+                                                        uiTimer = 0;
                                                     }
 
                                                     if (!currentUnit.isWalking && currentUnit.MP == 0)
@@ -313,6 +336,8 @@ namespace TileEngine
                                                             mCurrentOption = MenuOption.Attack;
                                                         else
                                                             mCurrentOption = MenuOption.EndTurn;
+
+                                                        uiTimer = 0;
                                                     }
 
                                                     if (aKeyboardState.IsKeyDown(Keys.Back) == true)
@@ -325,6 +350,8 @@ namespace TileEngine
                                                             mCurrentOption = MenuOption.Attack;
                                                         else
                                                             mCurrentOption = MenuOption.EndTurn;
+
+                                                        uiTimer = 0;
                                                     }
 
                                                     break;
@@ -338,11 +365,14 @@ namespace TileEngine
 
                                                     if (!currentUnit.isAttacking && currentUnit.AP == 0 && !targetUnit.isBeingHit)
                                                     {
+                                                        range.isDrawing = false;
                                                         mCurrentPhase = Phase.Menu;
                                                         if (currentUnit.MP != 0)
                                                             mCurrentOption = MenuOption.Move;
                                                         else
                                                             mCurrentOption = MenuOption.EndTurn;
+
+                                                        uiTimer = 0;
                                                     }
                                                     //attack or ability
                                                     //attacks, does nothing if there is no targetted unit or
@@ -356,6 +386,8 @@ namespace TileEngine
                                                             
                                                             range.clearPoints();
                                                             range.addPoints(map.attackPoints(currentUnit, 1, false, true, false));
+
+                                                            uiTimer = 0;
                                                         }
                                                     }
 
@@ -369,6 +401,8 @@ namespace TileEngine
                                                             mCurrentOption = MenuOption.Attack;
                                                         else
                                                             mCurrentOption = MenuOption.EndTurn;
+
+                                                        uiTimer = 0;
                                                     }
 
                                                     break;
@@ -430,16 +464,21 @@ namespace TileEngine
 
                     #region End
                     case (Screen.End):
-                        {                            
-                            if(aKeyboardState.IsKeyDown(Keys.Escape))
+                        {
+                            uiTimer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                            if (uiTimer >= secondsPerOption)
                             {
-                                exit = true;
-                            }
+                                if (aKeyboardState.IsKeyDown(Keys.Escape))
+                                {
+                                    exit = true;
+                                }
 
-                            if (aKeyboardState.IsKeyDown(Keys.Enter))
-                            {
-								reset(testUnits, turnManager, currentUnit, map, ref inGame);
-                                mCurrentScreen = Screen.Title;
+                                if (aKeyboardState.IsKeyDown(Keys.Enter))
+                                {
+                                    reset(testUnits, turnManager, currentUnit, map, ref inGame, console);
+                                    mCurrentScreen = Screen.Title;
+                                    uiTimer = 0;
+                                }
                             }
                             break;
                         }
@@ -449,7 +488,7 @@ namespace TileEngine
             }
         
             //called from update, draws screen
-            public void Draw(GameTime gameTime, SpriteBatch spriteBatch, int winWidth, int winHeight, TileMap map, Camera camera, Cursor cursor, BaseUnit[] testUnits, BaseUnit currentUnit, BaseUnit targetUnit, Range range, int winner)
+            public void Draw(GameTime gameTime, SpriteBatch spriteBatch, int winWidth, int winHeight, TileMap map, Camera camera, Cursor cursor, BaseUnit[] testUnits, BaseUnit currentUnit, BaseUnit targetUnit, Range range, int winner, GameConsole console)
             {
                 //spriteBatch.Begin();
 
@@ -470,6 +509,7 @@ namespace TileEngine
                     #region Main Game
                     case Screen.Main:
                         {
+                            console.UpdateClockTime(gameTime.ElapsedGameTime.TotalSeconds);
                             map.draw(spriteBatch, camera);
                             range.draw(spriteBatch, camera);
                             cursor.Draw(spriteBatch, camera);
@@ -479,7 +519,7 @@ namespace TileEngine
                             }
 
                             bool bottom = false;
-                            if (cursor.location.Y > (32 - 8))
+                            if (cursor.location.Y > (30 - 8))
                             {
                                 bottom = true;
                             }
@@ -487,10 +527,21 @@ namespace TileEngine
                             {
                                 bottom = false;
                             }
+
+                            bool left = false;
+                            if (cursor.location.X > (30 - 13))
+                            {
+                                left = true;
+                            }
+                            else
+                            {
+                                left = false;
+                            }
+                            
+                            console.Draw(spriteBatch, winWidth, winHeight, left, bottom, hide);
                             
                             drawActiveInformation(spriteBatch, currentUnit, winHeight, winWidth, bottom);
                             drawTargetInformation(spriteBatch, targetUnit, currentUnit, winHeight, winWidth, bottom);
-                            drawClock(spriteBatch, winHeight, winWidth, bottom);
 
                             if (mCurrentPhase == Phase.Menu && currentUnit.faction.name == "Faction 1")
                             {
@@ -815,52 +866,9 @@ namespace TileEngine
                 spriteBatch.DrawString(font6, "Ability", new Vector2(winWidth / 2 - 23, c2 + 60), abColor);
                 spriteBatch.DrawString(font6, "End Turn", new Vector2(winWidth / 2 - 30, c2 + 80), etColor);
                 spriteBatch.End();
-            }
+            }            
 
-            private void drawClock(SpriteBatch spriteBatch, int winHeight, int winWidth, bool bottom)
-            {
-                spriteBatch.Begin();
-
-                int c1 = winWidth / 2 - Engine.TILE_WIDTH;
-                int clockX = winWidth / 2 - Engine.TILE_WIDTH / 3;
-                int c2, adj;
-
-                if (bottom)
-                {
-                    c2 = winHeight - Engine.TILE_HEIGHT / 2 - Engine.TILE_HEIGHT / 8;
-                    adj = -1;
-                }
-                else
-                {
-                    c2 = Engine.TILE_HEIGHT / 8;
-                    adj = 1;
-                }
-                spriteBatch.Draw(mBlack, new Rectangle(c1, c2, Engine.TILE_WIDTH * 2 + Engine.TILE_WIDTH / 4, Engine.TILE_HEIGHT / 2), new Color(1f,1f, 1f, .4f));
-                spriteBatch.Draw(wTimer, new Rectangle(c1, c2 + adj, Engine.TILE_HEIGHT / 2, Engine.TILE_HEIGHT / 2), Color.White);
-                   
-                string h = "", m = "", s = "";
-                if (hr < 10)
-                {
-                    h = "0";
-                }
-                h += hr.ToString();
-                if (min < 10)
-                {
-                    m = "0";
-                }
-                m += min.ToString();
-                if (sec < 10)
-                {
-                    s = "0";
-                }
-                s += sec.ToString();
-
-                spriteBatch.DrawString(font3, h + ":" + m + ":" + s, new Vector2(clockX, c2), Color.White);                
-            
-                spriteBatch.End();
-            }
-
-			private void reset(BaseUnit[] testUnits, TurnManager turnManager, BaseUnit currentUnit, TileMap map, ref bool inGame)
+			private void reset(BaseUnit[] testUnits, TurnManager turnManager, BaseUnit currentUnit, TileMap map, ref bool inGame, GameConsole console)
 			{
 				int i = 0, j = 0;
 				foreach (BaseUnit unit in testUnits)
@@ -884,7 +892,7 @@ namespace TileEngine
 				}
 
 				currentUnit.isDone = true;
-				totalTimeInSeconds = hr = min = sec = 0;
+                console.reset();
 			}
 	}
 }
