@@ -31,13 +31,26 @@ namespace TileEngine
 		private int _maxHP, _maxAP, _maxMP, _HP, _AP, _MP, _SPD, _delay, _range;
         private int _wAtk, _wDef, _mPow, _mRes, _evade; //stats used in FFT but not implemented yet here
         private int _stunLength;
-        private int _dmgToBeTaken;
-        private BaseUnit _attacker;
         private bool _isDead, _isStunned, _isDone, _hasAttacked, _hasMoved;
         private List<Ability> _moves;
         private List<Buff> itemsAndBuffs;
         private int unitAffinity;
-        private static string[] affinities = { "Water", "Fire", "Earth", "Stone", "Wind", "Ice" };
+        private static string[] affinities = { "Fire", "Ice", "Lightning", "Water", "Earth", "Wind", "Holy", "Dark" };
+        private static int[,] affinityMults = { { 100, 150, 100, 50, 50, 100, 100, 100},
+                                                 { 100, 150, 100, 50, 100, 100, 100, 100},
+                                                 { 100, 150, 100, 50, 100, 100, 100, 100},
+                                                 { 100, 150, 100, 50, 100, 100, 100, 100},
+                                                 { 100, 150, 100, 50, 100, 100, 100, 100},
+                                                 { 100, 150, 100, 50, 100, 100, 100, 100},
+                                                 { 100, 150, 100, 50, 100, 100, 100, 100},
+                                                 { 100, 150, 100, 50, 100, 100, 100, 100}};
+
+        //info for updating unit after sprite is done attacking
+        private int _dmgToBeTaken;
+        private bool _wascrit;
+        private BaseUnit _attacker;
+
+        private bool _isBeingHit;
 
 		//Sprite and Movement
 		private AnimatedSprite _unitSprite;
@@ -178,11 +191,19 @@ namespace TileEngine
 		}
 
         /// <summary>
-        /// Get whether or nto a unit is attacking
+        /// Get whether or not a unit is attacking
         /// </summary>
         public bool isAttacking
         {
             get { return _isAttacking; }
+        }
+
+        /// <summary>
+        /// get whether or not an unit is in its being hit animation
+        /// </summary>
+        public bool isBeingHit
+        {
+            get { return _isBeingHit; }
         }
        
 		/// <summary>
@@ -457,7 +478,6 @@ namespace TileEngine
         /// tells the unit to attack another unit
         /// </summary>
         /// <param name="target"></param>
-        /// <param name="rand"></param>
         public int attack(BaseUnit target)
         {
             if (_AP <= 0 || _isAttacking || _isWalking) return -1;
@@ -466,25 +486,20 @@ namespace TileEngine
             _isAttacking = true;
             _attackCD = 50;
             int dmg = 0;
-            if (_wAtk >0)
-            {
-                dmg = _wAtk;
-            }
-            else
-            {
-                dmg = RandomNumber.getInstance().getNext(1, 10); //filler at the moment for an attack formula
-            }
+            dmg = _wAtk;
 
 			_unitSprite.attack(this, target); 
-            System.Console.WriteLine("Damage: " + dmg);
-            return target.takeDamage(dmg, 100, this);
+            return target.takeDamage(dmg, affinityMults[this.affinityIndex, target.affinityIndex], this);
 
         }
-
+        
         /// <summary>
-        /// unit recieves amt amount of damage before armor and afinity multipliers
+        /// takes weapon damage
         /// </summary>
         /// <param name="amt"></param>
+        /// <param name="mult"></param>
+        /// <param name="attacker"></param>
+        /// <returns></returns>
         public int takeDamage(int amt, int mult, BaseUnit attacker)
         {
             int hit = RandomNumber.getInstance().getNext(1, 100);
@@ -499,21 +514,21 @@ namespace TileEngine
                 if (RandomNumber.getInstance().getNext(1, 100) < SPD / 20)
                 {
                     dmg += dmg / 2;
-                    System.Console.WriteLine("CRITICAL HIT!");
+                    _wascrit = true;
                 }
 
                 //apply multiplier
                 dmg = dmg * mult / 100;
 
                 //deal damage
-                System.Console.WriteLine("Damage after armor: " + dmg);
                 _dmgToBeTaken = dmg;
                 _attacker = attacker;
                 return dmg;
             }
             else // dodged attack
             {
-                System.Console.WriteLine(this.name + " dodged the attack.");
+                _dmgToBeTaken = 0;
+                _attacker = attacker;
                 return 0;
             }
         }
@@ -523,6 +538,7 @@ namespace TileEngine
         /// </summary>
         /// <param name="amt"></param>
         /// <param name="mult"></param>
+        /// <param name="attacker"></param>
         public int takeMagicDamage(int amt, int mult, BaseUnit attacker)
         {
             //apply random variance
@@ -534,18 +550,19 @@ namespace TileEngine
             if (RandomNumber.getInstance().getNext(1, 100) < SPD / 20)
             {
                 dmg += dmg / 2;
-                System.Console.WriteLine("CRITICAL HIT!");
+                _wascrit = true;
             }
 
             //apply multiplier
             dmg = dmg * mult / 100;
 
             //deal damage
-            System.Console.WriteLine("Damage after armor: " + dmg);
             _dmgToBeTaken = dmg;
             _attacker = attacker;
             return dmg;
         }
+
+
         /// <summary>
         /// checks if a target unit is within range
         /// </summary>
@@ -768,9 +785,23 @@ namespace TileEngine
             if (_attacker != null && !_attacker.isAttacking)
             {
                 this.HP -= _dmgToBeTaken;
-                _dmgToBeTaken = 0;
+                if (_wascrit)
+                    System.Console.WriteLine("Critical hit! " + _attacker.name + " has done " + _dmgToBeTaken + " to " + this.name);
+                else if (_dmgToBeTaken == 0)
+                    System.Console.WriteLine(_attacker.name + " has missed " + this.name);
+                else
+                    System.Console.WriteLine(_attacker.name + " has done " + _dmgToBeTaken + " to " + this.name);
+                _wascrit = false;
                 _attacker = null;
+                _dmgToBeTaken = 0;
+                this._isBeingHit = true;
             }
+
+            if (this._isBeingHit && !_unitSprite.isDefending)
+            {
+                this._isBeingHit = false;
+            }
+            
 		}
 
 		/// <summary>
