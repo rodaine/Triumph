@@ -119,6 +119,18 @@ namespace Triumph
 			soundMusic = Content.Load<SoundEffect>("Music/POL-battle-march-long");
 			soundMusicInstance = soundMusic.CreateInstance();
 
+			SoundEffect attack = Content.Load<SoundEffect>("Music/attack");
+			SoundEffect hit = Content.Load<SoundEffect>("Music/hit");
+			SoundEffect crit = Content.Load<SoundEffect>("Music/crit");
+			SoundEffect dodge = Content.Load<SoundEffect>("Music/dodge");
+			SoundEffect dead = Content.Load<SoundEffect>("Music/dead");
+			SoundEffect walking = Content.Load<SoundEffect>("Music/walking");
+
+			foreach (KeyValuePair<string, BaseUnit> unit in unitList)
+			{
+				unit.Value.unitSprite.loadSFX(attack, hit, crit, dodge, dead, walking);
+			}
+
 			cursor = new Cursor(Content.Load<Texture2D>("UI/cursor"));
 			range = new Range(Content.Load <Texture2D>("UI/cursor"));
             
