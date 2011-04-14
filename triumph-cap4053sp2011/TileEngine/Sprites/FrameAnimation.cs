@@ -11,10 +11,16 @@ namespace TileEngine
 	public class FrameAnimation : ICloneable
 	{
 
+		#region Private Properties
+
 		private Rectangle[] _frames;
 		private int _currentFrameIndex = 0;
-		private float _secondsPerFrame = 0.5f,
-					  _timer = 0;
+		private float _secondsPerFrame = 0.5f;
+		private float _timer = 0;
+
+		#endregion
+
+		#region Public Properties
 
 		/// <summary>
 		/// Gets or sets the frames per second of the animation
@@ -41,7 +47,11 @@ namespace TileEngine
 			get { return _currentFrameIndex; }
 			set { _currentFrameIndex = (int)MathHelper.Clamp(value, 0, _frames.Length - 1); }
 		}
-		
+
+		#endregion
+
+		#region Initializers
+
 		/// <summary>
 		/// Creates a new Frame Animation 
 		/// </summary>
@@ -65,10 +75,6 @@ namespace TileEngine
 				_frames[i] = frame;
 			}
 		}
-
-		/// <summary>
-		/// Creates a new FrameAnimation [used only by the Clone() method]
-		/// </summary>
 		private FrameAnimation(){}
 
 		/// <summary>
@@ -84,6 +90,10 @@ namespace TileEngine
 			return anim;
 		}
 
+		#endregion
+
+		#region Update Methods
+
 		/// <summary>
 		/// Updates the current frame based on elapsed game time since the last update
 		/// </summary>
@@ -97,6 +107,8 @@ namespace TileEngine
 				currentFrameIndex = (currentFrameIndex + 1) % _frames.Length;
 			}
 		}
+
+		#endregion
 
 	}
 }

@@ -99,6 +99,7 @@
     <Compile Include="RandomNumber.cs" />
     <Compile Include="Cursor.cs" />
     <Compile Include="PriorityQueue.cs" />
+    <Compile Include="Sprites\AffinityIcon.cs" />
     <Compile Include="TurnManager.cs" />
     <Compile Include="UI.cs" />
     <Compile Include="Units\Ability.cs" />
