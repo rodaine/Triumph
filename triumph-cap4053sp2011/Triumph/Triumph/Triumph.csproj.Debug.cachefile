@@ -283,6 +283,14 @@ Content\UI\SpriteFont5.xnb
 Content\UI\SpriteFont6.xnb
 Content\UI\SpriteFont7.xnb
 Content\Music\POL-battle-march-long.xnb
+Content\Music\attack.xnb
+Content\Music\click.xnb
+Content\Music\correct.xnb
+Content\Music\crit.xnb
+Content\Music\dead.xnb
+Content\Music\dodge.xnb
+Content\Music\hit.xnb
+Content\Music\wrong.xnb
 Content\Layers\baseTiles.layer
 Content\Layers\alphaObjects.layer
 Content\Layers\Collision.layer
@@ -301,3 +309,4 @@ Content\Layers\outdoor_trans2.layer
 Content\Layers\outdoor_objs2.layer
 Content\Units\units.txt
 Content\Units\tempunits.txt
+Content\Units\abilities.txt

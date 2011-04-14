@@ -1,9 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace TileEngine
 {
@@ -11,11 +11,61 @@ namespace TileEngine
 	/// Describes a layer of tile textures for rendering
 	/// </summary>
 	public class TileLayer
-    {
+	{
+		#region Private Properties
 
-        private List<Texture2D> tileTextures = new List<Texture2D>();
+		private List<Texture2D> tileTextures = new List<Texture2D>();
         private int[,] layout;
 		private float _alpha = 1f;
+
+		#endregion
+
+		#region Public Properties
+	
+			/// <summary>
+			/// Returns the width in tiles of the Tile Layer
+			/// </summary>
+			public int widthInTiles
+			{
+				get { return layout.GetLength(1); }
+			}
+		
+			/// <summary>
+			/// Returns the height in tiles of the Tile Layer
+			/// </summary>
+			public int heightInTiles
+			{
+				get { return layout.GetLength(0); }
+			}
+	
+			/// <summary>
+			/// Returns the width in pixels of the Tile Layer
+			/// </summary>
+			/// <remarks>Relies on Engine.TILE_WIDTH constant</remarks>
+			public int widthInPixels
+			{
+				get { return Engine.TILE_WIDTH * widthInTiles; }
+			}
+		
+			/// <summary>
+			/// Returns the height in pixels of the Tile Layer
+			/// </summary>
+			/// <remarks>Relies on Engine.TILE_HEIGHT constant</remarks>
+			public int heightInPixels
+			{
+				get { return Engine.TILE_HEIGHT * heightInTiles; }
+			}
+
+			/// <summary>
+			/// Gets and sets the alpha (opacity) of the layer
+			/// </summary>
+			public float alpha
+			{
+				get { return _alpha; }
+				set { _alpha = MathHelper.Clamp(value, 0f, 1f); }
+			}
+		
+		#endregion
 
 		#region Initializers & IO
 
@@ -36,15 +86,6 @@ namespace TileEngine
 				}
 			}
 
-			/// <summary>
-			/// Creates a Tile Layer with an existing layout
-			/// </summary>
-			/// <param name="existingLayout">Integer texture index array of existing layout</param>
-			public TileLayer(int[,] existingLayout)
-			{
-				layout = (int[,])existingLayout.Clone();
-			}
-			
 			/// <summary>
 			/// Creates a Tile Layer from file using the XNA Content Pipeline
 			/// </summary>
@@ -205,44 +246,6 @@ namespace TileEngine
 
 		#endregion
 
-		#region Dimension Properties
-	
-			/// <summary>
-			/// Returns the width in tiles of the Tile Layer
-			/// </summary>
-			public int widthInTiles
-			{
-				get { return layout.GetLength(1); }
-			}
-		
-			/// <summary>
-			/// Returns the height in tiles of the Tile Layer
-			/// </summary>
-			public int heightInTiles
-			{
-				get { return layout.GetLength(0); }
-			}
-	
-			/// <summary>
-			/// Returns the width in pixels of the Tile Layer
-			/// </summary>
-			/// <remarks>Relies on Engine.TILE_WIDTH constant</remarks>
-			public int widthInPixels
-			{
-				get { return Engine.TILE_WIDTH * widthInTiles; }
-			}
-		
-			/// <summary>
-			/// Returns the height in pixels of the Tile Layer
-			/// </summary>
-			/// <remarks>Relies on Engine.TILE_HEIGHT constant</remarks>
-			public int heightInPixels
-			{
-				get { return Engine.TILE_HEIGHT * heightInTiles; }
-			}
-
-		#endregion
-
 		#region Texture Methods
 
 			/// <summary>
@@ -309,11 +312,6 @@ namespace TileEngine
 				layout[y, x] = tileIndex;
 			}
 
-			public void setTileTextureIndex(Point point, int tileIndex)
-			{
-				layout[point.Y, point.X] = tileIndex;
-			}
-
 			/// <summary>
 			/// Get the index of a texture at a particular tile
 			/// </summary>
@@ -326,33 +324,6 @@ namespace TileEngine
 					return -2;
 				
 				return layout[y, x];
-			}
-
-			/// <summary>
-			/// Get the index of a texture at a particular tile
-			/// </summary>
-			/// <param name="point">Point location of the tile</param>
-			/// <returns>Index of the texture located at the tile</returns>
-			public int getTileTextureIndex(Point point)
-			{
-				return layout[point.Y, point.X];
-			}
-
-			/// <summary>
-			/// Replace all instances of on tile texture with another on the layer
-			/// </summary>
-			/// <param name="existingIndex">0-Based texture index or -1 for empty tile</param>
-			/// <param name="newIndex">0-Based texture index or -1 for empty tile</param>
-			public void replaceTextureIndex(int existingIndex, int newIndex)
-			{
-				for (int x = 0; x < widthInTiles; ++x)
-				{
-					for (int y = 0; y < heightInTiles; ++y)
-					{
-						if (layout[y, x] == existingIndex)
-							layout[y, x] = newIndex;
-					}
-				}
 			}
 
 			/// <summary>
@@ -422,6 +393,13 @@ namespace TileEngine
 				batch.End();
 			}
 
+			/// <summary>
+		/// Draws the Tile Layer
+		/// </summary>
+		/// <param name="batch">SpriteBatch used to render the layer</param>
+		/// <param name="camera">Camera used to view the layer</param>
+		/// <param name="min">Minimum position to draw</param>
+		/// <param name="max">Maximum position to draw</param>
 			public void draw(SpriteBatch batch, Camera camera, Point min, Point max)
 			{
 
@@ -459,15 +437,6 @@ namespace TileEngine
 				}
 
 				batch.End();
-			}
-		
-			/// <summary>
-			/// Gets and sets the alpha (opacity) of the layer
-			/// </summary>
-			public float alpha
-			{
-				get { return _alpha; }
-				set { _alpha = MathHelper.Clamp(value, 0f, 1f); }
 			}
 		
 		#endregion

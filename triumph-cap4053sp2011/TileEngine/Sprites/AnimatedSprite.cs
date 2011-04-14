@@ -324,16 +324,17 @@ namespace TileEngine
 		/// <param name="map">TileMap currently being drawn in the viewport</param>
 		public void update(GameTime gameTime, TileMap map)
 		{
-			updateWalking(map);
 			updateAttacking();
 			updateHit(gameTime);
 			updateCrit(gameTime);
 			updateDodge();
+			updateWalking(map);
 			updateAnimation(gameTime);
 		}
 
 		private void updateWalking(TileMap map)
 		{
+			if (!_isMoving) return;
 			Vector2 motion = Vector2.Zero;
 			if (_isMoving && position.X == destination.X && position.Y == destination.Y)
 			{
@@ -519,7 +520,7 @@ namespace TileEngine
 			if (!_isHit || _isCritHit) return;
 			if (timer < 1000f)
 			{
-				float radius = (float) RandomNumber.getInstance().getNext(0, Engine.TILE_WIDTH / 4);
+				float radius = (float) RandomNumber.getInstance().getNext(0, Engine.TILE_WIDTH / 6);
 				double angle = (double) MathHelper.ToRadians(RandomNumber.getInstance().getNext(0, 359));
 				float x = radius * (float) Math.Cos(angle);
 				float y = radius * (float) Math.Sin(angle);
@@ -540,7 +541,7 @@ namespace TileEngine
 			if (!_isHit && !_isCritHit) return;
 			if (timer < 1500f)
 			{
-				float radius = (float)RandomNumber.getInstance().getNext(0, Engine.TILE_WIDTH / 2);
+				float radius = (float)RandomNumber.getInstance().getNext(0, Engine.TILE_WIDTH / 3);
 				double angle = (double)MathHelper.ToRadians(RandomNumber.getInstance().getNext(0, 359));
 				float x = radius * (float)Math.Cos(angle);
 				float y = radius * (float)Math.Sin(angle);

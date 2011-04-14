@@ -1,26 +1,24 @@
-﻿using System.Collections.Generic;
-using System.IO;
+﻿using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace TileEngine
 {
 	/// <summary>
-	/// Describes a collision map layer
+	/// Describes a unit map layer
 	/// </summary>
 	public class UnitLayer
 	{
-		/// <summary>
-		/// 
-		/// </summary>
+
+		#region Private Properties
+
 		private int[,] layout;
 
-		#region Initializers & IO
+		#endregion
+
+		#region Initializers
 
 		/// <summary>
-		/// Creates an empty Tile Layer with specified dimensions
+		/// Creates an empty Unit Layer with specified dimensions
 		/// </summary>
 		/// <param name="width">Integer width (x-direction) of layer</param>
 		/// <param name="height">Integer height (y-direction) of layer</param>
@@ -36,97 +34,22 @@ namespace TileEngine
 			}
 		}
 
-		/// <summary>
-		/// Performs the IO on a .layer file to obtain a saved Tile Layer used by both fromFile() methods
-		/// </summary>
-		/// <param name="filename">Path (relative or absolute) to the .layer file</param>
-		/// <param name="textureNames">List of string texture names referenced by the layer</param>
-		/// <returns>New Tile Layer</returns>
-		public static UnitLayer fromFile(string filename)
-		{
-			UnitLayer layer;
-			List<List<int>> tempLayout = new List<List<int>>();
-			using (StreamReader reader = new StreamReader(filename))
-			{
-				bool readingLayout = false;
-				while (!reader.EndOfStream)
-				{
-					string line = reader.ReadLine().Trim();
-
-					if (string.IsNullOrEmpty(line))
-						continue;
-
-					if (line.Contains("[Layout]"))
-					{
-						readingLayout = true;
-					}
-					else if (readingLayout)
-					{
-						List<int> row = new List<int>();
-						string[] cells = line.Split(' ');
-						foreach (string c in cells)
-						{
-							if (!string.IsNullOrEmpty(c))
-								row.Add(int.Parse(c));
-						}
-						tempLayout.Add(row);
-					}
-				}
-			}
-
-			int width = tempLayout[0].Count;
-			int height = tempLayout.Count;
-			layer = new UnitLayer(width, height);
-
-			for (int y = 0; y < height; ++y)
-				for (int x = 0; x < width; ++x)
-					layer.setUnitIndex(x, y, tempLayout[y][x]);
-
-			return layer;
-		}
-
-		/// <summary>
-		/// Saves a Tile Layer to file [used by Tile Editor]
-		/// </summary>
-		/// <param name="filename">Path (relative or absolute) where the .layer file should be saved</param>
-		/// <param name="textureNames">String array of texture names (relative to a content root) used by the layer</param>
-		public void save(string filename, string[] textureNames)
-		{
-			using (StreamWriter writer = new StreamWriter(filename))
-			{
-				writer.WriteLine("[Layout]");
-				for (int y = 0; y < heightInTiles; ++y)
-				{
-					string line = string.Empty;
-
-					for (int x = 0; x < widthInTiles; ++x)
-					{
-						line += layout[y, x].ToString() + " ";
-					}
-
-					writer.WriteLine(line);
-				}
-
-				writer.WriteLine();
-			}
-		}
-
 		#endregion
 
-		#region Dimension Properties
+		#region Dimensional Methods
 
 		/// <summary>
-		/// Returns the width in tiles of the Tile Layer
+		/// Returns the width in tiles of the Unit Layer
 		/// </summary>
-		public int widthInTiles
+		private int widthInTiles
 		{
 			get { return layout.GetLength(1); }
 		}
 
 		/// <summary>
-		/// Returns the height in tiles of the Tile Layer
+		/// Returns the height in tiles of the Unit Layer
 		/// </summary>
-		public int heightInTiles
+		private int heightInTiles
 		{
 			get { return layout.GetLength(0); }
 		}
@@ -135,14 +58,11 @@ namespace TileEngine
 
 		#region Map Methods
 
-		public void setUnitIndex(int x, int y, int unitIndex)
-		{
-			if (x < 0 || x > widthInTiles - 1 || y < 0 || y > heightInTiles - 1)
-				return;
-
-			layout[y, x] = unitIndex;
-		}
-
+		/// <summary>
+		/// Sets the index at a specified point in the Unit Layer
+		/// </summary>
+		/// <param name="point">Tile location where to set the index</param>
+		/// <param name="unitIndex">Index to set the tile to</param>
 		public void setUnitIndex(Point point, int unitIndex)
 		{
 			if (point.X < 0 || point.X >= widthInTiles || point.Y < 0 || point.Y >= heightInTiles)
@@ -152,21 +72,11 @@ namespace TileEngine
 
 		}
 
-		public void moveUnit(int unitIndex, int x, int y)
-		{
-			if (x < 0 || x > widthInTiles - 1 || y < 0 || y > heightInTiles - 1)
-				return;
-
-			for (int X = 0; X < widthInTiles; ++X)
-				for (int Y = 0; Y < heightInTiles; ++Y)
-					if (Math.Abs(layout[Y, X]) == Math.Abs(unitIndex))
-					{
-						layout[Y, X] = 0;
-					}
-
-			layout[y, x] = unitIndex;
-		}
-
+		/// <summary>
+		/// Relocate the specified index to a given point on the map
+		/// </summary>
+		/// <param name="unitIndex">Index to relocate on the map</param>
+		/// <param name="point">Tile location to place the index</param>
 		public void moveUnit(int unitIndex, Point point)
 		{
 			if (point.X < 0 || point.X >= widthInTiles || point.Y < 0 || point.Y >= heightInTiles)
@@ -183,19 +93,10 @@ namespace TileEngine
 		}
 		
 		/// <summary>
-		/// Get the index of a texture at a particular tile
+		/// Get the unit index at the specified tile location
 		/// </summary>
-		/// <param name="x">0-Based x-direction tile location</param>
-		/// <param name="y">0-Based y-direction tile location</param>
-		/// <returns>0-Based texture index; else, -1 for an empty tile or -2 if x/y out of range</returns>
-		public int getTileUnitIndex(int x, int y)
-		{
-			if (x < 0 || x > widthInTiles - 1 || y < 0 || y > heightInTiles - 1)
-				return -1;
-
-			return layout[y, x];
-		}
-
+		/// <param name="point">Tile location to check for a unit index</param>
+		/// <returns>Returns the index at the given location; else, 0 for no unit present or -1 if point is out of range</returns>
 		public int getTileUnitIndex(Point point)
 		{
 			if (point.X < 0 || point.X >= widthInTiles || point.Y < 0 || point.Y >= heightInTiles)

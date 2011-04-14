@@ -35,6 +35,7 @@ namespace Triumph
 		Cursor cursor;
         TurnManager turnManager;
 		Dictionary<string, BaseUnit> unitList;
+		Dictionary<string, Ability> abilityList;
         int counter = 10;
         bool inGame = false; //TODO I don't like this, should only be true after UI.screen goes to Main
         bool unitBeingAttacked = false;
@@ -96,9 +97,6 @@ namespace Triumph
 			range.rangeTypes.Add("Hidden", new FrameAnimation(1, 32, 32, 96, 0));
 			range.currentRangeTypeName = "Select";
 
-
-            //console.Update("Hi, I'm blue and 31 chars long.", Color.Blue);
-            //console.Update("I hate splitting by word instead of characters!", Color.Red);
         }
 
         //load all images and outside files
@@ -114,7 +112,9 @@ namespace Triumph
 			map.layers.Add(TileLayer.fromFile(Content, "Content/Layers/outdoor_objs2.layer"));
 			map.collisionLayer = CollisionLayer.fromFile("Content/Layers/Collision.layer");
 			map.unitLayer = new UnitLayer(map.getWidthInTiles(), map.getHeightInTiles());
+			
 			unitList = BaseUnit.fromFile(Content, "Content/Units/tempunits.txt");
+			abilityList = Ability.fromFile("Content/Units/abilities.txt");
 
 			soundMusic = Content.Load<SoundEffect>("Music/POL-battle-march-long");
 			soundMusicInstance = soundMusic.CreateInstance();

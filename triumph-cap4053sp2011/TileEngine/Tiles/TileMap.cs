@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-
 namespace TileEngine
 {
 
@@ -11,9 +10,11 @@ namespace TileEngine
 	/// Describes a collection of Tile Layers to be drawn together
 	/// </summary>
 	public class TileMap
-    {
-        #region dataMembers
-        /// <summary>
+	{
+
+		#region Public Properties
+
+		/// <summary>
 		/// Collection of ordered Tile Layers to render
 		/// </summary>
 		public List<TileLayer> layers = new List<TileLayer>();
@@ -27,13 +28,16 @@ namespace TileEngine
 		/// Specifies locations and unit indeces of all player units
 		/// </summary>
 		public UnitLayer unitLayer;
-        #endregion
 
-        #region getBounds
-        /// <summary>
+		#endregion
+
+		#region Dimensional Methods
+
+		/// <summary>
 		/// Get the width (x-direction) in tiles of all Tile Layers in map
 		/// </summary>
 		/// <returns>Integer width in tiles of map</returns>
+		/// 
 		public int getWidthInTiles()
 		{
 			int width = -1;
@@ -79,28 +83,10 @@ namespace TileEngine
 		{
 			return getHeightInTiles() * Engine.TILE_HEIGHT;
 		}
-        #endregion
 
-        /// <summary>
-		/// Draws the Tile Layers contained in the map together
-		/// </summary>
-		/// <param name="spriteBatch">SpriteBatch used to render layers</param>
-		/// <param name="camera">Camera used to view map</param>
-		/// <remarks>TileLayers are rendered in ascending order from index 0</remarks>
-		public void draw(SpriteBatch spriteBatch, Camera camera)
-		{
-			foreach (TileLayer layer in layers)
-				layer.draw(
-					spriteBatch, 
-					camera, 
-					Engine.convertPositionToTile(camera.position), 
-					Engine.convertPositionToTile(camera.position + new Vector2(
-						spriteBatch.GraphicsDevice.Viewport.Width + Engine.TILE_WIDTH,
-						spriteBatch.GraphicsDevice.Viewport.Height + Engine.TILE_HEIGHT)
-						)
-					);
+		#endregion
 
-		}
+		#region Pathfinding Methods
 
 		/// <summary>
 		/// Gets the A* Optimal path between two tile points on the map.
@@ -115,7 +101,7 @@ namespace TileEngine
 			List<KeyValuePair<Point, int[]>> openSet = new List<KeyValuePair<Point, int[]>>();
 			List<KeyValuePair<Point, int[]>> closedSet = new List<KeyValuePair<Point, int[]>>();
 			Comparison<KeyValuePair<Point, int[]>> compareHeuristic = new Comparison<KeyValuePair<Point, int[]>>(comparePathHeuristic);
-			KeyValuePair<Point, int[]> currentTile = new KeyValuePair<Point,int[]>();
+			KeyValuePair<Point, int[]> currentTile = new KeyValuePair<Point, int[]>();
 			bool foundGoal = false,
 				isCollision = false,
 				isOpen = false,
@@ -139,7 +125,7 @@ namespace TileEngine
 				//get currentTile
 				openSet.Sort(compareHeuristic);
 				currentTile = openSet[0];
-				
+
 				closedSet.Add(currentTile);
 				openSet.Remove(currentTile);
 
@@ -170,7 +156,7 @@ namespace TileEngine
 							break;
 						}
 					}
-					if (isCollision) 
+					if (isCollision)
 						continue;
 
 					//check closed set
@@ -199,7 +185,7 @@ namespace TileEngine
 								openIndex = openSet.IndexOf(open);
 								tentIsBetter = true;
 							}
-				
+
 							isOpen = true;
 							break;
 						}
@@ -227,7 +213,7 @@ namespace TileEngine
 			while (closedSet.Count > 0)
 			{
 				path.Push(pathPoint);
-				
+
 				if (pathPoint.X == start.X && pathPoint.Y == start.Y)
 					break;
 
@@ -260,166 +246,253 @@ namespace TileEngine
 			return path;
 		}
 
-        /// <summary>
-        /// Gets the A* Optimal path between two tile points on the map for a particular unit.
-        /// </summary>
-        /// <param name="currentUnit">The unit we are checking against.</param>
-        /// <param name="start">Starting Point</param>
-        /// <param name="goal">Goal Point</param>
-        /// <param name="otherCollisions">Other collisions (i.e., enemy sprites or objects) not on collision layer</param>
-        /// <returns>Stack of tile points to travel through to reach goal</returns>
-        public Stack<Point> getPath(BaseUnit currentUnit, Point goal, List<Point> otherCollisions)
-        {
-            Stack<Point> path = new Stack<Point>();
-            List<KeyValuePair<Point, int[]>> openSet = new List<KeyValuePair<Point, int[]>>();
-            List<KeyValuePair<Point, int[]>> closedSet = new List<KeyValuePair<Point, int[]>>();
-            Comparison<KeyValuePair<Point, int[]>> compareHeuristic = new Comparison<KeyValuePair<Point, int[]>>(comparePathHeuristic);
-            KeyValuePair<Point, int[]> currentTile = new KeyValuePair<Point, int[]>();
-            Point start = currentUnit.position;
-            bool foundGoal = false,
-                isCollision = false,
-                isOpen = false,
-                isClosed = false,
-                tentIsBetter = false;
-            int openIndex = -1;
+		/// <summary>
+		/// Gets the A* Optimal path between two tile points on the map for a particular unit.
+		/// </summary>
+		/// <param name="currentUnit">The unit we are checking against.</param>
+		/// <param name="start">Starting Point</param>
+		/// <param name="goal">Goal Point</param>
+		/// <param name="otherCollisions">Other collisions (i.e., enemy sprites or objects) not on collision layer</param>
+		/// <returns>Stack of tile points to travel through to reach goal</returns>
+		public Stack<Point> getPath(BaseUnit currentUnit, Point goal, List<Point> otherCollisions)
+		{
+			Stack<Point> path = new Stack<Point>();
+			List<KeyValuePair<Point, int[]>> openSet = new List<KeyValuePair<Point, int[]>>();
+			List<KeyValuePair<Point, int[]>> closedSet = new List<KeyValuePair<Point, int[]>>();
+			Comparison<KeyValuePair<Point, int[]>> compareHeuristic = new Comparison<KeyValuePair<Point, int[]>>(comparePathHeuristic);
+			KeyValuePair<Point, int[]> currentTile = new KeyValuePair<Point, int[]>();
+			Point start = currentUnit.position;
+			bool foundGoal = false,
+				isCollision = false,
+				isOpen = false,
+				isClosed = false,
+				tentIsBetter = false;
+			int openIndex = -1;
 
-            //check input
-            if (start.X < 0 || start.X >= getWidthInTiles() || start.Y < 0 || start.Y >= getHeightInTiles() ||
-                goal.X < 0 || goal.X >= getWidthInTiles() || goal.Y < 0 || goal.Y >= getHeightInTiles() || !canPass(currentUnit, goal))
-                return path;
+			//check input
+			if (start.X < 0 || start.X >= getWidthInTiles() || start.Y < 0 || start.Y >= getHeightInTiles() ||
+				goal.X < 0 || goal.X >= getWidthInTiles() || goal.Y < 0 || goal.Y >= getHeightInTiles() || !canPass(currentUnit, goal))
+				return path;
 
 			//check goal
 			if (!isEmpty(goal))
 				return path;
 
-            //add start to open set
-            openSet.Add(new KeyValuePair<Point, int[]>(start, new int[] { 0, getDistance(start, goal), getDistance(start, goal), 0 }));
+			//add start to open set
+			openSet.Add(new KeyValuePair<Point, int[]>(start, new int[] { 0, getDistance(start, goal), getDistance(start, goal), 0 }));
 
-            while (openSet.Count > 0)
-            {
-                //get currentTile
-                openSet.Sort(compareHeuristic);
-                currentTile = openSet[0];
+			while (openSet.Count > 0)
+			{
+				//get currentTile
+				openSet.Sort(compareHeuristic);
+				currentTile = openSet[0];
 
-                closedSet.Add(currentTile);
-                openSet.Remove(currentTile);
+				closedSet.Add(currentTile);
+				openSet.Remove(currentTile);
 
-                if (currentTile.Key.X == goal.X && currentTile.Key.Y == goal.Y)
-                {
-                    foundGoal = true;
-                    break;
-                }
+				if (currentTile.Key.X == goal.X && currentTile.Key.Y == goal.Y)
+				{
+					foundGoal = true;
+					break;
+				}
 
-                foreach (KeyValuePair<Point, int[]> neighbor in getNeighbors(currentTile.Key))
-                {
-                    isCollision = isOpen = isClosed = tentIsBetter = false;
+				foreach (KeyValuePair<Point, int[]> neighbor in getNeighbors(currentTile.Key))
+				{
+					isCollision = isOpen = isClosed = tentIsBetter = false;
 
-                    //check collision map
-                    if (collisionLayer.getTileCollisionIndex(neighbor.Key) == 1)
-                        continue;
+					//check collision map
+					if (collisionLayer.getTileCollisionIndex(neighbor.Key) == 1)
+						continue;
 
-                    //check unit map
+					//check unit map
 					if (!canPass(currentUnit, neighbor.Key))
 						continue;
 
-                    //check other collisions
-                    foreach (Point collision in otherCollisions)
-                    {
-                        if (collision.X == neighbor.Key.X && collision.Y == neighbor.Key.Y)
-                        {
-                            isCollision = true;
-                            break;
-                        }
-                    }
-                    if (isCollision)
-                        continue;
+					//check other collisions
+					foreach (Point collision in otherCollisions)
+					{
+						if (collision.X == neighbor.Key.X && collision.Y == neighbor.Key.Y)
+						{
+							isCollision = true;
+							break;
+						}
+					}
+					if (isCollision)
+						continue;
 
-                    //check closed set
-                    foreach (KeyValuePair<Point, int[]> closed in closedSet)
-                    {
-                        if (closed.Key.X == neighbor.Key.X && closed.Key.Y == neighbor.Key.Y)
-                        {
-                            isClosed = true;
-                            break;
-                        }
-                    }
-                    if (isClosed)
-                        continue;
+					//check closed set
+					foreach (KeyValuePair<Point, int[]> closed in closedSet)
+					{
+						if (closed.Key.X == neighbor.Key.X && closed.Key.Y == neighbor.Key.Y)
+						{
+							isClosed = true;
+							break;
+						}
+					}
+					if (isClosed)
+						continue;
 
-                    neighbor.Value[0] = getDistance(start, currentTile.Key) + 1;
-                    neighbor.Value[1] = getDistance(goal, neighbor.Key);
-                    neighbor.Value[2] = neighbor.Value[0] + neighbor.Value[1];
+					neighbor.Value[0] = getDistance(start, currentTile.Key) + 1;
+					neighbor.Value[1] = getDistance(goal, neighbor.Key);
+					neighbor.Value[2] = neighbor.Value[0] + neighbor.Value[1];
 
-                    //check open set
-                    foreach (KeyValuePair<Point, int[]> open in openSet)
-                    {
-                        if (open.Key.X == neighbor.Key.X && open.Key.Y == neighbor.Key.Y)
-                        {
-                            if (neighbor.Value[0] < open.Value[0])
-                            {
-                                openIndex = openSet.IndexOf(open);
-                                tentIsBetter = true;
-                            }
+					//check open set
+					foreach (KeyValuePair<Point, int[]> open in openSet)
+					{
+						if (open.Key.X == neighbor.Key.X && open.Key.Y == neighbor.Key.Y)
+						{
+							if (neighbor.Value[0] < open.Value[0])
+							{
+								openIndex = openSet.IndexOf(open);
+								tentIsBetter = true;
+							}
 
-                            isOpen = true;
-                            break;
-                        }
-                    }
-                    if (isOpen)
-                    {
-                        if (tentIsBetter)
-                            openSet[openIndex] = neighbor;
-                        continue;
-                    }
+							isOpen = true;
+							break;
+						}
+					}
+					if (isOpen)
+					{
+						if (tentIsBetter)
+							openSet[openIndex] = neighbor;
+						continue;
+					}
 
-                    //add neighbor to open set
-                    openSet.Add(neighbor);
-                }
-
-
-
-            }
-
-            if (!foundGoal)
-                return path;
-
-            //generate path stack
-            Point pathPoint = currentTile.Key;
-            while (closedSet.Count > 0)
-            {
-                path.Push(pathPoint);
-
-                if (pathPoint.X == start.X && pathPoint.Y == start.Y)
-                    break;
-
-                foreach (KeyValuePair<Point, int[]> closed in closedSet)
-                {
-                    if (closed.Key.X == pathPoint.X && closed.Key.Y == pathPoint.Y)
-                    {
-                        switch (closed.Value[3])
-                        {
-                            case 1:
-                                pathPoint.X += 1;
-                                break;
-                            case 2:
-                                pathPoint.X -= 1;
-                                break;
-                            case 3:
-                                pathPoint.Y += 1;
-                                break;
-                            case 4:
-                                pathPoint.Y -= 1;
-                                break;
-                        }
-                        closedSet.Remove(closed);
-                        break;
-                    }
-                }
-            }
+					//add neighbor to open set
+					openSet.Add(neighbor);
+				}
 
 
-            return path;
-        }
+
+			}
+
+			if (!foundGoal)
+				return path;
+
+			//generate path stack
+			Point pathPoint = currentTile.Key;
+			while (closedSet.Count > 0)
+			{
+				path.Push(pathPoint);
+
+				if (pathPoint.X == start.X && pathPoint.Y == start.Y)
+					break;
+
+				foreach (KeyValuePair<Point, int[]> closed in closedSet)
+				{
+					if (closed.Key.X == pathPoint.X && closed.Key.Y == pathPoint.Y)
+					{
+						switch (closed.Value[3])
+						{
+							case 1:
+								pathPoint.X += 1;
+								break;
+							case 2:
+								pathPoint.X -= 1;
+								break;
+							case 3:
+								pathPoint.Y += 1;
+								break;
+							case 4:
+								pathPoint.Y -= 1;
+								break;
+						}
+						closedSet.Remove(closed);
+						break;
+					}
+				}
+			}
+
+
+			return path;
+		}
+
+		/// <summary>
+		/// Comparison function used by the getPath() method
+		/// </summary>
+		/// <param name="a"></param>
+		/// <param name="b"></param>
+		/// <returns></returns>
+		private int comparePathHeuristic(KeyValuePair<Point, int[]> a, KeyValuePair<Point, int[]> b)
+		{
+			return a.Value[2].CompareTo(b.Value[2]);
+		}
+
+		/// <summary>
+		/// Gets the neighbors of a point on the map
+		/// </summary>
+		/// <param name="point">Point from which to find neighbors</param>
+		/// <returns>KeyValuePair of neighboring points and thier relative direction to the source Point</returns>
+		/// <remarks>
+		/// Collisions are not detected in this method. Used exclusively by the getPath() method.
+		/// </remarks>
+		private List<KeyValuePair<Point, int[]>> getNeighbors(Point point)
+		{
+			List<KeyValuePair<Point, int[]>> neighbors = new List<KeyValuePair<Point, int[]>>();
+
+			//left neighbor
+			if (point.X > 0)
+				neighbors.Add(new KeyValuePair<Point, int[]>(new Point(point.X - 1, point.Y), new int[] { 0, 0, 0, 1 }));
+
+			//right neighbor
+			if (point.X < getWidthInTiles() - 1)
+				neighbors.Add(new KeyValuePair<Point, int[]>(new Point(point.X + 1, point.Y), new int[] { 0, 0, 0, 2 }));
+
+			//up neighbor
+			if (point.Y > 0)
+				neighbors.Add(new KeyValuePair<Point, int[]>(new Point(point.X, point.Y - 1), new int[] { 0, 0, 0, 3 }));
+
+			//down neighbor
+			if (point.Y < getHeightInTiles() - 1)
+				neighbors.Add(new KeyValuePair<Point, int[]>(new Point(point.X, point.Y + 1), new int[] { 0, 0, 0, 4 }));
+
+			return neighbors;
+		}
+
+		/// <summary>
+		/// Gets the discrete tile-based distance between points on the map
+		/// </summary>
+		/// <param name="a">First Point</param>
+		/// <param name="b">Second Point</param>
+		/// <returns>Tile distance between points</returns>
+		public int getDistance(Point a, Point b)
+		{
+			return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y);
+		}
+
+		/// <summary>
+		/// Specifies whether a unit can pass through a given tile on the map. Units may pass over allies
+		/// </summary>
+		/// <param name="bu">Unit in question</param>
+		/// <param name="p">Tile location in question</param>
+		/// <returns></returns>
+		public bool canPass(BaseUnit bu, Point p)
+		{
+			if (isEmpty(p)) return true;
+			if (this.unitLayer.getTileUnitIndex(p) < 0) return true;
+
+			foreach (BaseUnit unit in bu.faction.units)
+			{
+				if (this.unitLayer.getTileUnitIndex(p) == unit.unitIndex)
+					return true;
+			}
+
+			return false;
+		}
+
+		/// <summary>
+		/// Specifies whether a tile is empty or not
+		/// </summary>
+		/// <param name="p">Tile location in question</param>
+		/// <returns></returns>
+		public bool isEmpty(Point p)
+		{
+			return (this.collisionLayer.getTileCollisionIndex(p) == 0 && this.unitLayer.getTileUnitIndex(p) == 0);
+		}
+
+		#endregion
+
+		#region Range Methods
 
 		/// <summary>
 		/// Get the points within walking range of a unit
@@ -475,6 +548,15 @@ namespace TileEngine
 			return returnPoints;
 		}
 
+		/// <summary>
+		/// Get the points within range where an attack/ability can target
+		/// </summary>
+		/// <param name="unit">Unit performing the attack/ability</param>
+		/// <param name="range">Range of the attack/ability</param>
+		/// <param name="isFriendly">Is the attack/ability meant for allies? (Eg: Heal)</param>
+		/// <param name="isHostile">Is the attack/ability meant for hostiles? (Eg: Attack)</param>
+		/// <param name="isSelf">Is the attack/ability meant to be used on self? (Eg: Self-Heal)</param>
+		/// <returns></returns>
 		public List<Point> attackPoints(BaseUnit unit, int range, bool isFriendly, bool isHostile, bool isSelf)
 		{
 			Stack<Point> openPoints = new Stack<Point>();
@@ -521,7 +603,7 @@ namespace TileEngine
 				else
 				{
 					bool self = false, hostile = true, dead = false;
-					
+
 					if (unitLayer.getTileUnitIndex(current) == unit.unitIndex)
 						self = true;
 
@@ -559,83 +641,32 @@ namespace TileEngine
 			return closedPoints;
 		}
 
+		#endregion
+
+		#region Draw Methods
+
 		/// <summary>
-		/// Comparison function used by the getPath() method
+		/// Draws the Tile Layers contained in the map together
 		/// </summary>
-		/// <param name="a"></param>
-		/// <param name="b"></param>
-		/// <returns></returns>
-		private int comparePathHeuristic(KeyValuePair<Point, int[]> a,KeyValuePair<Point, int[]>  b)
+		/// <param name="spriteBatch">SpriteBatch used to render layers</param>
+		/// <param name="camera">Camera used to view map</param>
+		/// <remarks>TileLayers are rendered in ascending order from index 0</remarks>
+		public void draw(SpriteBatch spriteBatch, Camera camera)
 		{
-			return a.Value[2].CompareTo(b.Value[2]);
+			foreach (TileLayer layer in layers)
+				layer.draw(
+					spriteBatch,
+					camera,
+					Engine.convertPositionToTile(camera.position),
+					Engine.convertPositionToTile(camera.position + new Vector2(
+						spriteBatch.GraphicsDevice.Viewport.Width + Engine.TILE_WIDTH,
+						spriteBatch.GraphicsDevice.Viewport.Height + Engine.TILE_HEIGHT)
+						)
+					);
+
 		}
 
-		/// <summary>
-		/// Gets the neighbors of a point on the map
-		/// </summary>
-		/// <param name="point">Point from which to find neighbors</param>
-		/// <returns>KeyValuePair of neighboring points and thier relative direction to the source Point</returns>
-		/// <remarks>
-		/// Collisions are not detected in this method. Used exclusively by the getPath() method.
-		/// </remarks>
-		private List<KeyValuePair<Point, int[]>> getNeighbors(Point point)
-		{
-			List<KeyValuePair<Point, int[]>> neighbors = new List<KeyValuePair<Point, int[]>>();
+		#endregion
 
-			//left neighbor
-			if (point.X > 0)
-				neighbors.Add(new KeyValuePair<Point, int[]>(new Point(point.X - 1, point.Y), new int[] { 0, 0, 0, 1 }));
-
-			//right neighbor
-			if (point.X < getWidthInTiles() - 1)
-				neighbors.Add(new KeyValuePair<Point, int[]>(new Point(point.X + 1, point.Y), new int[] { 0, 0, 0, 2 }));
-
-			//up neighbor
-			if (point.Y > 0)
-				neighbors.Add(new KeyValuePair<Point, int[]>(new Point(point.X, point.Y - 1), new int[] { 0, 0, 0, 3 }));
-
-			//down neighbor
-			if (point.Y < getHeightInTiles() - 1)
-				neighbors.Add(new KeyValuePair<Point, int[]>(new Point(point.X, point.Y + 1), new int[] { 0, 0, 0, 4 }));
-
-			return neighbors;
-		}
-
-		/// <summary>
-		/// Gets the discrete tile-based distance between points on the map
-		/// </summary>
-		/// <param name="a">First Point</param>
-		/// <param name="b">Second Point</param>
-		/// <returns>Tile distance between points</returns>
-		public int getDistance(Point a, Point b)
-		{
-			return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y);
-		}
-
-		/// <summary>
-		/// Specifies whether a unit can pass through a given tile on the map. Units may pass over allies
-		/// </summary>
-		/// <param name="bu"></param>
-		/// <param name="p"></param>
-		/// <returns></returns>
-        public bool canPass(BaseUnit bu, Point p)
-        {
-			if (isEmpty(p)) return true;
-			if (this.unitLayer.getTileUnitIndex(p) < 0) return true;
-
-			foreach (BaseUnit unit in bu.faction.units)
-			{
-				if (this.unitLayer.getTileUnitIndex(p) == unit.unitIndex)
-					return true;
-			}
-
-			return false;
-        }
-
-        public bool isEmpty(Point p)
-        {
-            return (this.collisionLayer.getTileCollisionIndex(p) == 0 && this.unitLayer.getTileUnitIndex(p) == 0);
-        }
 	}
-
 }
