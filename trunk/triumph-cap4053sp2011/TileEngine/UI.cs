@@ -336,7 +336,7 @@ namespace TileEngine
                                             case (Phase.Ability):
                                                 {
 
-                                                    if (!currentUnit.isAttacking && currentUnit.AP == 0)
+                                                    if (!currentUnit.isAttacking && currentUnit.AP == 0 && !targetUnit.isBeingHit)
                                                     {
                                                         mCurrentPhase = Phase.Menu;
                                                         if (currentUnit.MP != 0)
