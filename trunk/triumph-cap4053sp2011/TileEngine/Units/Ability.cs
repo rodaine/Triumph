@@ -51,7 +51,14 @@ namespace TileEngine
             this._name = name;
             this._apCost = apCost;
             this._attackRange = attackRange;
-            this._description = "No description provided.";
+            if (abilityType == EffectTypes.damage)
+                this._description = "This ability does physical damage and has a multiplier of " + abilityAmount;
+            else if (abilityType == EffectTypes.magicDamage)
+                this._description = "This ability does magic damage and has a multiplier of " + abilityAmount;
+            else if (abilityType == EffectTypes.heal)
+                this._description = "This ability heals the target unit by" + abilityAmount;
+            else if (abilityType == EffectTypes.stun)
+                this._description = "This ability stund the target unit for " + abilityAmount + " number of turns";
 
             this._abilityType = abilityType;
             this._abilityAmount = abilityAmount;

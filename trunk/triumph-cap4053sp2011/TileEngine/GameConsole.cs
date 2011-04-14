@@ -66,10 +66,10 @@ namespace TileEngine
 
             for (int i = 1; i < words.Length; i++)
             {
-                if (curLine.Length + 1 + words[i].Length > 24)
+                if (curLine.Length + 1 + words[i].Length > 24)//change this value if you going to use this method for different sized boxes
                 {
                     ret.Add(curLine);
-                    curLine = words[i];
+                    curLine = " " + words[i];
                 }
                 else
                 {

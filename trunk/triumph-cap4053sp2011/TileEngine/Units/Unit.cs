@@ -474,6 +474,8 @@ namespace TileEngine
 		#endregion
 
         #region methods
+
+        #region attacking
         /// <summary>
         /// tells the unit to attack another unit
         /// </summary>
@@ -573,7 +575,24 @@ namespace TileEngine
             return (Math.Abs(this.position.X - target.position.X) + Math.Abs(this.position.Y - target.position.Y)) <= _range;
         }
 
+        public bool canTargetAbility(Ability ability, BaseUnit target)
+        {
+            if(!((Math.Abs(this.position.X - target.position.X) + Math.Abs(this.position.Y - target.position.Y)) <= ability.attackRange))
+                return false;
+            if (ability.isFriendly)
+            {
+                if (target.faction != this.faction) return false;
+            }
+            if (ability.isHostile)
+            {
+                if (target.faction == this.faction) return false;
+            }
+            
+            return true;
+        }
+        #endregion
 
+        #region updates
         /// <summary>
         /// the unit ends its turn and resets values
         /// </summary>
@@ -595,6 +614,7 @@ namespace TileEngine
         {
             this.delay += this.SPD;
         }
+        #endregion
 
         #endregion
 
@@ -792,10 +812,18 @@ namespace TileEngine
                     msg = _attacker.name + " has missed " + this.name;
                 else
                     msg = _attacker.name + " has done " + _dmgToBeTaken + " damage to " + this.name;
-                if(_attacker.faction.name == "Faction 1")
+                if (_attacker.faction.name == "Faction 1")
+                {
                     GameConsole.getInstanceOf().Update(msg, Color.Blue);
+                    if (this.isDead)
+                        GameConsole.getInstanceOf().Update(this.name + " was killed by " + _attacker.name, Color.Blue);
+                }
                 else
+                {
                     GameConsole.getInstanceOf().Update(msg, Color.Red);
+                    if (this.isDead)
+                        GameConsole.getInstanceOf().Update(this.name + " was killed by " + _attacker.name, Color.Red);
+                }
 
                 _wascrit = false;
                 _attacker = null;
