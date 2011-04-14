@@ -379,7 +379,7 @@ namespace TileEngine
 
                                     foreach (BaseUnit unit in testUnits)
                                     {
-                                        unit.update(gameTime, screenWidth, screenHeight, map);
+                                        unit.update(gameTime, map);
                                     }
                                     if (mCurrentPhase != Phase.Menu)
                                         cursor.update(gameTime, screenWidth, screenHeight, map);

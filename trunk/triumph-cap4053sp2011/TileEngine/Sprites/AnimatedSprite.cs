@@ -11,18 +11,35 @@ namespace TileEngine
 	/// </summary>
 	public class AnimatedSprite
 	{
-		private string _currentAnimationName = null;	
+
+		#region Private Properties
+
+		private string _currentAnimationName = null;
+
+		private float _speed = 2f;
+		private float _collisionRadius = 10f;
+		private float timer;		
+
 		private bool _isAnimating = false;
-		private float _speed = 2f,
-					  _collisionRadius = 10f;
+		private bool _isMoving = false;
+		private bool _isAttacking = false;
+		private bool _isHit = false;
+		private bool _isDodging = false;
+		private bool _isCritHit = false;
+		private bool[] attackPhases = { false, false, false };
+		private bool dodgePhase = false;
+		
 		private Texture2D spriteTexture;
+		
 		private Vector2 _originOffset = Vector2.Zero;
-		private bool _isMoving = false, _isAttacking = false, _isHit = false, _isDodging = false, _isCritHit = false;
-		private bool[] attackPhases = {false, false, false};
-		private Vector2 destination;
-		private Vector2 initial;
+		private Vector2 destination = Vector2.Zero;
+		private Vector2 initial = Vector2.Zero;
+
 		private Stack<Point> path;
-		private float timer;
+
+		#endregion
+
+		#region Public Properties
 
 		/// <summary>
 		/// Collection of FrameAnimations with assigned (arbitrary) names
@@ -30,103 +47,9 @@ namespace TileEngine
 		public Dictionary<string, FrameAnimation> animations = new Dictionary<string, FrameAnimation>();
 
 		/// <summary>
-		/// Position (in pixels) of the animated sprite on the map
-		/// </summary>
-		public Vector2 position = Vector2.Zero;
-
-		/// <summary>
-		/// Gets or sets the offset of the sprite's origin (e.g., feet) from the sprite's position
-		/// </summary>
-		public Vector2 originOffset
-		{
-			get { return _originOffset; }
-			set
-			{
-				_originOffset.X = Math.Max(value.X, 0f);
-				_originOffset.Y = Math.Max(value.Y, 0f);
-			}
-		}
-
-		/// <summary>
-		/// Gets the origin (e.g., feet) of the sprite
-		/// </summary>
-		public Vector2 origin
-		{
-			get { return position + _originOffset; }
-		}
-
-		public Vector2 center
-		{
-			get { return new Vector2(
-				position.X + (float)currentAnimation.currentFrame.Width/2, 
-				position.Y + (float)currentAnimation.currentFrame.Height/2
-				); }
-		}
-
-		public Rectangle bounds
-		{
-			get
-			{
-				Rectangle rect = currentAnimation.currentFrame;
-				rect.X = (int)position.X;
-				rect.Y = (int)position.Y;
-				return rect;
-			}
-		}
-
-		/// <summary>
-		/// Gets or sets whether or not the FrameAnimation of the sprite should be updating
-		/// </summary>
-		public bool isAnimating
-		{
-			get { return _isAnimating; }
-			set { _isAnimating = value; }
-		}
-
-		public bool isMoving
-		{
-			get { return _isMoving; }
-		}
-
-		public bool isAttacking
-		{
-			get { return _isAttacking; }
-		}
-
-		/// <summary>
-		/// Gets or sets the movement speed of the sprite in pixels per update
-		/// </summary>
-		public float speed
-		{
-			get { return _speed; }
-			set { _speed = (float)Math.Max(value, .1f); }
-		}
-
-		/// <summary>
-		/// Gets or sets the circular collision radius of the sprite
-		/// </summary>
-		public float collisionRadius
-		{
-			get { return _collisionRadius; }
-			set { _collisionRadius = (float)Math.Max(value, 1f); }
-		}
-
-		/// <summary>
-		/// Determines whether or not two sprites are within each other's collision radius
-		/// </summary>
-		/// <param name="a">First AnimatedSprite</param>
-		/// <param name="b">Second AnimatedSprite</param>
-		/// <returns>True if the sprites are colliding; else, false.</returns>
-		public static bool areColliding(AnimatedSprite a, AnimatedSprite b)
-		{
-			Vector2 d = b.origin - a.origin;
-			return d.Length() < b.collisionRadius + a.collisionRadius;
-		}
-
-		/// <summary>
 		/// Gets the current FrameAnimation used by the sprite
 		/// </summary>
-		public FrameAnimation currentAnimation
+		private FrameAnimation currentAnimation
 		{
 			get
 			{
@@ -152,6 +75,57 @@ namespace TileEngine
 		}
 
 		/// <summary>
+		/// Position (in pixels) of the animated sprite on the map
+		/// </summary>
+		public Vector2 position = Vector2.Zero;
+
+		/// <summary>
+		/// Gets or sets the movement speed of the sprite in pixels per update
+		/// </summary>
+		public float speed
+		{
+			get { return _speed; }
+			set { _speed = (float)Math.Max(value, .1f); }
+		}
+
+		/// <summary>
+		/// Gets or sets whether or not the FrameAnimation of the sprite should be updating
+		/// </summary>
+		public bool isAnimating
+		{
+			get { return _isAnimating; }
+			set { _isAnimating = value; }
+		}
+
+		/// <summary>
+		/// Gets whether or not the Sprite is performing a walk animation
+		/// </summary>
+		public bool isMoving
+		{
+			get { return _isMoving; }
+		}
+
+		/// <summary>
+		/// Gets whether or not the Sprite is performing an attack animation
+		/// </summary>
+		public bool isAttacking
+		{
+			get { return _isAttacking; }
+		}
+
+		/// <summary>
+		/// Get whether or not the Sprite is performing a defensive animation (Hit, Dodge, Crit)
+		/// </summary>
+		public bool isDefending
+		{
+			get { return _isHit | _isDodging | _isCritHit; }
+		}
+		
+		#endregion
+
+		#region Initializers
+
+		/// <summary>
 		/// Creates a new AnimatedSprite
 		/// </summary>
 		/// <param name="texture">2DTexture containing all the sprite animations</param>
@@ -160,25 +134,271 @@ namespace TileEngine
 			spriteTexture = texture;
 		}
 
+		#endregion
+
+		#region Action Methods
+
 		/// <summary>
-		/// Updates the AnimatedSprite based on keyboard input, animation and collisions
+		/// Walk the Sprite to a specified tile location
+		/// </summary>
+		/// <param name="unit">Unit to perform walking</param>
+		/// <param name="goal">Goal tile location to walk to</param>
+		/// <param name="map">TileMap passed from the game</param>
+		/// <param name="maxDistance">Maximum allowed walking distance</param>
+		/// <returns></returns>
+		public bool goToTile(BaseUnit unit, Point goal, TileMap map, int maxDistance)
+		{
+			if (_isMoving || _isAttacking || _isDodging || _isHit) return false;
+
+			path = map.getPath(unit, goal, new List<Point>());
+			if (path.Count == 0 || path.Count > maxDistance + 1)
+				return false;
+
+			Point tileDest = path.Pop();
+
+			destination = new Vector2((float)tileDest.X * Engine.TILE_WIDTH, (float)tileDest.Y * Engine.TILE_HEIGHT);
+			_isMoving = true;
+			return true;
+		}
+
+		/// <summary>
+		/// Perform an attack animation
+		/// </summary>
+		/// <param name="unit">Unit performing the attack</param>
+		/// <param name="target">Unit being attacked</param>
+		/// <returns>True if attack animation will be performed; else false.</returns>
+		public bool attack(BaseUnit unit, BaseUnit target)
+		{
+			if (_isMoving || _isAttacking || _isDodging || _isHit) return false;
+
+			attackPhases[0] =
+			attackPhases[1] =
+			attackPhases[2] = false;
+			
+			_isAttacking = true;
+
+			int x = target.position.X - unit.position.X;
+			int y = target.position.Y - unit.position.Y;
+
+			//face unit...this favors X-Dir over Y-Dir if equivalent
+			if (Math.Abs(y) > Math.Abs(x))
+			{
+				if (y > 0)
+					currentAnimationName = "Down";
+				else
+					currentAnimationName = "Up";
+			}
+			else
+			{
+				if (x > 0)
+					currentAnimationName = "Right";
+				else
+					currentAnimationName = "Left";
+			}
+
+			if (x == y && y == 0)
+			{
+				currentAnimationName = "Down";
+				_isAttacking = false;
+			}
+
+			return true;
+		}
+
+		/// <summary>
+		/// Perform the hit animation (after attacked)
+		/// </summary>
+		/// <param name="unit">Unit being hit</param>
+		/// <param name="attackSource">Source Unit of the attack</param>
+		/// <returns>True if hit animation will be performed; else false.</returns>
+		public bool beHit(BaseUnit unit, BaseUnit attackSource)
+		{
+			if (_isMoving || _isAttacking || _isDodging || _isHit) return false;
+			
+			timer = 0f;
+			initial.X = position.X;
+			initial.Y = position.Y;
+
+			int x = attackSource.position.X - unit.position.X;
+			int y = attackSource.position.Y - unit.position.Y;
+
+			//face unit...this favors X-Dir over Y-Dir if equivalent
+			if (Math.Abs(y) > Math.Abs(x))
+			{
+				if (y > 0)
+					currentAnimationName = "Down";
+				else
+					currentAnimationName = "Up";
+			}
+			else
+			{
+				if (x > 0)
+					currentAnimationName = "Right";
+				else
+					currentAnimationName = "Left";
+			}
+
+			if (x == y && y == 0)
+			{
+				currentAnimationName = "Down";
+			}
+
+			_isHit = true;
+
+			return true;
+		}
+
+		/// <summary>
+		/// Perform the critical hit animation (after attacked)
+		/// </summary>
+		/// <param name="unit">Unit being hit</param>
+		/// <param name="attackSource">Source Unit of the attack</param>
+		/// <returns>True if hit animation will be performed; else false.</returns>
+		public bool beCritHit(BaseUnit unit, BaseUnit attackSource)
+		{
+			if (_isMoving || _isAttacking || _isDodging || _isHit) return false;
+			_isCritHit = true;
+			return beHit(unit, attackSource);
+		}
+
+		/// <summary>
+		/// Perform the dodge animation (after attacked)
+		/// </summary>
+		/// <param name="unit">Unit dodging</param>
+		/// <param name="attackSource">Source Unit of the attack</param>
+		/// <returns>True if dodge animation will be performed; else false.</returns>
+		public bool dodge(BaseUnit unit, BaseUnit attackSource)
+		{
+			if (_isMoving || _isAttacking || _isDodging || _isHit) return false;
+
+			timer = 0f;
+			initial.X = position.X;
+			initial.Y = position.Y;
+
+			int x = attackSource.position.X - unit.position.X;
+			int y = attackSource.position.Y - unit.position.Y;
+
+			//face unit...this favors X-Dir over Y-Dir if equivalent
+			if (Math.Abs(y) > Math.Abs(x))
+			{
+				if (y > 0)
+				{
+					currentAnimationName = "Down";
+					destination = position + new Vector2((float) Engine.TILE_WIDTH / 4f, 0);
+				}
+				else
+				{
+					currentAnimationName = "Up";
+					destination = position - new Vector2((float)Engine.TILE_WIDTH / 4f, 0);
+				}
+			}
+			else
+			{
+				if (x > 0)
+				{
+					currentAnimationName = "Right";
+					destination = position + new Vector2(0, (float)Engine.TILE_HEIGHT / 4f);
+				}
+				else
+				{
+					currentAnimationName = "Left";
+					destination = position - new Vector2(0, (float)Engine.TILE_HEIGHT / 4f);
+				}
+			}
+
+			if (x == y && y == 0)
+			{
+				currentAnimationName = "Down";
+				_isDodging = false;
+			}
+
+			dodgePhase = false;
+			_isDodging = true;
+
+			return true;
+		}
+	
+		#endregion
+
+		#region Update Methods
+
+		/// <summary>
+		/// Updates the AnimatedSprite based on moving, attacking, defending, etc...
 		/// </summary>
 		/// <param name="gameTime">GameTime passed from the game</param>
-		/// <param name="screenWidth">Width in pixels of the viewport</param>
-		/// <param name="screenHeight">Height in pixels of the viewport</param>
 		/// <param name="map">TileMap currently being drawn in the viewport</param>
-		public void update(GameTime gameTime, int screenWidth, int screenHeight, TileMap map)
+		public void update(GameTime gameTime, TileMap map)
 		{
-
 			updateWalking(map);
 			updateAttacking();
+			updateHit(gameTime);
+			updateCrit(gameTime);
+			updateDodge();
 			updateAnimation(gameTime);
+		}
+
+		private void updateWalking(TileMap map)
+		{
+			Vector2 motion = Vector2.Zero;
+			if (_isMoving && position.X == destination.X && position.Y == destination.Y)
+			{
+				//if at final destination, stop walking!
+				// get next destination
+				if (path.Count == 0)
+				{
+					_isMoving = false;
+				}
+				else
+				{
+					Point tileDest = path.Pop();
+					destination = new Vector2((float)tileDest.X * Engine.TILE_WIDTH, (float)tileDest.Y * Engine.TILE_HEIGHT);
+				}
+			}
+
+			//update motion vector
+			if (_isMoving)
+			{
+				motion = destination - position;
+				motion.Normalize();
+				motion *= speed;
+				if (motion.Length() > (destination - position).Length())
+					motion = destination - position;
+			}
+
+			//change to appropriate current animation
+			if (motion != Vector2.Zero)
+			{
+				isAnimating = true;
+
+				if (motion.X > 0)
+				{
+					currentAnimationName = "Right";
+				}
+				else if (motion.Y > 0)
+				{
+					currentAnimationName = "Down";
+				}
+				else if (motion.Y < 0)
+				{
+					currentAnimationName = "Up";
+				}
+				else
+				{
+					currentAnimationName = "Left";
+				}
+
+				//motion = adjustMotionForCollision(motion, map.collisionLayer);
+				position += motion;
+
+				clampToArea(map.getWidthInPixels(), map.getHeightInPixels());
+
+			}
+			else
+				isAnimating = false;
 		}
 
 		private void updateAttacking()
 		{
-			if (_isMoving) return;
-
 			if (_isAttacking)
 			{
 				isAnimating = true;
@@ -299,153 +519,89 @@ namespace TileEngine
 				_isAnimating = false;
 		}
 
-		private void updateWalking(TileMap map)
+		private void updateHit(GameTime gameTime)
 		{
-			Vector2 motion = Vector2.Zero;
-			if (_isMoving && position.X == destination.X && position.Y == destination.Y)
+			if (!_isHit || _isCritHit) return;
+			if (timer < 1000f)
 			{
-				//if at final destination, stop walking!
-				// get next destination
-				if (path.Count == 0)
-				{
-					_isMoving = false;
-				}
-				else
-				{
-					Point tileDest = path.Pop();
-					destination = new Vector2((float)tileDest.X * Engine.TILE_WIDTH, (float)tileDest.Y * Engine.TILE_HEIGHT);
-				}
-			}
+				float radius = (float) RandomNumber.getInstance().getNext(0, Engine.TILE_WIDTH / 4);
+				double angle = (double) MathHelper.ToRadians(RandomNumber.getInstance().getNext(0, 359));
+				float x = radius * (float) Math.Cos(angle);
+				float y = radius * (float) Math.Sin(angle);
+				Vector2 motion = new Vector2(x, y);
 
-			//update motion vector
-			if (_isMoving)
-			{
-				motion = destination - position;
-				motion.Normalize();
-				motion *= speed;
-				if (motion.Length() > (destination - position).Length())
-					motion = destination - position;
-			}
-
-			//change to appropriate current animation
-			if (motion != Vector2.Zero)
-			{
-				isAnimating = true;
-
-				if (motion.X > 0)
-				{
-					currentAnimationName = "Right";
-				}
-				else if (motion.Y > 0)
-				{
-					currentAnimationName = "Down";
-				}
-				else if (motion.Y < 0)
-				{
-					currentAnimationName = "Up";
-				}
-				else
-				{
-					currentAnimationName = "Left";
-				}
-
-				//motion = adjustMotionForCollision(motion, map.collisionLayer);
-				position += motion;
-
-				clampToArea(map.getWidthInPixels(), map.getHeightInPixels());
-
+				position = initial + motion;
+				timer += (float) gameTime.ElapsedGameTime.TotalMilliseconds;
 			}
 			else
-				isAnimating = false;
+			{
+				position = initial;
+				_isHit = false;
+			}
 		}
 
-		private void updateHit()
+		private void updateCrit(GameTime gameTime)
 		{
+			if (!_isHit && !_isCritHit) return;
+			if (timer < 1500f)
+			{
+				float radius = (float)RandomNumber.getInstance().getNext(0, Engine.TILE_WIDTH / 2);
+				double angle = (double)MathHelper.ToRadians(RandomNumber.getInstance().getNext(0, 359));
+				float x = radius * (float)Math.Cos(angle);
+				float y = radius * (float)Math.Sin(angle);
+				Vector2 motion = new Vector2(x, y);
 
+				position = initial + motion;
+				timer += (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+			}
+			else
+			{
+				position = initial;
+				_isHit = _isCritHit = false;
+			}
 		}
 
 		private void updateDodge()
 		{
-
-		}
-
-		private void updateCrit()
-		{
-
-		}
-
-		public bool goToTile(BaseUnit unit, Point goal, TileMap map, int maxDistance)
-		{
-			if (_isMoving || _isAttacking) return false;
-
-			path = map.getPath(unit, goal, new List<Point>());
-			if (path.Count == 0 || path.Count > maxDistance + 1)
-				return false;
-
-			Point tileDest = path.Pop();
-
-			destination = new Vector2((float)tileDest.X * Engine.TILE_WIDTH, (float)tileDest.Y * Engine.TILE_HEIGHT);
-			_isMoving = true;
-			return true;
-		}
-
-		public bool attack(BaseUnit unit, BaseUnit target)
-		{
-			if (_isMoving) return false;
-
-			attackPhases[0] =
-			attackPhases[1] =
-			attackPhases[2] = false;
-			
-			_isAttacking = true;
-
-			int x = target.position.X - unit.position.X;
-			int y = target.position.Y - unit.position.Y;
-
-			//face unit...this favors X-Dir over Y-Dir if equivalent
-			if (Math.Abs(y) > Math.Abs(x))
+			if (!_isDodging) return;
+			Vector2 motion = Vector2.Zero;
+			if (dodgePhase)
 			{
-				if (y > 0)
-					currentAnimationName = "Down";
-				else
-					currentAnimationName = "Up";
+				if (position.X == initial.X && position.Y == initial.Y)
+				{
+					_isDodging = false;
+					return;
+				}
+
+				motion = destination - position;
+				motion.Normalize();
+				motion *= speed * 1.5f;
+				if (motion.Length() > (destination - position).Length())
+					motion = destination - position;
+				if (motion != Vector2.Zero)
+					position += motion;
+
 			}
 			else
 			{
-				if (x > 0)
-					currentAnimationName = "Right";
-				else
-					currentAnimationName = "Left";
+				if (position.X == destination.X && position.Y == initial.Y)
+				{
+					destination = initial;
+					dodgePhase = true;
+					return;
+				}
+
+				motion = destination - position;
+				motion.Normalize();
+				motion *= speed * 1.5f;
+				if (motion.Length() > (destination - position).Length())
+					motion = destination - position;
+				if (motion != Vector2.Zero)
+					position += motion;
+
 			}
-
-			if (x == y && y == 0)
-			{
-				currentAnimationName = "Down";
-				_isAttacking = false;
-			}
-
-			return true;
 		}
 
-		public bool beHit(BaseUnit unit, BaseUnit attackSource)
-		{
-			return true;
-		}
-
-		public bool dodge(BaseUnit unit, BaseUnit attackSource)
-		{
-			return true;
-		}
-
-		public bool beCritHit(BaseUnit unit, BaseUnit attackSource)
-		{
-			return true;
-		}
-
-		/// <summary>
-		/// If the sprite is currently animating, the FrameAnimation is updated
-		/// </summary>
-		/// <param name="gameTime">GameTime passed by the game</param>
 		private void updateAnimation(GameTime gameTime)
 		{
 			if (!_isAnimating)
@@ -467,11 +623,6 @@ namespace TileEngine
 			animation.update(gameTime);
 		}
 
-		/// <summary>
-		/// Clamps the sprite to only move within a specified area
-		/// </summary>
-		/// <param name="width">Width in pixels of the area</param>
-		/// <param name="height">Hieght in pixels of the area</param>
 		private void clampToArea(int width, int height)
 		{
 			if (position.X > width - currentAnimation.currentFrame.Width)
@@ -484,6 +635,10 @@ namespace TileEngine
 			if (position.Y < 0)
 				position.Y = 0;
 		}
+
+		#endregion
+
+		#region Draw Methods
 
 		/// <summary>
 		/// Draws the AnimatedSprite in the viewport
@@ -499,6 +654,8 @@ namespace TileEngine
 					animation.currentFrame,
 					Color.White);
 		}
-	
+
+		#endregion
+
 	}
 }

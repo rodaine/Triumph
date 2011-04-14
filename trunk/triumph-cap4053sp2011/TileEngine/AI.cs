@@ -306,7 +306,7 @@ namespace TileEngine
 
             foreach (BaseUnit bu in testUnits)
             {
-                bu.update(gameTime, viewWidth, viewHeight, map);
+                bu.update(gameTime, map);
             }
             #endregion
 

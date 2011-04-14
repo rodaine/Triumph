@@ -442,7 +442,6 @@ namespace TileEngine
 					unit.unitSprite.animations.Add("Right", right);
 					unit.unitSprite.animations.Add("Dead", dead);
 					unit.unitSprite.speed = 2.5f;
-					unit.unitSprite.originOffset = new Vector2(16f, 32f);
 					unit.unitSprite.currentAnimationName = "Down";
 					unitList.Add(unit._name, unit);
 				}
@@ -746,7 +745,7 @@ namespace TileEngine
 		/// <param name="screenWidth">Viewport screen width in pixels</param>
 		/// <param name="screenHeight">Viewport screen height in pixels</param>
 		/// <param name="map">Tile Map of play area</param>
-		public void update(GameTime gameTime, int screenWidth, int screenHeight, TileMap map)
+		public void update(GameTime gameTime, TileMap map)
 		{
 			//check flags
 			if (_unitSprite.isMoving)
@@ -757,8 +756,11 @@ namespace TileEngine
 			if (isDead)
 				unitSprite.currentAnimationName = "Dead";
 
+			if (!_isAttacking)
+				map.unitLayer.moveUnit(this.unitIndex, this.position);
+
 			//map.unitLayer.moveUnit(unitIndex, position);
-			_unitSprite.update(gameTime, screenWidth, screenHeight, map);
+			_unitSprite.update(gameTime, map);
 
 			if (_isAttacking && !_unitSprite.isAttacking)
 				_isAttacking = false;
