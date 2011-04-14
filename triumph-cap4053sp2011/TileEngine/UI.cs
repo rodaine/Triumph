@@ -240,7 +240,7 @@ namespace TileEngine
                                                                     mCurrentPhase = Phase.Attack;
 
                                                                     range.clearPoints();
-                                                                    range.addPoints(map.attackPoints(currentUnit, 1, false, true, false));
+                                                                    range.addPoints(map.attackPoints(currentUnit, currentUnit.range, false, true, false));
                                                                     range.isDrawing = true;
 
                                                                     uiTimer = 0;
@@ -275,10 +275,6 @@ namespace TileEngine
                                                                 if (aKeyboardState.IsKeyDown(Keys.Enter))
                                                                 {
                                                                     mCurrentPhase = Phase.AbilityList;
-
-                                                                    range.clearPoints();
-                                                                    range.addPoints(map.attackPoints(currentUnit, 1, false, true, false));
-                                                                    range.isDrawing = true;
 
                                                                     uiTimer = 0;
                                                                 }
@@ -376,7 +372,7 @@ namespace TileEngine
                                                         uiTimer = 0;
                                                     }
 
-                                                    if (aKeyboardState.IsKeyDown(Keys.Back) == true)
+                                                    if (aKeyboardState.IsKeyDown(Keys.Back) == true && !currentUnit.isWalking)
                                                     {
                                                         range.isDrawing = false;
                                                         mCurrentPhase = Phase.Menu;
@@ -426,7 +422,7 @@ namespace TileEngine
                                                         }
                                                     }
 
-                                                    if (aKeyboardState.IsKeyDown(Keys.Back) == true)
+                                                    if (aKeyboardState.IsKeyDown(Keys.Back) == true && !currentUnit.isAttacking && (targetUnit == null || !targetUnit.isBeingHit))
                                                     {
                                                         range.isDrawing = false;
                                                         mCurrentPhase = Phase.Menu;
@@ -530,7 +526,7 @@ namespace TileEngine
                                                         uiTimer = 0;
                                                     }
 
-                                                    if (aKeyboardState.IsKeyDown(Keys.Back) == true)
+													if (aKeyboardState.IsKeyDown(Keys.Back) == true && !currentUnit.isAttacking && (targetUnit == null || !targetUnit.isBeingHit))
                                                     {
                                                         range.isDrawing = false;
                                                         mCurrentPhase = Phase.Menu;
@@ -627,7 +623,6 @@ namespace TileEngine
 
             }
         
-            //called from update, draws screen
             public void Draw(GameTime gameTime, SpriteBatch spriteBatch, int winWidth, int winHeight, TileMap map, Camera camera, Cursor cursor, BaseUnit[] testUnits, BaseUnit currentUnit, BaseUnit targetUnit, Range range, int winner)
             {
                 //spriteBatch.Begin();

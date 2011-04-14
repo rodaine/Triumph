@@ -11,7 +11,6 @@ namespace TileEngine
 	/// </summary>
 	public class Cursor
 	{
-        public bool hasMoved = false;
         private string _currentAnimationName = null;
 		private bool _isAnimating = true;
 		private float _timer = 0f,

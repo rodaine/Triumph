@@ -180,7 +180,7 @@ namespace TileEngine
 
                 for (int i = 0; i < linesToPrint; i++)
                 {
-                    spriteBatch.DrawString(consolas, sm[i], new Vector2(x + 35, y + 50 + i * yOffset), colors[i]);
+                    spriteBatch.DrawString(consolas, sm[i], new Vector2(x + 35, y + 50 + i * yOffset), new Color(colors[i].R, colors[i].G, colors[i].B, 1f - ((float) i/15f)));
                 }
 
                 spriteBatch.End();                

@@ -595,11 +595,25 @@ namespace TileEngine
 				//get neighbors
 				List<KeyValuePair<Point, int[]>> neighbors = getNeighbors(current);
 				foreach (KeyValuePair<Point, int[]> neighbor in neighbors)
-					openPoints.Push(neighbor.Key);
+				{
+					bool isDitched = false;
+				
+					foreach (Point pt in ditchedPoints)
+						if (neighbor.Key.X == pt.X && neighbor.Key.Y == pt.Y)
+						{
+							isDitched = true;
+							break;
+						}
+
+					if (!isDitched)	openPoints.Push(neighbor.Key);
+				}
 
 				//check tile for targetable unit
 				if (unitLayer.getTileUnitIndex(current) == 0)
+				{
+					ditchedPoints.Add(current);
 					continue;
+				}
 				else
 				{
 					bool self = false, hostile = true, dead = false;
