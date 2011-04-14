@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 
 namespace TileEngine
 {
@@ -85,6 +84,31 @@ namespace TileEngine
             _abilityType = EffectTypes.nothing;
             _abilityAmount = 0;
         }
+
+		public static Dictionary<string, Ability> fromFile(string filename)
+		{
+			Dictionary<string, Ability> output = new Dictionary<string, Ability>();
+
+			using (StreamReader reader = new StreamReader(filename))
+			{
+				while (!reader.EndOfStream)
+				{
+					string line = reader.ReadLine().Trim();
+					
+					if(string.IsNullOrEmpty(line)) continue;
+					if (line.Contains("///")) continue;
+
+					string[] abilityParams = line.Split(',');
+
+					Ability ability = new Ability(abilityParams[0].Trim(), (EffectTypes)Enum.Parse(typeof(EffectTypes), abilityParams[3].Trim()), int.Parse(abilityParams[4].Trim()), int.Parse(abilityParams[1].Trim()), int.Parse(abilityParams[2].Trim()), abilityParams[5].Trim());
+
+					output.Add(ability.name, ability);
+
+				}
+			}
+
+			return output;
+		}
 
         #endregion
 

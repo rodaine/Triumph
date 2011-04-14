@@ -462,7 +462,7 @@ namespace TileEngine
 					unit.unitSprite.animations.Add("Left", left);
 					unit.unitSprite.animations.Add("Right", right);
 					unit.unitSprite.animations.Add("Dead", dead);
-					unit.unitSprite.speed = 2.5f;
+					unit.unitSprite.speed = 1.75f;
 					unit.unitSprite.currentAnimationName = "Down";
 					unitList.Add(unit._name, unit);
 				}
@@ -525,12 +525,21 @@ namespace TileEngine
                 //deal damage
                 _dmgToBeTaken = dmg;
                 _attacker = attacker;
+
+				//animate hit
+				if (_wascrit) 
+					_unitSprite.beCritHit(this, attacker); 
+				else 
+					_unitSprite.beHit(this, attacker);
+
                 return dmg;
             }
             else // dodged attack
             {
                 _dmgToBeTaken = 0;
                 _attacker = attacker;
+
+				_unitSprite.dodge(this, attacker);
                 return 0;
             }
         }
@@ -561,6 +570,13 @@ namespace TileEngine
             //deal damage
             _dmgToBeTaken = dmg;
             _attacker = attacker;
+
+			//animate hit
+			if (_wascrit)
+				_unitSprite.beCritHit(this, attacker);
+			else
+				_unitSprite.beHit(this, attacker);
+
             return dmg;
         }
 
@@ -796,7 +812,6 @@ namespace TileEngine
 			if (!_isAttacking)
 				map.unitLayer.moveUnit(this.unitIndex, this.position);
 
-			//map.unitLayer.moveUnit(unitIndex, position);
 			_unitSprite.update(gameTime, map);
 
 			if (_isAttacking && !_unitSprite.isAttacking)
