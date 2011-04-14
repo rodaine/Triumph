@@ -140,9 +140,9 @@ namespace TileEngine
         /// <param name="viewHeight">The height of the viewport</param>
         /// <param name="testUnits">The list of all units</param>
         /// <param name="camera">The current camera</param>
-        public void update(GameTime gameTime, BaseUnit currentUnit, Cursor cursor, TileMap map, int viewWidth, int viewHeight, BaseUnit[] testUnits, Camera camera)
+        public void update(GameTime gameTime, BaseUnit currentUnit, Cursor cursor, TileMap map, int viewWidth, int viewHeight, BaseUnit[] testUnits, Camera camera, bool somethingBeingAttacked)
         {
-            if (!currentUnit.isWalking && !currentUnit.isAttacking)
+            if (!currentUnit.isWalking && !currentUnit.isAttacking && !somethingBeingAttacked) //sup tj, made sometyhing being attacked, hope you don't mind
             {
                 switch (_myState)
                 {

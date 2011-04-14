@@ -104,7 +104,7 @@ namespace TileEngine
                 return false;
             }
             
-            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit[] testUnits, Camera camera, Range range, bool gameWon, ref bool inGame)
+            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit[] testUnits, Camera camera, Range range, bool gameWon, ref bool inGame, bool unitBeingAttacked)
             {
                 switch (mCurrentScreen)
                 {
@@ -415,8 +415,10 @@ namespace TileEngine
                                     {
                                         unit.update(gameTime, map);
                                     }
+
+                                    bool canMove = !currentUnit.isAttacking && !currentUnit.isWalking && !unitBeingAttacked;
                                     if (mCurrentPhase != Phase.Menu)
-                                        cursor.update(gameTime, screenWidth, screenHeight, map);
+                                        cursor.update(gameTime, screenWidth, screenHeight, map, canMove);
 
                                     camera.update(screenWidth, screenHeight, map);
                                 }
