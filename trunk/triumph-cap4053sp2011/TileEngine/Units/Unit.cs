@@ -785,12 +785,18 @@ namespace TileEngine
             if (_attacker != null && !_attacker.isAttacking)
             {
                 this.HP -= _dmgToBeTaken;
+                String msg;
                 if (_wascrit)
-                    System.Console.WriteLine("Critical hit! " + _attacker.name + " has done " + _dmgToBeTaken + " to " + this.name);
+                    msg = "Critical hit! " + _attacker.name + " has done " + _dmgToBeTaken + " to " + this.name;
                 else if (_dmgToBeTaken == 0)
-                    System.Console.WriteLine(_attacker.name + " has missed " + this.name);
+                    msg = _attacker.name + " has missed " + this.name;
                 else
-                    System.Console.WriteLine(_attacker.name + " has done " + _dmgToBeTaken + " to " + this.name);
+                    msg = _attacker.name + " has done " + _dmgToBeTaken + " to " + this.name;
+                if(_attacker.faction.name == "Faction 1")
+                    GameConsole.getInstanceOf().Update(msg, Color.Blue);
+                else
+                    GameConsole.getInstanceOf().Update(msg, Color.Red);
+
                 _wascrit = false;
                 _attacker = null;
                 _dmgToBeTaken = 0;

@@ -14,6 +14,7 @@ namespace TileEngine
 {
     public class GameConsole
     {
+        public static GameConsole singleton;
         string[] sm = new string[15];
         Color[] colors = new Color[15];
         int linesToPrint;
@@ -29,6 +30,18 @@ namespace TileEngine
 
         private double totalTimeInSeconds = 0;
         int hr = 0, min = 0, sec = 0;        
+
+        /// <summary>
+        /// returns a singleton of GameConsole
+        /// </summary>
+        /// <returns></returns>
+        public static GameConsole getInstanceOf()
+        {
+            if(singleton == null)
+                singleton = new GameConsole();
+
+            return singleton;
+        }
 
         public void LoadContent(ContentManager Content)
         {
