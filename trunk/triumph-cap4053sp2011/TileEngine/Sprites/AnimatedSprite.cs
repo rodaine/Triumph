@@ -539,9 +539,9 @@ namespace TileEngine
 		private void updateCrit(GameTime gameTime)
 		{
 			if (!_isHit && !_isCritHit) return;
-			if (timer < 1500f)
+			if (timer < 1000f)
 			{
-				float radius = (float)RandomNumber.getInstance().getNext(0, Engine.TILE_WIDTH / 3);
+				float radius = (float)RandomNumber.getInstance().getNext(0, Engine.TILE_WIDTH / 4);
 				double angle = (double)MathHelper.ToRadians(RandomNumber.getInstance().getNext(0, 359));
 				float x = radius * (float)Math.Cos(angle);
 				float y = radius * (float)Math.Sin(angle);
@@ -580,7 +580,7 @@ namespace TileEngine
 			}
 			else
 			{
-				if (position.X == destination.X && position.Y == initial.Y)
+				if (position.X == destination.X && position.Y == destination.Y)
 				{
 					destination = initial;
 					dodgePhase = true;

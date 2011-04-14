@@ -526,12 +526,6 @@ namespace TileEngine
                 _dmgToBeTaken = dmg;
                 _attacker = attacker;
 
-				//animate hit
-				if (_wascrit) 
-					_unitSprite.beCritHit(this, attacker); 
-				else 
-					_unitSprite.beHit(this, attacker);
-
                 return dmg;
             }
             else // dodged attack
@@ -539,7 +533,6 @@ namespace TileEngine
                 _dmgToBeTaken = 0;
                 _attacker = attacker;
 
-				_unitSprite.dodge(this, attacker);
                 return 0;
             }
         }
@@ -571,15 +564,8 @@ namespace TileEngine
             _dmgToBeTaken = dmg;
             _attacker = attacker;
 
-			//animate hit
-			if (_wascrit)
-				_unitSprite.beCritHit(this, attacker);
-			else
-				_unitSprite.beHit(this, attacker);
-
             return dmg;
         }
-
 
         /// <summary>
         /// checks if a target unit is within range
@@ -817,38 +803,51 @@ namespace TileEngine
 			if (_isAttacking && !_unitSprite.isAttacking)
 				_isAttacking = false;
 
-            if (_attacker != null && !_attacker.isAttacking)
+			if (this._isBeingHit && !_unitSprite.isDefending)
+			{
+				this.HP -= _dmgToBeTaken;
+
+				if (this.isDead && _attacker.faction.name == "Faction 1")
+					GameConsole.getInstanceOf().Update(this.name + " was killed by " + _attacker.name, Color.Blue);
+
+				else if (this.isDead && _attacker.faction.name == "Faction 2")
+					GameConsole.getInstanceOf().Update(this.name + " was killed by " + _attacker.name, Color.Red);
+
+				_dmgToBeTaken = 0;
+				_attacker = null;
+				this._isBeingHit = false;
+			}
+
+            if (_attacker != null && !_attacker.isAttacking && !_isBeingHit)
             {
-                this.HP -= _dmgToBeTaken;
                 String msg;
-                if (_wascrit)
-                    msg = "Critical hit! " + _attacker.name + " has done " + _dmgToBeTaken + " damage to " + this.name;
-                else if (_dmgToBeTaken == 0)
-                    msg = _attacker.name + " has missed " + this.name;
-                else
-                    msg = _attacker.name + " has done " + _dmgToBeTaken + " damage to " + this.name;
+
+				//Generate msg and perform animation
+				if (_wascrit)
+				{
+					msg = "Critical hit! " + _attacker.name + " has done " + _dmgToBeTaken + " damage to " + this.name;
+					_unitSprite.beCritHit(this, _attacker);
+				}
+				else if (_dmgToBeTaken == 0)
+				{
+					msg = _attacker.name + " has missed " + this.name;
+					_unitSprite.dodge(this, _attacker);
+				}
+				else
+				{
+					msg = _attacker.name + " has done " + _dmgToBeTaken + " damage to " + this.name;
+					_unitSprite.beHit(this, _attacker);
+				}
+
+				//Print msgs
                 if (_attacker.faction.name == "Faction 1")
-                {
                     GameConsole.getInstanceOf().Update(msg, Color.Blue);
-                    if (this.isDead)
-                        GameConsole.getInstanceOf().Update(this.name + " was killed by " + _attacker.name, Color.Blue);
-                }
                 else
-                {
                     GameConsole.getInstanceOf().Update(msg, Color.Red);
-                    if (this.isDead)
-                        GameConsole.getInstanceOf().Update(this.name + " was killed by " + _attacker.name, Color.Red);
-                }
 
                 _wascrit = false;
-                _attacker = null;
-                _dmgToBeTaken = 0;
-                this._isBeingHit = true;
-            }
 
-            if (this._isBeingHit && !_unitSprite.isDefending)
-            {
-                this._isBeingHit = false;
+                this._isBeingHit = true;
             }
             
 		}
