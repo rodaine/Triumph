@@ -58,7 +58,9 @@ namespace TileEngine
 
             SpriteFont font, font2, font3, font4, font5, font6, font7;
             SpriteFont experiment;
-        
+
+			AffinityIcon currentIcon, targetIcon;
+
             ContentManager Content;
 
             private float uiTimer = 0f, secondsPerOption = .13f;
@@ -94,6 +96,37 @@ namespace TileEngine
                 font6 = Content.Load<SpriteFont>("UI/SpriteFont6");
                 font7 = Content.Load<SpriteFont>("UI/SpriteFont7");
                 experiment = Content.Load<SpriteFont>("UI/experimentation");
+
+				currentIcon = new AffinityIcon(Content.Load<Texture2D>("UI/affinities"));
+				targetIcon = new AffinityIcon(Content.Load<Texture2D>("UI/affinities"));
+
+				FrameAnimation Fire = new FrameAnimation(1, 34, 34, 0, 0);
+				FrameAnimation Ice = new FrameAnimation(1, 34, 34, 34, 0);
+				FrameAnimation Lightening = new FrameAnimation(1, 34, 34, 68, 0);
+				FrameAnimation Water = new FrameAnimation(1, 34, 34, 102, 0);
+				FrameAnimation Earth = new FrameAnimation(1, 34, 34, 136, 0);
+				FrameAnimation Wind = new FrameAnimation(1, 34, 34, 170, 0);
+				FrameAnimation Holy = new FrameAnimation(1, 34, 34, 204, 0);
+				FrameAnimation Dark = new FrameAnimation(1, 34, 34, 238, 0);
+
+				currentIcon.frames.Add("Fire", Fire);
+				currentIcon.frames.Add("Ice", Ice);
+				currentIcon.frames.Add("Lightening", Lightening);
+				currentIcon.frames.Add("Water", Water);
+				currentIcon.frames.Add("Earth", Earth);
+				currentIcon.frames.Add("Wind", Wind);
+				currentIcon.frames.Add("Holy", Holy);
+				currentIcon.frames.Add("Dark", Dark);
+
+				targetIcon.frames.Add("Fire", (FrameAnimation) Fire.Clone());
+				targetIcon.frames.Add("Ice", (FrameAnimation) Ice.Clone());
+				targetIcon.frames.Add("Lightening", (FrameAnimation) Lightening.Clone());
+				targetIcon.frames.Add("Water", (FrameAnimation) Water.Clone());
+				targetIcon.frames.Add("Earth", (FrameAnimation) Earth.Clone());
+				targetIcon.frames.Add("Wind", (FrameAnimation) Wind.Clone());
+				targetIcon.frames.Add("Holy", (FrameAnimation) Holy.Clone());
+				targetIcon.frames.Add("Dark", (FrameAnimation) Dark.Clone());
+
             }
 
             public bool readyToExit()
@@ -883,11 +916,13 @@ namespace TileEngine
 
 					if (unit.faction.name == "Faction 1")
 					{
+						unit.unitSprite.currentAnimationName = "Down";
 						unit.teleportToTile(new Point(17 + i, 1), map);
 						++i;
 					}
 					if (unit.faction.name == "Faction 2")
 					{
+						unit.unitSprite.currentAnimationName = "Up";
 						unit.teleportToTile(new Point(17 + j, 12), map);
 						++j;
 					}

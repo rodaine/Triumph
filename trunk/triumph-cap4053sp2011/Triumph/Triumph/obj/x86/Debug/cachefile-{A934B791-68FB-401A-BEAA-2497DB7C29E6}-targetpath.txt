@@ -268,6 +268,11 @@ Content\Tiles\Town\Pavement\pavement_topright_out.xnb
 Content\UI\menuScroll.xnb
 Content\UI\timer_tan.xnb
 Content\UI\timer_white.xnb
+Content\Console\black.xnb
+Content\Console\consoleScroll.xnb
+Content\Console\timer_white.xnb
+Content\Console\arial9pt.xnb
+Content\Console\consolas.xnb
 Content\UI\SpriteFont1.xnb
 Content\UI\SpriteFont2.xnb
 Content\UI\experimentation.xnb
@@ -277,11 +282,7 @@ Content\UI\SpriteFont5.xnb
 Content\UI\SpriteFont6.xnb
 Content\UI\SpriteFont7.xnb
 Content\Music\POL-battle-march-long.xnb
-Content\Console\black.xnb
-Content\Console\consoleScroll.xnb
-Content\Console\timer_white.xnb
-Content\Console\arial9pt.xnb
-Content\Console\consolas.xnb
+Content\UI\affinities.xnb
 Content\Layers\baseTiles.layer
 Content\Layers\alphaObjects.layer
 Content\Layers\Collision.layer

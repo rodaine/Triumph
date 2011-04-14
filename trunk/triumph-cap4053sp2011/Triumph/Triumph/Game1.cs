@@ -80,7 +80,7 @@ namespace Triumph
 
 			soundMusicInstance.Volume = 0.75f;
 			soundMusicInstance.IsLooped = true;
-			soundMusicInstance.Play();
+			//soundMusicInstance.Play();
 
 			cursor.animations.Add("Normal", new FrameAnimation(1, 32, 32, 0, 0));
 			cursor.animations.Add("Collision", new FrameAnimation(1, 32, 32, 32, 0));
@@ -144,7 +144,7 @@ namespace Triumph
             {
                 soundMusicInstance.Volume = 0.75f;
                 soundMusicInstance.IsLooped = true;
-                soundMusicInstance.Play();
+              //  soundMusicInstance.Play();
             }
 
             //check current target unit

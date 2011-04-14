@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace TileEngine
 {
@@ -30,25 +29,12 @@ namespace TileEngine
 		private bool dodgePhase = false;
 		
 		private Texture2D spriteTexture;
-		
-		private Vector2 _originOffset = Vector2.Zero;
+
 		private Vector2 destination = Vector2.Zero;
 		private Vector2 initial = Vector2.Zero;
 
 		private Stack<Point> path;
 
-		#endregion
-
-		#region Public Properties
-
-		/// <summary>
-		/// Collection of FrameAnimations with assigned (arbitrary) names
-		/// </summary>
-		public Dictionary<string, FrameAnimation> animations = new Dictionary<string, FrameAnimation>();
-
-		/// <summary>
-		/// Gets the current FrameAnimation used by the sprite
-		/// </summary>
 		private FrameAnimation currentAnimation
 		{
 			get
@@ -59,6 +45,15 @@ namespace TileEngine
 					return null;
 			}
 		}
+
+		#endregion
+
+		#region Public Properties
+
+		/// <summary>
+		/// Collection of FrameAnimations with assigned (arbitrary) names
+		/// </summary>
+		public Dictionary<string, FrameAnimation> animations = new Dictionary<string, FrameAnimation>();
 
 		/// <summary>
 		/// Gets or sets the name of the currentAnimation of the sprite
