@@ -37,6 +37,7 @@ namespace Triumph
 		Dictionary<string, BaseUnit> unitList;
         int counter = 10;
         bool inGame = false; //TODO I don't like this, should only be true after UI.screen goes to Main
+        GameConsole console = new GameConsole();
         #endregion
 
         public Game1()
@@ -79,7 +80,7 @@ namespace Triumph
 
 			soundMusicInstance.Volume = 0.75f;
 			soundMusicInstance.IsLooped = true;
-			//soundMusicInstance.Play();
+			soundMusicInstance.Play();
 
 			cursor.animations.Add("Normal", new FrameAnimation(1, 32, 32, 0, 0));
 			cursor.animations.Add("Collision", new FrameAnimation(1, 32, 32, 32, 0));
@@ -95,6 +96,9 @@ namespace Triumph
 			range.rangeTypes.Add("Hidden", new FrameAnimation(1, 32, 32, 96, 0));
 			range.currentRangeTypeName = "Select";
 
+
+            //console.Update("Hi, I'm blue and 31 chars long.", Color.Blue);
+            //console.Update("I hate splitting by word instead of characters!", Color.Red);
         }
 
         //load all images and outside files
@@ -120,6 +124,7 @@ namespace Triumph
             
 
             ui.LoadContent(Content);
+            console.LoadContent(Content);
 
         }
         
@@ -139,7 +144,7 @@ namespace Triumph
             {
                 soundMusicInstance.Volume = 0.75f;
                 soundMusicInstance.IsLooped = true;
-                //soundMusicInstance.Play();
+                soundMusicInstance.Play();
             }
 
             //check current target unit
@@ -168,7 +173,7 @@ namespace Triumph
                 bool end = false;
                 if (faction1.isDefeated || faction2.isDefeated)
                     end = true;
-                ui.Update(gameTime, aKeyboardState, currentUnit, targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, range, end, ref inGame);
+                ui.Update(gameTime, aKeyboardState, currentUnit, targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, range, end, ref inGame, console);
             }
             
             if (ui.readyToExit())
@@ -223,7 +228,7 @@ namespace Triumph
                 winner = 2;
                   
 
-            ui.Draw(gameTime, spriteBatch, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height, map, camera, cursor, testUnits, currentUnit, targetUnit, range, winner);
+            ui.Draw(gameTime, spriteBatch, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height, map, camera, cursor, testUnits, currentUnit, targetUnit, range, winner, console);
 
             base.Draw(gameTime);
         }
