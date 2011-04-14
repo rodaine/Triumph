@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
 
 namespace TileEngine
 {
@@ -27,6 +29,7 @@ namespace TileEngine
 		private bool _isCritHit = false;
 		private bool[] attackPhases = { false, false, false };
 		private bool dodgePhase = false;
+		private bool soundPlayed = true;
 		
 		private Texture2D spriteTexture;
 
@@ -45,6 +48,14 @@ namespace TileEngine
 					return null;
 			}
 		}
+
+		private SoundEffectInstance SFX;
+		private SoundEffect _attack;
+		private SoundEffect _hit;
+		private SoundEffect _crit;
+		private SoundEffect _dodge;
+		private SoundEffect _death;
+		private SoundEffect _walking;
 
 		#endregion
 
@@ -129,6 +140,24 @@ namespace TileEngine
 			spriteTexture = texture;
 		}
 
+		/// <summary>
+		/// Load sounds into the animated sprite
+		/// </summary>
+		/// <param name="attack">Attack SFX</param>
+		/// <param name="hit">Hit SFX</param>
+		/// <param name="crit">Critical SFX</param>
+		/// <param name="dodge">Dodge SFX</param>
+		/// <param name="death">Death SFX</param>
+		public void loadSFX(SoundEffect attack, SoundEffect hit, SoundEffect crit, SoundEffect dodge, SoundEffect death, SoundEffect walking)
+		{
+			_attack = attack;
+			_hit = hit;
+			_crit = crit;
+			_dodge = dodge;
+			_death = death;
+			_walking = walking;
+		}
+
 		#endregion
 
 		#region Action Methods
@@ -153,6 +182,9 @@ namespace TileEngine
 
 			destination = new Vector2((float)tileDest.X * Engine.TILE_WIDTH, (float)tileDest.Y * Engine.TILE_HEIGHT);
 			_isMoving = true;
+			SFX = _walking.CreateInstance();
+			SFX.IsLooped = false;
+			SFX.Volume = 1f;
 			return true;
 		}
 
@@ -197,6 +229,9 @@ namespace TileEngine
 				_isAttacking = false;
 			}
 
+			SFX = _attack.CreateInstance();
+			SFX.IsLooped = false;
+			SFX.Volume = 1f;
 			return true;
 		}
 
@@ -239,6 +274,14 @@ namespace TileEngine
 			}
 
 			_isHit = true;
+
+			if (_isCritHit)
+				SFX = _crit.CreateInstance();
+			else
+				SFX = _hit.CreateInstance();
+			SFX.IsLooped = false;
+			SFX.Volume = 1f;
+			soundPlayed = false;
 
 			return true;
 		}
@@ -310,9 +353,29 @@ namespace TileEngine
 			dodgePhase = false;
 			_isDodging = true;
 
+			SFX = _dodge.CreateInstance();
+			SFX.IsLooped = false;
+			SFX.Volume = 1f;
+			soundPlayed = false;
 			return true;
 		}
-	
+
+		/// <summary>
+		/// Plays the death sound and changes the sprite to a tombstone
+		/// </summary>
+		/// <returns>True if dead</returns>
+		public bool die()
+		{
+			if (_isMoving || _isAttacking || _isDodging || _isHit) return false;
+
+			currentAnimationName = "Dead";
+			SFX = _death.CreateInstance();
+			SFX.IsLooped = false;
+			SFX.Volume = 1f;
+			SFX.Play();
+			return true;
+		}
+
 		#endregion
 
 		#region Update Methods
@@ -335,6 +398,10 @@ namespace TileEngine
 		private void updateWalking(TileMap map)
 		{
 			if (!_isMoving) return;
+
+			//if (SFX.State != SoundState.Playing)
+				//SFX.Play();
+
 			Vector2 motion = Vector2.Zero;
 			if (_isMoving && position.X == destination.X && position.Y == destination.Y)
 			{
@@ -343,6 +410,7 @@ namespace TileEngine
 				if (path.Count == 0)
 				{
 					_isMoving = false;
+					SFX.Stop();
 				}
 				else
 				{
@@ -428,6 +496,7 @@ namespace TileEngine
 					//at destination
 					if (position.X == destination.X && position.Y == destination.Y)
 					{
+						SFX.Play();
 						attackPhases[2] = true;
 						destination = initial;
 					}
@@ -518,6 +587,11 @@ namespace TileEngine
 		private void updateHit(GameTime gameTime)
 		{
 			if (!_isHit || _isCritHit) return;
+			if (!soundPlayed)
+			{
+				SFX.Play();
+				soundPlayed = true;
+			}
 			if (timer < 1000f)
 			{
 				float radius = (float) RandomNumber.getInstance().getNext(0, Engine.TILE_WIDTH / 6);
@@ -539,6 +613,11 @@ namespace TileEngine
 		private void updateCrit(GameTime gameTime)
 		{
 			if (!_isHit && !_isCritHit) return;
+			if (!soundPlayed)
+			{
+				SFX.Play();
+				soundPlayed = true;
+			}
 			if (timer < 1000f)
 			{
 				float radius = (float)RandomNumber.getInstance().getNext(0, Engine.TILE_WIDTH / 4);
@@ -560,6 +639,11 @@ namespace TileEngine
 		private void updateDodge()
 		{
 			if (!_isDodging) return;
+			if (!soundPlayed)
+			{
+				SFX.Play();
+				soundPlayed = true;
+			}
 			Vector2 motion = Vector2.Zero;
 			if (dodgePhase)
 			{

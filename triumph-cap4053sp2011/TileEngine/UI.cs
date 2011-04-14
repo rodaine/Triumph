@@ -64,6 +64,11 @@ namespace TileEngine
 
             ContentManager Content;
 
+			SoundEffectInstance SFX;
+			SoundEffect _menuMove;
+			SoundEffect _menuCorrect;
+			SoundEffect _menuWrong;
+
             int ab = 0;
 
             private float uiTimer = 0f, secondsPerOption = .13f;
@@ -130,6 +135,10 @@ namespace TileEngine
 				targetIcon.frames.Add("Holy", (FrameAnimation) Holy.Clone());
 				targetIcon.frames.Add("Dark", (FrameAnimation) Dark.Clone());
 
+				_menuMove = Content.Load<SoundEffect>("Music/click");
+				_menuWrong = Content.Load<SoundEffect>("Music/wrong");
+				_menuCorrect = Content.Load<SoundEffect>("Music/correct");
+
             }
 
             public bool readyToExit()
@@ -151,6 +160,7 @@ namespace TileEngine
                             //by switching the current state to the Main Screen
                             if (aKeyboardState.IsKeyDown(Keys.X) == true)
                             {
+								playCorrect();
 								inGame = true;
                                 mCurrentScreen = Screen.Main;
                             }
@@ -173,11 +183,13 @@ namespace TileEngine
                                 //up the Menu options by switching the current state to Menu
                                 if (aKeyboardState.IsKeyDown(Keys.Escape) == true)
                                 {
+									playCorrect();
                                     mCurrentScreen = Screen.Pause;
                                 }
 
                                 if (aKeyboardState.IsKeyDown(Keys.C) == true)
                                 {
+									playMove();
                                     mCurrentScreen = Screen.Controls;
                                 }
                                 
@@ -186,6 +198,7 @@ namespace TileEngine
                                 {
                                     if (aKeyboardState.IsKeyDown(Keys.H) == true)
                                     {
+										playMove();
                                         hide = !hide;
                                         uiTimer = 0;
                                     }
@@ -204,6 +217,7 @@ namespace TileEngine
                                                             {
                                                                 if (aKeyboardState.IsKeyDown(Keys.Enter))
                                                                 {
+																	playMove();
                                                                     mCurrentPhase = Phase.Move;
                                                                     range.clearPoints();
                                                                     range.addPoints(map.walkToPoints(currentUnit));
@@ -214,6 +228,7 @@ namespace TileEngine
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.W))
                                                                 {
+																	playMove();
                                                                     mCurrentOption = MenuOption.EndTurn;
 
                                                                     uiTimer = 0;
@@ -221,6 +236,8 @@ namespace TileEngine
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.S))
                                                                 {
+																	playMove();
+																	mCurrentOption = MenuOption.EndTurn;
                                                                     if (currentUnit.AP != 0)
                                                                         mCurrentOption = MenuOption.Attack;
                                                                     else
@@ -237,6 +254,7 @@ namespace TileEngine
                                                             {
                                                                 if (aKeyboardState.IsKeyDown(Keys.Enter))
                                                                 {
+																	playMove();
                                                                     mCurrentPhase = Phase.Attack;
 
                                                                     range.clearPoints();
@@ -248,6 +266,7 @@ namespace TileEngine
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.W))
                                                                 {
+																	playMove();
                                                                     if (currentUnit.MP != 0)
                                                                         mCurrentOption = MenuOption.Move;
                                                                     else
@@ -258,6 +277,7 @@ namespace TileEngine
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.S))
                                                                 {
+																	playMove();
                                                                     if (currentUnit.AP != 0)
                                                                         mCurrentOption = MenuOption.Ability;
                                                                     else
@@ -274,6 +294,7 @@ namespace TileEngine
                                                             {
                                                                 if (aKeyboardState.IsKeyDown(Keys.Enter))
                                                                 {
+																	playMove();
                                                                     mCurrentPhase = Phase.AbilityList;
 
                                                                     uiTimer = 0;
@@ -281,6 +302,7 @@ namespace TileEngine
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.W))
                                                                 {
+																	playMove();
                                                                     if (currentUnit.AP != 0)
                                                                         mCurrentOption = MenuOption.Attack;
                                                                     else if (currentUnit.MP != 0)
@@ -293,6 +315,7 @@ namespace TileEngine
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.S))
                                                                 {
+																	playMove();
                                                                     mCurrentOption = MenuOption.EndTurn;
 
                                                                     uiTimer = 0;
@@ -306,6 +329,7 @@ namespace TileEngine
                                                             {
                                                                 if (aKeyboardState.IsKeyDown(Keys.Enter))
                                                                 {
+																	playMove();
                                                                     currentUnit.isDone = true;
                                                                     mCurrentPhase = Phase.Menu;
                                                                     mCurrentOption = MenuOption.Move;
@@ -316,6 +340,7 @@ namespace TileEngine
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.W))
                                                                 {
+																	playMove();
                                                                     if (currentUnit.AP != 0)
                                                                         mCurrentOption = MenuOption.Ability;
                                                                     else if (currentUnit.MP != 0)
@@ -328,6 +353,7 @@ namespace TileEngine
 
                                                                 if (aKeyboardState.IsKeyDown(Keys.S))
                                                                 {
+																	playMove();
                                                                     if (currentUnit.MP != 0)
                                                                         mCurrentOption = MenuOption.Move;
                                                                     else if (currentUnit.AP != 0)
@@ -353,7 +379,11 @@ namespace TileEngine
 
                                                     if (Keyboard.GetState().IsKeyDown(Keys.Enter))
                                                     {
-                                                        currentUnit.goToTile(Engine.convertPositionToTile(cursor.position), map);
+														if (currentUnit.goToTile(Engine.convertPositionToTile(cursor.position), map))
+															playCorrect();
+														else
+															playWrong();
+
                                                         range.clearPoints();
                                                         range.addPoints(map.walkToPoints(currentUnit));
 
@@ -374,6 +404,7 @@ namespace TileEngine
 
                                                     if (aKeyboardState.IsKeyDown(Keys.Back) == true && !currentUnit.isWalking)
                                                     {
+														playMove();
                                                         range.isDrawing = false;
                                                         mCurrentPhase = Phase.Menu;
                                                         if (currentUnit.MP != 0)
@@ -405,25 +436,30 @@ namespace TileEngine
 
                                                         uiTimer = 0;
                                                     }
-                                                    //attack or ability
-                                                    //attacks, does nothing if there is no targetted unit or
+
+                                                    //attack does nothing if there is no targetted unit or
                                                     //the targetted unit is dead or the current unit
                                                     if (Keyboard.GetState().IsKeyDown(Keys.Enter) && counter < 0)
                                                     {
-                                                        if (targetUnit != null && !targetUnit.faction.Equals(currentUnit.faction) && !targetUnit.isDead && currentUnit.withinRange(targetUnit))
-                                                        {
-                                                            //return an int - -1 if invalid, 0 if miss, value of damage
-                                                            currentUnit.attack(targetUnit);
-                                                            
-                                                            range.clearPoints();
-                                                            range.addPoints(map.attackPoints(currentUnit, currentUnit.range, false, true, false));
+														if (targetUnit != null && !targetUnit.faction.Equals(currentUnit.faction) && !targetUnit.isDead && currentUnit.withinRange(targetUnit))
+														{
+															//return an int - -1 if invalid, 0 if miss, value of damage
+															currentUnit.attack(targetUnit);
 
-                                                            uiTimer = 0;
-                                                        }
+															range.clearPoints();
+															range.addPoints(map.attackPoints(currentUnit, currentUnit.range, false, true, false));
+
+															uiTimer = 0;
+														}
+														else
+														{
+															playWrong();
+														}
                                                     }
 
                                                     if (aKeyboardState.IsKeyDown(Keys.Back) == true && !currentUnit.isAttacking && (targetUnit == null || !targetUnit.isBeingHit))
                                                     {
+														playMove();
                                                         range.isDrawing = false;
                                                         mCurrentPhase = Phase.Menu;
                                                         if (currentUnit.MP != 0)
@@ -448,6 +484,7 @@ namespace TileEngine
                                                     //the targetted unit is dead or the current unit
                                                     if (Keyboard.GetState().IsKeyDown(Keys.Enter) && counter < 0)
                                                     {
+														playMove();
                                                         mCurrentPhase = Phase.AbilityUse;
 
                                                         range.clearPoints();
@@ -458,6 +495,7 @@ namespace TileEngine
 
                                                     if (aKeyboardState.IsKeyDown(Keys.Back) == true)
                                                     {
+														playMove();
                                                         range.isDrawing = false;
                                                         mCurrentPhase = Phase.Menu;
                                                         if (currentUnit.MP != 0)
@@ -472,6 +510,7 @@ namespace TileEngine
 
                                                     if (aKeyboardState.IsKeyDown(Keys.W) == true)
                                                     {
+														playMove();
                                                         do
                                                         {
                                                             ab--;
@@ -483,6 +522,7 @@ namespace TileEngine
 
                                                     if (aKeyboardState.IsKeyDown(Keys.S) == true)
                                                     {
+														playMove();
                                                         do
                                                         {
                                                             ab++;
@@ -511,23 +551,26 @@ namespace TileEngine
 
                                                         uiTimer = 0;
                                                     }
-                                                    //attack or ability
-                                                    //attacks, does nothing if there is no targetted unit or
+
+                                                    //ability does nothing if there is no targetted unit or
                                                     //the targetted unit is dead or the current unit
                                                     if (Keyboard.GetState().IsKeyDown(Keys.Enter) && counter < 0)
                                                     {
-                                                        if (currentUnit.moves[ab].APCost <= currentUnit.AP && currentUnit.canTargetAbility(currentUnit.moves[ab], targetUnit))
-                                                        {
-                                                            currentUnit.useAbility(currentUnit.moves[ab], targetUnit);
-                                                            range.clearPoints();
-                                                            range.addPoints(map.attackPoints(currentUnit, currentUnit.moves[ab].attackRange, currentUnit.moves[ab].isFriendly, currentUnit.moves[ab].isHostile, currentUnit.moves[ab].isSelf));
-                                                        }                                                        
+														if (currentUnit.moves[ab].APCost <= currentUnit.AP && currentUnit.canTargetAbility(currentUnit.moves[ab], targetUnit))
+														{
+															currentUnit.useAbility(currentUnit.moves[ab], targetUnit);
+															range.clearPoints();
+															range.addPoints(map.attackPoints(currentUnit, currentUnit.moves[ab].attackRange, currentUnit.moves[ab].isFriendly, currentUnit.moves[ab].isHostile, currentUnit.moves[ab].isSelf));
+														}
+														else
+															playWrong();
 
                                                         uiTimer = 0;
                                                     }
 
 													if (aKeyboardState.IsKeyDown(Keys.Back) == true && !currentUnit.isAttacking && (targetUnit == null || !targetUnit.isBeingHit))
                                                     {
+														playMove();
                                                         range.isDrawing = false;
                                                         mCurrentPhase = Phase.Menu;
                                                         if (currentUnit.MP != 0)
@@ -576,11 +619,13 @@ namespace TileEngine
 
                             if (aKeyboardState.IsKeyDown(Keys.R) == true)
                             {
+								playCorrect();
                                 mCurrentScreen = Screen.Main;
                             }
 
                             if (aKeyboardState.IsKeyDown(Keys.C) == true)
                             {
+								playMove();
                                 mCurrentScreen = Screen.Controls;
                             }
                             break;
@@ -592,6 +637,7 @@ namespace TileEngine
                         {
                             if (aKeyboardState.IsKeyDown(Keys.R) == true || aKeyboardState.IsKeyDown(Keys.Escape) == true)
                             {
+								playMove();
                                 mCurrentScreen = Screen.Pause;
                             }
                             break;
@@ -611,6 +657,7 @@ namespace TileEngine
 
                                 if (aKeyboardState.IsKeyDown(Keys.Enter))
                                 {
+									playCorrect();
                                     reset(testUnits, turnManager, currentUnit, map, ref inGame);
                                     mCurrentScreen = Screen.Title;
                                     uiTimer = 0;
@@ -1077,7 +1124,33 @@ namespace TileEngine
 				currentUnit.isDone = true;
                 GameConsole.getInstanceOf().reset();
 			}
-	
+
+			private void playCorrect()
+			{
+				SFX = _menuCorrect.CreateInstance();
+				SFX.IsLooped = false;
+				SFX.Volume = 1f;
+				SFX.Play();
+				mCurrentOption = MenuOption.EndTurn;
+			}
+
+			private void playWrong()
+			{
+				SFX = _menuWrong.CreateInstance();
+				SFX.IsLooped = false;
+				SFX.Volume = 1f;
+				SFX.Play();
+				mCurrentOption = MenuOption.EndTurn;
+			}
+
+			private void playMove()
+			{
+				SFX = _menuMove.CreateInstance();
+				SFX.IsLooped = false;
+				SFX.Volume = 1f;
+				SFX.Play();
+				mCurrentOption = MenuOption.EndTurn;
+			}
             
     }
 }

@@ -792,8 +792,8 @@ namespace TileEngine
 			else
 				_isWalking = false;
 
-			if (isDead)
-				unitSprite.currentAnimationName = "Dead";
+			if (isDead && unitSprite.currentAnimationName != "Dead")
+				unitSprite.die();
 
 			if (!_isAttacking)
 				map.unitLayer.moveUnit(this.unitIndex, this.position);
@@ -853,24 +853,27 @@ namespace TileEngine
 		}
 
 		/// <summary>
-		/// Move the unit to a specified tile. This function does not check for the MP cost of the move!
+		/// Move the unit to a specified tile.
 		/// </summary>
 		/// <param name="goal">Goal location of the </param>
 		/// <param name="map">Tile Map of play area</param>
-		public void goToTile(Point goal, TileMap map)
+		public bool goToTile(Point goal, TileMap map)
 		{
-			if (_isWalking) return;
-            if (map.unitLayer.getTileUnitIndex(goal) != 0) return;
-			if (map.collisionLayer.getTileCollisionIndex(goal) != 0) return;
+			if (_isWalking) return false;
+            if (map.unitLayer.getTileUnitIndex(goal) != 0) return false;
+			if (map.collisionLayer.getTileCollisionIndex(goal) != 0) return false;
 
 			if (unitSprite.goToTile(this, goal, map, _MP))
 			{
 				MP -= map.getPath(this, goal, new List<Point>()).Count - 1;
 				_position = goal;
 				_isWalking = true;
-                _hasMoved = true;
+				_hasMoved = true;
 				map.unitLayer.moveUnit(unitIndex, goal);
+				return true;
 			}
+			else
+				return false;
 		}
 
 		/// <summary>
