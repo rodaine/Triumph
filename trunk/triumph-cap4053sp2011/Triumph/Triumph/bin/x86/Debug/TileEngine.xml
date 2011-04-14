@@ -90,7 +90,7 @@
             <param name="testUnits"></param>
             <returns></returns>
         </member>
-        <member name="M:TileEngine.AI.update(Microsoft.Xna.Framework.GameTime,TileEngine.BaseUnit,TileEngine.Cursor,TileEngine.TileMap,System.Int32,System.Int32,TileEngine.BaseUnit[],TileEngine.Camera)">
+        <member name="M:TileEngine.AI.update(Microsoft.Xna.Framework.GameTime,TileEngine.BaseUnit,TileEngine.Cursor,TileEngine.TileMap,System.Int32,System.Int32,TileEngine.BaseUnit[],TileEngine.Camera,System.Boolean)">
             <summary>
             AI tells the current unit what to do
             </summary>
@@ -469,7 +469,7 @@
             </summary>
             <param name="texture">2DTexture containing all the sprite animations</param>
         </member>
-        <member name="M:TileEngine.Cursor.update(Microsoft.Xna.Framework.GameTime,System.Int32,System.Int32,TileEngine.TileMap)">
+        <member name="M:TileEngine.Cursor.update(Microsoft.Xna.Framework.GameTime,System.Int32,System.Int32,TileEngine.TileMap,System.Boolean)">
             <summary>
             Updates the AnimatedSprite based on keyboard input, animation and collisions
             </summary>

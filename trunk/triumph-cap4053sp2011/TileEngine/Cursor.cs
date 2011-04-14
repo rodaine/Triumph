@@ -128,7 +128,7 @@ namespace TileEngine
 		/// <param name="screenWidth">Width in pixels of the viewport</param>
 		/// <param name="screenHeight">Height in pixels of the viewport</param>
 		/// <param name="map">TileMap currently being drawn in the viewport</param>
-		public void update(GameTime gameTime, int screenWidth, int screenHeight, TileMap map)
+		public void update(GameTime gameTime, int screenWidth, int screenHeight, TileMap map, bool canMove)
 		{
 			if (!capturingKeyboard)
 			{
@@ -138,16 +138,18 @@ namespace TileEngine
 
 			KeyboardState keyState = Keyboard.GetState();
 			Vector2 motion = Vector2.Zero;
-			
-			if (keyState.IsKeyDown(Keys.W))
-				--motion.Y;
-			else if (keyState.IsKeyDown(Keys.S))
-				++motion.Y;
-			else if (keyState.IsKeyDown(Keys.A))
-				--motion.X;
-			else if (keyState.IsKeyDown(Keys.D))
-				++motion.X;
 
+            if (canMove)
+            {
+                if (keyState.IsKeyDown(Keys.W))
+                    --motion.Y;
+                else if (keyState.IsKeyDown(Keys.S))
+                    ++motion.Y;
+                else if (keyState.IsKeyDown(Keys.A))
+                    --motion.X;
+                else if (keyState.IsKeyDown(Keys.D))
+                    ++motion.X;
+            }
 			_timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
 			if (_timer >= secondsPerTile && motion != Vector2.Zero)
 				_timer = 0f;
