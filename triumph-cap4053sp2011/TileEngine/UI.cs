@@ -30,7 +30,8 @@ namespace TileEngine
                 Menu,
                 Move,
                 Attack,
-                Ability
+                AbilityList,
+                AbilityUse
             }
             Phase mCurrentPhase = Phase.Menu;
 
@@ -62,6 +63,8 @@ namespace TileEngine
 			AffinityIcon currentIcon, targetIcon;
 
             ContentManager Content;
+
+            int ab = 0;
 
             private float uiTimer = 0f, secondsPerOption = .13f;
 
@@ -111,7 +114,7 @@ namespace TileEngine
 
 				currentIcon.frames.Add("Fire", Fire);
 				currentIcon.frames.Add("Ice", Ice);
-				currentIcon.frames.Add("Lightening", Lightening);
+				currentIcon.frames.Add("Lightning", Lightening);
 				currentIcon.frames.Add("Water", Water);
 				currentIcon.frames.Add("Earth", Earth);
 				currentIcon.frames.Add("Wind", Wind);
@@ -120,7 +123,7 @@ namespace TileEngine
 
 				targetIcon.frames.Add("Fire", (FrameAnimation) Fire.Clone());
 				targetIcon.frames.Add("Ice", (FrameAnimation) Ice.Clone());
-				targetIcon.frames.Add("Lightening", (FrameAnimation) Lightening.Clone());
+				targetIcon.frames.Add("Lightning", (FrameAnimation) Lightening.Clone());
 				targetIcon.frames.Add("Water", (FrameAnimation) Water.Clone());
 				targetIcon.frames.Add("Earth", (FrameAnimation) Earth.Clone());
 				targetIcon.frames.Add("Wind", (FrameAnimation) Wind.Clone());
@@ -271,7 +274,7 @@ namespace TileEngine
                                                             {
                                                                 if (aKeyboardState.IsKeyDown(Keys.Enter))
                                                                 {
-                                                                    mCurrentPhase = Phase.Ability;
+                                                                    mCurrentPhase = Phase.AbilityList;
 
                                                                     range.clearPoints();
                                                                     range.addPoints(map.attackPoints(currentUnit, 1, false, true, false));
@@ -391,9 +394,8 @@ namespace TileEngine
                                                 }
                                             #endregion
 
-                                            #region Attack/Ability
+                                            #region Attack
                                             case (Phase.Attack):
-                                            case (Phase.Ability):
                                                 {
 
                                                     if (!currentUnit.isAttacking && currentUnit.AP == 0)
@@ -418,7 +420,7 @@ namespace TileEngine
                                                             currentUnit.attack(targetUnit);
                                                             
                                                             range.clearPoints();
-                                                            range.addPoints(map.attackPoints(currentUnit, 1, false, true, false));
+                                                            range.addPoints(map.attackPoints(currentUnit, currentUnit.range, false, true, false));
 
                                                             uiTimer = 0;
                                                         }
@@ -441,6 +443,109 @@ namespace TileEngine
                                                     break;
                                                 }
                                             #endregion
+
+                                            #region Ability List
+                                            case (Phase.AbilityList):
+                                                {
+                                                    //attack or ability
+                                                    //attacks, does nothing if there is no targetted unit or
+                                                    //the targetted unit is dead or the current unit
+                                                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) && counter < 0)
+                                                    {
+                                                        mCurrentPhase = Phase.AbilityUse;
+
+                                                        range.clearPoints();
+                                                        range.addPoints(map.attackPoints(currentUnit, currentUnit.moves[ab].attackRange, currentUnit.moves[ab].isFriendly, currentUnit.moves[ab].isHostile, currentUnit.moves[ab].isSelf));
+
+                                                        uiTimer = 0;
+                                                    }
+
+                                                    if (aKeyboardState.IsKeyDown(Keys.Back) == true)
+                                                    {
+                                                        range.isDrawing = false;
+                                                        mCurrentPhase = Phase.Menu;
+                                                        if (currentUnit.MP != 0)
+                                                            mCurrentOption = MenuOption.Move;
+                                                        else if (currentUnit.AP != 0)
+                                                            mCurrentOption = MenuOption.Attack;
+                                                        else
+                                                            mCurrentOption = MenuOption.EndTurn;
+
+                                                        uiTimer = 0;
+                                                    }
+
+                                                    if (aKeyboardState.IsKeyDown(Keys.W) == true)
+                                                    {
+                                                        do
+                                                        {
+                                                            ab--;
+                                                            if (ab < 0)
+                                                                ab = currentUnit.moves.Count - 1;
+                                                        } while (currentUnit.moves[ab].APCost > currentUnit.AP);
+                                                        uiTimer = 0;   
+                                                    }
+
+                                                    if (aKeyboardState.IsKeyDown(Keys.S) == true)
+                                                    {
+                                                        do
+                                                        {
+                                                            ab++;
+                                                            if (ab >= currentUnit.moves.Count)
+                                                                ab = 0; 
+                                                        } while (currentUnit.moves[ab].APCost > currentUnit.AP);
+                                                        uiTimer = 0;
+                                                    }
+
+                                                    break;
+                                                }
+                                            #endregion
+
+                                            #region Ability Use
+                                            case (Phase.AbilityUse):
+                                                {
+
+                                                    if (!currentUnit.isAttacking && !currentUnit.canAbility())
+                                                    {
+                                                        range.isDrawing = false;
+                                                        mCurrentPhase = Phase.Menu;
+                                                        if (currentUnit.MP != 0)
+                                                            mCurrentOption = MenuOption.Move;
+                                                        else
+                                                            mCurrentOption = MenuOption.EndTurn;
+
+                                                        uiTimer = 0;
+                                                    }
+                                                    //attack or ability
+                                                    //attacks, does nothing if there is no targetted unit or
+                                                    //the targetted unit is dead or the current unit
+                                                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) && counter < 0)
+                                                    {
+                                                        if (currentUnit.moves[ab].APCost <= currentUnit.AP && currentUnit.canTargetAbility(currentUnit.moves[ab], targetUnit))
+                                                        {
+                                                            currentUnit.useAbility(currentUnit.moves[ab], targetUnit);
+                                                            range.clearPoints();
+                                                            range.addPoints(map.attackPoints(currentUnit, currentUnit.moves[ab].attackRange, currentUnit.moves[ab].isFriendly, currentUnit.moves[ab].isHostile, currentUnit.moves[ab].isSelf));
+                                                        }                                                        
+
+                                                        uiTimer = 0;
+                                                    }
+
+                                                    if (aKeyboardState.IsKeyDown(Keys.Back) == true)
+                                                    {
+                                                        range.isDrawing = false;
+                                                        mCurrentPhase = Phase.Menu;
+                                                        if (currentUnit.MP != 0)
+                                                            mCurrentOption = MenuOption.Move;
+                                                        else if (currentUnit.AP != 0)
+                                                            mCurrentOption = MenuOption.Attack;
+                                                        else
+                                                            mCurrentOption = MenuOption.EndTurn;
+
+                                                        uiTimer = 0;
+                                                    }
+                                                    break;
+                                                }
+                                            #endregion
                                         }
                                     }
 
@@ -450,7 +555,7 @@ namespace TileEngine
                                     }
 
                                     bool canMove = !currentUnit.isAttacking && !currentUnit.isWalking && !unitBeingAttacked;
-                                    if (mCurrentPhase != Phase.Menu)
+                                    if (mCurrentPhase != Phase.Menu && mCurrentPhase != Phase.AbilityList)
                                         cursor.update(gameTime, screenWidth, screenHeight, map, canMove);
 
                                     camera.update(screenWidth, screenHeight, map);
@@ -577,6 +682,12 @@ namespace TileEngine
                             
                             drawActiveInformation(spriteBatch, currentUnit, winHeight, winWidth, bottom);
                             drawTargetInformation(spriteBatch, targetUnit, currentUnit, winHeight, winWidth, bottom);
+
+
+                            if (mCurrentPhase == Phase.AbilityList)
+                            {
+                                drawAbilityOption(spriteBatch, winHeight, winWidth, bottom, currentUnit);
+                            }
 
                             if (mCurrentPhase == Phase.Menu && currentUnit.faction.name == "Faction 1")
                             {
@@ -736,6 +847,9 @@ namespace TileEngine
 
                 spriteBatch.Begin();
 
+                currentIcon.currentAffinity = active.affinityName;
+                currentIcon.isDrawing = true;
+
                 int c1 = Engine.TILE_WIDTH / 2;
                 int c2;
 
@@ -753,6 +867,9 @@ namespace TileEngine
 
 
                 spriteBatch.Draw(mActive, new Rectangle(c1, c2, wid, hei), Color.White);
+                currentIcon.position.X = c1 + wid - 32;
+                currentIcon.position.Y = c2 - 5;
+                currentIcon.Draw(spriteBatch);
 
                 spriteBatch.DrawString(font4, name, new Vector2(c1 + 45, c2 + 20), Color.Blue);
                 spriteBatch.DrawString(font5, fac, new Vector2(c1 + 90, c2 + 40), Color.Blue);
@@ -792,6 +909,9 @@ namespace TileEngine
 
                     spriteBatch.Begin();
 
+                    targetIcon.currentAffinity = target.affinityName;
+                    targetIcon.isDrawing = true;
+
                     int c1 = winWidth - winWidth / 3 - Engine.TILE_WIDTH / 2;
 
                     int c2;
@@ -817,6 +937,10 @@ namespace TileEngine
                         spriteBatch.Draw(mEnemy, new Rectangle(c1, c2, wid, hei), Color.White);
                         facColor = Color.Red;
                     }
+
+                    targetIcon.position.X = c1 - 5;
+                    targetIcon.position.Y = c2 - 5;
+                    targetIcon.Draw(spriteBatch);
                     
                     spriteBatch.DrawString(font4, name, new Vector2(c1 + 30, c2 + 20), facColor);
                     spriteBatch.DrawString(font5, tFac, new Vector2(c1 + 75, c2 + 40), facColor);
@@ -901,7 +1025,34 @@ namespace TileEngine
                 spriteBatch.DrawString(font6, "Ability", new Vector2(winWidth / 2 - 23, c2 + 60), abColor);
                 spriteBatch.DrawString(font6, "End Turn", new Vector2(winWidth / 2 - 30, c2 + 80), etColor);
                 spriteBatch.End();
-            }            
+            }
+
+            private void drawAbilityOption(SpriteBatch spriteBatch, int winHeight, int winWidth, bool bottom, BaseUnit active)
+            {
+                spriteBatch.Begin();
+
+                int c1 = winWidth / 2 - (winWidth / 6) + Engine.TILE_WIDTH;
+                int c2;
+
+                if (bottom)
+                {
+                    c2 = Engine.TILE_HEIGHT / 2;
+                }
+                else
+                {
+                    c2 = winHeight - winHeight / 4 - Engine.TILE_HEIGHT / 2;
+                }
+
+                spriteBatch.Draw(mMenu, new Rectangle(c1, c2, winWidth / 3 - Engine.TILE_WIDTH * 2, winHeight / 4), Color.White);
+
+                spriteBatch.DrawString(font6, "W", new Vector2(c1 + (winWidth/3 - Engine.TILE_WIDTH * 2) / 2, c2 + 10), Color.Black);
+                spriteBatch.DrawString(font6, "S", new Vector2(c1 + (winWidth / 3 - Engine.TILE_WIDTH * 2) / 2, c2 + winHeight / 4 - 30), Color.Black);
+
+                spriteBatch.DrawString(font6, active.moves[ab].name, new Vector2(winWidth / 2 - 3* (active.moves[ab].name.Length), c2 + 35), Color.Black);
+                spriteBatch.DrawString(font6, "AP : " + active.moves[ab].APCost + " || Rng : " + active.moves[ab].attackRange, new Vector2(winWidth / 2 - 3 * ("AP : " + active.moves[ab].APCost + " || Rng : " + active.moves[ab].attackRange).Length, c2 + 60), Color.Black);                
+
+                spriteBatch.End();
+            }
 
 			private void reset(BaseUnit[] testUnits, TurnManager turnManager, BaseUnit currentUnit, TileMap map, ref bool inGame)
 			{
@@ -931,5 +1082,7 @@ namespace TileEngine
 				currentUnit.isDone = true;
                 GameConsole.getInstanceOf().reset();
 			}
-	}
+	
+            
+    }
 }
