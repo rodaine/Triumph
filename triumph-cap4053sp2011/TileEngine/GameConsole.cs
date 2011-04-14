@@ -53,6 +53,35 @@ namespace TileEngine
             consolas = Content.Load<SpriteFont>("Console/consolas");
         }
 
+        /// <summary>
+        /// Splits a message into lines of at most 24 characters without splitting words
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
+        public List<String> splitByWord(String message)
+        {
+            List<String> ret = new List<string>();
+            String[] words = message.Split(' ');
+            String curLine = words[0];
+
+            for (int i = 1; i < words.Length; i++)
+            {
+                if (curLine.Length + 1 + words[i].Length > 24)
+                {
+                    ret.Add(curLine);
+                    curLine = words[i];
+                }
+                else
+                {
+                    curLine = curLine + " " + words[i];
+                }
+            }
+
+            if (curLine != "")
+                ret.Add(curLine);
+            return ret;
+        }
+
         public void Update(string newMessage, Color col)
         {
             string[] tempMess = new string[15];
@@ -63,7 +92,7 @@ namespace TileEngine
                 tempCol[i] = colors[i];
             }
 
-            int lines = 0;
+            /*int lines = 0;
             int len = newMessage.Length;
 
             while (len > 0)
@@ -78,21 +107,22 @@ namespace TileEngine
                     lines++;
                     len = 0;
                 }
-            }
+            }*/
 
-            for (int j = 0; j < lines - 1; j++)
+            List<String> lines = splitByWord(newMessage);
+
+            for (int j = 0; j < lines.Count; j++)
             {
-                sm[j] = newMessage.Substring(j * 24, 24);
+                sm[j] = lines[j];
                 colors[j] = col;
+                System.Console.WriteLine(lines[j]);
             }
 
-            sm[lines - 1] = newMessage.Substring((lines - 1) * 24);
-            colors[lines - 1] = col;
 
-            for (int k = lines; k < 15; k++)
+            for (int k = lines.Count; k < 15; k++)
             {
-                sm[k] = tempMess[k - lines];
-                colors[k] = tempCol[k - lines];
+                sm[k] = tempMess[k - lines.Count];
+                colors[k] = tempCol[k - lines.Count];
             }
 
             linesToPrint = 0;

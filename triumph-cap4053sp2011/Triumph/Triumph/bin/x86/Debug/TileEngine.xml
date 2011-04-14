@@ -556,6 +556,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:TileEngine.GameConsole.splitByWord(System.String)">
+            <summary>
+            Splits a message into lines of at most 24 characters without splitting words
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
         <member name="T:TileEngine.PriorityQueue">
             <summary>
             Represents the priority queue data structure.
