@@ -71,6 +71,7 @@ namespace TileEngine
                     units[i].tick();
                 }
             }
+            Weather.getInstance().tick();
             return units[getMax()];
         }
 

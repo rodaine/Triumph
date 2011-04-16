@@ -4,6 +4,32 @@
         <name>TileEngine</name>
     </assembly>
     <members>
+        <member name="M:TileEngine.Weather.#ctor">
+            <summary>
+            creates a new weather class
+            </summary>
+        </member>
+        <member name="M:TileEngine.Weather.tick">
+            <summary>
+            ticks weather
+            </summary>
+        </member>
+        <member name="M:TileEngine.Weather.getInstance">
+            <summary>
+            gets singleton of weather
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:TileEngine.Weather.duration">
+            <summary>
+            gets the time until weather changes
+            </summary>
+        </member>
+        <member name="P:TileEngine.Weather.currentWeather">
+            <summary>
+            gets the current weather
+            </summary>
+        </member>
         <member name="T:TileEngine.Camera">
             <summary>
             Describes the view of the map visible through the game's viewport
@@ -1004,6 +1030,12 @@
             <param name="mult"></param>
             <param name="attacker"></param>
         </member>
+        <member name="M:TileEngine.BaseUnit.getWeatherMult">
+            <summary>
+            Gets the weather multiplier
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:TileEngine.BaseUnit.withinRange(TileEngine.BaseUnit)">
             <summary>
             checks if a target unit is within range
@@ -1047,8 +1079,6 @@
             Updates the units sprite representation based on flags.
             </summary>
             <param name="gameTime">GameTime object passed from Game class</param>
-            <param name="screenWidth">Viewport screen width in pixels</param>
-            <param name="screenHeight">Viewport screen height in pixels</param>
             <param name="map">Tile Map of play area</param>
         </member>
         <member name="M:TileEngine.BaseUnit.goToTile(Microsoft.Xna.Framework.Point,TileEngine.TileMap)">
@@ -1064,6 +1094,13 @@
             </summary>
             <param name="goal">Goal tile location to teleport to.</param>
             <param name="map">Tile Map of play area</param>
+        </member>
+        <member name="M:TileEngine.BaseUnit.randomPosition(Microsoft.Xna.Framework.Point,Microsoft.Xna.Framework.Point,TileEngine.TileMap)">
+            <summary>
+            Randomly position a unit on a viable tile within a given range
+            </summary>
+            <param name="topLeft">Top left corner of range (inclusive)</param>
+            <param name="topRight">Bottom right corner of range (inclusive)</param>
         </member>
         <member name="M:TileEngine.BaseUnit.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
             <summary>

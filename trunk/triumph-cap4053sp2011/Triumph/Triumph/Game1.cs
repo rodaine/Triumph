@@ -215,6 +215,7 @@ namespace Triumph
                     currentUnit.MP = 0;
                     currentUnit.AP = 0;
                     currentUnit.stunLength-=1;
+                    //currentUnit.unitSprite.beStunned();
                     GameConsole.getInstanceOf().Update(currentUnit.name + " is stunned!", currentUnit.faction.color);
                 }
                 cursor.location = currentUnit.position;
