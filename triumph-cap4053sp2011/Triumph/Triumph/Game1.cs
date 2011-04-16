@@ -36,6 +36,7 @@ namespace Triumph
         TurnManager turnManager;
 		Dictionary<string, BaseUnit> unitList;
 		Dictionary<string, Ability> abilityList;
+		Dictionary<string, Faction> factionList;
         int counter = 10;
         bool inGame = false; //TODO I don't like this, should only be true after UI.screen goes to Main
         bool unitBeingAttacked = false;
@@ -51,43 +52,59 @@ namespace Triumph
         protected override void Initialize()
         {
             base.Initialize();
-            faction1Units = new BaseUnit[5];
-            faction2Units = new BaseUnit[5];
-            faction1Units[0] = unitList["Artic Hoplite"];
-            faction1Units[1] = unitList["Branchslinger"];
-            faction1Units[2] = unitList["City Guard"];
-            faction1Units[3] = unitList["Moonshiner"];
-            faction1Units[4] = unitList["Aqua Soldier"];
-            faction2Units[0] = unitList["Rock Smasher"];
-            faction2Units[1] = unitList["Scorcher"];
-            faction2Units[2] = unitList["Leviathan"];
-            faction2Units[3] = unitList["Goliath"];
-            faction2Units[4] = unitList["Cronos"];
-            testUnits = new BaseUnit[10];
-            faction1 = new Faction("Faction 1", new Player("Player 1", faction1), faction1Units);
-            faction1.color = Color.Blue;
-            faction2 = new Faction("Faction 2", new Player("Player 2", faction2), faction2Units);
-            faction2.color = Color.Red;
-            for (int i = 0; i < faction1Units.Length; i++)
-            {
-                testUnits[i] = faction1Units[i];
-                testUnits[i + faction1Units.Length] = faction2Units[i];
-            }
+			//faction1Units = new BaseUnit[5];
+			//faction2Units = new BaseUnit[5];
+			//faction1Units[0] = unitList["Artic Hoplite"];
+			//faction1Units[1] = unitList["Branchslinger"];
+			//faction1Units[2] = unitList["City Guard"];
+			//faction1Units[3] = unitList["Moonshiner"];
+			//faction1Units[4] = unitList["Aqua Soldier"];
+			//faction2Units[0] = unitList["Rock Smasher"];
+			//faction2Units[1] = unitList["Scorcher"];
+			//faction2Units[2] = unitList["Leviathan"];
+			//faction2Units[3] = unitList["Goliath"];
+			//faction2Units[4] = unitList["Cronos"];
+			//testUnits = new BaseUnit[10];
+			//faction1 = new Faction("Faction 1", new Player("Player 1", faction1), faction1Units);
+			//faction1.color = Color.Blue;
+			//faction2 = new Faction("Faction 2", new Player("Player 2", faction2), faction2Units);
+			//faction2.color = Color.Red;
+			//for (int i = 0; i < faction1Units.Length; i++)
+			//{
+			//    testUnits[i] = faction1Units[i];
+			//    testUnits[i + faction1Units.Length] = faction2Units[i];
+			//}
+
+			faction1 = factionList["Dankelites"];
+			faction1.color = Color.Blue;
+
+			faction2 = factionList["Dougonians"];
+			faction2.color = Color.Red;
+
+			testUnits = new BaseUnit[faction1.units.Length + faction2.units.Length];
+
+			for (int i = 0; i < faction1.units.Length; ++i)
+			{
+				testUnits[i] = faction1.units[i];
+				testUnits[i + faction1.units.Length] = faction2.units[i];
+			}
+
 			foreach (BaseUnit unit in testUnits)
 			{
-				if (unit.faction.name == "Faction 1")
+				if (unit.faction == faction1)
 					unit.randomPosition(new Point(20, 0), new Point(29, 9), map);
 				else
 					unit.randomPosition(new Point(8, 20), new Point(17, 29), map);
 
 			}
+
             turnManager = new TurnManager(testUnits);
             currentUnit = turnManager.getNext();
             cursor.location = currentUnit.position;
 
-			soundMusicInstance.Volume = 0.75f;
+			soundMusicInstance.Volume = 0.25f;
 			soundMusicInstance.IsLooped = true;
-			//soundMusicInstance.Play();
+			soundMusicInstance.Play();
 
 			cursor.animations.Add("Normal", new FrameAnimation(1, 32, 32, 0, 0));
 			cursor.animations.Add("Collision", new FrameAnimation(1, 32, 32, 32, 0));
@@ -121,6 +138,7 @@ namespace Triumph
 			
 			abilityList = Ability.fromFile("Content/Units/abilities.txt");		
 			unitList = BaseUnit.fromFile(Content, "Content/Units/units.txt", abilityList);
+			factionList = Faction.fromFile(Content, "Content/Units/factions.txt", unitList);
 
 			soundMusic = Content.Load<SoundEffect>("Music/POL-battle-march-long");
 			soundMusicInstance = soundMusic.CreateInstance();
