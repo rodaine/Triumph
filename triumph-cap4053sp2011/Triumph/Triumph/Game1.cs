@@ -195,7 +195,7 @@ namespace Triumph
                 bool end = false;
                 if (faction1.isDefeated || faction2.isDefeated)
                     end = true;
-                ui.Update(gameTime, aKeyboardState, currentUnit, targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, range, end, ref inGame, unitBeingAttacked);
+                ui.Update(gameTime, aKeyboardState, currentUnit, targetUnit, cursor, map, counter, turnManager, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height, testUnits, camera, range, end, ref inGame, unitBeingAttacked, faction1);
             }
             
             if (ui.readyToExit())
@@ -252,7 +252,7 @@ namespace Triumph
                 winner = 2;
                   
 
-            ui.Draw(gameTime, spriteBatch, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height, map, camera, cursor, testUnits, currentUnit, targetUnit, range, winner);
+            ui.Draw(gameTime, spriteBatch, this.Window.ClientBounds.Width, this.Window.ClientBounds.Height, map, camera, cursor, testUnits, currentUnit, targetUnit, range, winner, faction1);
 
             base.Draw(gameTime);
         }
