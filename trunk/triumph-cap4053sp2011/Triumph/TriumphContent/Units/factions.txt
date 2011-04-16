@@ -1,0 +1,15 @@
+[Dankelites]
+Artic Hoplite
+Leviathan
+Frostkeeper
+Airbender
+Aqua soldier
+Snowlancer
+
+[Dougonians]
+City Gaurd
+Rock Smasher
+Goliath
+Rock Archer
+Cronos
+Council Mage

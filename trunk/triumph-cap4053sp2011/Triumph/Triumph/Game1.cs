@@ -62,7 +62,7 @@ namespace Triumph
             faction2Units[1] = unitList["Scorcher"];
             faction2Units[2] = unitList["Leviathan"];
             faction2Units[3] = unitList["Goliath"];
-            faction2Units[4] = unitList["Charlie: DoW"];
+            faction2Units[4] = unitList["Cronos"];
             testUnits = new BaseUnit[10];
             faction1 = new Faction("Faction 1", new Player("Player 1", faction1), faction1Units);
             faction1.color = Color.Blue;
@@ -70,13 +70,17 @@ namespace Triumph
             faction2.color = Color.Red;
             for (int i = 0; i < faction1Units.Length; i++)
             {
-                faction1Units[i].teleportToTile(new Point(17+i, 1), map);
-                faction2Units[i].teleportToTile(new Point(17+i, 12), map);
-                faction1Units[i].faction = faction1;
-                faction2Units[i].faction = faction2;
                 testUnits[i] = faction1Units[i];
                 testUnits[i + faction1Units.Length] = faction2Units[i];
             }
+			foreach (BaseUnit unit in testUnits)
+			{
+				if (unit.faction.name == "Faction 1")
+					unit.randomPosition(new Point(20, 0), new Point(29, 9), map);
+				else
+					unit.randomPosition(new Point(8, 20), new Point(17, 29), map);
+
+			}
             turnManager = new TurnManager(testUnits);
             currentUnit = turnManager.getNext();
             cursor.location = currentUnit.position;
@@ -115,8 +119,8 @@ namespace Triumph
 			map.collisionLayer = CollisionLayer.fromFile("Content/Layers/Collision.layer");
 			map.unitLayer = new UnitLayer(map.getWidthInTiles(), map.getHeightInTiles());
 			
-			unitList = BaseUnit.fromFile(Content, "Content/Units/tempunits.txt");
-			abilityList = Ability.fromFile("Content/Units/abilities.txt");
+			abilityList = Ability.fromFile("Content/Units/abilities.txt");		
+			unitList = BaseUnit.fromFile(Content, "Content/Units/units.txt", abilityList);
 
 			soundMusic = Content.Load<SoundEffect>("Music/POL-battle-march-long");
 			soundMusicInstance = soundMusic.CreateInstance();

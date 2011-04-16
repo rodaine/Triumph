@@ -293,7 +293,7 @@ namespace TileEngine
                                                         #region Ability
                                                         case (MenuOption.Ability):
                                                             {
-                                                                if (aKeyboardState.IsKeyDown(Keys.Enter))
+                                                                if (aKeyboardState.IsKeyDown(Keys.Enter) && currentUnit.canAbility())
                                                                 {
 																	playMove();
                                                                     mCurrentPhase = Phase.AbilityList;
@@ -378,7 +378,7 @@ namespace TileEngine
                                             case (Phase.Move):
                                                 {                                                   
 
-                                                    if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                                                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) && !currentUnit.isWalking)
                                                     {
 														if (currentUnit.goToTile(Engine.convertPositionToTile(cursor.position), map))
 															playCorrect();
@@ -440,7 +440,7 @@ namespace TileEngine
 
                                                     //attack does nothing if there is no targetted unit or
                                                     //the targetted unit is dead or the current unit
-                                                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) && counter < 0)
+                                                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) && counter < 0 && !currentUnit.isAttacking && !targetUnit.isAttacking)
                                                     {
 														if (targetUnit != null && !targetUnit.faction.Equals(currentUnit.faction) && !targetUnit.isDead && currentUnit.withinRange(targetUnit)&&!unitBeingAttacked)
 														{
@@ -555,7 +555,7 @@ namespace TileEngine
 
                                                     //ability does nothing if there is no targetted unit or
                                                     //the targetted unit is dead or the current unit
-                                                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) && counter < 0)
+                                                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) && counter < 0 && !currentUnit.isAttacking)
                                                     {
 														if (currentUnit.moves[ab].APCost <= currentUnit.AP && currentUnit.canTargetAbility(currentUnit.moves[ab], targetUnit))
 														{
@@ -1108,13 +1108,13 @@ namespace TileEngine
 					if (unit.faction.name == "Faction 1")
 					{
 						unit.unitSprite.currentAnimationName = "Down";
-						unit.teleportToTile(new Point(17 + i, 1), map);
+						unit.randomPosition(new Point(20, 0), new Point(29, 9), map);
 						++i;
 					}
 					if (unit.faction.name == "Faction 2")
 					{
 						unit.unitSprite.currentAnimationName = "Up";
-						unit.teleportToTile(new Point(17 + j, 12), map);
+						unit.randomPosition(new Point(8, 20), new Point(17, 29), map);
 						++j;
 					}
 				}
