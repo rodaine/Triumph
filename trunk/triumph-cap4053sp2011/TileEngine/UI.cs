@@ -163,6 +163,7 @@ namespace TileEngine
 								playCorrect();
 								inGame = true;
                                 mCurrentScreen = Screen.Main;
+                                mCurrentOption = MenuOption.Move;
                             }
 
                             if (aKeyboardState.IsKeyDown(Keys.Escape) == true)
@@ -851,6 +852,8 @@ namespace TileEngine
 
                             String msg1 = "", msg2 = "";
 
+                            //winner = 2;
+
                             if (winner == 1)
                             {
                                 msg1 = "Congratulations!";
@@ -867,7 +870,7 @@ namespace TileEngine
                             spriteBatch.DrawString(font7, msg2, new Vector2(winWidth / 2 - 19 * msg2.Length, 325), Color.White);
 
                             spriteBatch.DrawString(experiment, "Esc : Exit", new Vector2(winWidth - 3 * Engine.TILE_WIDTH - Engine.TILE_WIDTH / 2, winHeight - (3 * Engine.TILE_HEIGHT) / 2), new Color(1f, 1f, 1f, .75f));
-                            spriteBatch.DrawString(experiment, "Enter : Begin New Game", new Vector2(winWidth - 6 * Engine.TILE_WIDTH - Engine.TILE_WIDTH / 2, winHeight - Engine.TILE_HEIGHT), new Color(1f, 1f, 1f, .75f));
+                            spriteBatch.DrawString(experiment, "Enter : Begin New Game", new Vector2(winWidth - 6 * Engine.TILE_WIDTH, winHeight - Engine.TILE_HEIGHT), new Color(1f, 1f, 1f, .75f));
 
                             spriteBatch.End();
                             break;
@@ -886,6 +889,7 @@ namespace TileEngine
                 int maxAP = active.maxAP;
                 int currMP = active.MP;
                 int maxMP = active.maxMP;
+                int range = active.range;
 
                 spriteBatch.Begin();
 
@@ -913,23 +917,25 @@ namespace TileEngine
                 currentIcon.position.Y = c2 - 5;
                 currentIcon.Draw(spriteBatch);
 
-                spriteBatch.DrawString(font4, name, new Vector2(c1 + 45, c2 + 20), Color.Blue);
-                spriteBatch.DrawString(font5, fac, new Vector2(c1 + 90, c2 + 40), Color.Blue);
+                spriteBatch.DrawString(font4, name, new Vector2(c1 + 45, c2 + 15), active.faction.color);
+                spriteBatch.DrawString(font5, fac, new Vector2(c1 + 100, c2 + 35), active.faction.color);
 
-                spriteBatch.DrawString(font3, "HP : " + currHP + " / " + maxHP, new Vector2(c1 + 160, c2 + 60), Color.Black);
-                spriteBatch.Draw(mBlack, new Rectangle(c1 + 50, c2 + 63, 102, 10), new Color(1f, 1f, 1f, 0.7f));
+                spriteBatch.DrawString(font3, "Rng : " + range, new Vector2(c1 + 51, c2 + 50), Color.Black);
+
+                spriteBatch.DrawString(font3, "HP : " + currHP + " / " + maxHP, new Vector2(c1 + 160, c2 + 65), Color.Black);
+                spriteBatch.Draw(mBlack, new Rectangle(c1 + 50, c2 + 68, 102, 10), new Color(1f, 1f, 1f, 0.7f));
                 if (maxHP != 0)
-                    spriteBatch.Draw(mRed, new Rectangle(c1 + 51, c2 + 64, (100 * currHP) / maxHP, 8), new Color(1f, 1f, 1f, .7f));
+                    spriteBatch.Draw(mRed, new Rectangle(c1 + 51, c2 + 69, (100 * currHP) / maxHP, 8), new Color(1f, 1f, 1f, .7f));
 
-                spriteBatch.DrawString(font3, "AP : " + currAP + " / " + maxAP, new Vector2(c1 + 160, c2 + 75), Color.Black);
-                spriteBatch.Draw(mBlack, new Rectangle(c1 + 50, c2 + 78, 102, 10), new Color(1f, 1f, 1f, 0.7f));
+                spriteBatch.DrawString(font3, "AP : " + currAP + " / " + maxAP, new Vector2(c1 + 160, c2 + 80), Color.Black);
+                spriteBatch.Draw(mBlack, new Rectangle(c1 + 50, c2 + 83, 102, 10), new Color(1f, 1f, 1f, 0.7f));
                 if (maxAP != 0)
-                    spriteBatch.Draw(mGreen, new Rectangle(c1 + 51, c2 + 79, (100 * currAP) / maxAP, 8), new Color(1f, 1f, 1f, .7f));
+                    spriteBatch.Draw(mGreen, new Rectangle(c1 + 51, c2 + 84, (100 * currAP) / maxAP, 8), new Color(1f, 1f, 1f, .7f));
 
-                spriteBatch.DrawString(font3, "MP : " + currMP + " / " + maxMP, new Vector2(c1 + 160, c2 + 90), Color.Black);
-                spriteBatch.Draw(mBlack, new Rectangle(c1 + 50, c2 + 93, 102, 10), new Color(1f, 1f, 1f, 0.7f));
+                spriteBatch.DrawString(font3, "MP : " + currMP + " / " + maxMP, new Vector2(c1 + 160, c2 + 95), Color.Black);
+                spriteBatch.Draw(mBlack, new Rectangle(c1 + 50, c2 + 98, 102, 10), new Color(1f, 1f, 1f, 0.7f));
                 if (maxMP != 0)
-                    spriteBatch.Draw(mBlue, new Rectangle(c1 + 51, c2 + 94, (100 * currMP) / maxMP, 8), new Color(1f, 1f, 1f, .7f));
+                    spriteBatch.Draw(mBlue, new Rectangle(c1 + 51, c2 + 99, (100 * currMP) / maxMP, 8), new Color(1f, 1f, 1f, .7f));
 
                 spriteBatch.End();
             }
@@ -939,8 +945,8 @@ namespace TileEngine
                 if (target != null)
                 {
                     String name = target.name;
-                    String tFac = target.faction.name;
-                    String aFac = active.faction.name;
+                    Faction tFac = target.faction;
+                    Faction aFac = active.faction;
                     int currHP = target.HP;
                     int maxHP = target.maxHP;
                     int currAP = target.AP;
@@ -969,38 +975,30 @@ namespace TileEngine
                     int wid = winWidth / 3;
                     int hei = winHeight / 4;
 
-                    if (tFac == aFac)
-                    {
-                        spriteBatch.Draw(mEnemy, new Rectangle(c1, c2, wid, hei), Color.White);
-                        facColor = Color.Blue;
-                    }
-                    else
-                    {
-                        spriteBatch.Draw(mEnemy, new Rectangle(c1, c2, wid, hei), Color.White);
-                        facColor = Color.Red;
-                    }
-
+                    spriteBatch.Draw(mEnemy, new Rectangle(c1, c2, wid, hei), Color.White);
                     targetIcon.position.X = c1 - 5;
                     targetIcon.position.Y = c2 - 5;
                     targetIcon.Draw(spriteBatch);
                     
-                    spriteBatch.DrawString(font4, name, new Vector2(c1 + 30, c2 + 20), facColor);
-                    spriteBatch.DrawString(font5, tFac, new Vector2(c1 + 75, c2 + 40), facColor);
+                    spriteBatch.DrawString(font4, name, new Vector2(c1 + 30, c2 + 15), tFac.color);
+                    spriteBatch.DrawString(font5, tFac.name, new Vector2(c1 + 85, c2 + 35), tFac.color);
 
-                    spriteBatch.DrawString(font3, "HP : " + currHP + " / " + maxHP, new Vector2(c1 + 35, c2 + 60), Color.Black);
-                    spriteBatch.Draw(mBlack, new Rectangle(c1 + 105, c2 + 63, 102, 10), new Color(1f, 1f, 1f, 0.7f));
+                    spriteBatch.DrawString(font3, "Rng : " + target.range.ToString(), new Vector2(c1 + 40, c2 + 50), Color.Black);
+
+                    spriteBatch.DrawString(font3, "HP : " + currHP + " / " + maxHP, new Vector2(c1 + 35, c2 + 65), Color.Black);
+                    spriteBatch.Draw(mBlack, new Rectangle(c1 + 105, c2 + 68, 102, 10), new Color(1f, 1f, 1f, 0.7f));
                     if (maxHP != 0)
-                        spriteBatch.Draw(mRed, new Rectangle(c1 + 106, c2 + 64, (100 * currHP) / maxHP, 8), new Color(1f, 1f, 1f, .7f));
+                        spriteBatch.Draw(mRed, new Rectangle(c1 + 106, c2 + 69, (100 * currHP) / maxHP, 8), new Color(1f, 1f, 1f, .7f));
 
-                    spriteBatch.DrawString(font3, "AP : " + currAP + " / " + maxAP, new Vector2(c1 + 50, c2 + 75), Color.Black);
-                    spriteBatch.Draw(mBlack, new Rectangle(c1 + 105, c2 + 78, 102, 10), new Color(1f, 1f, 1f, 0.7f));
+                    spriteBatch.DrawString(font3, "AP : " + currAP + " / " + maxAP, new Vector2(c1 + 50, c2 + 80), Color.Black);
+                    spriteBatch.Draw(mBlack, new Rectangle(c1 + 105, c2 + 83, 102, 10), new Color(1f, 1f, 1f, 0.7f));
                     if (maxAP != 0)
-                        spriteBatch.Draw(mGreen, new Rectangle(c1 + 106, c2 + 79, (100 * currAP) / maxAP, 8), new Color(1f, 1f, 1f, .7f));
+                        spriteBatch.Draw(mGreen, new Rectangle(c1 + 106, c2 + 84, (100 * currAP) / maxAP, 8), new Color(1f, 1f, 1f, .7f));
 
-                    spriteBatch.DrawString(font3, "MP : " + currMP + " / " + maxMP, new Vector2(c1 + 50, c2 + 90), Color.Black);
-                    spriteBatch.Draw(mBlack, new Rectangle(c1 + 105, c2 + 93, 102, 10), new Color(1f, 1f, 1f, 0.7f));
+                    spriteBatch.DrawString(font3, "MP : " + currMP + " / " + maxMP, new Vector2(c1 + 50, c2 + 95), Color.Black);
+                    spriteBatch.Draw(mBlack, new Rectangle(c1 + 105, c2 + 98, 102, 10), new Color(1f, 1f, 1f, 0.7f));
                     if (maxMP != 0)
-                        spriteBatch.Draw(mBlue, new Rectangle(c1 + 106, c2 + 94, (100 * currMP) / maxMP, 8), new Color(1f, 1f, 1f, .7f));
+                        spriteBatch.Draw(mBlue, new Rectangle(c1 + 106, c2 + 99, (100 * currMP) / maxMP, 8), new Color(1f, 1f, 1f, .7f));
 
                     spriteBatch.End();
                 }
