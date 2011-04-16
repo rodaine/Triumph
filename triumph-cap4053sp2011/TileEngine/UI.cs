@@ -910,6 +910,26 @@ namespace TileEngine
                 currentAffinity.currentAffinity = active.affinityName;
                 currentAffinity.isDrawing = true;
 
+                switch (active.type)
+                {
+                    case(unitTypes.Melee):
+                        {
+                            currentType.currentAffinity = "Melee";
+                            break;
+                        }
+                    case(unitTypes.Magic):
+                        {
+                            currentType.currentAffinity = "Magic";
+                            break;
+                        }
+                    case (unitTypes.Range):
+                        {
+                            currentType.currentAffinity = "Range";
+                            break;
+                        }
+                }
+                currentType.isDrawing = true;
+
                 int c1 = Engine.TILE_WIDTH / 2;
                 int c2;
 
@@ -934,7 +954,11 @@ namespace TileEngine
                 spriteBatch.DrawString(font4, name, new Vector2(c1 + 45, c2 + 15), active.faction.color);
                 spriteBatch.DrawString(font5, fac, new Vector2(c1 + 100, c2 + 35), active.faction.color);
 
-                spriteBatch.DrawString(font3, "Rng : " + range, new Vector2(c1 + 51, c2 + 50), Color.Black);
+                currentType.position.X = c1 + 35;
+                currentType.position.Y = c2 + 33;
+                currentType.Draw(spriteBatch);
+
+                spriteBatch.DrawString(font3, "Rng : " + range, new Vector2(c1 + 70, c2 + 50), Color.Black);
 
                 spriteBatch.DrawString(font3, "HP : " + currHP + " / " + maxHP, new Vector2(c1 + 160, c2 + 65), Color.Black);
                 spriteBatch.Draw(mBlack, new Rectangle(c1 + 50, c2 + 68, 102, 10), new Color(1f, 1f, 1f, 0.7f));
@@ -974,6 +998,26 @@ namespace TileEngine
                     targetAffinity.currentAffinity = target.affinityName;
                     targetAffinity.isDrawing = true;
 
+                    switch (target.type)
+                    {
+                        case (unitTypes.Melee):
+                            {
+                                targetType.currentAffinity = "Melee";
+                                break;
+                            }
+                        case (unitTypes.Magic):
+                            {
+                                targetType.currentAffinity = "Magic";
+                                break;
+                            }
+                        case (unitTypes.Range):
+                            {
+                                targetType.currentAffinity = "Range";
+                                break;
+                            }
+                    }
+                    targetType.isDrawing = true;
+
                     int c1 = winWidth - winWidth / 3 - Engine.TILE_WIDTH / 2;
 
                     int c2;
@@ -992,12 +1036,16 @@ namespace TileEngine
                     spriteBatch.Draw(mEnemy, new Rectangle(c1, c2, wid, hei), Color.White);
                     targetAffinity.position.X = c1 - 5;
                     targetAffinity.position.Y = c2 - 5;
-                    targetAffinity.Draw(spriteBatch);
+                    targetAffinity.Draw(spriteBatch);                    
                     
-                    spriteBatch.DrawString(font4, name, new Vector2(c1 + 30, c2 + 15), tFac.color);
+                    spriteBatch.DrawString(font4, name, new Vector2(c1 + 35, c2 + 15), tFac.color);
                     spriteBatch.DrawString(font5, tFac.name, new Vector2(c1 + 85, c2 + 35), tFac.color);
 
-                    spriteBatch.DrawString(font3, "Rng : " + target.range.ToString(), new Vector2(c1 + 40, c2 + 50), Color.Black);
+                    targetType.position.X = c1 + 25;
+                    targetType.position.Y = c2 + 33;
+                    targetType.Draw(spriteBatch);
+
+                    spriteBatch.DrawString(font3, "Rng : " + target.range.ToString(), new Vector2(c1 + 60, c2 + 50), Color.Black);
 
                     spriteBatch.DrawString(font3, "HP : " + currHP + " / " + maxHP, new Vector2(c1 + 35, c2 + 65), Color.Black);
                     spriteBatch.Draw(mBlack, new Rectangle(c1 + 105, c2 + 68, 102, 10), new Color(1f, 1f, 1f, 0.7f));

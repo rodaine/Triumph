@@ -1317,7 +1317,6 @@ C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bi
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Music\wrong.xnb
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Music\walking.xnb
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Units\abilities.txt
-C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Triumph.XML
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Music\attack.xnb
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Music\click.xnb
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Music\correct.xnb
@@ -1334,3 +1333,6 @@ C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Tri
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Triumph.XML
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\unitType.xnb
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Units\factions.txt
+C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\unitType.xnb
+C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\Units\factions.txt
+C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Triumph.XML
