@@ -149,7 +149,7 @@ namespace TileEngine
                 return false;
             }
             
-            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit[] testUnits, Camera camera, Range range, bool gameWon, ref bool inGame, bool unitBeingAttacked)
+            public void Update(GameTime gameTime, KeyboardState aKeyboardState, BaseUnit currentUnit, BaseUnit targetUnit, Cursor cursor, TileMap map, int counter, TurnManager turnManager, int screenWidth, int screenHeight, BaseUnit[] testUnits, Camera camera, Range range, bool gameWon, ref bool inGame, bool unitBeingAttacked, Faction playerFaction)
             {
                 switch (mCurrentScreen)
                 {
@@ -204,7 +204,7 @@ namespace TileEngine
                                         uiTimer = 0;
                                     }
 
-                                    if (currentUnit.faction.name == "Faction 1")
+                                    if (currentUnit.faction == playerFaction)
                                     {
                                         switch (mCurrentPhase)
                                         {
@@ -659,7 +659,7 @@ namespace TileEngine
                                 if (aKeyboardState.IsKeyDown(Keys.Enter))
                                 {
 									playCorrect();
-                                    reset(testUnits, turnManager, currentUnit, map, ref inGame);
+                                    reset(testUnits, turnManager, currentUnit, map, ref inGame, playerFaction);
                                     mCurrentScreen = Screen.Title;
                                     uiTimer = 0;
                                 }
@@ -671,7 +671,7 @@ namespace TileEngine
 
             }
         
-            public void Draw(GameTime gameTime, SpriteBatch spriteBatch, int winWidth, int winHeight, TileMap map, Camera camera, Cursor cursor, BaseUnit[] testUnits, BaseUnit currentUnit, BaseUnit targetUnit, Range range, int winner)
+            public void Draw(GameTime gameTime, SpriteBatch spriteBatch, int winWidth, int winHeight, TileMap map, Camera camera, Cursor cursor, BaseUnit[] testUnits, BaseUnit currentUnit, BaseUnit targetUnit, Range range, int winner, Faction playerFaction)
             {
                 //spriteBatch.Begin();
 
@@ -732,7 +732,7 @@ namespace TileEngine
                                 drawAbilityOption(spriteBatch, winHeight, winWidth, bottom, currentUnit);
                             }
 
-                            if (mCurrentPhase == Phase.Menu && currentUnit.faction.name == "Faction 1")
+                            if (mCurrentPhase == Phase.Menu && currentUnit.faction == playerFaction)
                             {
                                 int m = 0, at = 0, ab = 0, et = 0;
 
@@ -828,16 +828,19 @@ namespace TileEngine
                             spriteBatch.DrawString(font2, str, new Vector2(winWidth / 4 + 30, winHeight / 4 + 6 * offset), Color.White);
 
                             str = "ENTER : Confirm";
-                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2, winHeight / 4 + 2 * offset + (offset / 2)), Color.White);
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2, winHeight / 4 + 2 * offset), Color.White);
 
                             str = "BACKSPACE : Cancel";
-                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2, winHeight / 4 + 3 * offset + (offset / 2)), Color.White);
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2, winHeight / 4 + 3 * offset), Color.White);
+
+                            str = "H: Toggle Console";
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2, winHeight / 4 + 4 * offset), Color.White);
 
                             str = "C : Controls";
-                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2, winHeight / 4 + 4 * offset + (offset / 2)), Color.White);
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2, winHeight / 4 + 5 * offset), Color.White);
 
                             str = "R : Resume Game";
-                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2, winHeight / 4 + 5 * offset + (offset / 2)), Color.White);
+                            spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2, winHeight / 4 + 6 * offset), Color.White);
 
                             spriteBatch.End();
                             break;
@@ -1094,7 +1097,7 @@ namespace TileEngine
                 spriteBatch.End();
             }
 
-			private void reset(BaseUnit[] testUnits, TurnManager turnManager, BaseUnit currentUnit, TileMap map, ref bool inGame)
+			private void reset(BaseUnit[] testUnits, TurnManager turnManager, BaseUnit currentUnit, TileMap map, ref bool inGame, Faction playerFaction)
 			{
 				int i = 0, j = 0;
 				foreach (BaseUnit unit in testUnits)
@@ -1105,13 +1108,13 @@ namespace TileEngine
 					unit.delay = 0;
 					unit.faction.numDead = 0;
 
-					if (unit.faction.name == "Faction 1")
+					if (unit.faction == playerFaction)
 					{
 						unit.unitSprite.currentAnimationName = "Down";
 						unit.randomPosition(new Point(20, 0), new Point(29, 9), map);
 						++i;
 					}
-					if (unit.faction.name == "Faction 2")
+					else
 					{
 						unit.unitSprite.currentAnimationName = "Up";
 						unit.randomPosition(new Point(8, 20), new Point(17, 29), map);
