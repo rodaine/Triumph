@@ -426,7 +426,7 @@ namespace TileEngine
                                             case (Phase.Attack):
                                                 {
 
-                                                    if (!currentUnit.isAttacking && currentUnit.AP == 0)
+                                                    if (!currentUnit.isAttacking && currentUnit.AP == 0&& !unitBeingAttacked)
                                                     {
                                                         range.isDrawing = false;
                                                         mCurrentPhase = Phase.Menu;
@@ -442,7 +442,7 @@ namespace TileEngine
                                                     //the targetted unit is dead or the current unit
                                                     if (Keyboard.GetState().IsKeyDown(Keys.Enter) && counter < 0)
                                                     {
-														if (targetUnit != null && !targetUnit.faction.Equals(currentUnit.faction) && !targetUnit.isDead && currentUnit.withinRange(targetUnit))
+														if (targetUnit != null && !targetUnit.faction.Equals(currentUnit.faction) && !targetUnit.isDead && currentUnit.withinRange(targetUnit)&&!unitBeingAttacked)
 														{
 															//return an int - -1 if invalid, 0 if miss, value of damage
 															currentUnit.attack(targetUnit);
