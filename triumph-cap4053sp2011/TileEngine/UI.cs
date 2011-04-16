@@ -62,6 +62,7 @@ namespace TileEngine
 
 			AffinityIcon currentAffinity, targetAffinity;
 			AffinityIcon currentType, targetType;
+			AffinityIcon weather;
 
             ContentManager Content;
 
@@ -145,6 +146,16 @@ namespace TileEngine
 				targetType.frames.Add("Melee", (FrameAnimation)Fire.Clone());
 				targetType.frames.Add("Magic", (FrameAnimation)Ice.Clone());
 				targetType.frames.Add("Range", (FrameAnimation)Lightening.Clone());
+
+				weather = new AffinityIcon(Content.Load<Texture2D>("UI/weather"));
+
+				weather.frames.Add("Sunny", new FrameAnimation(1, 32, 32, 0, 0));
+				weather.frames.Add("Dark", new FrameAnimation(1, 32, 32, 32, 0));
+				weather.frames.Add("Snowy", new FrameAnimation(1, 32, 32, 64, 0));
+				weather.frames.Add("Rainy", new FrameAnimation(1, 32, 32, 96, 0));
+				weather.frames.Add("Cloudy", new FrameAnimation(1, 32, 32, 128, 0));
+				weather.frames.Add("Stormy", new FrameAnimation(1, 32, 32, 160, 0));
+
 
 				_menuMove = Content.Load<SoundEffect>("Music/click");
 				_menuWrong = Content.Load<SoundEffect>("Music/wrong");
