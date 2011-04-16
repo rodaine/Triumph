@@ -801,11 +801,8 @@ namespace TileEngine
 			{
 				this.HP -= _dmgToBeTaken;
 
-				if (this.isDead && _attacker.faction.name == "Faction 1")
-					GameConsole.getInstanceOf().Update(this.name + " was killed by " + _attacker.name, Color.Blue);
-
-				else if (this.isDead && _attacker.faction.name == "Faction 2")
-					GameConsole.getInstanceOf().Update(this.name + " was killed by " + _attacker.name, Color.Red);
+				if (this.isDead)
+					GameConsole.getInstanceOf().Update(this.name + " was killed by " + _attacker.name, _attacker.faction.color);
 
 				_dmgToBeTaken = 0;
 				_attacker = null;
@@ -817,6 +814,7 @@ namespace TileEngine
                 String msg = "";
                 if (_prevAbility != null)
                 {
+                    System.Console.WriteLine("sup");
                     if (_prevAbility.abilityType == EffectTypes.decAP)
                     {
                         this.AP -= _prevAbility.abilityAmount;
@@ -853,6 +851,7 @@ namespace TileEngine
                             msg = _attacker.name + " has used " + _prevAbility.name + " to stun " + this.name + " for " + _prevAbility.abilityAmount + " turn";
                         }
                     }
+                    _unitSprite.beHit(this, _attacker);
                 }
                 else
                 {
@@ -874,12 +873,9 @@ namespace TileEngine
                         _unitSprite.beHit(this, _attacker);
                     }
                 }
-
+                this.HP -= _dmgToBeTaken;
 				//Print msgs
-                if (_attacker.faction.name == "Faction 1")
-                    GameConsole.getInstanceOf().Update(msg, Color.Blue);
-                else
-                    GameConsole.getInstanceOf().Update(msg, Color.Red);
+                GameConsole.getInstanceOf().Update(msg, _attacker.faction.color);
 
                 _wascrit = false;
                 _attacker = null;
