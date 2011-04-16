@@ -15,14 +15,17 @@ using TileEngine;
 
 namespace TileEngine
 {
-	class Weather
+    public enum WeatherTypes { rainy, sunny, snowy, cloudy, windy, dark };
+	public class Weather
 	{
         private int _duration;
-        public enum WeatherTypes {rainy, sunny, snowy, cloudy, windy, dark};
         private WeatherTypes _currentWeather;
         public static Weather singleton;
         private WeatherTypes[] _types = { WeatherTypes.rainy, WeatherTypes.sunny, WeatherTypes.snowy, WeatherTypes.cloudy, WeatherTypes.windy, WeatherTypes.dark };
 
+        /// <summary>
+        /// creates a new weather class
+        /// </summary>
         public Weather() 
         {
             _duration = RandomNumber.getInstance().getNext(3, 5);
@@ -30,28 +33,41 @@ namespace TileEngine
             
         }
 
+        /// <summary>
+        /// gets the time until weather changes
+        /// </summary>
         public int duration
         {
             get{ return _duration;}
         }
 
+        /// <summary>
+        /// gets the current weather
+        /// </summary>
         public WeatherTypes currentWeather
         {
             get{ return _currentWeather;}
         }
 
-
+        /// <summary>
+        /// ticks weather
+        /// </summary>
         public void tick()
         {
             _duration--;
             if (_duration == 0)
             {
-                _duration = RandomNumber.getInstance().getNext(3, 5);
+                _duration = RandomNumber.getInstance().getNext(8, 12);
                 _currentWeather = _types[RandomNumber.getInstance().getNext(0,5)];
             }
         }
 
-        public Weather getInstance()
+
+        /// <summary>
+        /// gets singleton of weather
+        /// </summary>
+        /// <returns></returns>
+        public static Weather getInstance()
         {
             if (singleton == null)
             {

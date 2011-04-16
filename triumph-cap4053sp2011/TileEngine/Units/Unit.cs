@@ -97,11 +97,23 @@ namespace TileEngine
 			get { return _HP; }
 			set
 			{
-				_HP = (int)MathHelper.Clamp(value, 0, _maxHP);
-				_isDead = (_HP == 0) ? true : false;
-                if (_isDead)
+                if (!_isDead)
                 {
-                    faction.numDead++;
+                    _HP = (int)MathHelper.Clamp(value, 0, _maxHP);
+                    _isDead = (_HP == 0) ? true : false;
+                    if (_isDead)
+                    {
+                        faction.numDead++;
+                    }
+                }
+                else
+                {
+                    _HP = (int)MathHelper.Clamp(value, 0, _maxHP);
+                    _isDead = (_HP == 0) ? true : false;
+                    if (!_isDead)
+                    {
+                        faction.numDead--;
+                    }
                 }
 			}
 		}
@@ -314,7 +326,7 @@ namespace TileEngine
 			_MP = _maxMP = maxMP;
 			_SPD = _delay = SPD;
             _isDone = false;
-            _evade = _SPD/10;
+            _evade = _SPD/20;
             _wDef = 0;
             _wAtk = 0;
 			if (_HP > 0)
@@ -349,7 +361,7 @@ namespace TileEngine
 			_MP = _maxMP = maxMP;
             _SPD = _delay = SPD;
             _isDone = false;
-            _evade = _SPD / 10;
+            _evade = _SPD / 20;
             _wDef = 0;
             _wAtk = 0;
 			if (_HP > 0)
@@ -385,7 +397,7 @@ namespace TileEngine
             _MP = _maxMP = maxMP;
             _SPD = _delay = SPD;
             _isDone = false;
-            _evade = _SPD / 10;
+            _evade = _SPD / 20;
             _wAtk = wAtk;
             _wDef = wDef;
             _mPow = mPow;
@@ -494,7 +506,7 @@ namespace TileEngine
             dmg = _wAtk;
 
 			_unitSprite.attack(this, target); 
-            return target.takeDamage(dmg, affinityMults[this.affinityIndex, target.affinityIndex], this);
+            return target.takeDamage(dmg, affinityMults[this.affinityIndex, target.affinityIndex]*getWeatherMult()/100, this);
 
         }
         
@@ -523,7 +535,7 @@ namespace TileEngine
                 }
 
                 //apply multiplier
-                dmg = dmg * mult / 100;
+                dmg = Math.Max(1,dmg * mult / 100);
 
                 //deal damage
                 _dmgToBeTaken = dmg;
@@ -561,7 +573,7 @@ namespace TileEngine
             }
 
             //apply multiplier
-            dmg = dmg * mult / 100;
+            dmg = Math.Max(1, dmg * mult / 100);
 
             //deal damage
             _dmgToBeTaken = dmg;
@@ -569,6 +581,40 @@ namespace TileEngine
 
             return dmg;
         }
+
+        /// <summary>
+        /// Gets the weather multiplier
+        /// </summary>
+        /// <returns></returns>
+        public int getWeatherMult()
+        {
+            WeatherTypes currentWeather = Weather.getInstance().currentWeather;
+            #region weatherbuffs
+            switch (currentWeather)
+            {
+                case WeatherTypes.cloudy:
+                    return 100;
+                    break;
+                case WeatherTypes.dark:
+                    if (this.affinityName == "Dark") return 110;
+                    break;
+                case WeatherTypes.rainy:
+                    if (this.affinityName == "Lightning" || this.affinityName == "Water") return 110;
+                    break;
+                case WeatherTypes.snowy:
+                    if (this.affinityName == "Ice") return 110;
+                    break;
+                case WeatherTypes.sunny:
+                    if (this.affinityName == "Holy" || this.affinityName == "Earth") return 110;
+                    break;
+                case WeatherTypes.windy:
+                    if (this.affinityName == "Wind" || this.affinityName == "Fire") return 110;
+                    break;
+            }
+            #endregion
+            return 100;
+        }
+
 
         /// <summary>
         /// checks if a target unit is within range
@@ -695,14 +741,14 @@ namespace TileEngine
             if (ability.abilityType == EffectTypes.damage)
             {
                 int dmg = _wAtk;
-                System.Console.WriteLine("Damage from ability " + ability.name + ": " + dmg);
-                return target.takeDamage(dmg, ability.abilityAmount, this);
+                //System.Console.WriteLine("Damage from ability " + ability.name + ": " + dmg);
+                return target.takeDamage(dmg, ability.abilityAmount * affinityMults[this.affinityIndex, target.affinityIndex] * getWeatherMult() / 10000, this);
             }
             else if (ability.abilityType == EffectTypes.magicDamage)
             {
                 int dmg = _mPow;
-                System.Console.WriteLine("Damage from ability " + ability.name + ": " + dmg);
-                target.takeMagicDamage(dmg, ability.abilityAmount, this);
+                //System.Console.WriteLine("Damage from ability " + ability.name + ": " + dmg);
+                target.takeMagicDamage(dmg, ability.abilityAmount * affinityMults[this.affinityIndex, target.affinityIndex] * getWeatherMult() / 10000, this);
             }
             else
             {
@@ -727,49 +773,6 @@ namespace TileEngine
 
 		#endregion
 
-		#region Turn Checks
-
-		public void run()
-        {
-            //adjust unit stats
-            foreach (Buff item in itemsAndBuffs)
-            {
-                switch (item.getObjectType())
-                {
-                    case EffectTypes.heal:
-						HP += item.getObjectAmount();
-                        break;
-                    case EffectTypes.damage:
-						HP -= item.getObjectAmount();
-                        break;
-                    case EffectTypes.stun:
-						isStunned = item.getObjectFlip();
-                        break;
-                    case EffectTypes.incMP:
-						MP += item.getObjectAmount();
-                        break;
-                    case EffectTypes.decMP:
-						MP -= item.getObjectAmount();
-                        break;
-                    case EffectTypes.incAP:
-						AP += item.getObjectAmount();
-                        break;
-                    case EffectTypes.decAP:
-						AP -= item.getObjectAmount();
-                        break;
-                    default:
-                        //EffectTypes.nothing or some invalid enum
-                        break;
-                }
-
-				item.decTurn();
-				if (item.getTurnDuration() == 0)
-					itemsAndBuffs.Remove(item);
-            }
-
-        }
-
-        #endregion
 
 		#region Sprite Updates
 
@@ -873,13 +876,11 @@ namespace TileEngine
                         _unitSprite.beHit(this, _attacker);
                     }
                 }
-                this.HP -= _dmgToBeTaken;
 				//Print msgs
                 GameConsole.getInstanceOf().Update(msg, _attacker.faction.color);
 
                 _wascrit = false;
                 _prevAbility = null;
-                _dmgToBeTaken = 0;
                 this._isBeingHit = true;
             }
             
