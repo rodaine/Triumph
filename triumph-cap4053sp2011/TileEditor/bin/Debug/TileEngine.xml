@@ -1043,6 +1043,14 @@
             <param name="target"></param>
             <returns></returns>
         </member>
+        <member name="M:TileEngine.BaseUnit.canTargetAbility(TileEngine.Ability,TileEngine.BaseUnit)">
+            <summary>
+            checks if a unit is within range of an ability
+            </summary>
+            <param name="ability"></param>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
         <member name="M:TileEngine.BaseUnit.modify(TileEngine.BaseUnit,TileEngine.Ability)">
             <summary>
             modift unit with nonattacking ability

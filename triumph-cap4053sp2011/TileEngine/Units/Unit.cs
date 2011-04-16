@@ -36,14 +36,14 @@ namespace TileEngine
         private List<Buff> itemsAndBuffs;
         private int unitAffinity;
         private static string[] affinities = { "Fire", "Ice", "Lightning", "Water", "Earth", "Wind", "Holy", "Dark" };
-        private static int[,] affinityMults = {  { 100, 115, 100, 85, 115, 100, 100, 100},
-                                                 { 85, 100, 100, 115, 100, 100, 100, 100},
-                                                 { 100, 150, 100, 50, 100, 100, 100, 100},
-                                                 { 100, 150, 100, 50, 100, 100, 100, 100},
-                                                 { 100, 150, 100, 50, 100, 100, 100, 100},
-                                                 { 100, 150, 100, 50, 100, 100, 100, 100},
-                                                 { 100, 150, 100, 50, 100, 100, 100, 100},
-                                                 { 100, 150, 100, 50, 100, 100, 100, 115}};
+        private static int[,] affinityMults = {  { 100, 115, 100, 85, 100, 100, 100, 100},
+                                                 { 85, 100, 100, 100, 100, 115, 100, 100},
+                                                 { 100, 100, 100, 115, 85, 100, 100, 100},
+                                                 { 115, 100, 85, 100, 100, 100, 100, 100},
+                                                 { 100, 100, 115, 100, 100, 85, 100, 100},
+                                                 { 100, 85, 100, 100, 115, 100, 100, 100},
+                                                 { 100, 100, 100, 100, 100, 100, 115, 115},
+                                                 { 100, 100, 100, 100, 100, 100, 115, 115}};
 
         //info for updating unit after sprite is done attacking
         private int _dmgToBeTaken;
@@ -626,6 +626,12 @@ namespace TileEngine
             return (Math.Abs(this.position.X - target.position.X) + Math.Abs(this.position.Y - target.position.Y)) <= _range;
         }
 
+        /// <summary>
+        /// checks if a unit is within range of an ability
+        /// </summary>
+        /// <param name="ability"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
         public bool canTargetAbility(Ability ability, BaseUnit target)
         {
             if(!((Math.Abs(this.position.X - target.position.X) + Math.Abs(this.position.Y - target.position.Y)) <= ability.attackRange))
@@ -653,6 +659,12 @@ namespace TileEngine
             //store attackers info and ability
             _attacker = modifier;
             _prevAbility = ability;
+        }
+
+        public void beStunned()
+        {
+            this._isBeingHit = true;
+            this.unitSprite.beHit(this, this);
         }
         #endregion
 
