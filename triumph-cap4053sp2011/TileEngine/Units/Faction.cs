@@ -22,6 +22,7 @@ namespace TileEngine
         private BaseUnit[] _units;
         private bool _isDefeated = false;
         private int _numDead = 0;
+        private Color _col;
         
         #endregion
 
@@ -85,6 +86,15 @@ namespace TileEngine
                 {
                     _isDefeated = false;
                 }
+            }
+        }
+
+        public Color color
+        {
+            get { return _col; }
+            set
+            {
+                _col = value;
             }
         }
 

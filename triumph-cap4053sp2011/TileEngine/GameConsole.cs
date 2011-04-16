@@ -66,7 +66,7 @@ namespace TileEngine
 
             for (int i = 1; i < words.Length; i++)
             {
-                if (curLine.Length + 1 + words[i].Length > 24)//change this value if you going to use this method for different sized boxes
+                if (curLine.Length + 1 + words[i].Length > 27)//change this value if you going to use this method for different sized boxes
                 {
                     ret.Add(curLine);
                     curLine = " " + words[i];
@@ -91,23 +91,6 @@ namespace TileEngine
                 tempMess[i] = sm[i];
                 tempCol[i] = colors[i];
             }
-
-            /*int lines = 0;
-            int len = newMessage.Length;
-
-            while (len > 0)
-            {
-                if (len >= 24)
-                {
-                    lines++;
-                    len -= 24;
-                }
-                else
-                {
-                    lines++;
-                    len = 0;
-                }
-            }*/
 
             List<String> lines = splitByWord(newMessage);
 

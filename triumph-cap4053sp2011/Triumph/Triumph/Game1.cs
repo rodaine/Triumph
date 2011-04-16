@@ -65,7 +65,9 @@ namespace Triumph
             faction2Units[4] = unitList["Charlie: DoW"];
             testUnits = new BaseUnit[10];
             faction1 = new Faction("Faction 1", new Player("Player 1", faction1), faction1Units);
+            faction1.color = Color.Blue;
             faction2 = new Faction("Faction 2", new Player("Player 2", faction2), faction2Units);
+            faction2.color = Color.Red;
             for (int i = 0; i < faction1Units.Length; i++)
             {
                 faction1Units[i].teleportToTile(new Point(17+i, 1), map);
