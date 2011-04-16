@@ -17,7 +17,7 @@ using TileEngine;
 
 namespace TileEngine
 {
-    public enum unitTypes { archer, warrior, mage };
+    public enum unitTypes { Melee, Magic, Range };
     public enum affinityTypes { Fire, Ice, Lightning, Water, Earth, Wind, Holy, Dark, none };
 	public class BaseUnit
     {
@@ -361,11 +361,11 @@ namespace TileEngine
 
             //asign type
             if (this._wAtk < this._mPow)
-                this._type = unitTypes.mage;
+                this._type = unitTypes.Magic;
             else if (this._range > 1)
-                this._type = unitTypes.archer;
+                this._type = unitTypes.Range;
             else
-                this._type = unitTypes.warrior;
+                this._type = unitTypes.Melee;
         }
 
 		/// <summary>
@@ -400,11 +400,11 @@ namespace TileEngine
 			index = ++index_counter;
             //asign type
             if (this._wAtk < this._mPow)
-                this._type = unitTypes.mage;
+                this._type = unitTypes.Magic;
             else if (this._range > 1)
-                this._type = unitTypes.archer;
+                this._type = unitTypes.Range;
             else
-                this._type = unitTypes.warrior;
+                this._type = unitTypes.Melee;
         }
 
         /// <summary>
@@ -446,11 +446,11 @@ namespace TileEngine
 
             //asign type
             if (this._wAtk < this._mPow)
-                this._type = unitTypes.mage;
+                this._type = unitTypes.Magic;
             else if (this._range > 1)
-                this._type = unitTypes.archer;
+                this._type = unitTypes.Range;
             else
-                this._type = unitTypes.warrior;
+                this._type = unitTypes.Melee;
         }
 
 		/// <summary>
@@ -474,11 +474,11 @@ namespace TileEngine
 
             //asign type
             if (this._wAtk < this._mPow)
-                this._type = unitTypes.mage;
+                this._type = unitTypes.Magic;
             else if (this._range > 1)
-                this._type = unitTypes.archer;
+                this._type = unitTypes.Range;
             else
-                this._type = unitTypes.warrior;
+                this._type = unitTypes.Melee;
         }
 
 		/// <summary>
