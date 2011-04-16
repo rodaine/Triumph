@@ -273,6 +273,7 @@ Content\Console\consoleScroll.xnb
 Content\Console\timer_white.xnb
 Content\UI\affinities.xnb
 Content\UI\unitType.xnb
+Content\UI\weather.xnb
 Content\Console\arial9pt.xnb
 Content\Console\consolas.xnb
 Content\UI\SpriteFont1.xnb
