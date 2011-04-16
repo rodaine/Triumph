@@ -399,10 +399,6 @@ namespace TileEngine
             this.unitAffinity = unitAffinity;
 
             _moves = new List<Ability>();
-            //remove this later
-            _moves.Add(new Ability("Test Ability 1", EffectTypes.damage, 150, 2, this._range));
-            _moves.Add(new Ability("Test Ability 2", EffectTypes.heal, 10, 3, 4));
-            _moves.Add(new Ability("Test Ability 3", EffectTypes.stun, 1, 3, 3));
             index = ++index_counter;
         }
 
@@ -436,7 +432,7 @@ namespace TileEngine
 				_moves.Add(abilities[i]);
 		}
 
-		public static Dictionary<string, BaseUnit> fromFile(ContentManager content, string filename)
+		public static Dictionary<string, BaseUnit> fromFile(ContentManager content, string filename, Dictionary<string, Ability>AbilityList)
 		{
 			Dictionary<string, BaseUnit> unitList = new Dictionary<string, BaseUnit>();
 
@@ -456,6 +452,12 @@ namespace TileEngine
 					if (line.Contains("///")) continue;
 					string[] unitParams = line.Split(',');
                     BaseUnit unit = new BaseUnit(unitParams[0].Trim(), int.Parse(unitParams[1].Trim()), int.Parse(unitParams[2].Trim()), int.Parse(unitParams[3].Trim()), int.Parse(unitParams[4].Trim()), int.Parse(unitParams[5].Trim()), int.Parse(unitParams[6].Trim()) * 9 / 10, int.Parse(unitParams[7].Trim()) * 3 / 2, int.Parse(unitParams[8].Trim()), int.Parse(unitParams[9].Trim()), int.Parse(unitParams[10].Trim()));
+
+					for (int i = 12; i < unitParams.Length; ++i)
+					{
+						unit.addAbility(AbilityList[unitParams[i].Trim()]);
+					}
+
 
 					unit.unitSprite = new AnimatedSprite(content.Load<Texture2D>(unitParams[11].Trim()));
 					unit.unitSprite.animations.Add("Up", up);
@@ -775,8 +777,6 @@ namespace TileEngine
 		/// Updates the units sprite representation based on flags.
 		/// </summary>
 		/// <param name="gameTime">GameTime object passed from Game class</param>
-		/// <param name="screenWidth">Viewport screen width in pixels</param>
-		/// <param name="screenHeight">Viewport screen height in pixels</param>
 		/// <param name="map">Tile Map of play area</param>
 		public void update(GameTime gameTime, TileMap map)
 		{
@@ -878,7 +878,6 @@ namespace TileEngine
                 GameConsole.getInstanceOf().Update(msg, _attacker.faction.color);
 
                 _wascrit = false;
-                _attacker = null;
                 _prevAbility = null;
                 _dmgToBeTaken = 0;
                 this._isBeingHit = true;
@@ -908,6 +907,7 @@ namespace TileEngine
 			}
 			else
 				return false;
+
 		}
 
 		/// <summary>
@@ -925,6 +925,23 @@ namespace TileEngine
 			_position = goal;
 			map.unitLayer.moveUnit(unitIndex, goal);
 		} 
+
+		/// <summary>
+		/// Randomly position a unit on a viable tile within a given range
+		/// </summary>
+		/// <param name="topLeft">Top left corner of range (inclusive)</param>
+		/// <param name="topRight">Bottom right corner of range (inclusive)</param>
+		public void randomPosition(Point topLeft, Point bottomRight, TileMap map)
+		{
+			Point p = Point.Zero;
+			do
+			{
+				p.X = RandomNumber.getInstance().getNext(topLeft.X, bottomRight.X);
+				p.Y = RandomNumber.getInstance().getNext(topLeft.Y, bottomRight.Y);
+			} while (!map.isEmpty(p));
+
+			teleportToTile(p, map);
+		}
 
 		#endregion
 

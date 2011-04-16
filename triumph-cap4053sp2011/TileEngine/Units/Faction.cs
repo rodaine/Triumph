@@ -32,6 +32,12 @@ namespace TileEngine
             this._name = name;
             this._owner = owner;
             this._units = units;
+
+			foreach (BaseUnit unit in _units)
+			{
+				unit.faction = this;
+			}
+
         }
 
         public Faction(String name, Player owner)

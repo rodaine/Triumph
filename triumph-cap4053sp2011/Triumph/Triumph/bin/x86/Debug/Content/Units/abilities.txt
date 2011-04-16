@@ -1,46 +1,46 @@
 /// Name         AP Ran Ty           Am  Description
-Frost-Punch	    , 2, 1, damage		, 2,  Launches an icy beating
-Ice-Dagger	    , 2, 2, damage		, 1,  Pelts opponent with frozen spears of doom
-Root-Whip	    , 2, 1, damage		, 2,  Slaps your opponent into submission
-Cleansing-Spore , 4, 3, heal		, 4,  Heal your fallen brethren
-Slash		    , 2, 1, damage		, 2,  Rip across the chest of your enemy
-Spear		    , 3, 3, damage		, 2,  Catapult a rod full of death
-Shovel-Smack    , 2, 1, damage		, 1,  Bludgeon the urbane
-Brew		    , 3, 1, heal		, 3,  The bayou's finest
-Sea-Blast	    , 2, 1, magicDamage	, 2,  Sink your opponent into a watery grave
-Barnacle	    , 3, 1, stun		, 2,  Encrust the landlover for two turns
-Stone-Tomb	    , 2, 1, damage		, 5,  Crush all those in your way
-Geopunch	    , 1, 1, damage		, 2,  Ground the enemy into dust
-Ember-Kick	    , 1, 1, damage		, 2,  Dance with the enemy through the ashes of pain
-Hellraiser	    , 2, 3, magicDamage	, 4,  Engulf opponents in a netting of torment
-Cosmic-Wave	    , 1, 1, magicDamage	, 2,  Radiate nearby enemies until golden brown
-Brute-Strength  , 1, 1, heal		, 3,  Regenerate health from pure awesomeness
-Crystal-Storm   , 2, 2, magicDamage	, 2,  Cover your enemies in chilled agony
-Avalanche       , 2, 1, stun		, 1,  The opponent is trapped beneath the snow
-Hurl		    , 2, 3, damage		, 2,  A javeline of raw power
-Guard		    , 2, 1, incMP		, 2,  Stand watch and allow others to recoop
-Stone-Chuck	    , 2, 3, damage		, 2,  Launches an icy beating
-Rock-Roll	    , 2, 2, stun		, 1,  Never gonna give you up, never gonna let you down
-Spew		    , 2, 2, damage		, 2,  Breath sand and grit on the unworthy
-Riot-Punch	    , 2, 1, decAP		, 3,  Your strength is two fold
-Healing-Sap	    , 3, 3, heal		, 5,  Let the viscosity of youth flow over you
-Rapid-Strike    , 2, 1, damage		, 3,  Administer a lightning round beatdown
-Fury-Balls	    , 2, 2, damage		, 2,  Snowballs shower opponents
-Freeze-Frame    , 2, 1, stun		, 1,  Freeze enemies on the spot
-Hammertime      , 2, 1, damage		, 2,  Launches a rusty nail beating
-Holy-Revival    , 3, 2, heal		, 3,  The power of Christ compels you
-Amnesia-Fire    , 2, 1, stun		, 1,  Confuse opponents with voodoo
-Witch-Hunt      , 2, 1, magicDamage	, 2,  Hocus-pocus
-Energize	    , 1, 1, magicDamage	, 1,  Blasts laser cannons
-Cotton-Tail	    , 3, 1, stun		, 2,  Binds enemies with ferocity of fleece
-Starburst	    , 2, 2, magicDamage	, 1,  Throws sun stars
-Master-o-Karate , 3, 1, damage		, 3,  Ha-cha!
-Moonlight-Chomp , 2, 1, damage		, 2,  Nom nom nom
-Shimmering-Armor, 2, 1, decAP		, 3,  I haz it
-Sting			, 2, 1, damage		, 1,  Inject liquid death into your foes
-Beam-Cannon		, 2, 2, magicDamage	, 1,  Cripple your opponent with a devasting blast
-Soul-Bond		, 1, 2, decMP		, 2,  Absorb the life-force itself
-Starcry			, 2, 3, decAP		, 2,  Increases morale of the blooddrenched
-Battle-Fatigue	, 2, 2, incAP		, 2,  Hinder the agility of the distraught
-Shadowstruck	, 3, 1, decMP		, 4,  Drain the weak and let none survive
-Cleave			, 1, 1, damage		, 1,  An oldie but a goodie
+Frost-Punch     , 2, 1, damage  , 2,  Launches an icy beating
+Ice-Dagger     , 2, 2, damage  , 1,  Pelts opponent with frozen spears of doom
+Root-Whip     , 2, 1, damage  , 2,  Slaps your opponent into submission
+Cleansing-Spore , 4, 3, heal  , 4,  Heal your fallen brethren
+Slash      , 2, 1, damage  , 2,  Rip across the chest of your enemy
+Spear      , 3, 3, damage  , 2,  Catapult a rod full of death
+Shovel-Smack    , 2, 1, damage  , 1,  Bludgeon the urbane
+Brew      , 3, 1, heal  , 3,  The bayou's finest
+Sea-Blast     , 2, 1, magicDamage , 2,  Sink your opponent into a watery grave
+Barnacle     , 3, 1, stun  , 2,  Encrust the landlover for two turns
+Stone-Tomb     , 2, 1, damage  , 5,  Crush all those in your way
+Geopunch     , 1, 1, damage  , 2,  Ground the enemy into dust
+Ember-Kick     , 1, 1, damage  , 2,  Dance with the enemy through the ashes of pain
+Hellraiser     , 2, 3, magicDamage , 4,  Engulf opponents in a netting of torment
+Cosmic-Wave     , 1, 1, magicDamage , 2,  Radiate nearby enemies until golden brown
+Brute-Strength  , 1, 1, heal  , 3,  Regenerate health from pure awesomeness
+Crystal-Storm   , 2, 2, magicDamage , 2,  Cover your enemies in chilled agony
+Avalanche       , 2, 1, stun  , 1,  The opponent is trapped beneath the snow
+Hurl      , 2, 3, damage  , 2,  A javeline of raw power
+Guard      , 2, 1, incMP  , 2,  Stand watch and allow others to recoop
+Stone-Chuck     , 2, 3, damage  , 2,  Launches an icy beating
+Rock-Roll     , 2, 2, stun  , 1,  Never gonna give you up, never gonna let you down
+Spew      , 2, 2, damage  , 2,  Breath sand and grit on the unworthy
+Riot-Punch     , 2, 1, decAP  , 3,  Your strength is two fold
+Healing-Sap     , 3, 3, heal  , 5,  Let the viscosity of youth flow over you
+Rapid-Strike    , 2, 1, damage  , 3,  Administer a lightning round beatdown
+Fury-Balls     , 2, 2, damage  , 2,  Snowballs shower opponents
+Freeze-Frame    , 2, 1, stun  , 1,  Freeze enemies on the spot
+Hammertime      , 2, 1, damage  , 2,  Launches a rusty nail beating
+Holy-Revival    , 3, 2, heal  , 3,  The power of Christ compels you
+Amnesia-Fire    , 2, 1, stun  , 1,  Confuse opponents with voodoo
+Witch-Hunt      , 2, 1, magicDamage , 2,  Hocus-pocus
+Energize     , 1, 1, magicDamage , 1,  Blasts laser cannons
+Cotton-Tail     , 3, 1, stun  , 2,  Binds enemies with ferocity of fleece
+Starburst     , 2, 2, magicDamage , 1,  Throws sun stars
+Master-o-Karate , 3, 1, damage  , 3,  Ha-cha!
+Moonlight-Chomp , 2, 1, damage  , 2,  Nom nom nom
+Shimmering-Armor, 2, 1, decAP  , 3,  I haz it
+Sting   , 2, 1, damage  , 1,  Inject liquid death into your foes
+Beam-Cannon  , 2, 2, magicDamage , 1,  Cripple your opponent with a devasting blast
+Soul-Bond  , 1, 2, decMP  , 2,  Absorb the life-force itself
+Starcry   , 2, 3, incAP  , 2,  Increases morale of the blooddrenched
+Battle-Fatigue , 2, 2, decAP  , 2,  Hinder the agility of the distraught
+Shadowstruck , 3, 1, decMP  , 4,  Drain the weak and let none survive
+Cleave   , 1, 1, damage  , 1,  An oldie but a goodie
