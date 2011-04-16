@@ -272,6 +272,7 @@ Content\Console\black.xnb
 Content\Console\consoleScroll.xnb
 Content\Console\timer_white.xnb
 Content\UI\affinities.xnb
+Content\UI\unitType.xnb
 Content\Console\arial9pt.xnb
 Content\Console\consolas.xnb
 Content\UI\SpriteFont1.xnb
@@ -292,7 +293,6 @@ Content\Music\dodge.xnb
 Content\Music\hit.xnb
 Content\Music\wrong.xnb
 Content\Music\walking.xnb
-Content\UI\unitType.xnb
 Content\Layers\baseTiles.layer
 Content\Layers\alphaObjects.layer
 Content\Layers\Collision.layer

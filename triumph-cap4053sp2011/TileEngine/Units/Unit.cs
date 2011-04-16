@@ -17,6 +17,8 @@ using TileEngine;
 
 namespace TileEngine
 {
+    public enum unitTypes { archer, warrior, mage };
+    public enum affinityTypes { Fire, Ice, Lightning, Water, Earth, Wind, Holy, Dark, none };
 	public class BaseUnit
     {
         #region baseUnit fields
@@ -28,6 +30,7 @@ namespace TileEngine
         Faction _faction;
 
 		//Attributes
+        private unitTypes _type;
 		private int _maxHP, _maxAP, _maxMP, _HP, _AP, _MP, _SPD, _delay, _range;
         private int _wAtk, _wDef, _mPow, _mRes, _evade; //stats used in FFT but not implemented yet here
         private int _stunLength;
@@ -35,7 +38,7 @@ namespace TileEngine
         private List<Ability> _moves;
         private List<Buff> itemsAndBuffs;
         private int unitAffinity;
-        private static string[] affinities = { "Fire", "Ice", "Lightning", "Water", "Earth", "Wind", "Holy", "Dark" };
+        private static affinityTypes[] affinities = { affinityTypes.Fire, affinityTypes.Ice, affinityTypes.Lightning, affinityTypes.Water, affinityTypes.Earth, affinityTypes.Wind, affinityTypes.Holy, affinityTypes.Dark };
         private static int[,] affinityMults = {  { 100, 115, 100, 85, 100, 100, 100, 100},
                                                  { 85, 100, 100, 100, 100, 115, 100, 100},
                                                  { 100, 100, 100, 115, 85, 100, 100, 100},
@@ -234,10 +237,15 @@ namespace TileEngine
 		/// <summary>
 		/// Get the name of the unit's elemental affinity
 		/// </summary>
-		public string affinityName
+		public String affinityName
 		{
-			get { return affinities[unitAffinity]; }
+            get { return affinities[unitAffinity].ToString() ; }
 		}
+
+        public affinityTypes affinityType
+        {
+            get { return affinities[unitAffinity]; }
+        }
 
 		/// <summary>
 		/// Get the position (by tiles) of the unit
@@ -303,6 +311,14 @@ namespace TileEngine
             get { return _moves; }
         }
 
+        /// <summary>
+        /// gets the type of unit this is
+        /// </summary>
+        public unitTypes type
+        {
+            get { return _type; }
+        }
+
 
 		#endregion
 
@@ -342,6 +358,14 @@ namespace TileEngine
 
 			index = ++index_counter;
 
+
+            //asign type
+            if (this._wAtk < this._mPow)
+                this._type = unitTypes.mage;
+            else if (this._range > 1)
+                this._type = unitTypes.archer;
+            else
+                this._type = unitTypes.warrior;
         }
 
 		/// <summary>
@@ -374,6 +398,13 @@ namespace TileEngine
 			_moves = new List<Ability>();
 
 			index = ++index_counter;
+            //asign type
+            if (this._wAtk < this._mPow)
+                this._type = unitTypes.mage;
+            else if (this._range > 1)
+                this._type = unitTypes.archer;
+            else
+                this._type = unitTypes.warrior;
         }
 
         /// <summary>
@@ -412,6 +443,14 @@ namespace TileEngine
 
             _moves = new List<Ability>();
             index = ++index_counter;
+
+            //asign type
+            if (this._wAtk < this._mPow)
+                this._type = unitTypes.mage;
+            else if (this._range > 1)
+                this._type = unitTypes.archer;
+            else
+                this._type = unitTypes.warrior;
         }
 
 		/// <summary>
@@ -432,6 +471,14 @@ namespace TileEngine
 			_moves = new List<Ability>();
 
 			index = ++index_counter;
+
+            //asign type
+            if (this._wAtk < this._mPow)
+                this._type = unitTypes.mage;
+            else if (this._range > 1)
+                this._type = unitTypes.archer;
+            else
+                this._type = unitTypes.warrior;
         }
 
 		/// <summary>
@@ -582,6 +629,12 @@ namespace TileEngine
             return dmg;
         }
 
+        private int applyVariance(int amt, int percent)
+        {
+            int x = 100 / percent;
+            return amt + RandomNumber.getInstance().getNext(0, 2 * x) - x;
+        }
+
         /// <summary>
         /// Gets the weather multiplier
         /// </summary>
@@ -596,19 +649,19 @@ namespace TileEngine
                     return 100;
                     break;
                 case WeatherTypes.dark:
-                    if (this.affinityName == "Dark") return 110;
+                    if (this.affinityType == affinityTypes.Dark) return 110;
                     break;
                 case WeatherTypes.rainy:
-                    if (this.affinityName == "Lightning" || this.affinityName == "Water") return 110;
+                    if (this.affinityType == affinityTypes.Lightning || this.affinityType == affinityTypes.Water) return 110;
                     break;
                 case WeatherTypes.snowy:
-                    if (this.affinityName == "Ice") return 110;
+                    if (this.affinityType == affinityTypes.Ice) return 110;
                     break;
                 case WeatherTypes.sunny:
-                    if (this.affinityName == "Holy" || this.affinityName == "Earth") return 110;
+                    if (this.affinityType == affinityTypes.Holy || this.affinityType == affinityTypes.Earth) return 110;
                     break;
                 case WeatherTypes.windy:
-                    if (this.affinityName == "Wind" || this.affinityName == "Fire") return 110;
+                    if (this.affinityType == affinityTypes.Wind || this.affinityType == affinityTypes.Fire) return 110;
                     break;
             }
             #endregion
@@ -842,8 +895,9 @@ namespace TileEngine
                     }
                     else if (_prevAbility.abilityType == EffectTypes.heal)
                     {
-                        this.HP += _prevAbility.abilityAmount;
-                        msg = _attacker.name + " has used " + _prevAbility.name + " to heal " + this.name + " by " + _prevAbility.abilityAmount;
+                        int amt = applyVariance(_prevAbility.abilityAmount,10);
+                        this.HP += amt;
+                        msg = _attacker.name + " has used " + _prevAbility.name + " to heal " + this.name + " by " + amt;
                     }
                     else if (_prevAbility.abilityType == EffectTypes.incAP)
                     {
