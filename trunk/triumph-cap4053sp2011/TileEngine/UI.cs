@@ -60,7 +60,8 @@ namespace TileEngine
             SpriteFont font, font2, font3, font4, font5, font6, font7;
             SpriteFont experiment;
 
-			AffinityIcon currentIcon, targetIcon;
+			AffinityIcon currentAffinity, targetAffinity;
+			AffinityIcon currentType, targetType;
 
             ContentManager Content;
 
@@ -93,7 +94,6 @@ namespace TileEngine
                 mGreen = Content.Load<Texture2D>("UI/green");
                 mRed = Content.Load<Texture2D>("UI/red");
 
-                tTimer = Content.Load<Texture2D>("UI/timer_tan");
                 wTimer = Content.Load<Texture2D>("UI/timer_white");
 
                 font = Content.Load<SpriteFont>("UI/SpriteFont1");
@@ -105,8 +105,8 @@ namespace TileEngine
                 font7 = Content.Load<SpriteFont>("UI/SpriteFont7");
                 experiment = Content.Load<SpriteFont>("UI/experimentation");
 
-				currentIcon = new AffinityIcon(Content.Load<Texture2D>("UI/affinities"));
-				targetIcon = new AffinityIcon(Content.Load<Texture2D>("UI/affinities"));
+				currentAffinity = new AffinityIcon(Content.Load<Texture2D>("UI/affinities"));
+				targetAffinity = new AffinityIcon(Content.Load<Texture2D>("UI/affinities"));
 
 				FrameAnimation Fire = new FrameAnimation(1, 34, 34, 0, 0);
 				FrameAnimation Ice = new FrameAnimation(1, 34, 34, 34, 0);
@@ -117,23 +117,34 @@ namespace TileEngine
 				FrameAnimation Holy = new FrameAnimation(1, 34, 34, 204, 0);
 				FrameAnimation Dark = new FrameAnimation(1, 34, 34, 238, 0);
 
-				currentIcon.frames.Add("Fire", Fire);
-				currentIcon.frames.Add("Ice", Ice);
-				currentIcon.frames.Add("Lightning", Lightening);
-				currentIcon.frames.Add("Water", Water);
-				currentIcon.frames.Add("Earth", Earth);
-				currentIcon.frames.Add("Wind", Wind);
-				currentIcon.frames.Add("Holy", Holy);
-				currentIcon.frames.Add("Dark", Dark);
+				currentAffinity.frames.Add("Fire", Fire);
+				currentAffinity.frames.Add("Ice", Ice);
+				currentAffinity.frames.Add("Lightning", Lightening);
+				currentAffinity.frames.Add("Water", Water);
+				currentAffinity.frames.Add("Earth", Earth);
+				currentAffinity.frames.Add("Wind", Wind);
+				currentAffinity.frames.Add("Holy", Holy);
+				currentAffinity.frames.Add("Dark", Dark);
 
-				targetIcon.frames.Add("Fire", (FrameAnimation) Fire.Clone());
-				targetIcon.frames.Add("Ice", (FrameAnimation) Ice.Clone());
-				targetIcon.frames.Add("Lightning", (FrameAnimation) Lightening.Clone());
-				targetIcon.frames.Add("Water", (FrameAnimation) Water.Clone());
-				targetIcon.frames.Add("Earth", (FrameAnimation) Earth.Clone());
-				targetIcon.frames.Add("Wind", (FrameAnimation) Wind.Clone());
-				targetIcon.frames.Add("Holy", (FrameAnimation) Holy.Clone());
-				targetIcon.frames.Add("Dark", (FrameAnimation) Dark.Clone());
+				targetAffinity.frames.Add("Fire", (FrameAnimation) Fire.Clone());
+				targetAffinity.frames.Add("Ice", (FrameAnimation) Ice.Clone());
+				targetAffinity.frames.Add("Lightning", (FrameAnimation) Lightening.Clone());
+				targetAffinity.frames.Add("Water", (FrameAnimation) Water.Clone());
+				targetAffinity.frames.Add("Earth", (FrameAnimation) Earth.Clone());
+				targetAffinity.frames.Add("Wind", (FrameAnimation) Wind.Clone());
+				targetAffinity.frames.Add("Holy", (FrameAnimation) Holy.Clone());
+				targetAffinity.frames.Add("Dark", (FrameAnimation) Dark.Clone());
+
+				currentType = new AffinityIcon(Content.Load<Texture2D>("UI/unitType"));
+				targetType = new AffinityIcon(Content.Load<Texture2D>("UI/unitType"));
+
+				currentType.frames.Add("Melee", (FrameAnimation) Fire.Clone());
+				currentType.frames.Add("Magic", (FrameAnimation) Ice.Clone());
+				currentType.frames.Add("Range", (FrameAnimation) Lightening.Clone());
+
+				targetType.frames.Add("Melee", (FrameAnimation)Fire.Clone());
+				targetType.frames.Add("Magic", (FrameAnimation)Ice.Clone());
+				targetType.frames.Add("Range", (FrameAnimation)Lightening.Clone());
 
 				_menuMove = Content.Load<SoundEffect>("Music/click");
 				_menuWrong = Content.Load<SoundEffect>("Music/wrong");
@@ -440,7 +451,7 @@ namespace TileEngine
 
                                                     //attack does nothing if there is no targetted unit or
                                                     //the targetted unit is dead or the current unit
-                                                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) && counter < 0 && !currentUnit.isAttacking && !targetUnit.isAttacking)
+                                                    if (Keyboard.GetState().IsKeyDown(Keys.Enter) && counter < 0 && !currentUnit.isAttacking && (targetUnit == null || !targetUnit.isBeingHit))
                                                     {
 														if (targetUnit != null && !targetUnit.faction.Equals(currentUnit.faction) && !targetUnit.isDead && currentUnit.withinRange(targetUnit)&&!unitBeingAttacked)
 														{
@@ -896,8 +907,8 @@ namespace TileEngine
 
                 spriteBatch.Begin();
 
-                currentIcon.currentAffinity = active.affinityName;
-                currentIcon.isDrawing = true;
+                currentAffinity.currentAffinity = active.affinityName;
+                currentAffinity.isDrawing = true;
 
                 int c1 = Engine.TILE_WIDTH / 2;
                 int c2;
@@ -916,9 +927,9 @@ namespace TileEngine
 
 
                 spriteBatch.Draw(mActive, new Rectangle(c1, c2, wid, hei), Color.White);
-                currentIcon.position.X = c1 + wid - 32;
-                currentIcon.position.Y = c2 - 5;
-                currentIcon.Draw(spriteBatch);
+                currentAffinity.position.X = c1 + wid - 32;
+                currentAffinity.position.Y = c2 - 5;
+                currentAffinity.Draw(spriteBatch);
 
                 spriteBatch.DrawString(font4, name, new Vector2(c1 + 45, c2 + 15), active.faction.color);
                 spriteBatch.DrawString(font5, fac, new Vector2(c1 + 100, c2 + 35), active.faction.color);
@@ -960,8 +971,8 @@ namespace TileEngine
 
                     spriteBatch.Begin();
 
-                    targetIcon.currentAffinity = target.affinityName;
-                    targetIcon.isDrawing = true;
+                    targetAffinity.currentAffinity = target.affinityName;
+                    targetAffinity.isDrawing = true;
 
                     int c1 = winWidth - winWidth / 3 - Engine.TILE_WIDTH / 2;
 
@@ -979,9 +990,9 @@ namespace TileEngine
                     int hei = winHeight / 4;
 
                     spriteBatch.Draw(mEnemy, new Rectangle(c1, c2, wid, hei), Color.White);
-                    targetIcon.position.X = c1 - 5;
-                    targetIcon.position.Y = c2 - 5;
-                    targetIcon.Draw(spriteBatch);
+                    targetAffinity.position.X = c1 - 5;
+                    targetAffinity.position.Y = c2 - 5;
+                    targetAffinity.Draw(spriteBatch);
                     
                     spriteBatch.DrawString(font4, name, new Vector2(c1 + 30, c2 + 15), tFac.color);
                     spriteBatch.DrawString(font5, tFac.name, new Vector2(c1 + 85, c2 + 35), tFac.color);

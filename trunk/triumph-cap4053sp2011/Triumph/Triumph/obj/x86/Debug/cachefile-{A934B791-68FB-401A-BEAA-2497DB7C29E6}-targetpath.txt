@@ -292,6 +292,7 @@ Content\Music\dodge.xnb
 Content\Music\hit.xnb
 Content\Music\wrong.xnb
 Content\Music\walking.xnb
+Content\UI\unitType.xnb
 Content\Layers\baseTiles.layer
 Content\Layers\alphaObjects.layer
 Content\Layers\Collision.layer
@@ -311,3 +312,4 @@ Content\Layers\outdoor_objs2.layer
 Content\Units\units.txt
 Content\Units\tempunits.txt
 Content\Units\abilities.txt
+Content\Units\factions.txt

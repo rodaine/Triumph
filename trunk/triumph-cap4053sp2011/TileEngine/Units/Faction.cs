@@ -46,11 +46,61 @@ namespace TileEngine
             this._owner = owner;
         }
 
+		public Faction(string name)
+		{
+			this._name = name;
+			this._owner = null;
+		}
+
         public Faction()
         {
             this._name = "";
             this._owner = null;
         }
+
+		public static Dictionary<string, Faction> fromFile(ContentManager content, string filename, Dictionary<string, BaseUnit> unitList)
+		{
+			Dictionary<string, Faction> output = new Dictionary<string, Faction>();
+
+			using (StreamReader reader = new StreamReader(filename))
+			{
+				bool startedFaction = false;
+				Faction faction = new Faction();
+				while (!reader.EndOfStream)
+				{
+					string line = reader.ReadLine().Trim();
+
+					if (string.IsNullOrEmpty(line))
+						continue;
+
+					if (line[0] == '[' && line[line.Length - 1] == ']')
+					{
+						if (startedFaction)
+						{
+							output.Add(faction.name, faction);
+						}
+
+						startedFaction = true;
+						faction = new Faction(line.Substring(1, line.Length - 2));
+					}
+					else
+					{
+						faction.addUnit(unitList[line]);
+					}
+
+
+
+				}
+				if (startedFaction)
+				{
+					output.Add(faction.name, faction);
+				}
+			}
+
+
+			return output;
+		}
+
         #endregion
 
         #region accessor
@@ -60,6 +110,7 @@ namespace TileEngine
         public string name
         {
             get { return _name; }
+			set { _name = value; }
         }
         /// <summary>
         /// gets the name of the owner
@@ -103,6 +154,23 @@ namespace TileEngine
                 _col = value;
             }
         }
+
+		public void addUnit(BaseUnit unit)
+		{
+			BaseUnit[] units;
+
+			if (_units == null)
+				units = new BaseUnit[1];
+			else
+			{
+				units = new BaseUnit[_units.Length + 1];
+				for (int i = 0; i < _units.Length; ++i)
+					units[i] = _units[i];
+			}
+			unit.faction = this;
+			units[units.Length - 1] = unit;
+			_units = units;
+		}
 
         /// <summary>
         /// Are all units of this faction defeated?
