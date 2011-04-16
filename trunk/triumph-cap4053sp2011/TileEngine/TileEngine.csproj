@@ -116,6 +116,7 @@
     <Compile Include="Tiles\TileLayer.cs" />
     <Compile Include="Tiles\TileMap.cs" />
     <Compile Include="Tiles\UnitLayer.cs" />
+    <Compile Include="Weather.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />

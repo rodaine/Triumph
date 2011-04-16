@@ -36,20 +36,21 @@ namespace TileEngine
         private List<Buff> itemsAndBuffs;
         private int unitAffinity;
         private static string[] affinities = { "Fire", "Ice", "Lightning", "Water", "Earth", "Wind", "Holy", "Dark" };
-        private static int[,] affinityMults = { { 100, 150, 100, 50, 50, 100, 100, 100},
+        private static int[,] affinityMults = {  { 100, 115, 100, 85, 115, 100, 100, 100},
+                                                 { 85, 100, 100, 115, 100, 100, 100, 100},
                                                  { 100, 150, 100, 50, 100, 100, 100, 100},
                                                  { 100, 150, 100, 50, 100, 100, 100, 100},
                                                  { 100, 150, 100, 50, 100, 100, 100, 100},
                                                  { 100, 150, 100, 50, 100, 100, 100, 100},
                                                  { 100, 150, 100, 50, 100, 100, 100, 100},
-                                                 { 100, 150, 100, 50, 100, 100, 100, 100},
-                                                 { 100, 150, 100, 50, 100, 100, 100, 100}};
+                                                 { 100, 150, 100, 50, 100, 100, 100, 115}};
 
         //info for updating unit after sprite is done attacking
         private int _dmgToBeTaken;
         private bool _wascrit;
         private BaseUnit _attacker;
-
+        private String _msg;
+        private Ability _prevAbility;
         private bool _isBeingHit;
 
 		//Sprite and Movement
@@ -592,6 +593,19 @@ namespace TileEngine
             
             return true;
         }
+
+
+        /// <summary>
+        /// modift unit with nonattacking ability
+        /// </summary>
+        /// <param name="modifier"></param>
+        /// <param name="ability"></param>
+        public void modify(BaseUnit modifier, Ability ability)
+        {
+            //store attackers info and ability
+            _attacker = modifier;
+            _prevAbility = ability;
+        }
         #endregion
 
         #region updates
@@ -668,13 +682,14 @@ namespace TileEngine
             {
                 if (!ability.isFriendly) return -1;
             }
+            if (!_moves.Contains(ability) || _AP - ability.APCost < 0 || _isAttacking) 
+                return -1;
 
             _AP -= ability.APCost;
             _hasAttacked = true;
             _isAttacking = true;
             _attackCD = 50;
-                
-            if (!_moves.Contains(ability) || _AP - ability.APCost < 0|| _isAttacking) return -1;
+            _unitSprite.attack(this, target);
             if (ability.abilityType == EffectTypes.damage)
             {
                 int dmg = _wAtk;
@@ -687,31 +702,10 @@ namespace TileEngine
                 System.Console.WriteLine("Damage from ability " + ability.name + ": " + dmg);
                 target.takeMagicDamage(dmg, ability.abilityAmount, this);
             }
-            else if (ability.abilityType == EffectTypes.decAP)
+            else
             {
-                target.AP -= ability.abilityAmount;
+                target.modify(this, ability);
             }
-            else if (ability.abilityType == EffectTypes.decMP)
-            {
-               target.MP -= ability.abilityAmount;
-            }
-            else if (ability.abilityType == EffectTypes.heal)
-            {
-                target.HP += ability.abilityAmount;
-            }
-            else if (ability.abilityType == EffectTypes.incAP)
-            {
-                target.AP += ability.abilityAmount;
-            }
-            else if (ability.abilityType == EffectTypes.incMP)
-            {
-                target.MP += ability.abilityAmount;
-            }
-            else if (ability.abilityType == EffectTypes.stun)
-            {
-                _stunLength = ability.abilityAmount;
-            }
-            else return -1;
             return 0;
         }
 
@@ -820,24 +814,66 @@ namespace TileEngine
 
             if (_attacker != null && !_attacker.isAttacking && !_isBeingHit)
             {
-                String msg;
+                String msg = "";
+                if (_prevAbility != null)
+                {
+                    if (_prevAbility.abilityType == EffectTypes.decAP)
+                    {
+                        this.AP -= _prevAbility.abilityAmount;
+                        msg = _attacker.name + " has used " + _prevAbility.name + "to reduce " + this.name + "'s AP by " + _prevAbility.abilityAmount;
+                    }
+                    else if (_prevAbility.abilityType == EffectTypes.decMP)
+                    {
+                        this.MP -= _prevAbility.abilityAmount;
+                        msg = _attacker.name + " has used " + _prevAbility.name + " to reduce " + this.name + "'s MP by " + _prevAbility.abilityAmount;
+                    }
+                    else if (_prevAbility.abilityType == EffectTypes.heal)
+                    {
+                        this.HP += _prevAbility.abilityAmount;
+                        msg = _attacker.name + " has used " + _prevAbility.name + " to heal " + this.name + " by " + _prevAbility.abilityAmount;
+                    }
+                    else if (_prevAbility.abilityType == EffectTypes.incAP)
+                    {
+                        this.AP += _prevAbility.abilityAmount;
+                        msg = _attacker.name + " has used " + _prevAbility.name + " to increase " + this.name + "'s AP by " + _prevAbility.abilityAmount;
+                    }
+                    else if (_prevAbility.abilityType == EffectTypes.incMP)
+                    {
+                        this.MP += _prevAbility.abilityAmount;
+                        msg = _attacker.name + " has used " + _prevAbility.name + " to increase " + this.name + "'s MP by " + _prevAbility.abilityAmount;
+                    }
+                    else if (_prevAbility.abilityType == EffectTypes.stun)
+                    {
+                        this._stunLength = _prevAbility.abilityAmount;
+                        this.isStunned = true;
+                        if(_prevAbility.abilityAmount != 1)
+                            msg = _attacker.name + " has used " + _prevAbility.name + " to stun " + this.name + " for " + _prevAbility.abilityAmount + " turns";
+                        else
+                        {
+                            msg = _attacker.name + " has used " + _prevAbility.name + " to stun " + this.name + " for " + _prevAbility.abilityAmount + " turn";
+                        }
+                    }
+                }
+                else
+                {
 
-				//Generate msg and perform animation
-				if (_wascrit)
-				{
-					msg = "Critical hit! " + _attacker.name + " has done " + _dmgToBeTaken + " damage to " + this.name;
-					_unitSprite.beCritHit(this, _attacker);
-				}
-				else if (_dmgToBeTaken == 0)
-				{
-					msg = _attacker.name + " has missed " + this.name;
-					_unitSprite.dodge(this, _attacker);
-				}
-				else
-				{
-					msg = _attacker.name + " has done " + _dmgToBeTaken + " damage to " + this.name;
-					_unitSprite.beHit(this, _attacker);
-				}
+                    //Generate msg and perform animation
+                    if (_wascrit)
+                    {
+                        msg = "Critical hit! " + _attacker.name + " has done " + _dmgToBeTaken + " damage to " + this.name;
+                        _unitSprite.beCritHit(this, _attacker);
+                    }
+                    else if (_dmgToBeTaken == 0)
+                    {
+                        msg = _attacker.name + " has missed " + this.name;
+                        _unitSprite.dodge(this, _attacker);
+                    }
+                    else
+                    {
+                        msg = _attacker.name + " has done " + _dmgToBeTaken + " damage to " + this.name;
+                        _unitSprite.beHit(this, _attacker);
+                    }
+                }
 
 				//Print msgs
                 if (_attacker.faction.name == "Faction 1")
@@ -846,7 +882,9 @@ namespace TileEngine
                     GameConsole.getInstanceOf().Update(msg, Color.Red);
 
                 _wascrit = false;
-
+                _attacker = null;
+                _prevAbility = null;
+                _dmgToBeTaken = 0;
                 this._isBeingHit = true;
             }
             
@@ -890,7 +928,7 @@ namespace TileEngine
 			unitSprite.position = new Vector2((float)goal.X * Engine.TILE_WIDTH, (float)goal.Y * Engine.TILE_HEIGHT);
 			_position = goal;
 			map.unitLayer.moveUnit(unitIndex, goal);
-		}
+		} 
 
 		#endregion
 
