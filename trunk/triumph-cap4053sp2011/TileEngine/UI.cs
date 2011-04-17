@@ -59,6 +59,7 @@ namespace TileEngine
 
             Texture2D tTimer;
             Texture2D wTimer;
+			Texture2D affinityMatrix;
 
             SpriteFont font, font2, font3, font4, font5, font6, font7, font8;
             SpriteFont experiment;
@@ -163,6 +164,8 @@ namespace TileEngine
 
 				unitList = units;
 				factionList = factions;
+
+				affinityMatrix = c.Load<Texture2D>("UI/affinityMatrix");
 
             }
 
