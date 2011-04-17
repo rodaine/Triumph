@@ -42,6 +42,7 @@ C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\G
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\TileEditor.exe
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\TileEditor.pdb
 C:\Users\TJ\Triumph\Triumph\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEditor.XML
+C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEditor.XML
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\bin\Debug\Content\cursor.png
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEditor.XML
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEditor.exe
@@ -57,4 +58,3 @@ C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Til
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\TileEditor.exe
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\TileEditor\obj\x86\Debug\TileEditor.pdb
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\TileEditor\bin\Debug\TileEditor.XML

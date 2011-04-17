@@ -73,6 +73,11 @@ namespace TileEngine
 			SoundEffect _menuCorrect;
 			SoundEffect _menuWrong;
 
+			Dictionary<string, BaseUnit> unitList;
+			Dictionary<string, Faction> factionList;
+
+			Faction faction1, faction2;
+
             int ab = 0;
 
             private float uiTimer = 0f, secondsPerOption = .13f;
@@ -81,9 +86,11 @@ namespace TileEngine
 
             bool hide = false;
 
+			public bool needsReset = false;
+
         #endregion
 
-            public void LoadContent(ContentManager c)
+            public void LoadContent(ContentManager c, Dictionary<string, BaseUnit> units, Dictionary<string, Faction> factions)
             {
                 Content = c;
 
@@ -150,14 +157,20 @@ namespace TileEngine
 				targetType.frames.Add("Magic", (FrameAnimation)Ice.Clone());
 				targetType.frames.Add("Range", (FrameAnimation)Lightening.Clone());
 
-
-
-
 				_menuMove = Content.Load<SoundEffect>("Music/click");
 				_menuWrong = Content.Load<SoundEffect>("Music/wrong");
 				_menuCorrect = Content.Load<SoundEffect>("Music/correct");
 
+				unitList = units;
+				factionList = factions;
+
             }
+
+			public void loadFactions(Faction playerFaction, Faction aiFaction)
+			{
+				faction1 = playerFaction;
+				faction2 = aiFaction;
+			}
 
             public bool readyToExit()
             {
@@ -774,6 +787,8 @@ namespace TileEngine
 									playCorrect();
                                     reset(testUnits, turnManager, currentUnit, map, ref inGame, playerFaction);
                                     mCurrentScreen = Screen.Title;
+									mCurrentOption = MenuOption.Move;
+									mCurrentPhase = Phase.Menu;
                                     uiTimer = 0;
                                 }
                             }
@@ -1330,30 +1345,17 @@ namespace TileEngine
 
 			private void reset(BaseUnit[] testUnits, TurnManager turnManager, BaseUnit currentUnit, TileMap map, ref bool inGame, Faction playerFaction)
 			{
-				int i = 0, j = 0;
-				foreach (BaseUnit unit in testUnits)
-				{
-					unit.HP = unit.maxHP;
-					unit.MP = unit.maxMP;
-					unit.AP = unit.maxAP;
-					unit.delay = 0;
-					unit.faction.numDead = 0;
 
-					if (unit.faction == playerFaction)
-					{
-						unit.unitSprite.currentAnimationName = "Down";
-						unit.randomPosition(new Point(20, 0), new Point(29, 9), map);
-						++i;
-					}
-					else
-					{
-						unit.unitSprite.currentAnimationName = "Up";
-						unit.randomPosition(new Point(8, 20), new Point(17, 29), map);
-						++j;
-					}
+				foreach (KeyValuePair<string, BaseUnit> unit in unitList)
+				{
+					unit.Value.HP = unit.Value.maxHP;
+					unit.Value.MP = unit.Value.maxMP;
+					unit.Value.AP = unit.Value.maxAP;
+					unit.Value.delay = 0;
+					unit.Value.faction.numDead = 0;
 				}
 
-				currentUnit.isDone = true;
+				needsReset = true;
                 GameConsole.getInstanceOf().reset();
 			}
 
