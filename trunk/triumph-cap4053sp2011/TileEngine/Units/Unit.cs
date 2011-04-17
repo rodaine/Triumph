@@ -540,7 +540,7 @@ namespace TileEngine
                     if (string.IsNullOrEmpty(line)) continue;
                     if (line.Contains("///")) continue;
                     string[] unitParams = line.Split(',');
-                    BaseUnit unit = new BaseUnit(unitParams[0].Trim(), int.Parse(unitParams[1].Trim()), int.Parse(unitParams[2].Trim()), int.Parse(unitParams[3].Trim()), int.Parse(unitParams[4].Trim()), int.Parse(unitParams[5].Trim()), int.Parse(unitParams[6].Trim()) * 9 / 10, int.Parse(unitParams[7].Trim()) * 3 / 2, int.Parse(unitParams[8].Trim()) * 9 / 10, int.Parse(unitParams[9].Trim()) * 3 / 2, int.Parse(unitParams[10].Trim()));
+                    BaseUnit unit = new BaseUnit(unitParams[0].Trim(), int.Parse(unitParams[1].Trim())*6/5, int.Parse(unitParams[2].Trim()), int.Parse(unitParams[3].Trim()), int.Parse(unitParams[4].Trim()), int.Parse(unitParams[5].Trim()), int.Parse(unitParams[6].Trim()) * 9 / 10, int.Parse(unitParams[7].Trim()) * 3 / 2, int.Parse(unitParams[8].Trim()) * 9 / 10, int.Parse(unitParams[9].Trim()) * 3 / 2, int.Parse(unitParams[10].Trim()));
 
                     for (int i = 12; i < unitParams.Length; ++i)
                     {

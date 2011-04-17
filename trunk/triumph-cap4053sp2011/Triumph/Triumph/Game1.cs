@@ -268,7 +268,7 @@ namespace Triumph
 			}
 
 			ui.loadFactions(faction1, faction2);
-
+            GameConsole.getInstanceOf().Update("You are playing as the " + faction1.name + " against the " + faction2.name, Color.Black);
 			turnManager = new TurnManager(testUnits);
 			currentUnit = turnManager.getNext();
 			cursor.location = currentUnit.position;
