@@ -14,22 +14,27 @@ namespace TileEngine
 {
     public class GameConsole
     {
-        public static GameConsole singleton;
-        string[] sm = new string[15];
-        Color[] colors = new Color[15];
-        int linesToPrint;
+        #region Game Console Objects
+            public static GameConsole singleton;
+            string[] sm = new string[15];
+            Color[] colors = new Color[15];
+            int linesToPrint;
 
-        Texture2D black;
-        Texture2D scroll;
-        Texture2D clock;
+            Texture2D black;
+            Texture2D scroll;
+            Texture2D clock;
 
-        SpriteFont arial9pt;
-        SpriteFont consolas;
+            SpriteFont arial9pt;
+            SpriteFont consolas;
 
-        bool changed = false;
+            AffinityIcon weather;
 
-        private double totalTimeInSeconds = 0;
-        int hr = 0, min = 0, sec = 0;        
+            bool changed = false;
+
+            private double totalTimeInSeconds = 0;
+            int hr = 0, min = 0, sec = 0;
+        #endregion
+
 
         /// <summary>
         /// returns a singleton of GameConsole
@@ -51,6 +56,15 @@ namespace TileEngine
 
             arial9pt = Content.Load<SpriteFont>("Console/arial9pt");
             consolas = Content.Load<SpriteFont>("Console/consolas");
+
+            weather = new AffinityIcon(Content.Load<Texture2D>("UI/weather"));
+
+            weather.frames.Add("Sunny", new FrameAnimation(1, 16, 16, 0, 0));
+            weather.frames.Add("Dark", new FrameAnimation(1, 16, 16, 16, 0));
+            weather.frames.Add("Snowy", new FrameAnimation(1, 16, 16, 32, 0));
+            weather.frames.Add("Rainy", new FrameAnimation(1, 16, 16, 48, 0));
+            weather.frames.Add("Cloudy", new FrameAnimation(1, 16, 16, 64, 0));
+            weather.frames.Add("Stormy", new FrameAnimation(1, 16, 16, 80, 0));
         }
 
         /// <summary>
@@ -176,8 +190,10 @@ namespace TileEngine
         {
             spriteBatch.Begin();
 
-            int c1 = winWidth / 2 - Engine.TILE_WIDTH;
-            int clockX = winWidth / 2 - Engine.TILE_WIDTH / 3;
+            int c1 = winWidth / 2 - Engine.TILE_WIDTH - Engine.TILE_WIDTH / 2;
+            int clockX = winWidth / 2 - ((3 * Engine.TILE_WIDTH) / 4);
+            int weatherX = winWidth / 2 + Engine.TILE_WIDTH;
+            int durationX = winWidth / 2 + ((7 * Engine.TILE_WIDTH) / 4);
             int c2, adj;
 
             if (bottom)
@@ -190,9 +206,9 @@ namespace TileEngine
                 c2 = Engine.TILE_HEIGHT / 8;
                 adj = 1;
             }
-            spriteBatch.Draw(black, new Rectangle(c1, c2, Engine.TILE_WIDTH * 2 + Engine.TILE_WIDTH / 4, Engine.TILE_HEIGHT / 2), new Color(1f, 1f, 1f, .4f));
+            spriteBatch.Draw(black, new Rectangle(c1, c2, Engine.TILE_WIDTH * 3 + Engine.TILE_WIDTH / 2, Engine.TILE_HEIGHT / 2), new Color(1f, 1f, 1f, .4f));
             spriteBatch.Draw(clock, new Rectangle(c1, c2 + adj, Engine.TILE_HEIGHT / 2, Engine.TILE_HEIGHT / 2), Color.White);
-
+            
             string h = "", m = "", s = "";
             if (hr < 10)
             {
@@ -211,6 +227,46 @@ namespace TileEngine
             s += sec.ToString();
 
             spriteBatch.DrawString(arial9pt, h + ":" + m + ":" + s, new Vector2(clockX, c2), Color.White);
+
+            switch (Weather.getInstance().currentWeather)
+            {
+                case(WeatherTypes.sunny):
+                    {
+                        weather.currentAffinity = "Sunny";
+                        break;
+                    }
+                case (WeatherTypes.stormy):
+                    {
+                        weather.currentAffinity = "Stormy";
+                        break;
+                    }
+                case (WeatherTypes.snowy):
+                    {
+                        weather.currentAffinity = "Snowy";
+                        break;
+                    }
+                case (WeatherTypes.rainy):
+                    {
+                        weather.currentAffinity = "Rainy";
+                        break;
+                    }
+                case (WeatherTypes.dark):
+                    {
+                        weather.currentAffinity = "Dark";
+                        break;
+                    }
+                case (WeatherTypes.cloudy):
+                    {
+                        weather.currentAffinity = "Cloudy";
+                        break;
+                    }
+            }
+            weather.isDrawing = true;
+            weather.position.X = weatherX;
+            weather.position.Y = c2;
+            weather.Draw(spriteBatch);
+
+            spriteBatch.DrawString(arial9pt, Weather.getInstance().duration.ToString(), new Vector2(durationX, c2), Color.White);
 
             spriteBatch.End();
         }

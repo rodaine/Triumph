@@ -21,6 +21,9 @@ namespace TileEngine
                 Main,
                 Pause,
                 Controls,
+                Affinity,
+                Weather,
+                Type,
                 End
             }
             Screen mCurrentScreen = Screen.Title;
@@ -57,12 +60,11 @@ namespace TileEngine
             Texture2D tTimer;
             Texture2D wTimer;
 
-            SpriteFont font, font2, font3, font4, font5, font6, font7;
+            SpriteFont font, font2, font3, font4, font5, font6, font7, font8;
             SpriteFont experiment;
 
 			AffinityIcon currentAffinity, targetAffinity;
 			AffinityIcon currentType, targetType;
-			AffinityIcon weather;
 
             ContentManager Content;
 
@@ -104,6 +106,7 @@ namespace TileEngine
                 font5 = Content.Load<SpriteFont>("UI/SpriteFont5");
                 font6 = Content.Load<SpriteFont>("UI/SpriteFont6");
                 font7 = Content.Load<SpriteFont>("UI/SpriteFont7");
+                font8 = Content.Load<SpriteFont>("UI/SpriteFont8");
                 experiment = Content.Load<SpriteFont>("UI/experimentation");
 
 				currentAffinity = new AffinityIcon(Content.Load<Texture2D>("UI/affinities"));
@@ -147,14 +150,7 @@ namespace TileEngine
 				targetType.frames.Add("Magic", (FrameAnimation)Ice.Clone());
 				targetType.frames.Add("Range", (FrameAnimation)Lightening.Clone());
 
-				weather = new AffinityIcon(Content.Load<Texture2D>("UI/weather"));
 
-				weather.frames.Add("Sunny", new FrameAnimation(1, 32, 32, 0, 0));
-				weather.frames.Add("Dark", new FrameAnimation(1, 32, 32, 32, 0));
-				weather.frames.Add("Snowy", new FrameAnimation(1, 32, 32, 64, 0));
-				weather.frames.Add("Rainy", new FrameAnimation(1, 32, 32, 96, 0));
-				weather.frames.Add("Cloudy", new FrameAnimation(1, 32, 32, 128, 0));
-				weather.frames.Add("Stormy", new FrameAnimation(1, 32, 32, 160, 0));
 
 
 				_menuMove = Content.Load<SoundEffect>("Music/click");
@@ -659,10 +655,66 @@ namespace TileEngine
                     #region Control List
                     case Screen.Controls:
                         {
-                            if (aKeyboardState.IsKeyDown(Keys.R) == true || aKeyboardState.IsKeyDown(Keys.Escape) == true)
+                            if (aKeyboardState.IsKeyDown(Keys.R) == true || aKeyboardState.IsKeyDown(Keys.Escape) == true || aKeyboardState.IsKeyDown(Keys.Back) == true)
                             {
 								playMove();
                                 mCurrentScreen = Screen.Pause;
+                            }
+
+                            if (aKeyboardState.IsKeyDown(Keys.A) == true)
+                            {
+                                playMove();
+                                mCurrentScreen = Screen.Affinity;
+                            }
+
+                            if (aKeyboardState.IsKeyDown(Keys.W) == true)
+                            {
+                                playMove();
+                                mCurrentScreen = Screen.Weather;
+                            }
+
+                            if (aKeyboardState.IsKeyDown(Keys.T) == true)
+                            {
+                                playMove();
+                                mCurrentScreen = Screen.Type;
+                            }
+                            break;
+                        }
+                    #endregion
+
+                    #region Symbols
+                    case Screen.Affinity:
+                    case Screen.Weather:
+                    case Screen.Type:
+                        {
+                            if (aKeyboardState.IsKeyDown(Keys.R) == true || aKeyboardState.IsKeyDown(Keys.Escape) == true)
+                            {
+                                playMove();
+                                mCurrentScreen = Screen.Pause;
+                            }
+
+                            if (aKeyboardState.IsKeyDown(Keys.Back) == true || aKeyboardState.IsKeyDown(Keys.C) == true)
+                            {
+                                playMove();
+                                mCurrentScreen = Screen.Controls;
+                            }
+
+                            if (aKeyboardState.IsKeyDown(Keys.T) == true)
+                            {
+                                playMove();
+                                mCurrentScreen = Screen.Type;
+                            }
+
+                            if (aKeyboardState.IsKeyDown(Keys.A) == true)
+                            {
+                                playMove();
+                                mCurrentScreen = Screen.Affinity;
+                            }
+
+                            if (aKeyboardState.IsKeyDown(Keys.W) == true)
+                            {
+                                playMove();
+                                mCurrentScreen = Screen.Weather;
                             }
                             break;
                         }
@@ -866,6 +918,17 @@ namespace TileEngine
                             spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2, winHeight / 4 + 6 * offset), Color.White);
 
                             spriteBatch.End();
+                            break;
+                        }
+                    #endregion
+
+                    #region Symbols
+                    case Screen.Affinity:
+                    case Screen.Type:
+                    case Screen.Weather:
+                        {
+                            map.draw(spriteBatch, camera);
+                            drawSymbols(spriteBatch, winHeight, winWidth);
                             break;
                         }
                     #endregion
@@ -1166,6 +1229,25 @@ namespace TileEngine
                 spriteBatch.DrawString(font6, "AP : " + active.moves[ab].APCost + " || Rng : " + active.moves[ab].attackRange, new Vector2(winWidth / 2 - 3 * ("AP : " + active.moves[ab].APCost + " || Rng : " + active.moves[ab].attackRange).Length, c2 + 60), Color.Black);                
 
                 spriteBatch.End();
+            }
+
+            private void drawSymbols(SpriteBatch spriteBatch, int winHeight, int winWidth)
+            {
+                switch (mCurrentScreen)
+                {
+                    case Screen.Affinity:
+                        {
+                            break;
+                        }
+                    case Screen.Type:
+                        {
+                            break;
+                        }
+                    case Screen.Weather:
+                        {
+                            break;
+                        }
+                }
             }
 
 			private void reset(BaseUnit[] testUnits, TurnManager turnManager, BaseUnit currentUnit, TileMap map, ref bool inGame, Faction playerFaction)

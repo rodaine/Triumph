@@ -284,6 +284,7 @@ Content\UI\SpriteFont4.xnb
 Content\UI\SpriteFont5.xnb
 Content\UI\SpriteFont6.xnb
 Content\UI\SpriteFont7.xnb
+Content\UI\SpriteFont8.xnb
 Content\Music\POL-battle-march-long.xnb
 Content\Music\attack.xnb
 Content\Music\click.xnb
