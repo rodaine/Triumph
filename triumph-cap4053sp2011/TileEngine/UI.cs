@@ -297,7 +297,7 @@ namespace TileEngine
                                                                 if (aKeyboardState.IsKeyDown(Keys.S))
                                                                 {
 																	playMove();
-                                                                    if (currentUnit.AP != 0)
+                                                                    if (currentUnit.canAbility())
                                                                         mCurrentOption = MenuOption.Ability;
                                                                     else
                                                                         mCurrentOption = MenuOption.EndTurn;
@@ -360,8 +360,10 @@ namespace TileEngine
                                                                 if (aKeyboardState.IsKeyDown(Keys.W))
                                                                 {
 																	playMove();
-                                                                    if (currentUnit.AP != 0)
+                                                                    if (currentUnit.canAbility())
                                                                         mCurrentOption = MenuOption.Ability;
+                                                                    else if (currentUnit.AP != 0)
+                                                                        mCurrentOption = MenuOption.Attack;
                                                                     else if (currentUnit.MP != 0)
                                                                         mCurrentOption = MenuOption.Move;
                                                                     else
@@ -513,7 +515,7 @@ namespace TileEngine
                                                         uiTimer = 0;
                                                     }
 
-                                                    if (aKeyboardState.IsKeyDown(Keys.Back) == true)
+                                                    if (aKeyboardState.IsKeyDown(Keys.Back) == true || !currentUnit.canAbility())
                                                     {
 														playMove();
                                                         range.isDrawing = false;
@@ -592,13 +594,20 @@ namespace TileEngine
                                                     {
 														playMove();
                                                         range.isDrawing = false;
-                                                        mCurrentPhase = Phase.Menu;
-                                                        if (currentUnit.MP != 0)
-                                                            mCurrentOption = MenuOption.Move;
-                                                        else if (currentUnit.AP != 0)
-                                                            mCurrentOption = MenuOption.Attack;
+                                                        if (currentUnit.canAbility())
+                                                        {
+                                                            mCurrentPhase = Phase.AbilityList;
+                                                        }
                                                         else
-                                                            mCurrentOption = MenuOption.EndTurn;
+                                                        {
+                                                            mCurrentPhase = Phase.Menu;
+                                                            if (currentUnit.MP != 0)
+                                                                mCurrentOption = MenuOption.Move;
+                                                            else if (currentUnit.AP != 0)
+                                                                mCurrentOption = MenuOption.Attack;
+                                                            else
+                                                                mCurrentOption = MenuOption.EndTurn;
+                                                        }
 
                                                         uiTimer = 0;
                                                     }
@@ -817,13 +826,15 @@ namespace TileEngine
                                         m = 1;
                                         if (currentUnit.AP != 0)
                                         {
-                                            ab = 2;
+                                            if (currentUnit.canAbility())
+                                                ab = 2;
                                             at = 2;
                                         }
                                         break;
                                     case(MenuOption.Attack):
                                         at = 1;
-                                        ab = 2;
+                                        if (currentUnit.canAbility())
+                                            ab = 2;
                                         if (currentUnit.MP != 0)
                                         {
                                             m = 2;
@@ -844,7 +855,8 @@ namespace TileEngine
                                         if (currentUnit.AP != 0)
                                         {
                                             at = 2;
-                                            ab = 2;
+                                            if (currentUnit.canAbility())
+                                                ab = 2;
                                         }
                                         break;
                                 }
