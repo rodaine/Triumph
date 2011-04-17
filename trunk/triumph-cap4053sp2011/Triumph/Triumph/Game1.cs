@@ -52,28 +52,6 @@ namespace Triumph
         protected override void Initialize()
         {
             base.Initialize();
-			//faction1Units = new BaseUnit[5];
-			//faction2Units = new BaseUnit[5];
-			//faction1Units[0] = unitList["Artic Hoplite"];
-			//faction1Units[1] = unitList["Branchslinger"];
-			//faction1Units[2] = unitList["City Guard"];
-			//faction1Units[3] = unitList["Moonshiner"];
-			//faction1Units[4] = unitList["Aqua Soldier"];
-			//faction2Units[0] = unitList["Rock Smasher"];
-			//faction2Units[1] = unitList["Scorcher"];
-			//faction2Units[2] = unitList["Leviathan"];
-			//faction2Units[3] = unitList["Goliath"];
-			//faction2Units[4] = unitList["Cronos"];
-			//testUnits = new BaseUnit[10];
-			//faction1 = new Faction("Faction 1", new Player("Player 1", faction1), faction1Units);
-			//faction1.color = Color.Blue;
-			//faction2 = new Faction("Faction 2", new Player("Player 2", faction2), faction2Units);
-			//faction2.color = Color.Red;
-			//for (int i = 0; i < faction1Units.Length; i++)
-			//{
-			//    testUnits[i] = faction1Units[i];
-			//    testUnits[i + faction1Units.Length] = faction2Units[i];
-			//}
 
 			faction1 = factionList["Dankelites"];
 			faction1.color = Color.Blue;

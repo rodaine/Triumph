@@ -72,6 +72,7 @@ namespace TileEngine
                 }
             }
             Weather.getInstance().tick();
+			GameConsole.getInstanceOf().Update("It's " + units[getMax()].name + "'s turn!", units[getMax()].faction.color);
             return units[getMax()];
         }
 

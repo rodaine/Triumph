@@ -512,6 +512,7 @@ namespace TileEngine
 
                                                         range.clearPoints();
                                                         range.addPoints(map.attackPoints(currentUnit, currentUnit.moves[ab].attackRange, currentUnit.moves[ab].isFriendly, currentUnit.moves[ab].isHostile, currentUnit.moves[ab].isSelf));
+														range.isDrawing = true;
 
                                                         uiTimer = 0;
                                                     }
