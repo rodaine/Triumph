@@ -170,7 +170,7 @@ namespace TileEngine
 		/// <param name="map">TileMap passed from the game</param>
 		/// <param name="maxDistance">Maximum allowed walking distance</param>
 		/// <returns></returns>
-		public bool goToTile(BaseUnit unit, Point goal, TileMap map, int maxDistance)
+		public bool goToTile(BaseUnit unit, Point goal, TileMap map, int maxDistance, Camera camera)
 		{
 			if (_isMoving || _isAttacking || _isDodging || _isHit) return false;
 
@@ -185,6 +185,7 @@ namespace TileEngine
 			SFX = _walking.CreateInstance();
 			SFX.IsLooped = false;
 			SFX.Volume = 1f;
+			camera.setFocus(unit);
 			return true;
 		}
 
@@ -385,17 +386,17 @@ namespace TileEngine
 		/// </summary>
 		/// <param name="gameTime">GameTime passed from the game</param>
 		/// <param name="map">TileMap currently being drawn in the viewport</param>
-		public void update(GameTime gameTime, TileMap map)
+		public void update(GameTime gameTime, TileMap map, Camera camera)
 		{
 			updateAttacking();
 			updateHit(gameTime);
 			updateCrit(gameTime);
 			updateDodge();
-			updateWalking(map);
+			updateWalking(map, camera);
 			updateAnimation(gameTime);
 		}
 
-		private void updateWalking(TileMap map)
+		private void updateWalking(TileMap map, Camera camera)
 		{
 			if (!_isMoving) return;
 
@@ -410,6 +411,7 @@ namespace TileEngine
 				if (path.Count == 0)
 				{
 					_isMoving = false;
+					camera.toggleFocus();
 					SFX.Stop();
 				}
 				else

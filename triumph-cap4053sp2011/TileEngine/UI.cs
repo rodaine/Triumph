@@ -398,7 +398,7 @@ namespace TileEngine
 
                                                     if (Keyboard.GetState().IsKeyDown(Keys.Enter) && !currentUnit.isWalking)
                                                     {
-														if (currentUnit.goToTile(Engine.convertPositionToTile(cursor.position), map))
+														if (currentUnit.goToTile(Engine.convertPositionToTile(cursor.position), map, camera))
 															playCorrect();
 														else
 															playWrong();
@@ -610,7 +610,7 @@ namespace TileEngine
 
                                     foreach (BaseUnit unit in testUnits)
                                     {
-                                        unit.update(gameTime, map);
+                                        unit.update(gameTime, map, camera);
                                     }
 
                                     bool canMove = !currentUnit.isAttacking && !currentUnit.isWalking && !unitBeingAttacked;

@@ -12,9 +12,10 @@ namespace TileEngine
     {
 
 		private float _speed = 5f;   
-  		private bool _isFocused = false;
-		private Cursor focus;      
-		
+  		private bool _isFocusedCursor = false, _isFocusedUnit = false;
+		private Cursor cursorFocus;
+		private BaseUnit unitFocus;
+
 		/// <summary>
 		/// The position (in pixels) of the camera
 		/// </summary>
@@ -42,7 +43,7 @@ namespace TileEngine
 		/// </summary>
 		public bool isFocused
 		{
-			get { return _isFocused; }
+			get { return _isFocusedCursor || _isFocusedUnit; }
 		}
 
 		/// <summary>
@@ -52,8 +53,24 @@ namespace TileEngine
 		/// <remarks>When focused, the Camera cannot be controlled by the keyboard.</remarks>
 		public void setFocus(Cursor focusCursor)
 		{
-			focus = focusCursor;
-			_isFocused = true;
+			cursorFocus = focusCursor;
+			_isFocusedCursor = true;
+			_isFocusedUnit = false;
+		}
+
+		public void setFocus(BaseUnit focusUnit)
+		{
+			unitFocus = focusUnit;
+			_isFocusedUnit = true;
+			_isFocusedCursor = false;
+		}
+
+		public void toggleFocus()
+		{
+			if (cursorFocus != null)
+				_isFocusedCursor = !_isFocusedCursor;
+			if (unitFocus != null)
+				_isFocusedUnit = !_isFocusedUnit;
 		}
 
 		/// <summary>
@@ -62,8 +79,10 @@ namespace TileEngine
 		/// <remarks>The camera will reobtain keyboard functionality</remarks>
 		public void unsetFocus()
 		{
-			focus = null;
-			_isFocused = false;
+			unitFocus = null;
+			cursorFocus = null;
+			_isFocusedUnit = false;
+			_isFocusedCursor = false;
 		}
 
 		/// <summary>
@@ -96,14 +115,28 @@ namespace TileEngine
 			}
 			else
 			{
-				position.X =
-				    focus.position.X +
-					(focus.currentAnimation.currentFrame.Width / 2) -
-				    (screenWidth / 2);
-				position.Y =
-					focus.position.Y +
-					(focus.currentAnimation.currentFrame.Height / 2) -
-				    (screenHeight / 2);
+				if (_isFocusedCursor)
+				{
+					position.X =
+						cursorFocus.position.X +
+						(cursorFocus.currentAnimation.currentFrame.Width / 2) -
+						(screenWidth / 2);
+					position.Y =
+						cursorFocus.position.Y +
+						(cursorFocus.currentAnimation.currentFrame.Height / 2) -
+						(screenHeight / 2);
+				}
+				else if (_isFocusedUnit)
+				{
+					position.X =
+						unitFocus.unitSprite.position.X +
+						(Engine.TILE_WIDTH / 2) -
+						(screenWidth / 2);
+					position.Y =
+						unitFocus.unitSprite.position.Y +
+						(Engine.TILE_HEIGHT / 2) -
+						(screenHeight / 2);
+				}
 			}
 
 			clampToArea(map.getWidthInPixels() - screenWidth, map.getHeightInPixels() - screenHeight);
