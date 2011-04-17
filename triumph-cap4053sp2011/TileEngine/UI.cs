@@ -1222,13 +1222,50 @@ namespace TileEngine
 
                 spriteBatch.Draw(mMenu, new Rectangle(c1, c2, winWidth / 3 - Engine.TILE_WIDTH * 2, winHeight / 4), Color.White);
 
-                spriteBatch.DrawString(font6, "W", new Vector2(c1 + (winWidth/3 - Engine.TILE_WIDTH * 2) / 2, c2 + 10), Color.Black);
-                spriteBatch.DrawString(font6, "S", new Vector2(c1 + (winWidth / 3 - Engine.TILE_WIDTH * 2) / 2, c2 + winHeight / 4 - 30), Color.Black);
+                //spriteBatch.DrawString(font8, "W", new Vector2(c1 + (winWidth/3 - Engine.TILE_WIDTH * 2) / 2, c2 + 10), Color.Black);
+                //spriteBatch.DrawString(font8, "S", new Vector2(c1 + (winWidth / 3 - Engine.TILE_WIDTH * 2) / 2, c2 + winHeight / 4 - 30), Color.Black);
 
-                spriteBatch.DrawString(font6, active.moves[ab].name, new Vector2(winWidth / 2 - 3* (active.moves[ab].name.Length), c2 + 35), Color.Black);
-                spriteBatch.DrawString(font6, "AP : " + active.moves[ab].APCost + " || Rng : " + active.moves[ab].attackRange, new Vector2(winWidth / 2 - 3 * ("AP : " + active.moves[ab].APCost + " || Rng : " + active.moves[ab].attackRange).Length, c2 + 60), Color.Black);                
+                spriteBatch.DrawString(font, active.moves[ab].name, new Vector2(winWidth / 2 - 5 * (active.moves[ab].name.Length), c2 + 15), Color.Green);
+
+                int offset = 12;
+                int textX = c1 + 30;
+                int textY = c2 + 35;
+                //use font 8
+                //4 lines of 20 characters for 80 characters
+
+                printByWord(spriteBatch, active.moves[ab].description, textX, textY, offset);
+
+                spriteBatch.DrawString(font6, "AP : " + active.moves[ab].APCost + " || Rng : " + active.moves[ab].attackRange, new Vector2(winWidth / 2 - 3 * ("AP : " + active.moves[ab].APCost + " || Rng : " + active.moves[ab].attackRange).Length, c2 + 85), Color.Green);                
 
                 spriteBatch.End();
+            }
+
+            public void printByWord(SpriteBatch spriteBatch, String message, int x, int y, int offset)
+            {
+                List<String> ret = new List<string>();
+                String[] words = message.Split(' ');
+                String curLine = words[0];
+
+                for (int i = 1; i < words.Length; i++)
+                {
+                    if (curLine.Length + 1 + words[i].Length > 20)//change this value if you going to use this method for different sized boxes
+                    {
+                        ret.Add(curLine);
+                        curLine = words[i];
+                    }
+                    else
+                    {
+                        curLine = curLine + " " + words[i];
+                    }
+                }
+
+                if (curLine != "")
+                    ret.Add(curLine);
+
+                for (int i = 0; i < ret.Count; i++)
+                {
+                    spriteBatch.DrawString(font8, ret[i], new Vector2(x, y + i * offset), Color.Black);   
+                }
             }
 
             private void drawSymbols(SpriteBatch spriteBatch, int winHeight, int winWidth)
