@@ -33,5 +33,5 @@ Spellweaver     , 52 , 3, 5 , 110, 6, 24 , 70 , 78, 98 , 2 , Sprites/wmg1, Shado
 Nightcrawler    , 60 , 4, 8 , 90 , 5, 26 , 74 , 66, 88 , 2 , Sprites/wmn3, Stone-Chuck	, Cleansing-Spore
 Doombringer     , 64 , 3, 6 , 80 , 0, 86 , 72 , 0 , 72 , 1 , Sprites/mst1, Ember-Kick	, Shimmering-Armor
 Bloodbeast      , 58 , 2, 8 , 70 , 5, 88 , 80 , 0 , 74 , 1 , Sprites/spd1, Moonlight-Chomp, Battle-Fatigue
-Paladin         , 64 , 4, 7 , 100, 1, 98 , 90 , 0 , 76 , 1 , Sprites/pdn1, Ice-Dagger	, Frost-Punch
+Paladin         , 64 , 2, 7 , 100, 1, 93 , 90 , 0 , 76 , 1 , Sprites/pdn1, Ice-Dagger	, Frost-Punch
 Octomom         , 48 , 2, 8 , 80 , 2, 88 , 86 , 0 , 70 , 1 , Sprites/wnv1, Guard	, Rapid-Strike
