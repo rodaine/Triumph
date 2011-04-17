@@ -617,7 +617,6 @@ C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\De
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Music\wrong.xnb
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Music\walking.xnb
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Units\abilities.txt
-C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Triumph.XML
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\UI\unitType.xnb
 C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Content\Units\factions.txt
 C:\Users\Cassie\Documents\Visual Studio 2010\Projects\Triumph\Triumph\Triumph\bin\x86\Debug\Content\UI\unitType.xnb
@@ -765,3 +764,4 @@ C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Tri
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\obj\x86\Debug\Triumph.exe
 C:\Users\Rodaine\Documents\Visual Studio 2010\Projects\triumph-cap4053sp2011\Triumph\Triumph\obj\x86\Debug\Triumph.pdb
+C:\Users\Cheran\Desktop\Triumph\triumph-cap4053sp2011\Triumph\Triumph\bin\x86\Debug\Triumph.XML
