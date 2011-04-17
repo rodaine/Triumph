@@ -4,6 +4,289 @@
         <name>TileEngine</name>
     </assembly>
     <members>
+        <member name="M:TileEngine.Weather.#ctor">
+            <summary>
+            creates a new weather class
+            </summary>
+        </member>
+        <member name="M:TileEngine.Weather.tick">
+            <summary>
+            ticks weather
+            </summary>
+        </member>
+        <member name="M:TileEngine.Weather.getInstance">
+            <summary>
+            gets singleton of weather
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:TileEngine.Weather.duration">
+            <summary>
+            gets the time until weather changes
+            </summary>
+        </member>
+        <member name="P:TileEngine.Weather.currentWeather">
+            <summary>
+            gets the current weather
+            </summary>
+        </member>
+        <member name="T:TileEngine.Camera">
+            <summary>
+            Describes the view of the map visible through the game's viewport
+            </summary>
+        </member>
+        <member name="F:TileEngine.Camera.position">
+            <summary>
+            The position (in pixels) of the camera
+            </summary>
+        </member>
+        <member name="M:TileEngine.Camera.setFocus(TileEngine.Cursor)">
+            <summary>
+            Sets the camera to follow around a particular AnimatedSprite
+            </summary>
+            <param name="focusCursor">The AnimatedSprite the camera should follow</param>
+            <remarks>When focused, the Camera cannot be controlled by the keyboard.</remarks>
+        </member>
+        <member name="M:TileEngine.Camera.unsetFocus">
+            <summary>
+            Unsets the focus of the camera
+            </summary>
+            <remarks>The camera will reobtain keyboard functionality</remarks>
+        </member>
+        <member name="M:TileEngine.Camera.update(System.Int32,System.Int32,TileEngine.TileMap)">
+            <summary>
+            Updates the camera location with respect to its focus, the viewport, and the current TileMap
+            </summary>
+            <param name="screenWidth">Integer width in pixels of the viewport</param>
+            <param name="screenHeight">Integer height in pixels of the viewport</param>
+            <param name="map">The TileMap currently being rendered in the viewport</param>
+        </member>
+        <member name="M:TileEngine.Camera.clampToArea(System.Int32,System.Int32)">
+            <summary>
+            Clamps the camera to only move within a specific area
+            </summary>
+            <param name="width">Width in pixels of the area the camera can move</param>
+            <param name="height">Height in pixels of the area the camera can move</param>
+        </member>
+        <member name="P:TileEngine.Camera.speed">
+            <summary>
+            Get or set the speed (pixels per update) of the camera motion
+            </summary>
+        </member>
+        <member name="P:TileEngine.Camera.transformationMatrix">
+            <summary>
+            Get the Matrix used to shift the position of the camera relative to the map
+            </summary>
+            <remarks>More accurately, the Matrix shifts the map to the camera location in the viewport</remarks>
+        </member>
+        <member name="P:TileEngine.Camera.isFocused">
+            <summary>
+            Returns whether or not the camera is focused on a particular Animated Sprite
+            </summary>
+        </member>
+        <member name="M:TileEngine.AI.startNextTurn">
+            <summary>
+            Initializes all the flags for the next turn
+            </summary>
+        </member>
+        <member name="M:TileEngine.AI.chooseMoveIntoRange(TileEngine.BaseUnit,TileEngine.TileMap,TileEngine.BaseUnit[])">
+            <summary>
+            Should be run on the AI's first update after its turn starts. Chooses a target
+            </summary>
+            <param name="currentUnit">The AI unit whose turn it is</param>
+            <param name="map">The game map</param>
+            <param name="testUnits">All the units on the map</param>
+            <returns>True if a target was found, false otherwise</returns>
+        </member>
+        <member name="M:TileEngine.AI.chooseAttackTarget(TileEngine.BaseUnit,TileEngine.TileMap,TileEngine.BaseUnit[])">
+            <summary>
+            Chooses who to attack from the set of units in attack range
+            </summary>
+            <param name="currentUnit"></param>
+            <param name="map"></param>
+            <param name="testUnits"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TileEngine.AI.determineMostPrudentAbility(TileEngine.BaseUnit,TileEngine.TileMap,TileEngine.BaseUnit[])">
+            <summary>
+            Figures out which ability is the best to be used from this spot.
+            </summary>
+            <param name="currentUnit"></param>
+            <param name="map"></param>
+            <param name="testUnits"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TileEngine.AI.update(Microsoft.Xna.Framework.GameTime,TileEngine.BaseUnit,TileEngine.Cursor,TileEngine.TileMap,System.Int32,System.Int32,TileEngine.BaseUnit[],TileEngine.Camera,System.Boolean)">
+            <summary>
+            AI tells the current unit what to do
+            </summary>
+            <param name="gameTime">Current gametime</param>
+            <param name="currentUnit">The unit whose turn it is</param>
+            <param name="cursor">The cursor</param>
+            <param name="map">The map</param>
+            <param name="viewWidth">The width of the viewport</param>
+            <param name="viewHeight">The height of the viewport</param>
+            <param name="testUnits">The list of all units</param>
+            <param name="camera">The current camera</param>
+        </member>
+        <member name="T:TileEngine.AffinityIcon">
+            <summary>
+            Defines the affinity icon object for drawing unit affinities in the UI
+            </summary>
+        </member>
+        <member name="F:TileEngine.AffinityIcon.frames">
+            <summary>
+            List of affinity frames
+            </summary>
+        </member>
+        <member name="F:TileEngine.AffinityIcon.isDrawing">
+            <summary>
+            Get or set whether or not to draw the affinity icons on screen
+            </summary>
+        </member>
+        <member name="F:TileEngine.AffinityIcon.position">
+            <summary>
+            The position of the icon relative to the viewport
+            </summary>
+        </member>
+        <member name="M:TileEngine.AffinityIcon.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+            Create an AffinityIcon object
+            </summary>
+            <param name="icons">Sprite map of icons</param>
+        </member>
+        <member name="M:TileEngine.AffinityIcon.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Draw the icon onscreen
+            </summary>
+            <param name="batch">Sprite Batch used to render the icon</param>
+        </member>
+        <member name="P:TileEngine.AffinityIcon.currentAffinity">
+            <summary>
+            Get or set the current affinity 
+            </summary>
+        </member>
+        <member name="T:TileEngine.Engine">
+            <summary>
+            Describes global Tile Engine constants and static methods used throughout the project
+            </summary>
+        </member>
+        <member name="F:TileEngine.Engine.TILE_WIDTH">
+            <summary>
+            Width in pixels of a tile rendered on the map
+            </summary>
+        </member>
+        <member name="F:TileEngine.Engine.TILE_HEIGHT">
+            <summary>
+            Height in pixels of a tile rendered on the map
+            </summary>
+        </member>
+        <member name="T:TileEngine.CollisionLayer">
+            <summary>
+            Describes a collision map layer
+            </summary>
+        </member>
+        <member name="M:TileEngine.CollisionLayer.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Creates an empty Collision Layer with specified dimensions
+            </summary>
+            <param name="width">Integer width (x-direction) of layer</param>
+            <param name="height">Integer height (y-direction) of layer</param>
+        </member>
+        <member name="M:TileEngine.CollisionLayer.fromFile(System.String)">
+            <summary>
+            Performs the IO on a .layer file to obtain a saved Collision Layer used by both fromFile() methods
+            </summary>
+            <param name="filename">Path (relative or absolute) to the .layer file</param>
+            <returns>New Collision Layer</returns>
+        </member>
+        <member name="M:TileEngine.CollisionLayer.setTileCollisionIndex(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Set a particular tile's collision index
+            </summary>
+            <param name="x">0-Based x-direction tile location</param>
+            <param name="y">0-Based y-direction tile location</param>
+            <param name="tileIndex">0-Based collision index; else, -1 for an empty tile</param>
+        </member>
+        <member name="M:TileEngine.CollisionLayer.setTileCollisionIndex(Microsoft.Xna.Framework.Point,System.Int32)">
+            <summary>
+            Set a particular tile's collision index
+            </summary>
+            <param name="point">Point specifying the location of the tile</param>
+            <param name="tileIndex">0-Based collision index; else, -1 for an empty tile</param>
+        </member>
+        <member name="M:TileEngine.CollisionLayer.getTileCollisionIndex(System.Int32,System.Int32)">
+            <summary>
+            Get the collision index at a particular tile
+            </summary>
+            <param name="x">0-Based x-direction tile location</param>
+            <param name="y">0-Based y-direction tile location</param>
+            <returns>0-Based collision index; else, -1 for an empty tile or -2 if x/y out of range</returns>
+        </member>
+        <member name="M:TileEngine.CollisionLayer.getTileCollisionIndex(Microsoft.Xna.Framework.Point)">
+            <summary>
+            Get the collision index at a particular tile
+            </summary>
+            <param name="point">Point specifying the location of the tile</param>
+            <returns>0-Based collision index; else, -1 for an empty tile or -2 if x/y out of range</returns>
+        </member>
+        <member name="P:TileEngine.CollisionLayer.widthInTiles">
+            <summary>
+            Returns the width in tiles of the Tile Layer
+            </summary>
+        </member>
+        <member name="P:TileEngine.CollisionLayer.heightInTiles">
+            <summary>
+            Returns the height in tiles of the Tile Layer
+            </summary>
+        </member>
+        <member name="P:TileEngine.Ability.name">
+            <summary>
+            gets the name of the ability
+            </summary>
+        </member>
+        <member name="P:TileEngine.Ability.description">
+            <summary>
+            gets the description of the ability
+            </summary>
+        </member>
+        <member name="P:TileEngine.Ability.APCost">
+            <summary>
+            gets the apcost of the ability
+            </summary>
+        </member>
+        <member name="P:TileEngine.Ability.attackRange">
+            <summary>
+            gets the attackRange of the ability
+            </summary>
+        </member>
+        <member name="P:TileEngine.Ability.abilityType">
+            <summary>
+            gets the abiltiy type of the ability
+            </summary>
+        </member>
+        <member name="P:TileEngine.Ability.abilityAmount">
+            <summary>
+            gets the abilityamount of the ability
+            It is the flat amount for ap/mp modifiers and heals
+            it is a percentage for damage abilities
+            </summary>
+        </member>
+        <member name="P:TileEngine.Ability.isHostile">
+            <summary>
+            gets if this ability can target hostile units
+            </summary>
+        </member>
+        <member name="P:TileEngine.Ability.isFriendly">
+            <summary>
+            gets if this ability can target friendly units
+            </summary>
+        </member>
+        <member name="P:TileEngine.Ability.isSelf">
+            <summary>
+            gets if this ability can target self
+            </summary>
+        </member>
         <member name="T:TileEngine.UnitLayer">
             <summary>
             Describes a unit map layer
@@ -47,31 +330,248 @@
             Returns the height in tiles of the Unit Layer
             </summary>
         </member>
-        <member name="M:TileEngine.Weather.#ctor">
+        <member name="T:TileEngine.FrameAnimation">
             <summary>
-            creates a new weather class
+            Describes the frame animation used by a sprite.
+            This object does not contain the textures, just the rectangles used to pull frames out of them.
+            </summary>
+            <remarks>With this current model, frames must be located on the same line horizontally in the texture to render.</remarks>
+        </member>
+        <member name="M:TileEngine.FrameAnimation.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a new Frame Animation 
+            </summary>
+            <param name="frameCount">Number of frames in the animation</param>
+            <param name="frameWidth">Width in pixels of the frame rectangle</param>
+            <param name="frameHeight">Height in pixels of the frame rectangle</param>
+            <param name="xOffset">Offset in pixels in the x-direction of the first frame from the top-left corner of the texture</param>
+            <param name="yOffset">Offset in pixels in the y-direction of the first frame from the top-left corner of the texture</param>
+        </member>
+        <member name="M:TileEngine.FrameAnimation.Clone">
+            <summary>
+            Clones the FrameAnimation
+            </summary>
+            <returns>Copy of the FrameAnimation</returns>
+            <remarks>Frames are not cloned to conserve memory</remarks>
+        </member>
+        <member name="M:TileEngine.FrameAnimation.update(Microsoft.Xna.Framework.GameTime)">
+            <summary>
+            Updates the current frame based on elapsed game time since the last update
+            </summary>
+            <param name="gameTime">GameTime passed from the game where the animation is rendered</param>
+        </member>
+        <member name="P:TileEngine.FrameAnimation.framesPerSecond">
+            <summary>
+            Gets or sets the frames per second of the animation
             </summary>
         </member>
-        <member name="M:TileEngine.Weather.tick">
+        <member name="P:TileEngine.FrameAnimation.currentFrame">
             <summary>
-            ticks weather
+            Gets the current frame rectangle in the animation
             </summary>
         </member>
-        <member name="M:TileEngine.Weather.getInstance">
+        <member name="P:TileEngine.FrameAnimation.currentFrameIndex">
             <summary>
-            gets singleton of weather
+            Get or set the current frame index of the animation
             </summary>
+        </member>
+        <member name="T:TileEngine.AnimatedSprite">
+            <summary>
+            Describes an animated sprite drawn on the screen
+            </summary>
+        </member>
+        <member name="F:TileEngine.AnimatedSprite.animations">
+            <summary>
+            Collection of FrameAnimations with assigned (arbitrary) names
+            </summary>
+        </member>
+        <member name="F:TileEngine.AnimatedSprite.position">
+            <summary>
+            Position (in pixels) of the animated sprite on the map
+            </summary>
+        </member>
+        <member name="M:TileEngine.AnimatedSprite.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+            Creates a new AnimatedSprite
+            </summary>
+            <param name="texture">2DTexture containing all the sprite animations</param>
+        </member>
+        <member name="M:TileEngine.AnimatedSprite.loadSFX(Microsoft.Xna.Framework.Audio.SoundEffect,Microsoft.Xna.Framework.Audio.SoundEffect,Microsoft.Xna.Framework.Audio.SoundEffect,Microsoft.Xna.Framework.Audio.SoundEffect,Microsoft.Xna.Framework.Audio.SoundEffect,Microsoft.Xna.Framework.Audio.SoundEffect)">
+            <summary>
+            Load sounds into the animated sprite
+            </summary>
+            <param name="attack">Attack SFX</param>
+            <param name="hit">Hit SFX</param>
+            <param name="crit">Critical SFX</param>
+            <param name="dodge">Dodge SFX</param>
+            <param name="death">Death SFX</param>
+        </member>
+        <member name="M:TileEngine.AnimatedSprite.goToTile(TileEngine.BaseUnit,Microsoft.Xna.Framework.Point,TileEngine.TileMap,System.Int32,TileEngine.Camera)">
+            <summary>
+            Walk the Sprite to a specified tile location
+            </summary>
+            <param name="unit">Unit to perform walking</param>
+            <param name="goal">Goal tile location to walk to</param>
+            <param name="map">TileMap passed from the game</param>
+            <param name="maxDistance">Maximum allowed walking distance</param>
             <returns></returns>
         </member>
-        <member name="P:TileEngine.Weather.duration">
+        <member name="M:TileEngine.AnimatedSprite.attack(TileEngine.BaseUnit,TileEngine.BaseUnit)">
             <summary>
-            gets the time until weather changes
+            Perform an attack animation
+            </summary>
+            <param name="unit">Unit performing the attack</param>
+            <param name="target">Unit being attacked</param>
+            <returns>True if attack animation will be performed; else false.</returns>
+        </member>
+        <member name="M:TileEngine.AnimatedSprite.beHit(TileEngine.BaseUnit,TileEngine.BaseUnit)">
+            <summary>
+            Perform the hit animation (after attacked)
+            </summary>
+            <param name="unit">Unit being hit</param>
+            <param name="attackSource">Source Unit of the attack</param>
+            <returns>True if hit animation will be performed; else false.</returns>
+        </member>
+        <member name="M:TileEngine.AnimatedSprite.beCritHit(TileEngine.BaseUnit,TileEngine.BaseUnit)">
+            <summary>
+            Perform the critical hit animation (after attacked)
+            </summary>
+            <param name="unit">Unit being hit</param>
+            <param name="attackSource">Source Unit of the attack</param>
+            <returns>True if hit animation will be performed; else false.</returns>
+        </member>
+        <member name="M:TileEngine.AnimatedSprite.dodge(TileEngine.BaseUnit,TileEngine.BaseUnit)">
+            <summary>
+            Perform the dodge animation (after attacked)
+            </summary>
+            <param name="unit">Unit dodging</param>
+            <param name="attackSource">Source Unit of the attack</param>
+            <returns>True if dodge animation will be performed; else false.</returns>
+        </member>
+        <member name="M:TileEngine.AnimatedSprite.die">
+            <summary>
+            Plays the death sound and changes the sprite to a tombstone
+            </summary>
+            <returns>True if dead</returns>
+        </member>
+        <member name="M:TileEngine.AnimatedSprite.update(Microsoft.Xna.Framework.GameTime,TileEngine.TileMap,TileEngine.Camera)">
+            <summary>
+            Updates the AnimatedSprite based on moving, attacking, defending, etc...
+            </summary>
+            <param name="gameTime">GameTime passed from the game</param>
+            <param name="map">TileMap currently being drawn in the viewport</param>
+        </member>
+        <member name="M:TileEngine.AnimatedSprite.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
+            <summary>
+            Draws the AnimatedSprite in the viewport
+            </summary>
+            <param name="batch">SpriteBatch used to render the sprite</param>
+        </member>
+        <member name="P:TileEngine.AnimatedSprite.currentAnimationName">
+            <summary>
+            Gets or sets the name of the currentAnimation of the sprite
+            </summary>
+            <remarks>The name refers to the FrameAnimation's key in the animations Dictionary</remarks>
+        </member>
+        <member name="P:TileEngine.AnimatedSprite.speed">
+            <summary>
+            Gets or sets the movement speed of the sprite in pixels per update
             </summary>
         </member>
-        <member name="P:TileEngine.Weather.currentWeather">
+        <member name="P:TileEngine.AnimatedSprite.isAnimating">
             <summary>
-            gets the current weather
+            Gets or sets whether or not the FrameAnimation of the sprite should be updating
             </summary>
+        </member>
+        <member name="P:TileEngine.AnimatedSprite.isMoving">
+            <summary>
+            Gets whether or not the Sprite is performing a walk animation
+            </summary>
+        </member>
+        <member name="P:TileEngine.AnimatedSprite.isAttacking">
+            <summary>
+            Gets whether or not the Sprite is performing an attack animation
+            </summary>
+        </member>
+        <member name="P:TileEngine.AnimatedSprite.isDefending">
+            <summary>
+            Get whether or not the Sprite is performing a defensive animation (Hit, Dodge, Crit)
+            </summary>
+        </member>
+        <member name="T:TileEngine.Cursor">
+            <summary>
+            Describes an animated sprite drawn on the screen
+            </summary>
+        </member>
+        <member name="F:TileEngine.Cursor.animations">
+            <summary>
+            Collection of FrameAnimations with assigned (arbitrary) names
+            </summary>
+        </member>
+        <member name="F:TileEngine.Cursor._position">
+            <summary>
+            _position (in pixels) of the animated sprite on the map
+            </summary>
+        </member>
+        <member name="F:TileEngine.Cursor.capturingKeyboard">
+            <summary>
+            Whether or not the sprite is currently controlled by the keyboard
+            </summary>
+        </member>
+        <member name="M:TileEngine.Cursor.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+            Creates a new AnimatedSprite
+            </summary>
+            <param name="texture">2DTexture containing all the sprite animations</param>
+        </member>
+        <member name="M:TileEngine.Cursor.update(Microsoft.Xna.Framework.GameTime,System.Int32,System.Int32,TileEngine.TileMap,System.Boolean)">
+            <summary>
+            Updates the AnimatedSprite based on keyboard input, animation and collisions
+            </summary>
+            <param name="gameTime">GameTime passed from the game</param>
+            <param name="screenWidth">Width in pixels of the viewport</param>
+            <param name="screenHeight">Height in pixels of the viewport</param>
+            <param name="map">TileMap currently being drawn in the viewport</param>
+        </member>
+        <member name="M:TileEngine.Cursor.updateAnimation(Microsoft.Xna.Framework.GameTime,TileEngine.TileMap)">
+            <summary>
+            If the sprite is currently animating, the FrameAnimation is updated
+            </summary>
+            <param name="gameTime">GameTime passed by the game</param>
+        </member>
+        <member name="M:TileEngine.Cursor.clampToArea(System.Int32,System.Int32)">
+            <summary>
+            Clamps the sprite to only move within a specified area
+            </summary>
+            <param name="width">Width in pixels of the area</param>
+            <param name="height">Hieght in pixels of the area</param>
+        </member>
+        <member name="M:TileEngine.Cursor.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
+            <summary>
+            Draws the AnimatedSprite in the viewport
+            </summary>
+            <param name="batch">SpriteBatch used to render the sprite</param>
+        </member>
+        <member name="P:TileEngine.Cursor.location">
+            <summary>
+            Location (in tiles) of the animated sprite on the map
+            </summary>
+        </member>
+        <member name="P:TileEngine.Cursor.isAnimating">
+            <summary>
+            Gets or sets whether or not the FrameAnimation of the sprite should be updating
+            </summary>
+        </member>
+        <member name="P:TileEngine.Cursor.currentAnimation">
+            <summary>
+            Gets the current FrameAnimation used by the sprite
+            </summary>
+        </member>
+        <member name="P:TileEngine.Cursor.currentAnimationName">
+            <summary>
+            Gets or sets the name of the currentAnimation of the sprite
+            </summary>
+            <remarks>The name refers to the FrameAnimation's key in the animations Dictionary</remarks>
         </member>
         <member name="M:TileEngine.Faction.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
             <summary>
@@ -104,6 +604,19 @@
             <summary>
             Are all units of this faction defeated?
             </summary>
+        </member>
+        <member name="M:TileEngine.GameConsole.getInstanceOf">
+            <summary>
+            returns a singleton of GameConsole
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TileEngine.GameConsole.splitByWord(System.String)">
+            <summary>
+            Splits a message into lines of at most 24 characters without splitting words
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
         </member>
         <member name="T:TileEngine.PriorityQueue">
             <summary>
@@ -205,6 +718,25 @@
             <exception cref="T:System.ArgumentNullException">
             If queue is null.
             </exception>
+        </member>
+        <member name="T:TileEngine.RandomNumber">
+            <summary>
+            Gets random numbers! how exciting
+            </summary>
+        </member>
+        <member name="M:TileEngine.RandomNumber.getInstance">
+            <summary>
+            gets the singleton of randomnumber
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TileEngine.RandomNumber.getNext(System.Int32,System.Int32)">
+            <summary>
+            Gets a random number between the specified bounds
+            </summary>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns></returns>
         </member>
         <member name="T:TileEngine.TileLayer">
             <summary>
@@ -342,50 +874,89 @@
             Gets and sets the alpha (opacity) of the layer
             </summary>
         </member>
-        <member name="M:TileEngine.AI.startNextTurn">
+        <member name="M:TileEngine.TurnManager.#ctor(TileEngine.BaseUnit[])">
             <summary>
-            Initializes all the flags for the next turn
+            Constructor to create a turnmanager to manage a set of units
+            </summary>
+            <param name="units"></param>
+        </member>
+        <member name="M:TileEngine.TurnManager.#ctor">
+            <summary>
+            Empty constructor for turnmanager
             </summary>
         </member>
-        <member name="M:TileEngine.AI.chooseMoveIntoRange(TileEngine.BaseUnit,TileEngine.TileMap,TileEngine.BaseUnit[])">
+        <member name="M:TileEngine.TurnManager.getNext">
             <summary>
-            Should be run on the AI's first update after its turn starts. Chooses a target
+            Gets the next unit in line
             </summary>
-            <param name="currentUnit">The AI unit whose turn it is</param>
-            <param name="map">The game map</param>
-            <param name="testUnits">All the units on the map</param>
-            <returns>True if a target was found, false otherwise</returns>
-        </member>
-        <member name="M:TileEngine.AI.chooseAttackTarget(TileEngine.BaseUnit,TileEngine.TileMap,TileEngine.BaseUnit[])">
-            <summary>
-            Chooses who to attack from the set of units in attack range
-            </summary>
-            <param name="currentUnit"></param>
-            <param name="map"></param>
-            <param name="testUnits"></param>
             <returns></returns>
         </member>
-        <member name="M:TileEngine.AI.determineMostPrudentAbility(TileEngine.BaseUnit,TileEngine.TileMap,TileEngine.BaseUnit[])">
+        <member name="T:TileEngine.Range">
             <summary>
-            Figures out which ability is the best to be used from this spot.
+            Defines a range of tiles to highlight for movement, attack, etc...
             </summary>
-            <param name="currentUnit"></param>
-            <param name="map"></param>
-            <param name="testUnits"></param>
-            <returns></returns>
         </member>
-        <member name="M:TileEngine.AI.update(Microsoft.Xna.Framework.GameTime,TileEngine.BaseUnit,TileEngine.Cursor,TileEngine.TileMap,System.Int32,System.Int32,TileEngine.BaseUnit[],TileEngine.Camera,System.Boolean)">
+        <member name="F:TileEngine.Range.isDrawing">
             <summary>
-            AI tells the current unit what to do
+            Whether or not the range should be drawn
             </summary>
-            <param name="gameTime">Current gametime</param>
-            <param name="currentUnit">The unit whose turn it is</param>
-            <param name="cursor">The cursor</param>
-            <param name="map">The map</param>
-            <param name="viewWidth">The width of the viewport</param>
-            <param name="viewHeight">The height of the viewport</param>
-            <param name="testUnits">The list of all units</param>
-            <param name="camera">The current camera</param>
+        </member>
+        <member name="F:TileEngine.Range.rangeTypes">
+            <summary>
+            Dictionary of range types
+            </summary>
+        </member>
+        <member name="M:TileEngine.Range.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D)">
+            <summary>
+            Create a range object
+            </summary>
+            <param name="spriteTexture">Sprite map of range types</param>
+        </member>
+        <member name="M:TileEngine.Range.addPoints(Microsoft.Xna.Framework.Point[])">
+            <summary>
+            Add tile points to the range
+            </summary>
+            <param name="points">Points to add to the range</param>
+        </member>
+        <member name="M:TileEngine.Range.addPoints(System.Collections.Generic.List{Microsoft.Xna.Framework.Point})">
+            <summary>
+            Add tile points to the range
+            </summary>
+            <param name="points">List of points to add to the range</param>
+        </member>
+        <member name="M:TileEngine.Range.removePoints(Microsoft.Xna.Framework.Point[])">
+            <summary>
+            Remove tile points from the range
+            </summary>
+            <param name="points">Points to remove from the range</param>
+        </member>
+        <member name="M:TileEngine.Range.removePoints(System.Collections.Generic.List{Microsoft.Xna.Framework.Point})">
+            <summary>
+            Remove tile points from the range
+            </summary>
+            <param name="points">List of point to remove from the range</param>
+        </member>
+        <member name="M:TileEngine.Range.clearPoints">
+            <summary>
+            Remove all points from the range
+            </summary>
+        </member>
+        <member name="M:TileEngine.Range.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
+            <summary>
+            Draw the range on the map
+            </summary>
+            <param name="batch">Sprite Batch passed from Game</param>
+            <param name="camera">Camera passed from Game</param>
+        </member>
+        <member name="P:TileEngine.Range.currentRangeType">
+            <summary>
+            Get the Current Range Type frame for drawing
+            </summary>
+        </member>
+        <member name="P:TileEngine.Range.currentRangeTypeName">
+            <summary>
+            Get or set the Current Range Type by name
+            </summary>
         </member>
         <member name="M:TileEngine.BaseUnit.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,TileEngine.Ability[])">
             <summary>
@@ -827,577 +1398,6 @@
             <param name="spriteBatch">SpriteBatch used to render layers</param>
             <param name="camera">Camera used to view map</param>
             <remarks>TileLayers are rendered in ascending order from index 0</remarks>
-        </member>
-        <member name="T:TileEngine.AffinityIcon">
-            <summary>
-            Defines the affinity icon object for drawing unit affinities in the UI
-            </summary>
-        </member>
-        <member name="F:TileEngine.AffinityIcon.frames">
-            <summary>
-            List of affinity frames
-            </summary>
-        </member>
-        <member name="F:TileEngine.AffinityIcon.isDrawing">
-            <summary>
-            Get or set whether or not to draw the affinity icons on screen
-            </summary>
-        </member>
-        <member name="F:TileEngine.AffinityIcon.position">
-            <summary>
-            The position of the icon relative to the viewport
-            </summary>
-        </member>
-        <member name="M:TileEngine.AffinityIcon.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D)">
-            <summary>
-            Create an AffinityIcon object
-            </summary>
-            <param name="icons">Sprite map of icons</param>
-        </member>
-        <member name="M:TileEngine.AffinityIcon.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
-            <summary>
-            Draw the icon onscreen
-            </summary>
-            <param name="batch">Sprite Batch used to render the icon</param>
-        </member>
-        <member name="P:TileEngine.AffinityIcon.currentAffinity">
-            <summary>
-            Get or set the current affinity 
-            </summary>
-        </member>
-        <member name="T:TileEngine.Camera">
-            <summary>
-            Describes the view of the map visible through the game's viewport
-            </summary>
-        </member>
-        <member name="F:TileEngine.Camera.position">
-            <summary>
-            The position (in pixels) of the camera
-            </summary>
-        </member>
-        <member name="M:TileEngine.Camera.setFocus(TileEngine.Cursor)">
-            <summary>
-            Sets the camera to follow around a particular AnimatedSprite
-            </summary>
-            <param name="focusCursor">The AnimatedSprite the camera should follow</param>
-            <remarks>When focused, the Camera cannot be controlled by the keyboard.</remarks>
-        </member>
-        <member name="M:TileEngine.Camera.unsetFocus">
-            <summary>
-            Unsets the focus of the camera
-            </summary>
-            <remarks>The camera will reobtain keyboard functionality</remarks>
-        </member>
-        <member name="M:TileEngine.Camera.update(System.Int32,System.Int32,TileEngine.TileMap)">
-            <summary>
-            Updates the camera location with respect to its focus, the viewport, and the current TileMap
-            </summary>
-            <param name="screenWidth">Integer width in pixels of the viewport</param>
-            <param name="screenHeight">Integer height in pixels of the viewport</param>
-            <param name="map">The TileMap currently being rendered in the viewport</param>
-        </member>
-        <member name="M:TileEngine.Camera.clampToArea(System.Int32,System.Int32)">
-            <summary>
-            Clamps the camera to only move within a specific area
-            </summary>
-            <param name="width">Width in pixels of the area the camera can move</param>
-            <param name="height">Height in pixels of the area the camera can move</param>
-        </member>
-        <member name="P:TileEngine.Camera.speed">
-            <summary>
-            Get or set the speed (pixels per update) of the camera motion
-            </summary>
-        </member>
-        <member name="P:TileEngine.Camera.transformationMatrix">
-            <summary>
-            Get the Matrix used to shift the position of the camera relative to the map
-            </summary>
-            <remarks>More accurately, the Matrix shifts the map to the camera location in the viewport</remarks>
-        </member>
-        <member name="P:TileEngine.Camera.isFocused">
-            <summary>
-            Returns whether or not the camera is focused on a particular Animated Sprite
-            </summary>
-        </member>
-        <member name="T:TileEngine.CollisionLayer">
-            <summary>
-            Describes a collision map layer
-            </summary>
-        </member>
-        <member name="M:TileEngine.CollisionLayer.#ctor(System.Int32,System.Int32)">
-            <summary>
-            Creates an empty Collision Layer with specified dimensions
-            </summary>
-            <param name="width">Integer width (x-direction) of layer</param>
-            <param name="height">Integer height (y-direction) of layer</param>
-        </member>
-        <member name="M:TileEngine.CollisionLayer.fromFile(System.String)">
-            <summary>
-            Performs the IO on a .layer file to obtain a saved Collision Layer used by both fromFile() methods
-            </summary>
-            <param name="filename">Path (relative or absolute) to the .layer file</param>
-            <returns>New Collision Layer</returns>
-        </member>
-        <member name="M:TileEngine.CollisionLayer.setTileCollisionIndex(System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Set a particular tile's collision index
-            </summary>
-            <param name="x">0-Based x-direction tile location</param>
-            <param name="y">0-Based y-direction tile location</param>
-            <param name="tileIndex">0-Based collision index; else, -1 for an empty tile</param>
-        </member>
-        <member name="M:TileEngine.CollisionLayer.setTileCollisionIndex(Microsoft.Xna.Framework.Point,System.Int32)">
-            <summary>
-            Set a particular tile's collision index
-            </summary>
-            <param name="point">Point specifying the location of the tile</param>
-            <param name="tileIndex">0-Based collision index; else, -1 for an empty tile</param>
-        </member>
-        <member name="M:TileEngine.CollisionLayer.getTileCollisionIndex(System.Int32,System.Int32)">
-            <summary>
-            Get the collision index at a particular tile
-            </summary>
-            <param name="x">0-Based x-direction tile location</param>
-            <param name="y">0-Based y-direction tile location</param>
-            <returns>0-Based collision index; else, -1 for an empty tile or -2 if x/y out of range</returns>
-        </member>
-        <member name="M:TileEngine.CollisionLayer.getTileCollisionIndex(Microsoft.Xna.Framework.Point)">
-            <summary>
-            Get the collision index at a particular tile
-            </summary>
-            <param name="point">Point specifying the location of the tile</param>
-            <returns>0-Based collision index; else, -1 for an empty tile or -2 if x/y out of range</returns>
-        </member>
-        <member name="P:TileEngine.CollisionLayer.widthInTiles">
-            <summary>
-            Returns the width in tiles of the Tile Layer
-            </summary>
-        </member>
-        <member name="P:TileEngine.CollisionLayer.heightInTiles">
-            <summary>
-            Returns the height in tiles of the Tile Layer
-            </summary>
-        </member>
-        <member name="T:TileEngine.RandomNumber">
-            <summary>
-            Gets random numbers! how exciting
-            </summary>
-        </member>
-        <member name="M:TileEngine.RandomNumber.getInstance">
-            <summary>
-            gets the singleton of randomnumber
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:TileEngine.RandomNumber.getNext(System.Int32,System.Int32)">
-            <summary>
-            Gets a random number between the specified bounds
-            </summary>
-            <param name="min"></param>
-            <param name="max"></param>
-            <returns></returns>
-        </member>
-        <member name="T:TileEngine.Range">
-            <summary>
-            Defines a range of tiles to highlight for movement, attack, etc...
-            </summary>
-        </member>
-        <member name="F:TileEngine.Range.isDrawing">
-            <summary>
-            Whether or not the range should be drawn
-            </summary>
-        </member>
-        <member name="F:TileEngine.Range.rangeTypes">
-            <summary>
-            Dictionary of range types
-            </summary>
-        </member>
-        <member name="M:TileEngine.Range.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D)">
-            <summary>
-            Create a range object
-            </summary>
-            <param name="spriteTexture">Sprite map of range types</param>
-        </member>
-        <member name="M:TileEngine.Range.addPoints(Microsoft.Xna.Framework.Point[])">
-            <summary>
-            Add tile points to the range
-            </summary>
-            <param name="points">Points to add to the range</param>
-        </member>
-        <member name="M:TileEngine.Range.addPoints(System.Collections.Generic.List{Microsoft.Xna.Framework.Point})">
-            <summary>
-            Add tile points to the range
-            </summary>
-            <param name="points">List of points to add to the range</param>
-        </member>
-        <member name="M:TileEngine.Range.removePoints(Microsoft.Xna.Framework.Point[])">
-            <summary>
-            Remove tile points from the range
-            </summary>
-            <param name="points">Points to remove from the range</param>
-        </member>
-        <member name="M:TileEngine.Range.removePoints(System.Collections.Generic.List{Microsoft.Xna.Framework.Point})">
-            <summary>
-            Remove tile points from the range
-            </summary>
-            <param name="points">List of point to remove from the range</param>
-        </member>
-        <member name="M:TileEngine.Range.clearPoints">
-            <summary>
-            Remove all points from the range
-            </summary>
-        </member>
-        <member name="M:TileEngine.Range.draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
-            <summary>
-            Draw the range on the map
-            </summary>
-            <param name="batch">Sprite Batch passed from Game</param>
-            <param name="camera">Camera passed from Game</param>
-        </member>
-        <member name="P:TileEngine.Range.currentRangeType">
-            <summary>
-            Get the Current Range Type frame for drawing
-            </summary>
-        </member>
-        <member name="P:TileEngine.Range.currentRangeTypeName">
-            <summary>
-            Get or set the Current Range Type by name
-            </summary>
-        </member>
-        <member name="T:TileEngine.FrameAnimation">
-            <summary>
-            Describes the frame animation used by a sprite.
-            This object does not contain the textures, just the rectangles used to pull frames out of them.
-            </summary>
-            <remarks>With this current model, frames must be located on the same line horizontally in the texture to render.</remarks>
-        </member>
-        <member name="M:TileEngine.FrameAnimation.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Creates a new Frame Animation 
-            </summary>
-            <param name="frameCount">Number of frames in the animation</param>
-            <param name="frameWidth">Width in pixels of the frame rectangle</param>
-            <param name="frameHeight">Height in pixels of the frame rectangle</param>
-            <param name="xOffset">Offset in pixels in the x-direction of the first frame from the top-left corner of the texture</param>
-            <param name="yOffset">Offset in pixels in the y-direction of the first frame from the top-left corner of the texture</param>
-        </member>
-        <member name="M:TileEngine.FrameAnimation.Clone">
-            <summary>
-            Clones the FrameAnimation
-            </summary>
-            <returns>Copy of the FrameAnimation</returns>
-            <remarks>Frames are not cloned to conserve memory</remarks>
-        </member>
-        <member name="M:TileEngine.FrameAnimation.update(Microsoft.Xna.Framework.GameTime)">
-            <summary>
-            Updates the current frame based on elapsed game time since the last update
-            </summary>
-            <param name="gameTime">GameTime passed from the game where the animation is rendered</param>
-        </member>
-        <member name="P:TileEngine.FrameAnimation.framesPerSecond">
-            <summary>
-            Gets or sets the frames per second of the animation
-            </summary>
-        </member>
-        <member name="P:TileEngine.FrameAnimation.currentFrame">
-            <summary>
-            Gets the current frame rectangle in the animation
-            </summary>
-        </member>
-        <member name="P:TileEngine.FrameAnimation.currentFrameIndex">
-            <summary>
-            Get or set the current frame index of the animation
-            </summary>
-        </member>
-        <member name="T:TileEngine.AnimatedSprite">
-            <summary>
-            Describes an animated sprite drawn on the screen
-            </summary>
-        </member>
-        <member name="F:TileEngine.AnimatedSprite.animations">
-            <summary>
-            Collection of FrameAnimations with assigned (arbitrary) names
-            </summary>
-        </member>
-        <member name="F:TileEngine.AnimatedSprite.position">
-            <summary>
-            Position (in pixels) of the animated sprite on the map
-            </summary>
-        </member>
-        <member name="M:TileEngine.AnimatedSprite.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D)">
-            <summary>
-            Creates a new AnimatedSprite
-            </summary>
-            <param name="texture">2DTexture containing all the sprite animations</param>
-        </member>
-        <member name="M:TileEngine.AnimatedSprite.loadSFX(Microsoft.Xna.Framework.Audio.SoundEffect,Microsoft.Xna.Framework.Audio.SoundEffect,Microsoft.Xna.Framework.Audio.SoundEffect,Microsoft.Xna.Framework.Audio.SoundEffect,Microsoft.Xna.Framework.Audio.SoundEffect,Microsoft.Xna.Framework.Audio.SoundEffect)">
-            <summary>
-            Load sounds into the animated sprite
-            </summary>
-            <param name="attack">Attack SFX</param>
-            <param name="hit">Hit SFX</param>
-            <param name="crit">Critical SFX</param>
-            <param name="dodge">Dodge SFX</param>
-            <param name="death">Death SFX</param>
-        </member>
-        <member name="M:TileEngine.AnimatedSprite.goToTile(TileEngine.BaseUnit,Microsoft.Xna.Framework.Point,TileEngine.TileMap,System.Int32,TileEngine.Camera)">
-            <summary>
-            Walk the Sprite to a specified tile location
-            </summary>
-            <param name="unit">Unit to perform walking</param>
-            <param name="goal">Goal tile location to walk to</param>
-            <param name="map">TileMap passed from the game</param>
-            <param name="maxDistance">Maximum allowed walking distance</param>
-            <returns></returns>
-        </member>
-        <member name="M:TileEngine.AnimatedSprite.attack(TileEngine.BaseUnit,TileEngine.BaseUnit)">
-            <summary>
-            Perform an attack animation
-            </summary>
-            <param name="unit">Unit performing the attack</param>
-            <param name="target">Unit being attacked</param>
-            <returns>True if attack animation will be performed; else false.</returns>
-        </member>
-        <member name="M:TileEngine.AnimatedSprite.beHit(TileEngine.BaseUnit,TileEngine.BaseUnit)">
-            <summary>
-            Perform the hit animation (after attacked)
-            </summary>
-            <param name="unit">Unit being hit</param>
-            <param name="attackSource">Source Unit of the attack</param>
-            <returns>True if hit animation will be performed; else false.</returns>
-        </member>
-        <member name="M:TileEngine.AnimatedSprite.beCritHit(TileEngine.BaseUnit,TileEngine.BaseUnit)">
-            <summary>
-            Perform the critical hit animation (after attacked)
-            </summary>
-            <param name="unit">Unit being hit</param>
-            <param name="attackSource">Source Unit of the attack</param>
-            <returns>True if hit animation will be performed; else false.</returns>
-        </member>
-        <member name="M:TileEngine.AnimatedSprite.dodge(TileEngine.BaseUnit,TileEngine.BaseUnit)">
-            <summary>
-            Perform the dodge animation (after attacked)
-            </summary>
-            <param name="unit">Unit dodging</param>
-            <param name="attackSource">Source Unit of the attack</param>
-            <returns>True if dodge animation will be performed; else false.</returns>
-        </member>
-        <member name="M:TileEngine.AnimatedSprite.die">
-            <summary>
-            Plays the death sound and changes the sprite to a tombstone
-            </summary>
-            <returns>True if dead</returns>
-        </member>
-        <member name="M:TileEngine.AnimatedSprite.update(Microsoft.Xna.Framework.GameTime,TileEngine.TileMap,TileEngine.Camera)">
-            <summary>
-            Updates the AnimatedSprite based on moving, attacking, defending, etc...
-            </summary>
-            <param name="gameTime">GameTime passed from the game</param>
-            <param name="map">TileMap currently being drawn in the viewport</param>
-        </member>
-        <member name="M:TileEngine.AnimatedSprite.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch)">
-            <summary>
-            Draws the AnimatedSprite in the viewport
-            </summary>
-            <param name="batch">SpriteBatch used to render the sprite</param>
-        </member>
-        <member name="P:TileEngine.AnimatedSprite.currentAnimationName">
-            <summary>
-            Gets or sets the name of the currentAnimation of the sprite
-            </summary>
-            <remarks>The name refers to the FrameAnimation's key in the animations Dictionary</remarks>
-        </member>
-        <member name="P:TileEngine.AnimatedSprite.speed">
-            <summary>
-            Gets or sets the movement speed of the sprite in pixels per update
-            </summary>
-        </member>
-        <member name="P:TileEngine.AnimatedSprite.isAnimating">
-            <summary>
-            Gets or sets whether or not the FrameAnimation of the sprite should be updating
-            </summary>
-        </member>
-        <member name="P:TileEngine.AnimatedSprite.isMoving">
-            <summary>
-            Gets whether or not the Sprite is performing a walk animation
-            </summary>
-        </member>
-        <member name="P:TileEngine.AnimatedSprite.isAttacking">
-            <summary>
-            Gets whether or not the Sprite is performing an attack animation
-            </summary>
-        </member>
-        <member name="P:TileEngine.AnimatedSprite.isDefending">
-            <summary>
-            Get whether or not the Sprite is performing a defensive animation (Hit, Dodge, Crit)
-            </summary>
-        </member>
-        <member name="M:TileEngine.GameConsole.getInstanceOf">
-            <summary>
-            returns a singleton of GameConsole
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:TileEngine.GameConsole.splitByWord(System.String)">
-            <summary>
-            Splits a message into lines of at most 24 characters without splitting words
-            </summary>
-            <param name="message"></param>
-            <returns></returns>
-        </member>
-        <member name="T:TileEngine.Engine">
-            <summary>
-            Describes global Tile Engine constants and static methods used throughout the project
-            </summary>
-        </member>
-        <member name="F:TileEngine.Engine.TILE_WIDTH">
-            <summary>
-            Width in pixels of a tile rendered on the map
-            </summary>
-        </member>
-        <member name="F:TileEngine.Engine.TILE_HEIGHT">
-            <summary>
-            Height in pixels of a tile rendered on the map
-            </summary>
-        </member>
-        <member name="P:TileEngine.Ability.name">
-            <summary>
-            gets the name of the ability
-            </summary>
-        </member>
-        <member name="P:TileEngine.Ability.description">
-            <summary>
-            gets the description of the ability
-            </summary>
-        </member>
-        <member name="P:TileEngine.Ability.APCost">
-            <summary>
-            gets the apcost of the ability
-            </summary>
-        </member>
-        <member name="P:TileEngine.Ability.attackRange">
-            <summary>
-            gets the attackRange of the ability
-            </summary>
-        </member>
-        <member name="P:TileEngine.Ability.abilityType">
-            <summary>
-            gets the abiltiy type of the ability
-            </summary>
-        </member>
-        <member name="P:TileEngine.Ability.abilityAmount">
-            <summary>
-            gets the abilityamount of the ability
-            It is the flat amount for ap/mp modifiers and heals
-            it is a percentage for damage abilities
-            </summary>
-        </member>
-        <member name="P:TileEngine.Ability.isHostile">
-            <summary>
-            gets if this ability can target hostile units
-            </summary>
-        </member>
-        <member name="P:TileEngine.Ability.isFriendly">
-            <summary>
-            gets if this ability can target friendly units
-            </summary>
-        </member>
-        <member name="P:TileEngine.Ability.isSelf">
-            <summary>
-            gets if this ability can target self
-            </summary>
-        </member>
-        <member name="M:TileEngine.TurnManager.#ctor(TileEngine.BaseUnit[])">
-            <summary>
-            Constructor to create a turnmanager to manage a set of units
-            </summary>
-            <param name="units"></param>
-        </member>
-        <member name="M:TileEngine.TurnManager.#ctor">
-            <summary>
-            Empty constructor for turnmanager
-            </summary>
-        </member>
-        <member name="M:TileEngine.TurnManager.getNext">
-            <summary>
-            Gets the next unit in line
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:TileEngine.Cursor">
-            <summary>
-            Describes an animated sprite drawn on the screen
-            </summary>
-        </member>
-        <member name="F:TileEngine.Cursor.animations">
-            <summary>
-            Collection of FrameAnimations with assigned (arbitrary) names
-            </summary>
-        </member>
-        <member name="F:TileEngine.Cursor._position">
-            <summary>
-            _position (in pixels) of the animated sprite on the map
-            </summary>
-        </member>
-        <member name="F:TileEngine.Cursor.capturingKeyboard">
-            <summary>
-            Whether or not the sprite is currently controlled by the keyboard
-            </summary>
-        </member>
-        <member name="M:TileEngine.Cursor.#ctor(Microsoft.Xna.Framework.Graphics.Texture2D)">
-            <summary>
-            Creates a new AnimatedSprite
-            </summary>
-            <param name="texture">2DTexture containing all the sprite animations</param>
-        </member>
-        <member name="M:TileEngine.Cursor.update(Microsoft.Xna.Framework.GameTime,System.Int32,System.Int32,TileEngine.TileMap,System.Boolean)">
-            <summary>
-            Updates the AnimatedSprite based on keyboard input, animation and collisions
-            </summary>
-            <param name="gameTime">GameTime passed from the game</param>
-            <param name="screenWidth">Width in pixels of the viewport</param>
-            <param name="screenHeight">Height in pixels of the viewport</param>
-            <param name="map">TileMap currently being drawn in the viewport</param>
-        </member>
-        <member name="M:TileEngine.Cursor.updateAnimation(Microsoft.Xna.Framework.GameTime,TileEngine.TileMap)">
-            <summary>
-            If the sprite is currently animating, the FrameAnimation is updated
-            </summary>
-            <param name="gameTime">GameTime passed by the game</param>
-        </member>
-        <member name="M:TileEngine.Cursor.clampToArea(System.Int32,System.Int32)">
-            <summary>
-            Clamps the sprite to only move within a specified area
-            </summary>
-            <param name="width">Width in pixels of the area</param>
-            <param name="height">Hieght in pixels of the area</param>
-        </member>
-        <member name="M:TileEngine.Cursor.Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch,TileEngine.Camera)">
-            <summary>
-            Draws the AnimatedSprite in the viewport
-            </summary>
-            <param name="batch">SpriteBatch used to render the sprite</param>
-        </member>
-        <member name="P:TileEngine.Cursor.location">
-            <summary>
-            Location (in tiles) of the animated sprite on the map
-            </summary>
-        </member>
-        <member name="P:TileEngine.Cursor.isAnimating">
-            <summary>
-            Gets or sets whether or not the FrameAnimation of the sprite should be updating
-            </summary>
-        </member>
-        <member name="P:TileEngine.Cursor.currentAnimation">
-            <summary>
-            Gets the current FrameAnimation used by the sprite
-            </summary>
-        </member>
-        <member name="P:TileEngine.Cursor.currentAnimationName">
-            <summary>
-            Gets or sets the name of the currentAnimation of the sprite
-            </summary>
-            <remarks>The name refers to the FrameAnimation's key in the animations Dictionary</remarks>
         </member>
     </members>
 </doc>
