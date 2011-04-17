@@ -316,6 +316,12 @@ namespace TileEngine
 																	playMove();
                                                                     mCurrentPhase = Phase.AbilityList;
 
+                                                                    ab = 0;
+                                                                    while (currentUnit.AP < currentUnit.moves[ab].APCost)
+                                                                    {
+                                                                        ab++;
+                                                                    }
+
                                                                     uiTimer = 0;
                                                                 }
 
@@ -583,6 +589,29 @@ namespace TileEngine
 															currentUnit.useAbility(currentUnit.moves[ab], targetUnit);
 															range.clearPoints();
 															range.addPoints(map.attackPoints(currentUnit, currentUnit.moves[ab].attackRange, currentUnit.moves[ab].isFriendly, currentUnit.moves[ab].isHostile, currentUnit.moves[ab].isSelf));
+                                                            if (currentUnit.AP < currentUnit.moves[ab].APCost)
+                                                            {
+                                                                if (currentUnit.canAbility())
+                                                                {
+                                                                    mCurrentPhase = Phase.AbilityList;
+                                                                    ab = 0;
+                                                                    while (currentUnit.moves[ab].APCost > currentUnit.AP)
+                                                                    {
+                                                                        ab++;
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    mCurrentPhase = Phase.Menu;
+                                                                    if (currentUnit.MP != 0)
+                                                                        mCurrentOption = MenuOption.Move;
+                                                                    else if (currentUnit.AP != 0)
+                                                                        mCurrentOption = MenuOption.Attack;
+                                                                    else
+                                                                        mCurrentOption = MenuOption.EndTurn;
+                                                                }
+
+                                                            }
 														}
 														else
 															playWrong();
