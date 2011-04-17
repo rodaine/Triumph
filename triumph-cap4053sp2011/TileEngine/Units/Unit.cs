@@ -19,19 +19,19 @@ namespace TileEngine
 {
     public enum unitTypes { Melee, Magic, Range };
     public enum affinityTypes { Fire, Ice, Lightning, Water, Earth, Wind, Holy, Dark, none };
-	public class BaseUnit
+    public class BaseUnit
     {
         #region baseUnit fields
 
-		//Identification
-		public static int index_counter;
+        //Identification
+        public static int index_counter;
         int index;
         string _name;
         Faction _faction;
 
-		//Attributes
+        //Attributes
         private unitTypes _type;
-		private int _maxHP, _maxAP, _maxMP, _HP, _AP, _MP, _SPD, _delay, _range;
+        private int _maxHP, _maxAP, _maxMP, _HP, _AP, _MP, _SPD, _delay, _range;
         private int _wAtk, _wDef, _mPow, _mRes, _evade; //stats used in FFT but not implemented yet here
         private int _stunLength;
         private bool _isDead, _isStunned, _isDone, _hasAttacked, _hasMoved;
@@ -56,50 +56,50 @@ namespace TileEngine
         private Ability _prevAbility;
         private bool _isBeingHit;
 
-		//Sprite and Movement
-		private AnimatedSprite _unitSprite;
-		private Point _position;
-		private bool _isWalking = false;
+        //Sprite and Movement
+        private AnimatedSprite _unitSprite;
+        private Point _position;
+        private bool _isWalking = false;
         private bool _isAttacking = false;
         private int _attackCD;
-		private Stack<Point> path;
-		
+        private Stack<Point> path;
+
         #endregion
 
         #region attribute properties
 
-		/// <summary>
-		/// Gets the maxHP of the unit.
-		/// </summary>
-		public int maxHP
-		{
-			get { return _maxHP; }
-		}
+        /// <summary>
+        /// Gets the maxHP of the unit.
+        /// </summary>
+        public int maxHP
+        {
+            get { return _maxHP; }
+        }
 
-		/// <summary>
-		/// Gets the maxAP of the unit.
-		/// </summary>
-		public int maxAP
-		{
-			get { return _maxAP; }
-		}
+        /// <summary>
+        /// Gets the maxAP of the unit.
+        /// </summary>
+        public int maxAP
+        {
+            get { return _maxAP; }
+        }
 
-		/// <summary>
-		/// Gets the maxMP of the unit.
-		/// </summary>
-		public int maxMP
-		{
-			get { return _maxMP; }
-		}
-		
-		/// <summary>
-		/// Get or set the HP of the unit inclusively between 0 and maxHP. If HP reaches zero, unit isDead = true; otherwise, unit isDead = false.
-		/// </summary>
-		public int HP
-		{
-			get { return _HP; }
-			set
-			{
+        /// <summary>
+        /// Gets the maxMP of the unit.
+        /// </summary>
+        public int maxMP
+        {
+            get { return _maxMP; }
+        }
+
+        /// <summary>
+        /// Get or set the HP of the unit inclusively between 0 and maxHP. If HP reaches zero, unit isDead = true; otherwise, unit isDead = false.
+        /// </summary>
+        public int HP
+        {
+            get { return _HP; }
+            set
+            {
                 if (!_isDead)
                 {
                     _HP = (int)MathHelper.Clamp(value, 0, _maxHP);
@@ -118,35 +118,35 @@ namespace TileEngine
                         faction.numDead--;
                     }
                 }
-			}
-		}
+            }
+        }
 
-		/// <summary>
-		/// Get or set the AP of the unit inclusively between 0 and maxAP.
-		/// </summary>
-		public int AP
-		{
-			get { return _AP; }
-			set { _AP = (int)MathHelper.Clamp(value, 0, _maxAP); }
-		}
+        /// <summary>
+        /// Get or set the AP of the unit inclusively between 0 and maxAP.
+        /// </summary>
+        public int AP
+        {
+            get { return _AP; }
+            set { _AP = (int)MathHelper.Clamp(value, 0, _maxAP); }
+        }
 
-		/// <summary>
-		/// Get or set the MP of the unit inclusively between 0 and maxMP.
-		/// </summary>
-		public int MP
-		{
-			get { return _MP; }
-			set { _MP = (int)MathHelper.Clamp(value, 0, _maxMP); }
-		}
+        /// <summary>
+        /// Get or set the MP of the unit inclusively between 0 and maxMP.
+        /// </summary>
+        public int MP
+        {
+            get { return _MP; }
+            set { _MP = (int)MathHelper.Clamp(value, 0, _maxMP); }
+        }
 
-		/// <summary>
-		/// Get the base speed of the unit.
-		/// </summary>
-		public int SPD
-		{
-			get { return _SPD; }
-		}
-		
+        /// <summary>
+        /// Get the base speed of the unit.
+        /// </summary>
+        public int SPD
+        {
+            get { return _SPD; }
+        }
+
         /// <summary>
         /// Get the current delay of the unit
         /// </summary>
@@ -156,22 +156,22 @@ namespace TileEngine
             set { _delay = value; }
         }
 
-		/// <summary>
-		/// Get whether or not the unit isDead
-		/// </summary>
-		public bool isDead
-		{
-			get { return _isDead; }
-		}
+        /// <summary>
+        /// Get whether or not the unit isDead
+        /// </summary>
+        public bool isDead
+        {
+            get { return _isDead; }
+        }
 
-		/// <summary>
-		/// Get or set whether or not the unit isStunned
-		/// </summary>
-		public bool isStunned
-		{
-			get { return _isStunned; }
-			set { _isStunned = value; }
-		}
+        /// <summary>
+        /// Get or set whether or not the unit isStunned
+        /// </summary>
+        public bool isStunned
+        {
+            get { return _isStunned; }
+            set { _isStunned = value; }
+        }
 
         /// <summary>
         /// gets the remaining length of the stun
@@ -179,8 +179,8 @@ namespace TileEngine
         public int stunLength
         {
             get { return _stunLength; }
-            set 
-            { 
+            set
+            {
                 _stunLength = value;
                 if (_stunLength <= 0)
                 {
@@ -198,13 +198,13 @@ namespace TileEngine
             set { _isDone = value; }
         }
 
-		/// <summary>
-		/// Get whether or not a unit is walking
-		/// </summary>
-		public bool isWalking
-		{
-			get { return _isWalking; }
-		}
+        /// <summary>
+        /// Get whether or not a unit is walking
+        /// </summary>
+        public bool isWalking
+        {
+            get { return _isWalking; }
+        }
 
         /// <summary>
         /// Get whether or not a unit is attacking
@@ -221,79 +221,79 @@ namespace TileEngine
         {
             get { return _isBeingHit; }
         }
-       
-		/// <summary>
-		/// Get the index of the unit's elemental affinity
-		/// </summary>
-		public int affinityIndex
-		{
-			get { return unitAffinity; }
-			set
-			{
-				unitAffinity = (int)MathHelper.Clamp(value, -1, affinities.Length - 1);
-			}
-		}
 
-		/// <summary>
-		/// Get the name of the unit's elemental affinity
-		/// </summary>
-		public String affinityName
-		{
-            get { return affinities[unitAffinity].ToString() ; }
-		}
+        /// <summary>
+        /// Get the index of the unit's elemental affinity
+        /// </summary>
+        public int affinityIndex
+        {
+            get { return unitAffinity; }
+            set
+            {
+                unitAffinity = (int)MathHelper.Clamp(value, -1, affinities.Length - 1);
+            }
+        }
+
+        /// <summary>
+        /// Get the name of the unit's elemental affinity
+        /// </summary>
+        public String affinityName
+        {
+            get { return affinities[unitAffinity].ToString(); }
+        }
 
         public affinityTypes affinityType
         {
             get { return affinities[unitAffinity]; }
         }
 
-		/// <summary>
-		/// Get the position (by tiles) of the unit
-		/// </summary>
-		public Point position
-		{
-			get { return _position; }
-		}
+        /// <summary>
+        /// Get the position (by tiles) of the unit
+        /// </summary>
+        public Point position
+        {
+            get { return _position; }
+        }
 
-		/// <summary>
-		/// Get or set the Animated Sprite representing the unit
-		/// </summary>
-		public AnimatedSprite unitSprite
-		{
-			get { return _unitSprite; }
-			set { _unitSprite = value; }
-		}
+        /// <summary>
+        /// Get or set the Animated Sprite representing the unit
+        /// </summary>
+        public AnimatedSprite unitSprite
+        {
+            get { return _unitSprite; }
+            set { _unitSprite = value; }
+        }
 
         /// <summary>
         /// gets the unit index
         /// </summary>
-		public int unitIndex
-		{
-			get 
-			{
-				return (isDead) ? -1 * index : index; 
-			}
-			set { index = value; }
-		}
+        public int unitIndex
+        {
+            get
+            {
+                return (isDead) ? -1 * index : index;
+            }
+            set { index = value; }
+        }
 
 
         /// <summary>
         /// gets the name of the object
         /// </summary>
-		public string name
-		{
-			get { return _name; }
-			set { _name = value; }
-		}
+        public string name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
 
         /// <summary>
         /// gets the faction of the unit
         /// </summary>
-		public Faction faction
-		{
-			get { return _faction; }
-			set { _faction = value; }
-		}
+        public Faction faction
+        {
+            get { return _faction; }
+            set { _faction = value; }
+        }
 
         /// <summary>
         /// gets the range of the unit
@@ -352,43 +352,42 @@ namespace TileEngine
             get { return _mRes; }
         }
 
-		#endregion
+        #endregion
 
         #region constructors
 
-		/// <summary>
-		/// Create baseUnit object with abilities
-		/// </summary>
-		/// <param name="name">Name of unit</param>
-		/// <param name="maxHP">Maximum Hit Points of unit</param>
-		/// <param name="maxAP">Maximum Action Points of unit</param>
-		/// <param name="maxMP">Maximum Movement Points of unit</param>
-		/// <param name="SPD">Speed of unit</param>
-		/// <param name="unitAffinity">Index of elemental affinity of unit</param>
-		/// <param name="abilities">Abilities of unit</param>
+        /// <summary>
+        /// Create baseUnit object with abilities
+        /// </summary>
+        /// <param name="name">Name of unit</param>
+        /// <param name="maxHP">Maximum Hit Points of unit</param>
+        /// <param name="maxAP">Maximum Action Points of unit</param>
+        /// <param name="maxMP">Maximum Movement Points of unit</param>
+        /// <param name="SPD">Speed of unit</param>
+        /// <param name="unitAffinity">Index of elemental affinity of unit</param>
+        /// <param name="abilities">Abilities of unit</param>
         public BaseUnit(String name, int maxHP, int maxAP, int maxMP, int SPD, int unitAffinity, params Ability[] abilities)
         {
-			_name = name;
-			_HP = _maxHP = maxHP;
-			_AP = _maxAP = maxAP;
-			_MP = _maxMP = maxMP;
-			_SPD = _delay = SPD;
+            _name = name;
+            _HP = _maxHP = maxHP;
+            _AP = _maxAP = maxAP;
+            _MP = _maxMP = maxMP;
+            _SPD = _delay = SPD;
             _isDone = false;
-            _evade = _SPD/20;
+            _evade = _SPD / 20;
             _wDef = 0;
             _wAtk = 0;
-			if (_HP > 0)
-				_isDead = false;
-			else
-				_isDead = true;
+            if (_HP > 0)
+                _isDead = false;
+            else
+                _isDead = true;
 
-			this.unitAffinity = unitAffinity;
+            this.unitAffinity = unitAffinity;
 
-			_moves = new List<Ability>();
+            _moves = new List<Ability>();
             for (int i = 0; i < abilities.Length; ++i)
                 _moves.Add(abilities[i]);
-
-			index = ++index_counter;
+            index = ++index_counter;
 
 
             //asign type
@@ -400,36 +399,36 @@ namespace TileEngine
                 this._type = unitTypes.Melee;
         }
 
-		/// <summary>
-		/// Create baseUnit object without abilities
-		/// </summary>
-		/// <param name="name">Name of unit</param>
-		/// <param name="maxHP">Maximum Hit Points of unit</param>
-		/// <param name="maxAP">Maximum Action Points of unit</param>
-		/// <param name="maxMP">Maximum Movement Points of unit</param>
-		/// <param name="SPD">Speed of unit</param>
-		/// <param name="unitAffinity">Index of elemental affinity of unit</param>
+        /// <summary>
+        /// Create baseUnit object without abilities
+        /// </summary>
+        /// <param name="name">Name of unit</param>
+        /// <param name="maxHP">Maximum Hit Points of unit</param>
+        /// <param name="maxAP">Maximum Action Points of unit</param>
+        /// <param name="maxMP">Maximum Movement Points of unit</param>
+        /// <param name="SPD">Speed of unit</param>
+        /// <param name="unitAffinity">Index of elemental affinity of unit</param>
         public BaseUnit(String name, int maxHP, int maxAP, int maxMP, int SPD, int unitAffinity)
         {
-			this._name = name;
-			_HP = _maxHP = maxHP;
-			_AP = _maxAP = maxAP;
-			_MP = _maxMP = maxMP;
+            this._name = name;
+            _HP = _maxHP = maxHP;
+            _AP = _maxAP = maxAP;
+            _MP = _maxMP = maxMP;
             _SPD = _delay = SPD;
             _isDone = false;
             _evade = _SPD / 20;
             _wDef = 0;
             _wAtk = 0;
-			if (_HP > 0)
-				_isDead = false;
-			else
-				_isDead = true;
+            if (_HP > 0)
+                _isDead = false;
+            else
+                _isDead = true;
 
-			this.unitAffinity = unitAffinity;
+            this.unitAffinity = unitAffinity;
 
-			_moves = new List<Ability>();
+            _moves = new List<Ability>();
 
-			index = ++index_counter;
+            index = ++index_counter;
             //asign type
             if (this._wAtk < this._mPow)
                 this._type = unitTypes.Magic;
@@ -475,7 +474,6 @@ namespace TileEngine
 
             _moves = new List<Ability>();
             index = ++index_counter;
-
             //asign type
             if (this._wAtk < this._mPow)
                 this._type = unitTypes.Magic;
@@ -485,24 +483,24 @@ namespace TileEngine
                 this._type = unitTypes.Melee;
         }
 
-		/// <summary>
-		/// Create an empty baseUnit
-		/// </summary>
+        /// <summary>
+        /// Create an empty baseUnit
+        /// </summary>
         public BaseUnit()
         {
-			this._name = "";
-			_HP = _maxHP = 1;
-			_AP = _maxAP = 1;
-			_MP = _maxMP = 1;
-			_SPD = _delay = 1;
-			_isDead = false;
+            this._name = "";
+            _HP = _maxHP = 1;
+            _AP = _maxAP = 1;
+            _MP = _maxMP = 1;
+            _SPD = _delay = 1;
+            _isDead = false;
             _isDone = false;
 
-			this.unitAffinity = -1;
-		
-			_moves = new List<Ability>();
+            this.unitAffinity = -1;
 
-			index = ++index_counter;
+            _moves = new List<Ability>();
+
+            index = ++index_counter;
 
             //asign type
             if (this._wAtk < this._mPow)
@@ -513,59 +511,59 @@ namespace TileEngine
                 this._type = unitTypes.Melee;
         }
 
-		/// <summary>
-		/// Add one or more abilities to the unit
-		/// </summary>
-		/// <param name="abilities"></param>
-		public void addAbility(params Ability[] abilities)
-		{
-			for (int i = 0; i < abilities.Length; ++i)
-				_moves.Add(abilities[i]);
-		}
+        /// <summary>
+        /// Add one or more abilities to the unit
+        /// </summary>
+        /// <param name="abilities"></param>
+        public void addAbility(params Ability[] abilities)
+        {
+            for (int i = 0; i < abilities.Length; ++i)
+                _moves.Add(abilities[i]);
+        }
 
-		public static Dictionary<string, BaseUnit> fromFile(ContentManager content, string filename, Dictionary<string, Ability>AbilityList)
-		{
-			Dictionary<string, BaseUnit> unitList = new Dictionary<string, BaseUnit>();
+        public static Dictionary<string, BaseUnit> fromFile(ContentManager content, string filename, Dictionary<string, Ability> AbilityList)
+        {
+            Dictionary<string, BaseUnit> unitList = new Dictionary<string, BaseUnit>();
 
-			using (StreamReader reader = new StreamReader(filename))
-			{
-				while (!reader.EndOfStream)
-				{
-					FrameAnimation up = new FrameAnimation(2, 32, 32, 0, 0);
-					FrameAnimation down = new FrameAnimation(2, 32, 32, 64, 0);
-					FrameAnimation left = new FrameAnimation(2, 32, 32, 128, 0);
-					FrameAnimation right = new FrameAnimation(2, 32, 32, 192, 0);
-					FrameAnimation dead = new FrameAnimation(1, 32, 32, 256, 0);
-					up.framesPerSecond = down.framesPerSecond = left.framesPerSecond = right.framesPerSecond = 5;
+            using (StreamReader reader = new StreamReader(filename))
+            {
+                while (!reader.EndOfStream)
+                {
+                    FrameAnimation up = new FrameAnimation(2, 32, 32, 0, 0);
+                    FrameAnimation down = new FrameAnimation(2, 32, 32, 64, 0);
+                    FrameAnimation left = new FrameAnimation(2, 32, 32, 128, 0);
+                    FrameAnimation right = new FrameAnimation(2, 32, 32, 192, 0);
+                    FrameAnimation dead = new FrameAnimation(1, 32, 32, 256, 0);
+                    up.framesPerSecond = down.framesPerSecond = left.framesPerSecond = right.framesPerSecond = 5;
 
-					string line = reader.ReadLine().Trim();
-					if (string.IsNullOrEmpty(line)) continue;
-					if (line.Contains("///")) continue;
-					string[] unitParams = line.Split(',');
-                    BaseUnit unit = new BaseUnit(unitParams[0].Trim(), int.Parse(unitParams[1].Trim()), int.Parse(unitParams[2].Trim()), int.Parse(unitParams[3].Trim()), int.Parse(unitParams[4].Trim()), int.Parse(unitParams[5].Trim()), int.Parse(unitParams[6].Trim()) * 9 / 10, int.Parse(unitParams[7].Trim()) * 3 / 2, int.Parse(unitParams[8].Trim()), int.Parse(unitParams[9].Trim()), int.Parse(unitParams[10].Trim()));
+                    string line = reader.ReadLine().Trim();
+                    if (string.IsNullOrEmpty(line)) continue;
+                    if (line.Contains("///")) continue;
+                    string[] unitParams = line.Split(',');
+                    BaseUnit unit = new BaseUnit(unitParams[0].Trim(), int.Parse(unitParams[1].Trim()), int.Parse(unitParams[2].Trim()), int.Parse(unitParams[3].Trim()), int.Parse(unitParams[4].Trim()), int.Parse(unitParams[5].Trim()), int.Parse(unitParams[6].Trim()) * 9 / 10, int.Parse(unitParams[7].Trim()) * 3 / 2, int.Parse(unitParams[8].Trim()) * 9 / 10, int.Parse(unitParams[9].Trim()) * 3 / 2, int.Parse(unitParams[10].Trim()));
 
-					for (int i = 12; i < unitParams.Length; ++i)
-					{
-						unit.addAbility(AbilityList[unitParams[i].Trim()]);
-					}
+                    for (int i = 12; i < unitParams.Length; ++i)
+                    {
+                        unit.addAbility(AbilityList[unitParams[i].Trim()]);
+                    }
 
 
-					unit.unitSprite = new AnimatedSprite(content.Load<Texture2D>(unitParams[11].Trim()));
-					unit.unitSprite.animations.Add("Up", up);
-					unit.unitSprite.animations.Add("Down", down);
-					unit.unitSprite.animations.Add("Left", left);
-					unit.unitSprite.animations.Add("Right", right);
-					unit.unitSprite.animations.Add("Dead", dead);
-					unit.unitSprite.speed = 1.75f;
-					unit.unitSprite.currentAnimationName = "Down";
-					unitList.Add(unit._name, unit);
-				}
-			}
+                    unit.unitSprite = new AnimatedSprite(content.Load<Texture2D>(unitParams[11].Trim()));
+                    unit.unitSprite.animations.Add("Up", up);
+                    unit.unitSprite.animations.Add("Down", down);
+                    unit.unitSprite.animations.Add("Left", left);
+                    unit.unitSprite.animations.Add("Right", right);
+                    unit.unitSprite.animations.Add("Dead", dead);
+                    unit.unitSprite.speed = 1.75f;
+                    unit.unitSprite.currentAnimationName = "Down";
+                    unitList.Add(unit._name, unit);
+                }
+            }
 
-			return unitList;
-		}
+            return unitList;
+        }
 
-		#endregion
+        #endregion
 
         #region methods
 
@@ -584,11 +582,11 @@ namespace TileEngine
             int dmg = 0;
             dmg = _wAtk;
 
-			_unitSprite.attack(this, target); 
-            return target.takeDamage(dmg, affinityMults[this.affinityIndex, target.affinityIndex]*getWeatherMult()/100, this);
+            _unitSprite.attack(this, target);
+            return target.takeDamage(dmg, affinityMults[this.affinityIndex, target.affinityIndex] * getWeatherMult() / 100, this);
 
         }
-        
+
         /// <summary>
         /// takes weapon damage
         /// </summary>
@@ -614,7 +612,7 @@ namespace TileEngine
                 }
 
                 //apply multiplier
-                dmg = Math.Max(1,dmg * mult / 100);
+                dmg = Math.Max(1, dmg * mult / 100);
 
                 //deal damage
                 _dmgToBeTaken = dmg;
@@ -719,7 +717,7 @@ namespace TileEngine
         /// <returns></returns>
         public bool canTargetAbility(Ability ability, BaseUnit target)
         {
-            if(!((Math.Abs(this.position.X - target.position.X) + Math.Abs(this.position.Y - target.position.Y)) <= ability.attackRange))
+            if (!((Math.Abs(this.position.X - target.position.X) + Math.Abs(this.position.Y - target.position.Y)) <= ability.attackRange))
                 return false;
             if (ability.isFriendly)
             {
@@ -729,7 +727,7 @@ namespace TileEngine
             {
                 if (target.faction == this.faction) return false;
             }
-            
+
             return true;
         }
 
@@ -784,7 +782,7 @@ namespace TileEngine
         /// <summary>
         /// Allows units to be sorted by delay
         /// </summary>
-        public class sortByDelay:IComparer
+        public class sortByDelay : IComparer
         {
             int IComparer.Compare(Object x, Object y)
             {
@@ -827,7 +825,7 @@ namespace TileEngine
             {
                 if (!ability.isFriendly) return -1;
             }
-            if (!_moves.Contains(ability) || _AP - ability.APCost < 0 || _isAttacking) 
+            if (!_moves.Contains(ability) || _AP - ability.APCost < 0 || _isAttacking)
                 return -1;
 
             _AP -= ability.APCost;
@@ -839,7 +837,7 @@ namespace TileEngine
             {
                 int dmg = _wAtk;
                 //System.Console.WriteLine("Damage from ability " + ability.name + ": " + dmg);
-                return target.takeDamage(dmg, ability.abilityAmount * affinityMults[this.affinityIndex, target.affinityIndex] * getWeatherMult() / 10000, this);
+                target.takeDamage(dmg, ability.abilityAmount * affinityMults[this.affinityIndex, target.affinityIndex] * getWeatherMult() / 10000, this);
             }
             else if (ability.abilityType == EffectTypes.magicDamage)
             {
@@ -847,10 +845,7 @@ namespace TileEngine
                 //System.Console.WriteLine("Damage from ability " + ability.name + ": " + dmg);
                 target.takeMagicDamage(dmg, ability.abilityAmount * affinityMults[this.affinityIndex, target.affinityIndex] * getWeatherMult() / 10000, this);
             }
-            else
-            {
-                target.modify(this, ability);
-            }
+            target.modify(this, ability);
             return 0;
         }
 
@@ -868,54 +863,72 @@ namespace TileEngine
             return ret;
         }
 
-		#endregion
+        #endregion
 
+        #region Sprite Updates
 
-		#region Sprite Updates
+        /// <summary>
+        /// Updates the units sprite representation based on flags.
+        /// </summary>
+        /// <param name="gameTime">GameTime object passed from Game class</param>
+        /// <param name="map">Tile Map of play area</param>
+        public void update(GameTime gameTime, TileMap map, Camera camera)
+        {
+            //check flags
+            if (_unitSprite.isMoving)
+                _isWalking = true;
+            else
+                _isWalking = false;
 
-		/// <summary>
-		/// Updates the units sprite representation based on flags.
-		/// </summary>
-		/// <param name="gameTime">GameTime object passed from Game class</param>
-		/// <param name="map">Tile Map of play area</param>
-		public void update(GameTime gameTime, TileMap map, Camera camera)
-		{
-			//check flags
-			if (_unitSprite.isMoving)
-				_isWalking = true;
-			else
-				_isWalking = false;
+            if (isDead && unitSprite.currentAnimationName != "Dead")
+                unitSprite.die();
 
-			if (isDead && unitSprite.currentAnimationName != "Dead")
-				unitSprite.die();
+            if (!_isAttacking)
+                map.unitLayer.moveUnit(this.unitIndex, this.position);
 
-			if (!_isAttacking)
-				map.unitLayer.moveUnit(this.unitIndex, this.position);
+            _unitSprite.update(gameTime, map, camera);
 
-			_unitSprite.update(gameTime, map, camera);
+            if (_isAttacking && !_unitSprite.isAttacking)
+                _isAttacking = false;
 
-			if (_isAttacking && !_unitSprite.isAttacking)
-				_isAttacking = false;
+            if (this._isBeingHit && !_unitSprite.isDefending)
+            {
+                this.HP -= _dmgToBeTaken;
 
-			if (this._isBeingHit && !_unitSprite.isDefending)
-			{
-				this.HP -= _dmgToBeTaken;
+                if (this.isDead)
+                    GameConsole.getInstanceOf().Update(this.name + " was killed by " + _attacker.name, _attacker.faction.color);
 
-				if (this.isDead)
-					GameConsole.getInstanceOf().Update(this.name + " was killed by " + _attacker.name, _attacker.faction.color);
-
-				_dmgToBeTaken = 0;
-				_attacker = null;
-				this._isBeingHit = false;
-			}
+                _dmgToBeTaken = 0;
+                _attacker = null;
+                this._isBeingHit = false;
+            }
 
             if (_attacker != null && !_attacker.isAttacking && !_isBeingHit)
             {
                 String msg = "";
+
+                #region ability console message printing/applying effects
                 if (_prevAbility != null)
                 {
-                    System.Console.WriteLine("sup");
-                    if (_prevAbility.abilityType == EffectTypes.decAP)
+                    if (_prevAbility.abilityType == EffectTypes.magicDamage || _prevAbility.abilityType == EffectTypes.damage)
+                    {
+                        if (_wascrit)
+                        {
+                            msg = "Critical hit! " + _attacker.name + " used " + _prevAbility.name + " to do " + _dmgToBeTaken + " damage to " + this.name;
+                            _unitSprite.beCritHit(this, _attacker);
+                        }
+                        else if (_dmgToBeTaken == 0)
+                        {
+                            msg = _attacker.name + " has missed " + this.name + " with " + _prevAbility.name;
+                            _unitSprite.dodge(this, _attacker);
+                        }
+                        else
+                        {
+                            msg = _attacker.name + " used " + _prevAbility.name + " to do " + _dmgToBeTaken + " damage to " + this.name;
+                            _unitSprite.beHit(this, _attacker);
+                        }
+                    }
+                    else if (_prevAbility.abilityType == EffectTypes.decAP)
                     {
                         this.AP -= _prevAbility.abilityAmount;
                         msg = _attacker.name + " has used " + _prevAbility.name + "to reduce " + this.name + "'s AP by " + _prevAbility.abilityAmount;
@@ -927,7 +940,7 @@ namespace TileEngine
                     }
                     else if (_prevAbility.abilityType == EffectTypes.heal)
                     {
-                        int amt = applyVariance(_prevAbility.abilityAmount,10);
+                        int amt = applyVariance(_prevAbility.abilityAmount, 10);
                         this.HP += amt;
                         msg = _attacker.name + " has used " + _prevAbility.name + " to heal " + this.name + " by " + amt;
                     }
@@ -945,7 +958,7 @@ namespace TileEngine
                     {
                         this._stunLength = _prevAbility.abilityAmount;
                         this.isStunned = true;
-                        if(_prevAbility.abilityAmount != 1)
+                        if (_prevAbility.abilityAmount != 1)
                             msg = _attacker.name + " has used " + _prevAbility.name + " to stun " + this.name + " for " + _prevAbility.abilityAmount + " turns";
                         else
                         {
@@ -954,6 +967,9 @@ namespace TileEngine
                     }
                     _unitSprite.beHit(this, _attacker);
                 }
+                #endregion
+
+                #region attack console message print/dmg applying
                 else
                 {
 
@@ -974,92 +990,93 @@ namespace TileEngine
                         _unitSprite.beHit(this, _attacker);
                     }
                 }
-				//Print msgs
+                #endregion
+                //Print msgs
                 GameConsole.getInstanceOf().Update(msg, _attacker.faction.color);
 
                 _wascrit = false;
                 _prevAbility = null;
                 this._isBeingHit = true;
             }
-            
-		}
 
-		/// <summary>
-		/// Move the unit to a specified tile.
-		/// </summary>
-		/// <param name="goal">Goal location of the </param>
-		/// <param name="map">Tile Map of play area</param>
-		public bool goToTile(Point goal, TileMap map, Camera camera)
-		{
-			if (_isWalking) return false;
+        }
+
+        /// <summary>
+        /// Move the unit to a specified tile.
+        /// </summary>
+        /// <param name="goal">Goal location of the </param>
+        /// <param name="map">Tile Map of play area</param>
+        public bool goToTile(Point goal, TileMap map, Camera camera)
+        {
+            if (_isWalking) return false;
             if (map.unitLayer.getTileUnitIndex(goal) != 0) return false;
-			if (map.collisionLayer.getTileCollisionIndex(goal) != 0) return false;
+            if (map.collisionLayer.getTileCollisionIndex(goal) != 0) return false;
 
-			if (unitSprite.goToTile(this, goal, map, _MP, camera))
-			{
-				MP -= map.getPath(this, goal, new List<Point>()).Count - 1;
-				_position = goal;
-				_isWalking = true;
-				_hasMoved = true;
-				map.unitLayer.moveUnit(unitIndex, goal);
-				return true;
-			}
-			else
-				return false;
+            if (unitSprite.goToTile(this, goal, map, _MP, camera))
+            {
+                MP -= map.getPath(this, goal, new List<Point>()).Count - 1;
+                _position = goal;
+                _isWalking = true;
+                _hasMoved = true;
+                map.unitLayer.moveUnit(unitIndex, goal);
+                return true;
+            }
+            else
+                return false;
 
-		}
+        }
 
-		/// <summary>
-		/// Teleports the unit to any non-collision point on the map
-		/// </summary>
-		/// <param name="goal">Goal tile location to teleport to.</param>
-		/// <param name="map">Tile Map of play area</param>
-		public void teleportToTile(Point goal, TileMap map)
-		{
-			if (_isWalking) return;
-			if (map.unitLayer.getTileUnitIndex(goal) != 0) return;
-			if (map.collisionLayer.getTileCollisionIndex(goal) != 0) return;
+        /// <summary>
+        /// Teleports the unit to any non-collision point on the map
+        /// </summary>
+        /// <param name="goal">Goal tile location to teleport to.</param>
+        /// <param name="map">Tile Map of play area</param>
+        public void teleportToTile(Point goal, TileMap map)
+        {
+            if (_isWalking) return;
+            if (map.unitLayer.getTileUnitIndex(goal) != 0) return;
+            if (map.collisionLayer.getTileCollisionIndex(goal) != 0) return;
 
-			unitSprite.position = new Vector2((float)goal.X * Engine.TILE_WIDTH, (float)goal.Y * Engine.TILE_HEIGHT);
-			_position = goal;
-			map.unitLayer.moveUnit(unitIndex, goal);
-		} 
+            unitSprite.position = new Vector2((float)goal.X * Engine.TILE_WIDTH, (float)goal.Y * Engine.TILE_HEIGHT);
+            _position = goal;
+            map.unitLayer.moveUnit(unitIndex, goal);
+        }
 
-		/// <summary>
-		/// Randomly position a unit on a viable tile within a given range
-		/// </summary>
-		/// <param name="topLeft">Top left corner of range (inclusive)</param>
-		/// <param name="topRight">Bottom right corner of range (inclusive)</param>
-		public void randomPosition(Point topLeft, Point bottomRight, TileMap map)
-		{
-			Point p = Point.Zero;
-			do
-			{
-				p.X = RandomNumber.getInstance().getNext(topLeft.X, bottomRight.X);
-				p.Y = RandomNumber.getInstance().getNext(topLeft.Y, bottomRight.Y);
-			} while (!map.isEmpty(p));
+        /// <summary>
+        /// Randomly position a unit on a viable tile within a given range
+        /// </summary>
+        /// <param name="topLeft">Top left corner of range (inclusive)</param>
+        /// <param name="topRight">Bottom right corner of range (inclusive)</param>
+        public void randomPosition(Point topLeft, Point bottomRight, TileMap map)
+        {
+            Point p = Point.Zero;
+            do
+            {
+                p.X = RandomNumber.getInstance().getNext(topLeft.X, bottomRight.X);
+                p.Y = RandomNumber.getInstance().getNext(topLeft.Y, bottomRight.Y);
+            } while (!map.isEmpty(p));
 
-			teleportToTile(p, map);
-		}
-
-		#endregion
-
-		#region drawing player
-
-		/// <summary>
-		/// Draws the unit on the map
-		/// </summary>
-		/// <param name="spriteBatch">SpriteBatch passed from Game class</param>
-		/// <param name="camera">Camera object passed from Game class</param>
-		public void draw(SpriteBatch spriteBatch, Camera camera)
-		{
-			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, camera.transformationMatrix);
-			unitSprite.Draw(spriteBatch);
-			spriteBatch.End();
-		}
+            teleportToTile(p, map);
+        }
 
         #endregion
 
-	}
+        #region drawing player
+
+        /// <summary>
+        /// Draws the unit on the map
+        /// </summary>
+        /// <param name="spriteBatch">SpriteBatch passed from Game class</param>
+        /// <param name="camera">Camera object passed from Game class</param>
+        public void draw(SpriteBatch spriteBatch, Camera camera)
+        {
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.NonPremultiplied, SamplerState.LinearClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, camera.transformationMatrix);
+            unitSprite.Draw(spriteBatch);
+            spriteBatch.End();
+        }
+
+        #endregion
+
+    }
 
 }
