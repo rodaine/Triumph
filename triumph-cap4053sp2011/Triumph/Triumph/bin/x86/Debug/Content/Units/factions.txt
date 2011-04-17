@@ -1,15 +1,47 @@
-[Dankelites]
+[Tundrasians]
 Artic Hoplite
 Leviathan
 Frostkeeper
-Airbender
+Paladin
 Aqua Soldier
 Snowlancer
 
-[Dougonians]
+[Imperialites]
 City Guard
-Rock Smasher
+Airbender
 Goliath
 Rock Archer
 Cronos
 Council Mage
+
+[Forestdwellers]
+Moonshiner
+Mudslinger
+Arachnedia
+Chlorosponger
+Branchslinger
+Impaler
+
+[Caldericans]
+Scorcher
+Rock Smasher
+Singed Axman
+Scorpio
+Alchemist
+Spearman
+
+[Quagesh]
+Engorged Ant
+Witchdoctor
+Hydranger
+Cave Troll
+Nightcrawler
+Barrager
+
+[Planelurkers]
+Skeletal Knight
+Demonspawn
+Doombringer
+Bloodbeast
+Spellweaver
+Octomom

@@ -53,32 +53,7 @@ namespace Triumph
         {
             base.Initialize();
 
-			faction1 = factionList["Dankelites"];
-			faction1.color = Color.Blue;
-
-			faction2 = factionList["Dougonians"];
-			faction2.color = Color.Red;
-
-			testUnits = new BaseUnit[faction1.units.Length + faction2.units.Length];
-
-			for (int i = 0; i < faction1.units.Length; ++i)
-			{
-				testUnits[i] = faction1.units[i];
-				testUnits[i + faction1.units.Length] = faction2.units[i];
-			}
-
-			foreach (BaseUnit unit in testUnits)
-			{
-				if (unit.faction == faction1)
-					unit.randomPosition(new Point(20, 0), new Point(29, 9), map);
-				else
-					unit.randomPosition(new Point(8, 20), new Point(17, 29), map);
-
-			}
-
-            turnManager = new TurnManager(testUnits);
-            currentUnit = turnManager.getNext();
-            cursor.location = currentUnit.position;
+			reset();
 
 			soundMusicInstance.Volume = 0.25f;
 			soundMusicInstance.IsLooped = true;
@@ -137,7 +112,7 @@ namespace Triumph
 			range = new Range(Content.Load <Texture2D>("UI/cursor"));
             
 
-            ui.LoadContent(Content);
+            ui.LoadContent(Content, unitList, factionList);
             GameConsole.getInstanceOf().LoadContent(Content);
 
         }
@@ -153,6 +128,11 @@ namespace Triumph
         {
             KeyboardState aKeyboardState = Keyboard.GetState();
 
+			if (ui.needsReset)
+			{
+				reset();
+				ui.needsReset = false;
+			}
 
             if (soundMusicInstance.State == SoundState.Paused || soundMusicInstance.State == SoundState.Paused)
             {
@@ -235,7 +215,6 @@ namespace Triumph
             base.Update(gameTime);
         }
             
-
         //called from update, draws screen
         protected override void Draw(GameTime gameTime)
         {
@@ -253,5 +232,46 @@ namespace Triumph
             base.Draw(gameTime);
         }
 
+		private void reset()
+		{
+			string[] factionNames = factionList.Keys.ToArray();
+
+			do
+			{
+				faction1 = factionList[factionNames[RandomNumber.getInstance().getNext(0, factionNames.Length - 1)]];
+				faction2 = factionList[factionNames[RandomNumber.getInstance().getNext(0, factionNames.Length - 1)]];
+			} while (faction1.name == faction2.name);
+
+			faction1.color = Color.Blue;
+			faction2.color = Color.Red;
+
+			testUnits = new BaseUnit[faction1.units.Length + faction2.units.Length];
+
+			for (int i = 0; i < faction1.units.Length; ++i)
+			{
+				testUnits[i] = faction1.units[i];
+				testUnits[i + faction1.units.Length] = faction2.units[i];
+			}
+
+			foreach (BaseUnit unit in testUnits)
+			{
+				if (unit.faction == faction1)
+				{
+					unit.randomPosition(new Point(20, 0), new Point(29, 9), map);
+					unit.unitSprite.currentAnimationName = "Down";
+				}
+				else
+				{
+					unit.randomPosition(new Point(8, 20), new Point(17, 29), map);
+					unit.unitSprite.currentAnimationName = "Up";
+				}
+			}
+
+			ui.loadFactions(faction1, faction2);
+
+			turnManager = new TurnManager(testUnits);
+			currentUnit = turnManager.getNext();
+			cursor.location = currentUnit.position;
+		}
     }
 }

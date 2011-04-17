@@ -1,27 +1,37 @@
 ///Name          HP   AP MP SPD  Aff Watk Wdef Matk Mdef Range Spr Abilities
 Artic Hoplite	, 60 , 3, 8 , 100, 1, 88 , 88 , 0 , 32 , 1 , Sprites/npc4, Frost-Punch	, Ice-Dagger
 Moonshiner	, 56 , 3, 5 ,  98, 4, 80 , 92 , 0 , 30 , 1 , Sprites/mnv1, Brew		, Shovel-Smack
-City Guard	, 54 , 2, 8 , 104, 6, 92 , 80 , 0 , 34 , 1 , Sprites/pdn1, Guard	, Holy-Revival
+City Guard	, 54 , 3, 8 , 104, 6, 92 , 80 , 0 , 34 , 1 , Sprites/pdn1, Guard	, Holy-Revival
 Branchslinger	, 50 , 3, 8 , 110, 4, 90 , 48 , 0 , 36 , 2 , Sprites/thf1, Slash	, Root-Whip
 Aqua Soldier	, 56 , 3, 10, 120, 3, 84 , 72 , 0 , 40 , 1 , Sprites/trk1, Sea-Blast	, Barnacle
 Rock Smasher	, 66 , 2, 5 ,  95, 4, 92 , 84 , 0 , 38 , 1 , Sprites/npc6, Cleave	, Geopunch 
 Scorcher	, 60 , 4, 8 , 104, 0, 36 , 84 , 96, 56 , 2 , Sprites/npc5, Ember-Kick	, Cleave
-Leviathan	, 90 , 1, 3 ,  72, 3, 30 , 105, 98, 68 , 1 , Sprites/npc3, Fury-Balls	, Crystal-Storm
-Goliath		, 99 , 1, 3 ,  57, 7, 194, 100, 0 , 52 , 1 , Sprites/npc3, Rock-Roll	, Stone-Tomb
+Leviathan	, 90 , 2, 3 ,  72, 3, 30 , 105, 98, 68 , 1 , Sprites/npc3, Fury-Balls	, Crystal-Storm
+Goliath		, 99 , 2, 3 ,  57, 7, 194, 100, 0 , 52 , 1 , Sprites/npc3, Rock-Roll	, Stone-Tomb
 Snowlancer	, 58 , 2, 8 , 110, 1, 24 , 88 , 84, 64 , 1 , Sprites/npc8, Stone-Chuck	, Crystal-Storm
 Spearman	, 45 , 4, 5 ,  90, 2, 80 , 50 , 0 , 36 , 3 , Sprites/npc1, Spear	, Rapid-Strike
 Rock Archer	, 56 , 2, 5 , 130, 4, 90 , 60 , 0 , 34 , 3 , Sprites/mnt1, Hurl		, Riot-Punch
-Mud slinger	, 50 , 2, 5 , 110, 5, 78 , 48 , 0 , 34 , 2 , Sprites/wmn3, Spew		, Shovel-Smack
+Mudslinger	, 50 , 2, 5 , 110, 5, 78 , 48 , 0 , 34 , 2 , Sprites/wmn3, Spew		, Shovel-Smack
 Hydranger	, 58 , 3, 5 , 100, 4, 22 , 58 , 82, 58 , 1 , Sprites/scr1, Sting	, Cosmic-Wave
 Barrager	, 54 , 2, 8 ,  90, 5, 92 , 54 , 0 , 46 , 3 , Sprites/skl1, Stone-Chuck	, Battle-Fatigue
-Singed Axman	, 58 , 2, 5 ,  80, 0, 88 , 72 , 0 , 48 , 1 , Sprites/mst1, Master-o-Karate, Hellraiser
+Singed Axman	, 58 , 3, 5 ,  80, 0, 88 , 72 , 0 , 48 , 1 , Sprites/mst1, Master-o-Karate, Hellraiser
 Airbender	, 58 , 3, 8 , 110, 5, 30 , 60 , 90, 78 , 2 , Sprites/npc9, Beam-Cannon	, Cosmic-Wave
 Chlorosponger	, 54 , 3, 5 ,  90, 6, 30 , 62 , 90, 76 , 1 , Sprites/smr1, Soul-Bond	, Healing-Sap
 Council Mage	, 58 , 4, 5 , 100, 6, 36 , 80 , 96, 88 , 2 , Sprites/wmg1, Freeze-Frame	, Witch-Hunt
 Alchemist	, 56 , 3, 4 , 100, 2, 28 , 72 , 88, 80 , 1 , Sprites/amg1, Starburst	, Energize
 Witchdoctor	, 48 , 4, 4 , 130, 7, 20 , 48 , 80, 74 , 1 , Sprites/wnv1, Shadowstruck	, Amnesia-Fire
 Frostkeeper	, 66 , 3, 10,  90, 1, 34 , 86 , 94, 58 , 1 , Sprites/npc7, Frost-Punch	, Avalanche
-Silverwolf	, 62 , 4, 4 , 150, 4, 100, 36 , 0 , 38 , 1 , Sprites/spd1, Moonlight-Chomp, Cotton-Tail
+Arachnedia	, 62 , 4, 4 , 150, 4, 100, 36 , 0 , 38 , 1 , Sprites/spd1, Moonlight-Chomp, Cotton-Tail
 Scorpio		, 68 , 2, 5 , 130, 0, 90 , 78 , 0 , 40 , 1 , Sprites/nja1, Brute-Strength, Sting
 Cronos		, 68 , 3, 5 , 100, 2, 94 , 90 , 0 , 46 , 1 , Sprites/zph1, Starcry	, Ember-Kick
 Impaler		, 62 , 3, 5 , 120, 3, 86 , 74 , 0 , 32 , 1 , Sprites/npc2, Hammertime   , Shimmering-Armor
+Skeletal Knight , 52 , 2, 6 , 90 , 7, 68 , 68 , 0 , 58 , 1 , Sprites/skl1, Slash	, Cleave
+Engorged Ant    , 46 , 2, 5 , 80 , 5, 80 , 78 , 0 , 50 , 1 , Sprites/spd1, Stone-Tomb	, Sting
+Cave Troll      , 80 , 3, 4 , 70 , 4, 110, 88 , 0 , 60 , 1 , Sprites/npc6, Rock-Roll	, Geopunch
+Demonspawn      , 60 , 2, 6 , 100, 7, 82 , 74 , 0 , 52 , 1 , Sprites/npc5, Hellraiser	, Soul-Bond
+Spellweaver     , 52 , 3, 5 , 110, 6, 24 , 60 , 88, 88 , 2 , Sprites/wmg1, Shadowstruck	, Cosmic-Wave
+Nightcrawler    , 60 , 4, 8 , 90 , 5, 26 , 64 , 66, 38 , 2 , Sprites/wmn3, Stone-Chuck	, Cleansing-Spore
+Doombringer     , 64 , 3, 6 , 80 , 0, 86 , 72 , 0 , 42 , 1 , Sprites/mst1, Ember-Kick	, Shimmering-Armor
+Bloodbeast      , 58 , 2, 8 , 70 , 5, 78 , 70 , 0 , 44 , 1 , Sprites/spd1, Moonlight-Chomp, Battle-Fatigue
+Paladin         , 64 , 4, 5 , 100, 1, 98 , 80 , 0 , 56 , 1 , Sprites/pdn1, Ice-Dagger	, Frost-Punch
+Octomom         , 48 , 2, 8 , 80 , 2, 58 , 66 , 0 , 50 , 1 , Sprites/wnv1, Guard	, Rapid-Strike
