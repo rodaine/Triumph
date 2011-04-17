@@ -133,7 +133,7 @@ namespace TileEngine
 
             if (!hide)
             {
-                spriteBatch.Begin();
+                spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 
                 int x, y, wid, hei;
 

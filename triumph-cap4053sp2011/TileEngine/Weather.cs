@@ -31,7 +31,7 @@ namespace TileEngine
             _duration = RandomNumber.getInstance().getNext(8, 12);
             _currentWeather = _types[RandomNumber.getInstance().getNext(0,5)];
 
-            GameConsole.getInstanceOf().Update("The weather will be " + _currentWeather + " for the next " + _duration + " turns", Color.Green);
+            GameConsole.getInstanceOf().Update("The weather will be " + _currentWeather + " for the next " + _duration + " turns", Color.Black);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace TileEngine
             {
                 _duration = RandomNumber.getInstance().getNext(8, 12);
                 _currentWeather = _types[RandomNumber.getInstance().getNext(0,5)];
-                GameConsole.getInstanceOf().Update("The weather will be " + _currentWeather + " for the next " + _duration + " turns", Color.Green);
+                GameConsole.getInstanceOf().Update("The weather will be " + _currentWeather + " for the next " + _duration + " turns", Color.Black);
             }
         }
 
