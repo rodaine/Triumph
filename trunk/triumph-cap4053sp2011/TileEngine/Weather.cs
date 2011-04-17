@@ -15,22 +15,23 @@ using TileEngine;
 
 namespace TileEngine
 {
-    public enum WeatherTypes { rainy, sunny, snowy, cloudy, windy, dark };
+    public enum WeatherTypes { rainy, sunny, snowy, cloudy, stormy, dark };
 	public class Weather
 	{
         private int _duration;
         private WeatherTypes _currentWeather;
         public static Weather singleton;
-        private WeatherTypes[] _types = { WeatherTypes.rainy, WeatherTypes.sunny, WeatherTypes.snowy, WeatherTypes.cloudy, WeatherTypes.windy, WeatherTypes.dark };
+        private WeatherTypes[] _types = { WeatherTypes.rainy, WeatherTypes.sunny, WeatherTypes.snowy, WeatherTypes.cloudy, WeatherTypes.stormy, WeatherTypes.dark };
 
         /// <summary>
         /// creates a new weather class
         /// </summary>
         public Weather() 
         {
-            _duration = RandomNumber.getInstance().getNext(3, 5);
+            _duration = RandomNumber.getInstance().getNext(8, 12);
             _currentWeather = _types[RandomNumber.getInstance().getNext(0,5)];
-            
+
+            GameConsole.getInstanceOf().Update("The weather will be " + _currentWeather + " for the next " + _duration + " turns", Color.Green);
         }
 
         /// <summary>
@@ -59,6 +60,7 @@ namespace TileEngine
             {
                 _duration = RandomNumber.getInstance().getNext(8, 12);
                 _currentWeather = _types[RandomNumber.getInstance().getNext(0,5)];
+                GameConsole.getInstanceOf().Update("The weather will be " + _currentWeather + " for the next " + _duration + " turns", Color.Green);
             }
         }
 
