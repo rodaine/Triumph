@@ -10,7 +10,6 @@ namespace TileEngine
 
         int _apCost;
         int _attackRange;
-        int _multiplier;
         EffectTypes _abilityType;
         int _abilityAmount;
         String _name;

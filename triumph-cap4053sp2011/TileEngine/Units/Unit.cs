@@ -319,6 +319,38 @@ namespace TileEngine
             get { return _type; }
         }
 
+        /// <summary>
+        /// gets weapon attack
+        /// </summary>
+        public int wAtk
+        {
+            get { return _wAtk; }
+        }
+
+        /// <summary>
+        /// gets weapon defence
+        /// </summary>
+        public int wDef
+        {
+            get { return _wDef; }
+        }
+
+        /// <summary>
+        /// gets magic power
+        /// </summary>
+        public int mPow
+        {
+            get { return _mPow; }
+        }
+
+
+        /// <summary>
+        /// gets magic resist
+        /// </summary>
+        public int mRes
+        {
+            get { return _mRes; }
+        }
 
 		#endregion
 
@@ -660,7 +692,7 @@ namespace TileEngine
                 case WeatherTypes.sunny:
                     if (this.affinityType == affinityTypes.Holy || this.affinityType == affinityTypes.Earth) return 110;
                     break;
-                case WeatherTypes.windy:
+                case WeatherTypes.stormy:
                     if (this.affinityType == affinityTypes.Wind || this.affinityType == affinityTypes.Fire) return 110;
                     break;
             }
