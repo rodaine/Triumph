@@ -273,7 +273,7 @@ namespace TileEngine
                     #region moveToTarget
                     case AIState.moveToTarget:
                     {
-                        currentUnit.goToTile(_targetPoint, map);
+                        currentUnit.goToTile(_targetPoint, map, camera);
 
                         //TODO delay
 
@@ -304,7 +304,7 @@ namespace TileEngine
 
             foreach (BaseUnit bu in testUnits)
             {
-                bu.update(gameTime, map);
+                bu.update(gameTime, map, camera);
             }
             #endregion
 

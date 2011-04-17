@@ -878,7 +878,7 @@ namespace TileEngine
 		/// </summary>
 		/// <param name="gameTime">GameTime object passed from Game class</param>
 		/// <param name="map">Tile Map of play area</param>
-		public void update(GameTime gameTime, TileMap map)
+		public void update(GameTime gameTime, TileMap map, Camera camera)
 		{
 			//check flags
 			if (_unitSprite.isMoving)
@@ -892,7 +892,7 @@ namespace TileEngine
 			if (!_isAttacking)
 				map.unitLayer.moveUnit(this.unitIndex, this.position);
 
-			_unitSprite.update(gameTime, map);
+			_unitSprite.update(gameTime, map, camera);
 
 			if (_isAttacking && !_unitSprite.isAttacking)
 				_isAttacking = false;
@@ -989,13 +989,13 @@ namespace TileEngine
 		/// </summary>
 		/// <param name="goal">Goal location of the </param>
 		/// <param name="map">Tile Map of play area</param>
-		public bool goToTile(Point goal, TileMap map)
+		public bool goToTile(Point goal, TileMap map, Camera camera)
 		{
 			if (_isWalking) return false;
             if (map.unitLayer.getTileUnitIndex(goal) != 0) return false;
 			if (map.collisionLayer.getTileCollisionIndex(goal) != 0) return false;
 
-			if (unitSprite.goToTile(this, goal, map, _MP))
+			if (unitSprite.goToTile(this, goal, map, _MP, camera))
 			{
 				MP -= map.getPath(this, goal, new List<Point>()).Count - 1;
 				_position = goal;
