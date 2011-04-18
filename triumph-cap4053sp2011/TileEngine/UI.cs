@@ -22,8 +22,6 @@ namespace TileEngine
                 Pause,
                 Controls,
                 Affinity,
-                Weather,
-                Type,
                 End
             }
             Screen mCurrentScreen = Screen.Title;
@@ -720,26 +718,12 @@ namespace TileEngine
                                 playMove();
                                 mCurrentScreen = Screen.Affinity;
                             }
-
-                            if (aKeyboardState.IsKeyDown(Keys.W) == true)
-                            {
-                                playMove();
-                                mCurrentScreen = Screen.Weather;
-                            }
-
-                            if (aKeyboardState.IsKeyDown(Keys.T) == true)
-                            {
-                                playMove();
-                                mCurrentScreen = Screen.Type;
-                            }
                             break;
                         }
                     #endregion
 
                     #region Symbols
                     case Screen.Affinity:
-                    case Screen.Weather:
-                    case Screen.Type:
                         {
                             if (aKeyboardState.IsKeyDown(Keys.R) == true || aKeyboardState.IsKeyDown(Keys.Escape) == true)
                             {
@@ -753,22 +737,10 @@ namespace TileEngine
                                 mCurrentScreen = Screen.Controls;
                             }
 
-                            if (aKeyboardState.IsKeyDown(Keys.T) == true)
-                            {
-                                playMove();
-                                mCurrentScreen = Screen.Type;
-                            }
-
                             if (aKeyboardState.IsKeyDown(Keys.A) == true)
                             {
                                 playMove();
                                 mCurrentScreen = Screen.Affinity;
-                            }
-
-                            if (aKeyboardState.IsKeyDown(Keys.W) == true)
-                            {
-                                playMove();
-                                mCurrentScreen = Screen.Weather;
                             }
                             break;
                         }
@@ -976,6 +948,8 @@ namespace TileEngine
                             str = "R : Resume Game";
                             spriteBatch.DrawString(font2, str, new Vector2(winWidth / 2, winHeight / 4 + 6 * offset), Color.White);
 
+                            spriteBatch.DrawString(font2, "A: Affinities", new Vector2(winWidth - 3 * Engine.TILE_WIDTH - Engine.TILE_WIDTH / 2, winHeight - Engine.TILE_HEIGHT), new Color(1f, 1f, 1f, .75f));
+
                             spriteBatch.End();
                             break;
                         }
@@ -983,11 +957,9 @@ namespace TileEngine
 
                     #region Symbols
                     case Screen.Affinity:
-                    case Screen.Type:
-                    case Screen.Weather:
                         {
                             map.draw(spriteBatch, camera);
-                            drawSymbols(spriteBatch, winHeight, winWidth);
+                            drawSymbols(spriteBatch, winHeight, winWidth, map, camera);
                             break;
                         }
                     #endregion
@@ -1327,20 +1299,21 @@ namespace TileEngine
                 }
             }
 
-            private void drawSymbols(SpriteBatch spriteBatch, int winHeight, int winWidth)
+            private void drawSymbols(SpriteBatch spriteBatch, int winHeight, int winWidth, TileMap map, Camera camera)
             {
                 switch (mCurrentScreen)
                 {
                     case Screen.Affinity:
                         {
-                            break;
-                        }
-                    case Screen.Type:
-                        {
-                            break;
-                        }
-                    case Screen.Weather:
-                        {
+                            spriteBatch.Begin();
+
+                            spriteBatch.Draw(mBlack, new Rectangle(0, 0, winWidth, winHeight), new Color(1f, 1f, 1f, .4f));
+                            spriteBatch.Draw(mBlack, new Rectangle(winWidth / 4, winHeight / 4, winWidth / 2, winHeight / 2), new Color(1f, 1f, 1f, .6f));
+                            spriteBatch.Draw(mRed, new Rectangle(winWidth / 4 + 10, winHeight / 4 + 10, winWidth / 2 - 20, winHeight / 2 - 20), new Color(1f, 1f, 1f, .1f));
+                            spriteBatch.Draw(mBlack, new Rectangle(winWidth / 4 + 15, winHeight / 4 + 15, winWidth / 2 - 30, winHeight / 2 - 30), Color.White);
+                            spriteBatch.Draw(affinityMatrix, new Rectangle(winWidth / 3, winHeight / 4 + 15, winWidth / 3, winHeight / 2 - 30), Color.White);
+
+                            spriteBatch.End();
                             break;
                         }
                 }
