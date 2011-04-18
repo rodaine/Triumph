@@ -607,6 +607,7 @@ namespace TileEngine
                                                             {
                                                                 if (currentUnit.canAbility())
                                                                 {
+																	range.isDrawing = false;
                                                                     mCurrentPhase = Phase.AbilityList;
                                                                     ab = 0;
                                                                     while (currentUnit.moves[ab].APCost > currentUnit.AP)
@@ -616,6 +617,7 @@ namespace TileEngine
                                                                 }
                                                                 else
                                                                 {
+																	range.isDrawing = false;
                                                                     mCurrentPhase = Phase.Menu;
                                                                     if (currentUnit.MP != 0)
                                                                         mCurrentOption = MenuOption.Move;
@@ -739,7 +741,7 @@ namespace TileEngine
 
                             if (aKeyboardState.IsKeyDown(Keys.A) == true)
                             {
-                                playMove();
+                                //playMove();
                                 mCurrentScreen = Screen.Affinity;
                             }
                             break;

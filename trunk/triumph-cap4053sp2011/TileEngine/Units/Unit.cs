@@ -717,6 +717,7 @@ namespace TileEngine
         /// <returns></returns>
         public bool canTargetAbility(Ability ability, BaseUnit target)
         {
+			if (target == null) return false;
             if (!((Math.Abs(this.position.X - target.position.X) + Math.Abs(this.position.Y - target.position.Y)) <= ability.attackRange))
                 return false;
             if (ability.isFriendly)
