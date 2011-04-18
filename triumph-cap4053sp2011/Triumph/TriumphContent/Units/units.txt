@@ -6,8 +6,8 @@ Branchslinger	, 50 , 3, 8 , 110, 4, 90 , 68 , 0 , 66 , 3 , Sprites/thf1, Slash	,
 Aqua Soldier	, 56 , 3, 10, 120, 3, 84 , 72 , 0 , 70 , 1 , Sprites/trk1, Sea-Blast	, Barnacle
 Rock Smasher	, 66 , 2, 5 ,  95, 4, 92 , 84 , 0 , 78 , 1 , Sprites/npc6, Cleave	, Geopunch 
 Scorcher	    , 60 , 4, 8 , 104, 0, 36 , 84 , 84, 96 , 1 , Sprites/npc5, Ember-Kick	, Cleave
-Leviathan	    , 90 , 1, 3 ,  72, 3, 30 , 105, 86, 98 , 1 , Sprites/npc3, Fury-Balls	, Crystal-Storm
-Goliath		    , 99 , 1, 3 ,  67, 7, 104, 100, 0 , 82 , 1 , Sprites/npc3, Rock-Roll	, Stone-Tomb
+Leviathan	    , 90 , 2, 3 ,  72, 3, 30 , 105, 86, 98 , 1 , Sprites/npc3, Fury-Balls	, Crystal-Storm
+Goliath		    , 99 , 2, 3 ,  67, 7, 104, 100, 0 , 82 , 1 , Sprites/npc3, Rock-Roll	, Stone-Tomb
 Snowlancer	    , 58 , 2, 8 , 110, 1, 24 , 88 , 77, 94 , 1 , Sprites/npc8, Stone-Chuck	, Crystal-Storm
 Spearman	    , 45 , 4, 5 ,  90, 2, 80 , 65 , 0 , 66 , 3 , Sprites/npc1, Spear	, Rapid-Strike
 Rock Archer	    , 56 , 2, 5 , 130, 4, 90 , 70 , 0 , 64 , 3 , Sprites/mnt1, Hurl		, Riot-Punch
