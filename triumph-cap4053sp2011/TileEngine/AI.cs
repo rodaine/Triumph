@@ -9,18 +9,38 @@ namespace TileEngine
         private enum AIState { startTurn, chooseTarget, chooseMoveTowards, chooseMoveAway, chooseAttack, moveToTarget, attackTarget, endTurn };
 
         #region data members
-        private bool _startNextTurn;
+        private double waitTil;
         private BaseUnit _targetUnit;
         private Point _targetPoint;
+        private Ability _abilityToUse;
         private AIState _myState;
         private int[] _APToRange;
+        private float dmgWeight;
+        private float distWeight;
+        private float defWeight;
+        private float statusWeight;
         #endregion
 
         #region constructor
-        public AI()
+
+        /// <summary>
+        /// Comment
+        /// </summary>
+        /// <param name="dmgWeight">c</param>
+        /// <param name="distWeight">c</param>
+        /// <param name="defWeight">c</param>
+        /// <param name="statusWeight">c</param>
+        public AI(float dmgWeight, float distWeight, float defWeight, float statusWeight)
         {
+            this.dmgWeight = dmgWeight;
+            this.distWeight = distWeight;
+            this.defWeight = defWeight;
+            this.statusWeight = statusWeight;
+            this.waitTil = 0;
+
             this.startNextTurn();
         }
+
         #endregion
 
         #region private methods
@@ -30,7 +50,6 @@ namespace TileEngine
         /// </summary>
         private void startNextTurn()
         {
-            _startNextTurn = true;
             _targetUnit = null;
             _myState = AIState.startTurn;
         }
@@ -44,6 +63,7 @@ namespace TileEngine
         /// <returns>True if a target was found, false otherwise</returns>
         private bool chooseMoveIntoRange(BaseUnit currentUnit, TileMap map, BaseUnit[] testUnits)
         {
+            int maxRange = _APToRange[currentUnit.AP];
             Faction myFaction = currentUnit.faction;
             _targetPoint = currentUnit.position;
             int minDist = Int32.MaxValue;
@@ -56,12 +76,20 @@ namespace TileEngine
                 if (!bu.isDead && myFaction != bu.faction)
                 {
                     Point targetLoc = bu.position;
-                    
-                    //TODO fix ranges
-                    possibleTargets.Add(new Point(targetLoc.X + 1, targetLoc.Y));
-                    possibleTargets.Add(new Point(targetLoc.X - 1, targetLoc.Y));
-                    possibleTargets.Add(new Point(targetLoc.X, targetLoc.Y + 1));
-                    possibleTargets.Add(new Point(targetLoc.X, targetLoc.Y - 1));
+
+                    for (int i = -maxRange; i <= maxRange; ++i)
+                    {
+                        for(int j=maxRange-Math.Abs(i); j<=(maxRange-Math.Abs(i)); ++j)
+                        {
+                            int iOff = bu.position.X + i;
+                            int jOff = bu.position.Y + j;
+                            if(iOff >= 0 && iOff < map.getWidthInTiles() && jOff >= 0 && jOff < map.getHeightInTiles() &&
+                                    map.isEmpty(new Point(iOff,jOff)) )
+                            {
+                                possibleTargets.Add(new Point(iOff, jOff));
+                            }
+                        }
+                    }
                 }
             }
 
@@ -82,8 +110,49 @@ namespace TileEngine
             return (_targetPoint.Equals(currentUnit.position));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="currentUnit"></param>
+        /// <param name="map"></param>
+        /// <returns></returns>
+        private bool chooseMoveAway(BaseUnit currentUnit, TileMap map)
+        {
+            Faction myFaction = currentUnit.faction;
+            _targetPoint = currentUnit.faction.rallyPoint;
+            
+            return (_targetPoint.Equals(currentUnit.position));
+        }
 
-        //TODO fix this
+        /// <summary>
+        /// Chooses the ability to use. Requires _targetUnit to exist
+        /// </summary>
+        /// <param name="currentUnit">The unit whose turn it is</param>
+        /// <param name="map">The game map</param>
+        private bool chooseAbilityToUse(BaseUnit currentUnit, TileMap map)
+        {
+            List<Ability> choices = new List<Ability>();
+            if(currentUnit.withinRange(_targetUnit))
+                choices.Add(null);
+            foreach(Ability ab in currentUnit.moves)
+            {
+                if (currentUnit.canTargetAbility(ab, _targetUnit) && ab.APCost <= currentUnit.AP)
+                {
+                    choices.Add(ab);
+                }
+            }
+            if (choices.Count < 1)
+            {
+                return false;
+            }
+            int abNum = RandomNumber.getInstance().getNext(0, choices.Count - 1);
+
+            _abilityToUse = choices.ToArray()[abNum];
+            return true;
+
+        }
+
+
         /// <summary>
         /// Chooses who to attack from the set of units in attack range
         /// </summary>
@@ -101,7 +170,7 @@ namespace TileEngine
             //Generate list of 
             foreach (BaseUnit bu in testUnits)
             {
-                if (!bu.isDead && myFaction != bu.faction && currentUnit.withinRange(bu))
+                if (!bu.isDead && myFaction != bu.faction && map.getDistance(currentUnit.position, bu.position) <= _APToRange[currentUnit.AP])
                 {
                     _targetUnit = bu;
                     break;
@@ -110,18 +179,6 @@ namespace TileEngine
 
             
             return (_targetUnit != null);
-        }
-
-        /// <summary>
-        /// Figures out which ability is the best to be used from this spot.
-        /// </summary>
-        /// <param name="currentUnit"></param>
-        /// <param name="map"></param>
-        /// <param name="testUnits"></param>
-        /// <returns></returns>
-        private Ability determineMostPrudentAbility(BaseUnit currentUnit, TileMap map, BaseUnit[] testUnits)
-        {
-            return null;
         }
 
         #endregion
@@ -138,23 +195,33 @@ namespace TileEngine
         /// <param name="viewHeight">The height of the viewport</param>
         /// <param name="testUnits">The list of all units</param>
         /// <param name="camera">The current camera</param>
-        public void update(GameTime gameTime, BaseUnit currentUnit, Cursor cursor, TileMap map, int viewWidth, int viewHeight, BaseUnit[] testUnits, Camera camera, bool somethingBeingAttacked)
+        public void update(GameTime gameTime, BaseUnit currentUnit, Cursor cursor, TileMap map, int viewWidth, int viewHeight, 
+                            BaseUnit[] testUnits, Camera camera, bool somethingBeingAttacked)
         {
-            if (!currentUnit.isWalking && !currentUnit.isAttacking && !somethingBeingAttacked) //sup tj, made sometyhing being attacked, hope you don't mind
+
+            if (!currentUnit.isWalking && !currentUnit.isAttacking && !somethingBeingAttacked && gameTime.TotalGameTime.TotalSeconds > waitTil) 
             {
                 switch (_myState)
                 {
                     #region startTurn
                     case AIState.startTurn:
                         {
-                            //TODO napsack problem to figure out best combination of abilities
-                            /*
-                            _APToRange = new int[currentUnit.AP + 1];
-                            for (int i = 0; i <= currentUnit.AP; ++i)
-                            {
 
+                            waitTil = gameTime.TotalGameTime.TotalSeconds + 1;
+
+                            _APToRange = new int[currentUnit.AP + 1];
+
+                            for (int i = 1; i <= currentUnit.AP; ++i)
+                            {
+                                _APToRange[i] = currentUnit.range;
+                                foreach (Ability ab in currentUnit.moves)
+                                {
+                                    if (ab.attackRange > _APToRange[i])
+                                    {
+                                        _APToRange[i] = ab.attackRange;
+                                    }
+                                }
                             }
-                             */
 
                             if (currentUnit.AP > 0)
                             {
@@ -172,13 +239,13 @@ namespace TileEngine
                     break;
                     #endregion
 
-                    //TODO add functionality for going to moveAway
                     #region chooseTarget
                     case AIState.chooseTarget:
                     {
+
                         chooseMoveIntoRange(currentUnit, map, testUnits);
 
-                        if (chooseAttackTarget(currentUnit, map, testUnits)  && currentUnit.AP > 0)
+                        if (chooseAttackTarget(currentUnit, map, testUnits) && currentUnit.AP > 0)
                         {
                             _myState = AIState.chooseAttack;
                         }
@@ -194,12 +261,13 @@ namespace TileEngine
                     break;
                     #endregion
 
-                        //TODO Implement intelligent selection of abilities
                     #region chooseAttack
                     case AIState.chooseAttack:
                     {
                         if (chooseAttackTarget(currentUnit, map, testUnits))
                         {
+                            cursor.location = _targetUnit.position;
+                            waitTil = gameTime.TotalGameTime.TotalSeconds + 1;
                             _myState = AIState.attackTarget;
                         }
                         else
@@ -210,21 +278,13 @@ namespace TileEngine
                     break;
                     #endregion
 
-                        //TODO implement
                     #region chooseMoveAway
                     case AIState.chooseMoveAway:
                     {
-                        _myState = AIState.endTurn;
-                    }
-                    break;
-                    #endregion
+                        chooseMoveAway(currentUnit, map);
 
-                        //TODO 
-                    #region chooseMoveTowards
-                    case AIState.chooseMoveTowards:
-                    {
                         Stack<Point> fullPath = map.getPath(currentUnit, _targetPoint, new List<Point>());
-                        int cnt = currentUnit.MP;
+                        int cnt = (currentUnit.maxMP / 2) + 1;
                         Point shortTarg = currentUnit.position;
                         while (--cnt >= 0 && fullPath.Count > 0)
                         {
@@ -232,8 +292,38 @@ namespace TileEngine
                         }
                         _targetPoint = shortTarg;
 
+                        _myState = AIState.chooseMoveTowards;
+
+                    }
+                    break;
+                    #endregion
+
+                    #region chooseMoveTowards
+                    case AIState.chooseMoveTowards:
+                    {
+                        Stack<Point> fullPath = map.getPath(currentUnit, _targetPoint, new List<Point>());
+                        Stack<Point> shortPath = new Stack<Point>();
+                        int cnt = currentUnit.MP + 1;
+                        _targetPoint = currentUnit.position;
+                        while (--cnt >= 0 && fullPath.Count > 0)
+                        {
+                            shortPath.Push(fullPath.Pop());
+                        }
+
+                        if (shortPath.Count > 0)
+                        {
+                            _targetPoint = shortPath.Pop();
+                        }
+
+                        while( !map.isEmpty(_targetPoint)  && shortPath.Count > 0 )
+                        {
+                            _targetPoint = shortPath.Pop();
+                        }
+
                         if (_targetPoint != currentUnit.position)
                         {
+                            cursor.location = _targetPoint;
+                            waitTil = gameTime.TotalGameTime.TotalSeconds + 1;
                             _myState = AIState.moveToTarget;
                         }
                         else
@@ -245,46 +335,64 @@ namespace TileEngine
                     break;
                     #endregion
 
-                        //TODO
                     #region attackTarget
                     case AIState.attackTarget:
                     {
-                        currentUnit.attack(_targetUnit);
-                        if (currentUnit.AP == 0)
+                        if (chooseAbilityToUse(currentUnit, map))
                         {
-                            if (currentUnit.MP > 0)
+                            if (_abilityToUse == null)
                             {
-                                _myState = AIState.chooseMoveAway;
+                                currentUnit.attack(_targetUnit);
                             }
                             else
                             {
-                                _myState = AIState.endTurn;
+                                currentUnit.useAbility(_abilityToUse, _targetUnit);
+                            }
+
+                            if (currentUnit.AP == 0)
+                            {
+                                if (currentUnit.MP > 0)
+                                {
+                                    _myState = AIState.chooseMoveAway;
+                                }
+                                else
+                                {
+                                    _myState = AIState.endTurn;
+                                }
+                            }
+                            else
+                            {
+                                _myState = AIState.chooseTarget;
                             }
                         }
-                        if (!_targetUnit.isDead && currentUnit.AP > 0)
+                        else
                         {
-                            _myState = AIState.chooseTarget;
+                            _myState = AIState.endTurn;
                         }
+        
                     }
                     break;
                     #endregion
 
-                        //TODO
                     #region moveToTarget
                     case AIState.moveToTarget:
                     {
                         currentUnit.goToTile(_targetPoint, map, camera);
 
-                        //TODO delay
-
-                        _myState = AIState.chooseAttack;
+                        if (currentUnit.AP > 0)
+                        {
+                            _myState = AIState.chooseAttack;
+                        }
+                        else
+                        {
+                            _myState = AIState.endTurn;
+                        }
 
 
                     }
                     break;
                     #endregion
 
-                    //TODO
                     #region endTurn
                     case AIState.endTurn:
                     {
@@ -299,7 +407,9 @@ namespace TileEngine
 
             //TODO gameclock?
             #region View Updates
+            camera.setFocus(currentUnit);
             camera.update(viewWidth, viewHeight, map);
+            camera.setFocus(cursor);
             //cursor.update(gameTime, viewWidth, viewHeight, map);
 
             foreach (BaseUnit bu in testUnits)
@@ -309,7 +419,7 @@ namespace TileEngine
             #endregion
 
         }
-#endregion
+        #endregion
 
 
     }

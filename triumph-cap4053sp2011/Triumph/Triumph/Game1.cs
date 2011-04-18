@@ -22,7 +22,7 @@ namespace Triumph
 		Range range;
 		TileMap map = new TileMap();
         UI ui = new UI();
-        AI ai = new AI();
+        AI ai = new AI(0.5f, 0.5f, 0.5f, 0.5f);
         BaseUnit[] testUnits;
         BaseUnit currentUnit;
         BaseUnit targetUnit;
@@ -38,7 +38,7 @@ namespace Triumph
 		Dictionary<string, Ability> abilityList;
 		Dictionary<string, Faction> factionList;
         int counter = 10;
-        bool inGame = false; //TODO I don't like this, should only be true after UI.screen goes to Main
+        bool inGame = false; 
         bool unitBeingAttacked = false;
         #endregion
 
@@ -244,6 +244,8 @@ namespace Triumph
 
 			faction1.color = Color.Blue;
 			faction2.color = Color.Red;
+            faction1.rallyPoint = new Point(1, 1);
+            faction2.rallyPoint = new Point(1, 29);
 
 			testUnits = new BaseUnit[faction1.units.Length + faction2.units.Length];
 

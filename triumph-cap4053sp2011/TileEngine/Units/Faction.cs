@@ -23,6 +23,7 @@ namespace TileEngine
         private bool _isDefeated = false;
         private int _numDead = 0;
         private Color _col;
+        private Point _rallyPoint;
         
         #endregion
 
@@ -179,6 +180,16 @@ namespace TileEngine
         {
             get { return _isDefeated; }
         }
+
+        /// <summary>
+        /// A potentially safe point to go back towards...
+        /// </summary>
+        public Point rallyPoint
+        {
+            get { return _rallyPoint; }
+            set { _rallyPoint = value; }
+        }
+
         #endregion
 
         #region draw
