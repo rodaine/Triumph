@@ -1,0 +1,1 @@
+We are creating a game using XNA to be run on the PC.  The game is called Triumph! and the slogan is "The Chess of the Gods."  Features game play similar to Fire Emblem for the Wii.
